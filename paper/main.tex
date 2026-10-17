@@ -57,6 +57,14 @@ Mixture-of-experts (MoE) models decouple total parameter count from per-token co
 \input{sections/11_related_work}
 \input{sections/12_conclusion}
 
+\section*{Artifact Availability}
+
+The research artifact underlying the results reported in this paper is publicly available at \url{https://github.com/sennape/Argine2}. The frozen research-evidence snapshot is release \texttt{v0.2.0}, corresponding to commit \texttt{8ed817dc05a7db5a7e7e22138fa4d75bfc6c5e17}. The repository contains the runtime, research instrumentation, experiment registry, processed evidence, frozen protocols, analysis artifacts, tests, and reproducibility instructions used to support the reported claims.
+
+The larger external raw trace corpus is not distributed through the Git repository. File-level SHA-256 metadata and experiment-level summaries are provided in \texttt{data/external\_raw\_manifest.csv} and \texttt{data/external\_raw\_summary.json}, respectively. Historical provenance, including the relationship between the clean public snapshot and retained pre-publication provenance identifiers, as well as platform-specific workload-byte conventions, is documented in \texttt{REPRODUCING.md}.
+
+Release \texttt{v0.2.0} is retained as the immutable research-evidence snapshot. Subsequent paper-only editorial corrections do not modify the frozen measurements, experimental protocols, decision rules, or reported experimental outcomes.
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 
