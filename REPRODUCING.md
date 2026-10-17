@@ -178,3 +178,7 @@ scope, protocol, result, and limitations behind each reported claim.
 ## Public snapshot and historical provenance
 
 The public Argine2 release is distributed from a clean repository snapshot rather than from the complete pre-publication Git history. Historical Argine2 commit identifiers embedded in frozen experiment protocols, configuration files, processed reports, and experiment narratives are intentionally retained as immutable provenance identifiers. They refer to the original research-development history and are not guaranteed to resolve as commits in the public snapshot history. External upstream commit identifiers, such as the pinned llama.cpp revision, retain their normal upstream meaning. The frozen experiment records themselves are part of the released artifact and are not rewritten to manufacture a new public lineage.
+
+## Historical workload line endings
+
+The frozen `multi-turn-v2` identifier `e978bde0341f0a2a4ce4233e52fa8d09d760e91abb74353428825bcc2206a5b5` was computed over the CRLF working-tree bytes used by the Windows measurement harness. The normalized Git blob is LF and has SHA-256 `9de19650e5507390ef3924af6b717d50cc9412192ad929201e5657b4c53437ea`. The public release therefore pins `workloads/v2/multi-turn.json` to a CRLF checkout through `.gitattributes`, so the historical workload identifier reproduces byte-for-byte on every platform. The parsed JSON content is unchanged.

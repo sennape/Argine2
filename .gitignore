@@ -19,7 +19,8 @@ llama-research-v2/*.exe
 llama-research-v2/*.dll
 
 # publication/local research outputs
-experiments/*/raw/
+experiments/*/raw/*
+!experiments/*/raw/.gitkeep
 experiments/SMOKE-*/
 experiments/EXP-019-instrumentation-validation/processed/windows-validation-2026-10-12/
 _audit_*/
