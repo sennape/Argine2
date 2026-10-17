@@ -1,0 +1,58 @@
+budget,policy_or_allocation,misses,hit_rate,misses_vs_frozen,misses_vs_uniform
+4G,global-lru,152594,0.717419,809,839
+4G,per-layer-lru-uniform,151755,0.718972,-30,0
+4G,ablate-frozen,151785,0.718917,0,30
+4G,adaptive-e32,151234,0.719937,-551,-521
+4G,adaptive-e64,151009,0.720354,-776,-746
+4G,adaptive-e128,151006,0.720359,-779,-749
+4G,adaptive-e64-pin25,156617,0.709969,4832,4862
+4G,adaptive-e64-pin50,163804,0.696659,12019,12049
+4G,ablate-no-hysteresis,150969,0.720428,-816,-786
+4G,ablate-no-cost-weighting,150986,0.720396,-799,-769
+4G,static:adaptive-mean,150599,0.721113,-1186,-1156
+4G,static:adaptive-final,149969,0.72228,-1816,-1786
+4G,static:global-opt (oracle),149510,0.72313,-2275,-2245
+4G,piecewise:adaptive-segment-steady (instant switch),150189,0.721872,-1596,-1566
+4G,"piecewise:segment-opt (oracle, instant switch)",147320,0.727185,-4465,-4435
+4G,static:opt:natural-language (oracle),153992,0.71483,2207,2237
+4G,static:opt:coding (oracle),151017,0.720339,-768,-738
+4G,static:opt:reasoning-math (oracle),151251,0.719906,-534,-504
+4G,static:opt:structured-json (oracle),150771,0.720794,-1014,-984
+2G,global-lru,232939,0.568631,7149,7161
+2G,per-layer-lru-uniform,225778,0.581893,-12,0
+2G,ablate-frozen,225790,0.58187,0,12
+2G,adaptive-e32,225090,0.583167,-700,-688
+2G,adaptive-e64,225024,0.583289,-766,-754
+2G,adaptive-e128,225387,0.582617,-403,-391
+2G,adaptive-e64-pin25,228028,0.577726,2238,2250
+2G,adaptive-e64-pin50,236465,0.562102,10675,10687
+2G,ablate-no-hysteresis,225043,0.583254,-747,-735
+2G,ablate-no-cost-weighting,225024,0.583289,-766,-754
+2G,static:adaptive-mean,224787,0.583728,-1003,-991
+2G,static:adaptive-final,225397,0.582598,-393,-381
+2G,static:global-opt (oracle),224034,0.585122,-1756,-1744
+2G,piecewise:adaptive-segment-steady (instant switch),223661,0.585813,-2129,-2117
+2G,"piecewise:segment-opt (oracle, instant switch)",221527,0.589765,-4263,-4251
+2G,static:opt:natural-language (oracle),225027,0.583283,-763,-751
+2G,static:opt:coding (oracle),224621,0.584035,-1169,-1157
+2G,static:opt:reasoning-math (oracle),225860,0.581741,70,82
+2G,static:opt:structured-json (oracle),226847,0.579913,1057,1069
+1.5G,global-lru,265379,0.508557,10650,10598
+1.5G,per-layer-lru-uniform,254781,0.528183,52,0
+1.5G,ablate-frozen,254729,0.52828,0,-52
+1.5G,adaptive-e32,251653,0.533976,-3076,-3128
+1.5G,adaptive-e64,251629,0.53402,-3100,-3152
+1.5G,adaptive-e128,251897,0.533524,-2832,-2884
+1.5G,adaptive-e64-pin25,254866,0.528026,137,85
+1.5G,adaptive-e64-pin50,263767,0.511543,9038,8986
+1.5G,ablate-no-hysteresis,251666,0.533952,-3063,-3115
+1.5G,ablate-no-cost-weighting,251629,0.53402,-3100,-3152
+1.5G,static:adaptive-mean,251194,0.534826,-3535,-3587
+1.5G,static:adaptive-final,251302,0.534626,-3427,-3479
+1.5G,static:global-opt (oracle),250717,0.535709,-4012,-4064
+1.5G,piecewise:adaptive-segment-steady (instant switch),250422,0.536256,-4307,-4359
+1.5G,"piecewise:segment-opt (oracle, instant switch)",249338,0.538263,-5391,-5443
+1.5G,static:opt:natural-language (oracle),251792,0.533719,-2937,-2989
+1.5G,static:opt:coding (oracle),252022,0.533293,-2707,-2759
+1.5G,static:opt:reasoning-math (oracle),251540,0.534185,-3189,-3241
+1.5G,static:opt:structured-json (oracle),252949,0.531576,-1780,-1832

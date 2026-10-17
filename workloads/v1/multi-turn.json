@@ -1,0 +1,64 @@
+{
+  "name": "multi-turn",
+  "version": "v1",
+  "description": "Conversations whose prefix grows turn by turn (KV-cache reuse active).",
+  "n_predict": 128,
+  "splits": {
+    "dev": [
+      {
+        "id": "mt-dev-1",
+        "segment": "multi-turn",
+        "turns": [
+          {
+            "content": "I want to plan a three-day trip to a city I have never visited. What should I decide first?",
+            "segment": "multi-turn",
+            "n_predict": 128
+          },
+          {
+            "content": "Let's say the city is Lisbon and my budget is moderate. Suggest a rough plan for day one.",
+            "segment": "multi-turn",
+            "n_predict": 128
+          },
+          {
+            "content": "Day two should include something outside the city. What are two options and how do I get there?",
+            "segment": "multi-turn",
+            "n_predict": 128
+          },
+          {
+            "content": "Summarise the whole plan as a short checklist.",
+            "segment": "multi-turn",
+            "n_predict": 128
+          }
+        ]
+      }
+    ],
+    "eval": [
+      {
+        "id": "mt-eval-1",
+        "segment": "multi-turn",
+        "turns": [
+          {
+            "content": "I am learning to cook and want to master a basic tomato sauce. What ingredients do I need?",
+            "segment": "multi-turn",
+            "n_predict": 128
+          },
+          {
+            "content": "How do I avoid the sauce being too acidic?",
+            "segment": "multi-turn",
+            "n_predict": 128
+          },
+          {
+            "content": "Now I want to turn the same sauce into a pizza sauce. What changes?",
+            "segment": "multi-turn",
+            "n_predict": 128
+          },
+          {
+            "content": "Write the final recipe in five numbered steps.",
+            "segment": "multi-turn",
+            "n_predict": 128
+          }
+        ]
+      }
+    ]
+  }
+}

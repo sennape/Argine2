@@ -1,0 +1,44 @@
+{
+  "llama_cpp_commit": "254b177307b14d055bbe4c050c9c441a1e06d8a4",
+  "llama_cpp_repo": "https://github.com/ggml-org/llama.cpp",
+  "llama_cpp_commit_date": "2026-10-02T09:10:45+02:00",
+  "instrumentation": "argine2-research-v2",
+  "purpose": "EXP-021 replay-fidelity validation: research trace format v2 (per-shard id and sequence number on A/E records, skipped count on E, new U undo record). Cache behaviour is unchanged from llama-research/ (v1); only the trace records differ.",
+  "supersedes_for_research_traces": "llama-research/ (v1, kept unchanged as historical provenance of the EXP-007 runs)",
+  "patches": [
+    "0002-argine-expert-store.patch",
+    "argine-store.{h,cpp} (Argine2: research hooks v2 \u2014 shard id + per-shard seq)",
+    "argine-experts.{h,cpp} (Argine2: research hooks, id argine2-research-v2)",
+    "0001-argine-route-log.patch",
+    "0003-argine-research-trace.patch",
+    "argine-research.{h,cpp} (format v2)"
+  ],
+  "patch_sources_sha256": {
+    "argine-store.cpp": "27709637ab1cf61a21f7e991c3fc0c154cdeff13c3ccdbc375f814ab31b81513",
+    "argine-store.h": "3750c4587c7fc81bee5a757d8ec5679ace9f60272aa43ace2828874641254e0c",
+    "argine-experts.cpp": "67f77606b3a76db86e46046d91a82adbeb08703b195e8b1ba1e6b47add10cefc",
+    "argine-experts.h": "588d8417aaa8c734edc558bc676be3444ca2045b935f3d655062abb0d0fa6947",
+    "argine-research.cpp": "64bcc35a52bd5a6bb3c5b208dc6a037fd6bcec7bcfa5eab9c30e7dbc75839f3a",
+    "argine-research.h": "66b482f2d2c7dbec263ca3cc08563e5dc9cf46f3b10dcf49de613ca218c5d1a7"
+  },
+  "compiler": "x86_64-w64-mingw32-g++-posix (GCC) 13-posix",
+  "target": "x86_64-w64-mingw32 (posix threads)",
+  "cmake_flags": "-DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DLLAMA_CURL=OFF -DLLAMA_OPENSSL=OFF -DGGML_NATIVE=OFF -DGGML_AVX=ON -DGGML_AVX2=ON -DGGML_FMA=ON -DGGML_F16C=ON -DGGML_BMI2=ON -DGGML_OPENMP=OFF -DLLAMA_BUILD_TESTS=OFF -DLLAMA_BUILD_EXAMPLES=OFF -DCMAKE_EXE_LINKER_FLAGS='-static -static-libgcc -static-libstdc++'",
+  "dll_dependencies": [
+    "ADVAPI32.dll",
+    "KERNEL32.dll",
+    "SHELL32.dll",
+    "WS2_32.dll",
+    "msvcrt.dll"
+  ],
+  "built_utc": "2026-10-03T22:05:07Z",
+  "built_on": "Argine2 build container (Linux), cross-compiled",
+  "runtime_tested": false,
+  "runtime_test_note": "Not executed on Windows before delivery. The same sources were built natively for Linux and validated event-for-event against offline replay (EXP-021, experiments/EXP-021-replay-fidelity/raw/linux-mid-moe-v2: 0 disagreements). Run `argine.bat doctor` and the one short validation trace in docs/research/REPLAY-FIDELITY-VALIDATION.md.",
+  "binaries": {
+    "llama-imatrix.exe": "28bc2be9d720d3221516bf81a631d51af1000e8950428bb0fc2b9856ddca89af",
+    "llama-perplexity.exe": "ac8bbebb62f6d3bf223a5c3ddae66cdf96783768e31e3bb9a8a2ca80dc4a2a08",
+    "llama-quantize.exe": "9819a56831d177e57a8f0525d69e83f250f6aed93794e1e9e4ded37b9d3a4faa",
+    "llama-server.exe": "a0063720ec4bb5d1ba3e4f7c0387dd1bc6a239b0ce038ba3d755351dab3f5cf3"
+  }
+}

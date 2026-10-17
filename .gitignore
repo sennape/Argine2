@@ -1,0 +1,35 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.venv/
+# llama.cpp binaries: publish them as GitHub release assets, keep BUILD-INFO.json in git
+llama-noomp/
+llama-omp/
+llama-patched/
+llama-research/*.exe
+llama-research/*.dll
+# local scratch
+*.tmp
+
+# files moved aside for manual deletion
+_to_delete/
+llama-research-v2/*.exe
+llama-research-v2/*.dll
+
+# publication/local research outputs
+experiments/*/raw/
+experiments/SMOKE-*/
+experiments/EXP-019-instrumentation-validation/processed/windows-validation-2026-10-12/
+_audit_*/
+_review_*/
+EXP*_audit_bundle.txt
+EXP*_doublecheck.txt
+EXP*_review_bundle.txt
+EXP*_final_review*.txt
+EXP*_closure_review*.txt
+EXP*_post_*review*.txt
+Argine2_EXP*_review*.txt
+EXP*_final_doublecheck*.txt
+EXP*_core_bundle.txt

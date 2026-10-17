@@ -1,0 +1,26 @@
+{
+  "experiment": "EXP-024-tracing-overhead",
+  "protocol_version": "EXP024-P1",
+  "status": "frozen before any measurement; independent review completed 2026-10-12",
+  "supersedes": "protocol_freeze_pre_review_2026-10-12.json",
+  "protocol_hash_method": "sha256 of the UTF-8, LF-normalised README text strictly between '<!-- EXP-024 PROTOCOL-BEGIN -->' and '<!-- EXP-024 PROTOCOL-END -->'",
+  "code_hash_method": "sha256 of the LF-normalised file bytes",
+  "protocol_sha256": "70a29664276efac58d3a9b82430efa8396a685c49731a8529a22d7811044454d",
+  "tool_sha256": "bdc3c122a24c6580ec39482bada9583bab8e37d68a1a7da0c47be9a3f79656d2",
+  "tests_sha256": "5e5fe02a5c3494969aff8d93c3ef2dfa153cfb5e4bc17a661ee53070fcb60509",
+  "argine2_at_freeze": {
+    "head": "9b842d6e1e6d2508ccf244523384502b0ebbb295",
+    "error": null,
+    "porcelain": [
+      " M experiments/EXP-024-tracing-overhead/README.md",
+      " M experiments/EXP-024-tracing-overhead/config.json",
+      "?? EXP024_protocol_review.txt",
+      "?? experiments/EXP-024-tracing-overhead/protocol_freeze.json",
+      "?? experiments/EXP-024-tracing-overhead/protocol_freeze_pre_review_2026-10-12.json",
+      "?? tests/test_exp024.py",
+      "?? tools/exp024_run.py"
+    ],
+    "note": "the reviewed files are uncommitted at freeze time by construction; --run requires them committed and the tree clean"
+  },
+  "frozen_utc": "2026-10-12T09:31:29+00:00"
+}

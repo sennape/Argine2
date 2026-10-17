@@ -1,0 +1,67 @@
+variant,budget,boundary_step,steady_misses_per_step,pre_boundary_misses_per_step,adaptation_steps,transient_excess_misses,note
+per-layer-lru-uniform,4G,7,87.34,189.857,32,696.5,
+per-layer-lru-uniform,4G,388,,,,,segment too short
+global-lru,4G,7,85.602,189.857,32,762.6,
+global-lru,4G,388,,,,,segment too short
+adaptive-e32,4G,7,83.775,189.857,32,738.5,
+adaptive-e32,4G,388,,,,,segment too short
+adaptive-e64,4G,7,83.634,189.857,33,770.7,
+adaptive-e64,4G,388,,,,,segment too short
+adaptive-e128,4G,7,83.827,189.857,32,765.5,
+adaptive-e128,4G,388,,,,,segment too short
+adaptive-e64-pin25,4G,7,83.079,189.857,33,782.4,
+adaptive-e64-pin25,4G,388,,,,,segment too short
+adaptive-e64-pin50,4G,7,83.131,189.857,33,781.3,
+adaptive-e64-pin50,4G,388,,,,,segment too short
+ablate-frozen,4G,7,87.34,189.857,32,696.5,
+ablate-frozen,4G,388,,,,,segment too short
+ablate-freq-estimator,4G,7,83.209,189.857,33,779.6,
+ablate-freq-estimator,4G,388,,,,,segment too short
+ablate-no-cost-weighting,4G,7,83.712,189.857,32,767.8,
+ablate-no-cost-weighting,4G,388,,,,,segment too short
+ablate-no-hysteresis,4G,7,83.56,189.857,33,772.2,
+ablate-no-hysteresis,4G,388,,,,,segment too short
+per-layer-lru-uniform,2G,7,164.99,194.571,21,717.1,
+per-layer-lru-uniform,2G,388,,,,,segment too short
+global-lru,2G,7,174.366,194.0,17,676.0,
+global-lru,2G,388,,,,,segment too short
+adaptive-e32,2G,7,161.309,194.571,22,762.0,
+adaptive-e32,2G,388,,,,,segment too short
+adaptive-e64,2G,7,160.675,194.571,23,770.2,
+adaptive-e64,2G,388,,,,,segment too short
+adaptive-e128,2G,7,160.764,194.571,22,769.1,
+adaptive-e128,2G,388,,,,,segment too short
+adaptive-e64-pin25,2G,7,159.497,194.571,32,1039.1,
+adaptive-e64-pin25,2G,388,,,,,segment too short
+adaptive-e64-pin50,2G,7,158.754,194.571,32,1053.9,
+adaptive-e64-pin50,2G,388,,,,,segment too short
+ablate-frozen,2G,7,164.99,194.571,21,717.1,
+ablate-frozen,2G,388,,,,,segment too short
+ablate-freq-estimator,2G,7,161.037,194.571,22,765.5,
+ablate-freq-estimator,2G,388,,,,,segment too short
+ablate-no-cost-weighting,2G,7,160.529,194.571,23,772.1,
+ablate-no-cost-weighting,2G,388,,,,,segment too short
+ablate-no-hysteresis,2G,7,160.555,194.571,23,771.8,
+ablate-no-hysteresis,2G,388,,,,,segment too short
+per-layer-lru-uniform,1.5G,7,190.707,202.857,17,640.2,
+per-layer-lru-uniform,1.5G,388,,,,,segment too short
+global-lru,1.5G,7,207.89,213.571,20,738.4,
+global-lru,1.5G,388,,,,,segment too short
+adaptive-e32,1.5G,7,184.372,202.857,22,778.5,
+adaptive-e32,1.5G,388,,,,,segment too short
+adaptive-e64,1.5G,7,183.738,202.857,22,786.1,
+adaptive-e64,1.5G,388,,,,,segment too short
+adaptive-e128,1.5G,7,184.361,202.857,22,778.7,
+adaptive-e128,1.5G,388,,,,,segment too short
+adaptive-e64-pin25,1.5G,7,182.476,202.857,32,1069.9,
+adaptive-e64-pin25,1.5G,388,,,,,segment too short
+adaptive-e64-pin50,1.5G,7,182.843,202.857,22,796.9,
+adaptive-e64-pin50,1.5G,388,,,,,segment too short
+ablate-frozen,1.5G,7,190.707,202.857,17,640.2,
+ablate-frozen,1.5G,388,,,,,segment too short
+ablate-freq-estimator,1.5G,7,184.068,202.857,22,782.2,
+ablate-freq-estimator,1.5G,388,,,,,segment too short
+ablate-no-cost-weighting,1.5G,7,183.89,202.857,22,784.3,
+ablate-no-cost-weighting,1.5G,388,,,,,segment too short
+ablate-no-hysteresis,1.5G,7,183.853,202.857,22,784.8,
+ablate-no-hysteresis,1.5G,388,,,,,segment too short

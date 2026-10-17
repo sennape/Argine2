@@ -1,0 +1,48 @@
+{
+  "argv": [
+    "research",
+    "compare",
+    "experiments\\EXP-007-router-characterization\\raw\\80b-reasoning-math-eval-v2\\run-00-4G\\trace.jsonl.gz",
+    "--budgets",
+    "4G,2G,1.5G",
+    "--train",
+    "experiments\\EXP-007-router-characterization\\raw\\80b-reasoning-math-dev-v2\\run-00-4G\\trace.jsonl.gz",
+    "--out",
+    "experiments\\EXP-010-adaptive-allocation\\eval\\80b-reasoning-math-eval-v2"
+  ],
+  "budgets_bytes": [
+    4294967296,
+    2147483648,
+    1610612736
+  ],
+  "command": "compare",
+  "cost": null,
+  "opt_static": false,
+  "phase": "decode",
+  "trace": {
+    "meta": {
+      "model": "Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+      "n_experts": 512,
+      "n_layers": 48,
+      "split": "eval",
+      "top_k": 10,
+      "workload": "reasoning-math@de60c25a04b7"
+    },
+    "path": "experiments\\EXP-007-router-characterization\\raw\\80b-reasoning-math-eval-v2\\run-00-4G\\trace.jsonl.gz",
+    "sha256": "005ec326611652f41c0af0a9668b601807e0b30b11e8cb53b9b5bcd8629a7efa"
+  },
+  "train": {
+    "meta": {
+      "model": "Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+      "n_experts": 512,
+      "n_layers": 48,
+      "split": "dev",
+      "top_k": 10,
+      "workload": "reasoning-math@de60c25a04b7"
+    },
+    "path": "experiments\\EXP-007-router-characterization\\raw\\80b-reasoning-math-dev-v2\\run-00-4G\\trace.jsonl.gz",
+    "sha256": "1d676a3b8682882622bdeae17543c4a7c77b2dbf749ea6e333577e7892530a5f"
+  },
+  "train_mode": "separate",
+  "written_utc": "2026-10-11T18:22:10Z"
+}

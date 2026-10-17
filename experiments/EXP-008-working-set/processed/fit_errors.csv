@@ -1,0 +1,37 @@
+analysis,target,model,predictor,method,n_predictions,mae,relative_mae
+primary (EVAL),gen_tok_s,30b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.428066,0.09446
+primary (EVAL),gen_tok_s,30b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.652889,0.14407
+primary (EVAL),gen_tok_s,30b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.518204,0.11435
+primary (EVAL),gen_tok_s,80b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.431548,0.084679
+primary (EVAL),gen_tok_s,80b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.471082,0.092436
+primary (EVAL),gen_tok_s,80b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.353983,0.069459
+primary (EVAL),expert_level_hit_rate,30b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.036261,0.06532
+primary (EVAL),expert_level_hit_rate,30b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.022115,0.039836
+primary (EVAL),expert_level_hit_rate,30b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.021611,0.038929
+primary (EVAL),expert_level_hit_rate,80b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.067262,0.114126
+primary (EVAL),expert_level_hit_rate,80b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.051095,0.086695
+primary (EVAL),expert_level_hit_rate,80b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.049876,0.084627
+replication (DEV),gen_tok_s,30b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.403372,0.088344
+replication (DEV),gen_tok_s,30b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.688828,0.150862
+replication (DEV),gen_tok_s,30b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.509613,0.111612
+replication (DEV),gen_tok_s,80b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.429676,0.085814
+replication (DEV),gen_tok_s,80b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.453633,0.090598
+replication (DEV),gen_tok_s,80b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.368746,0.073645
+replication (DEV),expert_level_hit_rate,30b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.03063,0.055514
+replication (DEV),expert_level_hit_rate,30b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.029633,0.053708
+replication (DEV),expert_level_hit_rate,30b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.017246,0.031258
+replication (DEV),expert_level_hit_rate,80b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.053537,0.091395
+replication (DEV),expert_level_hit_rate,80b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.030782,0.052548
+replication (DEV),expert_level_hit_rate,80b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.039936,0.068175
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.428066,0.09446
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.423818,0.093522
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.451818,0.099701
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.431548,0.084679
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.297691,0.058413
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.333471,0.065434
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.036261,0.06532
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.031844,0.057363
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.023872,0.043002
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P0,"LOWO, OLS log(target)~log(predictor)",21,0.067262,0.114126
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P1,"LOWO, OLS log(target)~log(predictor)",21,0.061596,0.104512
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P2,"LOWO, OLS log(target)~log(predictor)",21,0.047482,0.080565

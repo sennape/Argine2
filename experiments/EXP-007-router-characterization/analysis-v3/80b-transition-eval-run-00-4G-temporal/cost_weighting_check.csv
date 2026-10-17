@@ -1,0 +1,4 @@
+budget,weighted_misses,weighted_moves,unweighted_misses,unweighted_moves,decisions_that_differ,of_which_exact_utility_ties,of_which_between_the_two_expert_sizes,hysteresis_test_flips,max_relative_difference_of_cost_per_byte_between_sizes,first_flips
+4G,151009,412,150986,416,14,14,14,0,1.5e-16,"[[""donor"", 3, 2, 2.0, 2.0], [""receiver"", 8, 0, 2.5, 2.5], [""receiver"", 8, 0, 2.5, 2.5]]"
+2G,225024,452,225024,450,5,5,5,0,1.5e-16,"[[""donor"", 25, 0, 4.0, 4.0], [""donor"", 36, 0, 4.0, 4.0], [""receiver"", 30, 1, 7.75, 7.75]]"
+1.5G,251629,310,251629,310,0,0,0,0,1.5e-16,[]

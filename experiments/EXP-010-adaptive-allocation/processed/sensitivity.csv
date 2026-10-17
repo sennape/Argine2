@@ -1,0 +1,7 @@
+model,threshold,G_pool,adaptive_fewer_misses_by_at_least_t,static_fewer_misses_by_at_least_t,within_plus_minus_t,affects_registry_verdict
+30b,0.005,1.0037472856234697,False,False,True,False
+30b,0.01,1.0037472856234697,False,False,True,False
+30b,0.02,1.0037472856234697,False,False,True,False
+80b,0.005,1.001475832175211,False,False,True,False
+80b,0.01,1.001475832175211,False,False,True,False
+80b,0.02,1.001475832175211,False,False,True,False

@@ -1,0 +1,42 @@
+{
+  "name": "coding",
+  "version": "v1",
+  "description": "Programming tasks: writing, explaining and fixing code.",
+  "n_predict": 128,
+  "splits": {
+    "dev": [
+      {
+        "id": "code-dev-1",
+        "segment": "coding",
+        "prompt": "Write a Python function that merges overlapping intervals in a list of (start, end) tuples. Include a short docstring and two test cases."
+      },
+      {
+        "id": "code-dev-2",
+        "segment": "coding",
+        "prompt": "Explain what this C code does and point out the bug:\n\nint sum(int *a, int n) { int s; for (int i = 0; i <= n; i++) s += a[i]; return s; }"
+      },
+      {
+        "id": "code-dev-3",
+        "segment": "coding",
+        "prompt": "Implement an LRU cache class in JavaScript with get and put in O(1). Explain the data structures you use."
+      }
+    ],
+    "eval": [
+      {
+        "id": "code-eval-1",
+        "segment": "coding",
+        "prompt": "Write a Rust function that returns the k most frequent words in a string, ignoring case and punctuation."
+      },
+      {
+        "id": "code-eval-2",
+        "segment": "coding",
+        "prompt": "Explain the difference between a process and a thread, then show a minimal Python example that uses a thread pool to download three URLs."
+      },
+      {
+        "id": "code-eval-3",
+        "segment": "coding",
+        "prompt": "Here is a SQL query that is slow on a large table: SELECT * FROM orders WHERE YEAR(created_at) = 2024. Explain why and rewrite it so an index can be used."
+      }
+    ]
+  }
+}

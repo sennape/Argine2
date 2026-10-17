@@ -1,0 +1,28 @@
+{
+  "id": "EXP-008-working-set",
+  "title": "Effective Working Set (EWS) as a predictor",
+  "status": "INCONCLUSIVE",
+  "period": "2026-10-11",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-002",
+    "RQ-003"
+  ],
+  "commands": [
+    "argine research trace ... (EXP-007)",
+    "argine research characterize TRACE --out DIR",
+    "argine research predict runs.csv",
+    "python tools/exp008_analysis.py"
+  ],
+  "supersedes": "—",
+  "result": {
+    "primary_throughput": "INCONCLUSIVE (models disagree)",
+    "secondary_hit_rate": "SUPPORTED within the traced EXP-007 dataset",
+    "dev_replication": {
+      "throughput": "INCONCLUSIVE",
+      "hit_rate": "SUPPORTED"
+    },
+    "analysis_plan_frozen_utc": "2026-10-11T11:48Z",
+    "tool_sha256": "ef40da64b363c858e7691bc4901b68332ff7ff2e759a6563670655b61d34162d"
+  }
+}

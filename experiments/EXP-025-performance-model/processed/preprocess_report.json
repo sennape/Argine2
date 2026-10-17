@@ -1,0 +1,81 @@
+{
+  "budgets": [
+    "1.5G",
+    "1152M",
+    "1024M",
+    "768M",
+    "512M"
+  ],
+  "configuration_provenance": {
+    "1.5G": {
+      "aggregation": "arithmetic_mean_of_replica_level_scalars",
+      "q_status": "upper_bound",
+      "replica_q_status": [
+        "upper_bound",
+        "upper_bound"
+      ],
+      "replicas": [
+        "launch-01",
+        "launch-10"
+      ]
+    },
+    "1024M": {
+      "aggregation": "arithmetic_mean_of_replica_level_scalars",
+      "q_status": "upper_bound",
+      "replica_q_status": [
+        "upper_bound",
+        "upper_bound"
+      ],
+      "replicas": [
+        "launch-03",
+        "launch-09"
+      ]
+    },
+    "1152M": {
+      "aggregation": "arithmetic_mean_of_replica_level_scalars",
+      "q_status": "upper_bound",
+      "replica_q_status": [
+        "upper_bound",
+        "upper_bound"
+      ],
+      "replicas": [
+        "launch-02",
+        "launch-06"
+      ]
+    },
+    "512M": {
+      "aggregation": "arithmetic_mean_of_replica_level_scalars",
+      "q_status": "upper_bound",
+      "replica_q_status": [
+        "upper_bound",
+        "upper_bound"
+      ],
+      "replicas": [
+        "launch-05",
+        "launch-07"
+      ]
+    },
+    "768M": {
+      "aggregation": "arithmetic_mean_of_replica_level_scalars",
+      "q_status": "upper_bound",
+      "replica_q_status": [
+        "upper_bound",
+        "upper_bound"
+      ],
+      "replicas": [
+        "launch-04",
+        "launch-08"
+      ]
+    }
+  },
+  "configurations": 5,
+  "experiment": "EXP-025-performance-model",
+  "freeze_commit": "26da7819f79a114743aa8f38645c71e70e84ed7d",
+  "generated_tokens_per_replica": 384,
+  "purpose": "preprocess_only_no_fit_no_prediction",
+  "replica_aggregation": "arithmetic_mean_of_replica_level_scalars",
+  "replicas": 10,
+  "source": "EXP-022-extreme-pressure/raw/30b-diag",
+  "working_tree_head_at_preprocess": "18d7afb6c0c356d54043349aed1c9f432cd25b4c",
+  "workload_decode_steps_per_replica": 381
+}

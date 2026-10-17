@@ -1,0 +1,10 @@
+trace,workload_steps,workload_routing_sha256
+/mnt/user-data/uploads/Desktop/Argine2/experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-00-4G/trace.jsonl.gz,1202,84371c06dda9d887f8292f8f5dfdb3f3f45c02b92047656e59d960c523b30fc5
+/mnt/user-data/uploads/Desktop/Argine2/experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-01-2G/trace.jsonl.gz,1202,84371c06dda9d887f8292f8f5dfdb3f3f45c02b92047656e59d960c523b30fc5
+/mnt/user-data/uploads/Desktop/Argine2/experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-02-1.5G/trace.jsonl.gz,1202,84371c06dda9d887f8292f8f5dfdb3f3f45c02b92047656e59d960c523b30fc5
+/mnt/user-data/uploads/Desktop/Argine2/experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-03-4G/trace.jsonl.gz,1202,84371c06dda9d887f8292f8f5dfdb3f3f45c02b92047656e59d960c523b30fc5
+/mnt/user-data/uploads/Desktop/Argine2/experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-04-1.5G/trace.jsonl.gz,1202,84371c06dda9d887f8292f8f5dfdb3f3f45c02b92047656e59d960c523b30fc5
+/mnt/user-data/uploads/Desktop/Argine2/experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-05-2G/trace.jsonl.gz,1202,84371c06dda9d887f8292f8f5dfdb3f3f45c02b92047656e59d960c523b30fc5
+/mnt/user-data/uploads/Desktop/Argine2/experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-06-1.5G/trace.jsonl.gz,1202,84371c06dda9d887f8292f8f5dfdb3f3f45c02b92047656e59d960c523b30fc5
+/mnt/user-data/uploads/Desktop/Argine2/experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-07-4G/trace.jsonl.gz,1202,84371c06dda9d887f8292f8f5dfdb3f3f45c02b92047656e59d960c523b30fc5
+/mnt/user-data/uploads/Desktop/Argine2/experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-08-2G/trace.jsonl.gz,1202,84371c06dda9d887f8292f8f5dfdb3f3f45c02b92047656e59d960c523b30fc5

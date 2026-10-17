@@ -1,0 +1,9 @@
+model_file,ppl,ppl_err,signature,text_hash
+Qwen_Qwen3-30B-A3B-Q4_K_M.gguf,3.4258,0.119,ctx=512;chunk=18;testo=bf8011647e36fad6,bf8011647e36fad6
+Qwen_Qwen3-30B-A3B-Q4_K_M-experts-IQ2_XXS.gguf,3.4963,0.1234,ctx=512;chunk=18;testo=bf8011647e36fad6,bf8011647e36fad6
+Qwen_Qwen3-30B-A3B-Q4_K_M.gguf,12.0642,0.2912,ctx=512;chunk=60;testo=da315163291ee5c9,da315163291ee5c9
+Qwen_Qwen3-30B-A3B-Q4_K_M-experts-IQ2_XXS.gguf,16.4396,0.4058,ctx=512;chunk=60;testo=da315163291ee5c9,da315163291ee5c9
+qwen30b-IQ2-reale.gguf,15.1946,0.3709,ctx=512;chunk=60;testo=da315163291ee5c9,da315163291ee5c9
+qwen30b-IQ2XS.gguf,14.3578,0.3472,ctx=512;chunk=60;testo=da315163291ee5c9,da315163291ee5c9
+qwen30b-IQ2S.gguf,13.6283,0.329,ctx=512;chunk=60;testo=da315163291ee5c9,da315163291ee5c9
+Qwen3-14B-Q4_K_M.gguf,13.2766,0.3176,ctx=512;chunk=60;testo=da315163291ee5c9,da315163291ee5c9

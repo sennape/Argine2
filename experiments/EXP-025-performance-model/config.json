@@ -1,0 +1,96 @@
+{
+  "id": "EXP-025-performance-model",
+  "title": "Interpretable per-token performance model",
+  "status": "SUPPORTED",
+  "period": "2026-10-15",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-013"
+  ],
+  "commands": [
+    "argine research predict runs.csv --out prediction.json"
+  ],
+  "primary_dataset": {
+    "source_experiment": "EXP-022-extreme-pressure",
+    "block": "30b-diag",
+    "model": "Qwen3-30B-A3B",
+    "workload": "natural-language",
+    "budgets": [
+      "1.5G",
+      "1152M",
+      "1024M",
+      "768M",
+      "512M"
+    ],
+    "replicas_per_configuration": 2,
+    "require_all_replicas": true,
+    "unit_of_validation": "budget_configuration",
+    "phase": "decode",
+    "token_denominator": "sum_predicted_n",
+    "expected_generated_tokens_per_replica": 384,
+    "expected_workload_decode_steps_per_replica": 381,
+    "replica_aggregation": "arithmetic_mean_of_replica_level_scalars",
+    "configuration_q_status": "upper_bound_if_any_replica_upper_bound"
+  },
+  "success_criterion": {
+    "metric": "leave-one-configuration-out median absolute percentage error",
+    "operator": "<",
+    "threshold_percent": 15.0,
+    "minimum_configurations": 5
+  },
+  "supersedes": "—",
+  "measurements_made": true,
+  "verdict": "SUPPORTED",
+  "primary_result": {
+    "decision": "SUPPORTED BY THE PRIMARY TEST",
+    "median_abs_pct_error": 2.2546885,
+    "meets_target_15pct": true,
+    "folds": [
+      {
+        "label": "1.5G",
+        "measured_ms": 258.11498,
+        "predicted_ms": 265.9274,
+        "abs_pct_error": 3.0267209
+      },
+      {
+        "label": "1152M",
+        "measured_ms": 302.79354,
+        "predicted_ms": 295.16062,
+        "abs_pct_error": 2.520833
+      },
+      {
+        "label": "1024M",
+        "measured_ms": 347.33938,
+        "predicted_ms": 351.19403,
+        "abs_pct_error": 1.1097639
+      },
+      {
+        "label": "768M",
+        "measured_ms": 391.97368,
+        "predicted_ms": 400.53006,
+        "abs_pct_error": 2.1828968
+      },
+      {
+        "label": "512M",
+        "measured_ms": 402.70998,
+        "predicted_ms": 393.63013,
+        "abs_pct_error": 2.2546885
+      }
+    ],
+    "full_fit_coefficients": {
+      "compute": 85.5716,
+      "sync_nodes": 1.0843354e-15,
+      "io_bytes_over_bw": 0.85973422,
+      "reads": 0.043179181
+    },
+    "identifiability_limitation": "nodes_per_token is constant at 142.875 across all five primary configurations; compute and sync_nodes are perfectly collinear and are not separately identifiable.",
+    "all_primary_qd_status": "upper_bound"
+  },
+  "provenance": {
+    "protocol_freeze_commit": "26da7819f79a114743aa8f38645c71e70e84ed7d",
+    "preprocessor_commit": "18d7afb6c0c356d54043349aed1c9f432cd25b4c",
+    "primary_dataset_commit": "668701b0f7f9ccfef048203aa54cccc48426512b",
+    "dataset_line_endings_commit": "af11f2574ff53007f65090a4d440a22cc198ee0d",
+    "primary_prediction_commit": "5d12049825deebc9f9fcffa901c21c16ce626827"
+  }
+}

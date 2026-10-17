@@ -1,0 +1,64 @@
+{
+  "name": "transition",
+  "version": "v1",
+  "description": "One session that switches workload every ~300 generated tokens: natural language -> programming -> mathematics -> structured JSON (section 22).",
+  "n_predict": 300,
+  "splits": {
+    "dev": [
+      {
+        "id": "tr-dev-1",
+        "segment": "natural-language",
+        "turns": [
+          {
+            "content": "Explain in detail how vaccines train the immune system, including memory cells.",
+            "segment": "natural-language",
+            "n_predict": 300
+          },
+          {
+            "content": "Now switch topic completely: write a Python class implementing a binary search tree with insert, search and in-order traversal, with comments.",
+            "segment": "coding",
+            "n_predict": 300
+          },
+          {
+            "content": "Switch again: solve step by step — find all real x such that x^4 - 5x^2 + 4 = 0, and verify each root.",
+            "segment": "reasoning-math",
+            "n_predict": 300
+          },
+          {
+            "content": "Finally, output only JSON: a list of 6 cities with name, country, population (integer) and coordinates {lat, lon}.",
+            "segment": "structured-json",
+            "n_predict": 300
+          }
+        ]
+      }
+    ],
+    "eval": [
+      {
+        "id": "tr-eval-1",
+        "segment": "natural-language",
+        "turns": [
+          {
+            "content": "Explain in detail how a hydroelectric power plant converts the energy of water into electricity.",
+            "segment": "natural-language",
+            "n_predict": 300
+          },
+          {
+            "content": "Now switch topic completely: write a C function that reverses a singly linked list in place, and a main() that tests it.",
+            "segment": "coding",
+            "n_predict": 300
+          },
+          {
+            "content": "Switch again: step by step, compute the sum of the infinite series 1/(n(n+1)) for n from 1 to infinity and justify each step.",
+            "segment": "reasoning-math",
+            "n_predict": 300
+          },
+          {
+            "content": "Finally, output only JSON: a list of 6 chemical elements with symbol, name, atomic_number (integer) and state_at_room_temperature.",
+            "segment": "structured-json",
+            "n_predict": 300
+          }
+        ]
+      }
+    ]
+  }
+}

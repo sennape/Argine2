@@ -1,0 +1,112 @@
+{
+  "access_outcomes": {
+    "h": 2998,
+    "m": 71
+  },
+  "budget_invariant": {
+    "max_resident_over_budget": -4915,
+    "violations": 0
+  },
+  "cache_totals": {
+    "bytes_read": 581632,
+    "evictions": 38,
+    "hits": 2962,
+    "misses": 71
+  },
+  "hit_rate_semantics": {
+    "accesses_by_node_kind_and_outcome": {
+      "down:h": 1023,
+      "gate:h": 952,
+      "gate:m": 71,
+      "up:h": 1023
+    },
+    "gate_node_hit_rate": 0.93059629,
+    "misses_outside_gate_nodes": 0,
+    "runtime_style_hit_rate": 0.97686543,
+    "unassigned_accesses": 0
+  },
+  "io": {
+    "bandwidth": {
+      "bytes": 581632,
+      "mb_s_when_busy": 443.49319
+    },
+    "blocked": {
+      "per_thread_ms": {
+        "0": 0.008751,
+        "1": 3.764943,
+        "2": 3.858473,
+        "3": 3.969994
+      },
+      "total_ms": 11.602161
+    },
+    "failed_reads": 0,
+    "latency": {
+      "all": {
+        "max_ms": 0.121876,
+        "mean_ms": 0.019275211,
+        "p50_ms": 0.012319,
+        "p90_ms": 0.035365,
+        "p99_ms": 0.10634
+      },
+      "exact_only": {
+        "max_ms": 0.121876,
+        "mean_ms": 0.019275211,
+        "p50_ms": 0.012319,
+        "p90_ms": 0.035365,
+        "p99_ms": 0.10634
+      },
+      "reads": 71
+    },
+    "overlap": {
+      "hidden_fraction": 0.0,
+      "hidden_ms": 0.0,
+      "io_ms": 1.36854,
+      "synchronous_reads": 71,
+      "unhidden_fraction": 1.0,
+      "unhidden_ms": 1.36854
+    },
+    "queue_depth": {
+      "busy_ms": 1.311479,
+      "exact_completion_share": 1.0,
+      "label": "exact",
+      "q_max": 2,
+      "q_time_share": {
+        "0": 0.9999403,
+        "1": 5.7102287e-05,
+        "2": 2.5974704e-06
+      },
+      "q_time_weighted_mean_over_span": 6.2297228e-05,
+      "q_time_weighted_mean_when_busy": 1.0435089,
+      "reads": 71,
+      "span_ms": 21967.912
+    }
+  },
+  "raw": {
+    "accesses": 3069,
+    "config": {
+      "budget_bytes": "275251",
+      "cache_shards": "1",
+      "direct_io": "0",
+      "instrumentation": "argine2-research-v1",
+      "pretouch": "0",
+      "read_mode": "asincrono",
+      "store": "/tmp/claude-0/arx/tiny.psxs",
+      "store_experts": "8",
+      "store_layers": "2"
+    },
+    "evictions": 38,
+    "io": 71,
+    "malformed": 0,
+    "nodes": 492,
+    "routes": 164,
+    "snapshots": 81,
+    "truncated_tail": false,
+    "unknown_types": {}
+  },
+  "trace": {
+    "decode_tokens": 78,
+    "prefill_tokens": 108,
+    "segments": [],
+    "steps": 82
+  }
+}

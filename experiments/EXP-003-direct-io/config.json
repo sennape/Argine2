@@ -1,0 +1,15 @@
+{
+  "id": "EXP-003-direct-io",
+  "title": "Explicit unbuffered reads vs memory-mapped page faults",
+  "status": "SUPPORTED",
+  "period": "2026-09-27 → 2026-10-03",
+  "origin": "Argine v1 (historical); data re-derived from raw logs by Argine2",
+  "rqs": [
+    "RQ-008"
+  ],
+  "commands": [
+    "argine diskbench C:\\modelli\\Qwen_Qwen3-30B-A3B-Q4_K_M.gguf",
+    "argine store bench MODEL"
+  ],
+  "supersedes": "—"
+}

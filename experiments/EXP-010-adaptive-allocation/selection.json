@@ -1,0 +1,280 @@
+{
+  "selection": {
+    "experiment": "EXP-010-adaptive-allocation",
+    "protocol_version": "EXP010-P1a (pre-execution amendment, frozen 2026-10-11)",
+    "leakage": "B - RETROSPECTIVE HOLDOUT",
+    "framing": "DEV-selected, frozen, EVAL-tested retrospective holdout",
+    "selection_level": "per model (one configuration for 30B, one for 80B)",
+    "objective": "G_DEV = geometric mean over 7 workloads x 3 budgets (21 equal-weight cells) of misses(candidate) / misses(per-layer-lru-uniform), expert-event misses, decode, DEV only",
+    "tie_break": [
+      "lower G_DEV",
+      "|dG| < 0.0001: fewer total bytes moved",
+      "larger epoch",
+      "no pinning"
+    ],
+    "candidate_set": [
+      {
+        "id": "e32",
+        "variant": "adaptive-e32",
+        "epoch": 32,
+        "pinned": 0.0
+      },
+      {
+        "id": "e64",
+        "variant": "adaptive-e64",
+        "epoch": 64,
+        "pinned": 0.0
+      },
+      {
+        "id": "e128",
+        "variant": "adaptive-e128",
+        "epoch": 128,
+        "pinned": 0.0
+      },
+      {
+        "id": "e64-pin25",
+        "variant": "adaptive-e64-pin25",
+        "epoch": 64,
+        "pinned": 0.25
+      },
+      {
+        "id": "e64-pin50",
+        "variant": "adaptive-e64-pin50",
+        "epoch": 64,
+        "pinned": 0.5
+      }
+    ],
+    "fixed_parameters": {
+      "decay": 0.5,
+      "hysteresis": 0.1,
+      "max_move": 0.05,
+      "estimator": "stack",
+      "cost_weighting": true,
+      "stability_epochs": 4,
+      "min_slots": "top_k",
+      "initial_allocation": "uniform",
+      "cost_model": "default CostModel"
+    },
+    "models": {
+      "30b": {
+        "selected": "e32",
+        "variant": "adaptive-e32",
+        "epoch": 32,
+        "pinned": 0.0,
+        "tie_break_path": [
+          "G_DEV"
+        ],
+        "tie_break_used": false,
+        "candidates": {
+          "e32": {
+            "G_DEV": 0.961340862118,
+            "n_cells": 21,
+            "bytes_moved_total": 37478486016.0,
+            "moves_total": 10216.0
+          },
+          "e64": {
+            "G_DEV": 0.96311413663,
+            "n_cells": 21,
+            "bytes_moved_total": 18735685632.0,
+            "moves_total": 4767.0
+          },
+          "e128": {
+            "G_DEV": 0.968289437397,
+            "n_cells": 21,
+            "bytes_moved_total": 9918627840.0,
+            "moves_total": 2203.0
+          },
+          "e64-pin25": {
+            "G_DEV": 0.966326938657,
+            "n_cells": 21,
+            "bytes_moved_total": 18818555904.0,
+            "moves_total": 4797.0
+          },
+          "e64-pin50": {
+            "G_DEV": 0.969643453598,
+            "n_cells": 21,
+            "bytes_moved_total": 18822610944.0,
+            "moves_total": 4794.0
+          }
+        }
+      },
+      "80b": {
+        "selected": "e32",
+        "variant": "adaptive-e32",
+        "epoch": 32,
+        "pinned": 0.0,
+        "tie_break_path": [
+          "G_DEV"
+        ],
+        "tie_break_used": false,
+        "candidates": {
+          "e32": {
+            "G_DEV": 0.992689060682,
+            "n_cells": 21,
+            "bytes_moved_total": 24514953216.0,
+            "moves_total": 15316.0
+          },
+          "e64": {
+            "G_DEV": 0.993184665046,
+            "n_cells": 21,
+            "bytes_moved_total": 12126879744.0,
+            "moves_total": 7448.0
+          },
+          "e128": {
+            "G_DEV": 0.994391350604,
+            "n_cells": 21,
+            "bytes_moved_total": 6352273408.0,
+            "moves_total": 3773.0
+          },
+          "e64-pin25": {
+            "G_DEV": 1.003695688643,
+            "n_cells": 21,
+            "bytes_moved_total": 12126879744.0,
+            "moves_total": 7448.0
+          },
+          "e64-pin50": {
+            "G_DEV": 1.030367800849,
+            "n_cells": 21,
+            "bytes_moved_total": 12126879744.0,
+            "moves_total": 7448.0
+          }
+        }
+      }
+    },
+    "dev_sources": {
+      "30b-natural-language-dev-v2": {
+        "model": "30b",
+        "family": "natural-language",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/30b-natural-language-dev-v2/adaptive.csv",
+        "adaptive_csv_sha256": "f8c7feb97e2c4e95c89f7064f2be416a93313b5f59e20a531c23a3fcdcdf32f6",
+        "adaptive_manifest_sha256": "7cf40f1aa660115af6e1400d58d90776d745fdf43501bad1a91645c6f83055d9",
+        "trace_sha256": "69891597ae7684185fa27c914facf7c2a0cbd085b01bd0353214466f2f2905c8"
+      },
+      "30b-coding-dev": {
+        "model": "30b",
+        "family": "coding",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/30b-coding-dev/adaptive.csv",
+        "adaptive_csv_sha256": "44a128117f2c47b602b5c0e93d1f22834544fac4a3a8c5108be7c4774104ffe7",
+        "adaptive_manifest_sha256": "49833ec460caba3e9638e480cf7647d1f55d5cd25a7f52e0f5a9fba4035cea31",
+        "trace_sha256": "ea777c4ef9a7fb0af849a6ed1a6a9246986b291ca8eecf9e9e353414591ec1f7"
+      },
+      "30b-reasoning-math-dev-v2": {
+        "model": "30b",
+        "family": "reasoning-math",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/30b-reasoning-math-dev-v2/adaptive.csv",
+        "adaptive_csv_sha256": "1f7ca6599508c176aec25182c1512f9f7a7ea409014dfc532ab846e698a4883a",
+        "adaptive_manifest_sha256": "7746342a855b2c634025dbde435eb79ece6bfa93d4b6dc9e078b69eec9fe0565",
+        "trace_sha256": "2fb5e9648a8c2378b9f1c2511ea647e28cedf05afe7f1575ed75ae61287f3893"
+      },
+      "30b-structured-json-dev-v2": {
+        "model": "30b",
+        "family": "structured-json",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/30b-structured-json-dev-v2/adaptive.csv",
+        "adaptive_csv_sha256": "854c24c6854b4bdc4d48eb04c560d173eea51ebe8a0ff1d32e3519ad39918d81",
+        "adaptive_manifest_sha256": "c9f6885a58580f360b2dd7e7db265b66c3cfa864b545296c6d805d4eb8b1316a",
+        "trace_sha256": "984c546e337a5d2cd716e52e51d607dd4879b9655a79eb0e770ab3588e30b5c9"
+      },
+      "30b-italian-dev-v2": {
+        "model": "30b",
+        "family": "italian",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/30b-italian-dev-v2/adaptive.csv",
+        "adaptive_csv_sha256": "671ea16e633b2a310b2cb0ffb59c2938ebe6a1bddf0791beda43d2ba7ff292ed",
+        "adaptive_manifest_sha256": "16b1886beb5eb1499075d7d847e6cf48a75c2bfff42830fa4a3a9975ef129053",
+        "trace_sha256": "b5b18f46cffca0b68eb7dcc6de2d70d7a85fd3b4261c94e64e2450c0ca1e040c"
+      },
+      "30b-transition-dev-v2": {
+        "model": "30b",
+        "family": "transition",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/30b-transition-dev-v2/adaptive.csv",
+        "adaptive_csv_sha256": "72383b4cecc8c527b435b9209fa703278c5527816368eb8808594e2776a8f531",
+        "adaptive_manifest_sha256": "9a05f750b19aa3f4ae44e3a3c0327ea1abb300c70de9f404988512075ddc6217",
+        "trace_sha256": "4dc1a0a97ac0acb5000b43986a74eec6a3b2dc18fb0db96196e2be5354b42acc"
+      },
+      "30b-multi-turn-v2-dev": {
+        "model": "30b",
+        "family": "multi-turn-v2",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/30b-multi-turn-v2-dev/adaptive.csv",
+        "adaptive_csv_sha256": "adf441fc4bc75875615469ceac258c74ab6694b11f0ab2479c54f3d288e92121",
+        "adaptive_manifest_sha256": "42156933ab8439ed8a9568dfc2a098338f81cffe73f0aefcfc06d100e363bf6e",
+        "trace_sha256": "c583c788731a470cb24abeabe60cfc344bcbfc6ef4564b05f1782cc90d1c30d2"
+      },
+      "80b-natural-language-dev-v2": {
+        "model": "80b",
+        "family": "natural-language",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/80b-natural-language-dev-v2/adaptive.csv",
+        "adaptive_csv_sha256": "1090883fc43daa5cdcb4a213874f9199279f403a7558035f2c841d0d34099cac",
+        "adaptive_manifest_sha256": "47113d8f3ea5846b464dd6094540d83c5c75c9455e45d19bd7755d51687a30dc",
+        "trace_sha256": "7af0444d8880af4e971e418732c5e2f8093ddd06e644f90434b468dcb0907bcc"
+      },
+      "80b-coding-dev-v2": {
+        "model": "80b",
+        "family": "coding",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/80b-coding-dev-v2/adaptive.csv",
+        "adaptive_csv_sha256": "bbbdc6257f629137ec66495949d0f3dbd5d4570aa143add87e26e2bc1e1d3d48",
+        "adaptive_manifest_sha256": "b4022e9e37fbbb940d6b623be995a3aef4597e2875c235c2c0f92f41ec99fe89",
+        "trace_sha256": "9d9fbe796387e24cafee89f945d14b61960d95ef376ee4957b966ebf51bf6694"
+      },
+      "80b-reasoning-math-dev-v2": {
+        "model": "80b",
+        "family": "reasoning-math",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/80b-reasoning-math-dev-v2/adaptive.csv",
+        "adaptive_csv_sha256": "ffd105d3f9c90c33d2cc4bc6efc022f34b7c1c282b7591515d8c91c7a38ade54",
+        "adaptive_manifest_sha256": "dd9bf04e394c4b44772d5f3bfe106c978c586f5cc4d1c18017952da8e02dfcd2",
+        "trace_sha256": "1d676a3b8682882622bdeae17543c4a7c77b2dbf749ea6e333577e7892530a5f"
+      },
+      "80b-structured-json-dev-v2": {
+        "model": "80b",
+        "family": "structured-json",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/80b-structured-json-dev-v2/adaptive.csv",
+        "adaptive_csv_sha256": "d61e0001eb01d89cc112aade5d5488b4e5d4fd6092ee8a6be0722ae7d194a4c5",
+        "adaptive_manifest_sha256": "26a2ceb0215d9917d326616ac3e3902f2f596251edaf6ea5fbe2f0cc714caa8e",
+        "trace_sha256": "f9029b8e82a01d9c5a4c4806e3fd3e35ec68dfb7768d9696aa5f9fbc35238be7"
+      },
+      "80b-italian-dev-v2": {
+        "model": "80b",
+        "family": "italian",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/80b-italian-dev-v2/adaptive.csv",
+        "adaptive_csv_sha256": "8327526cc469fa904c4132bfff4cb58b902008bb5a087e20c5ce9582a9c6eddb",
+        "adaptive_manifest_sha256": "d9f77e985b993c63a73a1c17f09fc7e1277dbbfae5ce71d0fde593c3a3e5d8e9",
+        "trace_sha256": "16145763c347011f737cd9ad1f5c0b3a310bb062aaf5e2cff39d35de3f23e4dc"
+      },
+      "80b-transition-dev-v2": {
+        "model": "80b",
+        "family": "transition",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/80b-transition-dev-v2/adaptive.csv",
+        "adaptive_csv_sha256": "c5d56dd3d679563adf101e632a8d3939b07a0a3a70a609e3661cf8e57f578170",
+        "adaptive_manifest_sha256": "c25430217ecfe2c1d60286da31e8a55559484fd0c449d4b2b765e350f787008a",
+        "trace_sha256": "55cba7b3c6d916963a2a3c88dbf5cc3dc88deb67be2f529b6fbb83f80f37bd28"
+      },
+      "80b-multi-turn-v2-dev": {
+        "model": "80b",
+        "family": "multi-turn-v2",
+        "adaptive_csv": "experiments/EXP-010-adaptive-allocation/dev/80b-multi-turn-v2-dev/adaptive.csv",
+        "adaptive_csv_sha256": "ed97fdfaf8aa4d79a718595c3083803403328eff14ba6521c752fb3841229c8f",
+        "adaptive_manifest_sha256": "30acf762b10ff7b3a2cbd1713feca894bc3d0f16da13794e97997ccc18b283bd",
+        "trace_sha256": "a2d3060bb449758872913161a2f28d73862c6b54791a374bf00b8539212999c0"
+      }
+    },
+    "provenance": {
+      "code_sha256": {
+        "argine/research/controller.py": "630044da24cbd94a7a98017d0659b2ac283ae129a9ff16878e71d2757bd35389",
+        "argine/research/analysis.py": "699cd6abe80a2589843077781420e623cc23fbc1dec225b293535ce266aa970a",
+        "argine/research/replay.py": "065edb9bf71ad2481b3af16ffc4630c9cc2f6dc8a7ff11596ca245b0e354541f",
+        "argine/research/policies.py": "2bd62163bb859fa2600f2c881219d3d47acf7ab7d7f403d9d9a678194d26a2dd",
+        "argine/research/allocator.py": "d8efec619d4167927b6b9cc2a684439aafb4ad1f8f2def61673853d789d2ea80",
+        "argine/research/elasticity.py": "856ba5f91a94affe88b5bba88b4a9309a0b16fa0f43e0dcb7056dfaeef42511d",
+        "argine/research/costmodel.py": "0af3db026ade55ff18e2c4538f460a011d1bfebb5d94e0a6017a9edba610cac8",
+        "argine/research/cli.py": "caf393f4b4eeaab4b2517ba83a82185fd684f835c918a11b4dec8f03d3c12f78",
+        "argine/research/trace.py": "53a582c263c63b7397d6a6547054be4e007f190348b57e82edbb4fbf51fcfe47",
+        "argine/research/metrics.py": "038187d98c30967c5ac1db5ff8f07e23c5cc13487d7b78d72ef4eb8d5f9ac62d"
+      },
+      "tool_sha256": "cbbf2e408d25d943a1c0de6e2a45ccb452f6ead11d135e08cc86bb18cbd7263d",
+      "protocol_sha256": "72737bb4c3354d98860523b4b1db5a4cb7e600f90b6325fa862be9e4e75658b7",
+      "freeze_file_sha256": "7da732f49371ffdddd8deb822e4a8265e3b3837306ec37b060400090dd621efa",
+      "argine2_commit": "Argine2 commit unavailable / repository not a git checkout"
+    }
+  },
+  "canonical_sha256": "dfcc9895c338bb80d429478872b73f24084b9612e9cea2b489d67bfb24bbfa51",
+  "canonical_method": "sha256 of json.dumps(selection, sort_keys=True, separators=(',', ':'), ensure_ascii=False) encoded as UTF-8; timestamps live outside 'selection'",
+  "written_utc": "2026-10-11T13:55:18Z"
+}

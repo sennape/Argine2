@@ -1,0 +1,48 @@
+{
+  "argv": [
+    "research",
+    "compare",
+    "experiments\\EXP-007-router-characterization\\raw\\30b-coding-eval-v2\\run-00-4G\\trace.jsonl.gz",
+    "--budgets",
+    "4G,2G,1.5G",
+    "--train",
+    "experiments\\EXP-007-router-characterization\\raw\\30b-coding-dev\\run-00-4G\\trace.jsonl.gz",
+    "--out",
+    "experiments\\EXP-010-adaptive-allocation\\eval\\30b-coding-eval-v2"
+  ],
+  "budgets_bytes": [
+    4294967296,
+    2147483648,
+    1610612736
+  ],
+  "command": "compare",
+  "cost": null,
+  "opt_static": false,
+  "phase": "decode",
+  "trace": {
+    "meta": {
+      "model": "Qwen_Qwen3-30B-A3B-Q4_K_M.gguf",
+      "n_experts": 128,
+      "n_layers": 48,
+      "split": "eval",
+      "top_k": 8,
+      "workload": "coding@460949e7abf0"
+    },
+    "path": "experiments\\EXP-007-router-characterization\\raw\\30b-coding-eval-v2\\run-00-4G\\trace.jsonl.gz",
+    "sha256": "c0888e89263b20671d08020ddfff2df35ee7fa848f46f3fa891d09106dcea436"
+  },
+  "train": {
+    "meta": {
+      "model": "Qwen_Qwen3-30B-A3B-Q4_K_M.gguf",
+      "n_experts": 128,
+      "n_layers": 48,
+      "split": "dev",
+      "top_k": 8,
+      "workload": "coding@460949e7abf0"
+    },
+    "path": "experiments\\EXP-007-router-characterization\\raw\\30b-coding-dev\\run-00-4G\\trace.jsonl.gz",
+    "sha256": "ea777c4ef9a7fb0af849a6ed1a6a9246986b291ca8eecf9e9e353414591ec1f7"
+  },
+  "train_mode": "separate",
+  "written_utc": "2026-10-11T18:12:43Z"
+}

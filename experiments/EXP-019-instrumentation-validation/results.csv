@@ -1,0 +1,12 @@
+check,value
+router records,164
+slice accesses,3069
+reads (I records),71
+miss accesses,71
+evictions,38
+node records,492
+budget violations,0
+exact completion share,1.0
+runtime-style hit rate,0.97686543
+gate-node hit rate,0.93059629
+output identical (no store / store / store+trace),"yes ('che che che ...' x3 configurations, 40 tokens, greedy)"

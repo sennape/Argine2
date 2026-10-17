@@ -1,0 +1,324 @@
+{
+  "experiment": "EXP-024-tracing-overhead",
+  "session_id": "20261012T113829-5edc0f3f",
+  "primary_metric": "gen_tok_s; paired per round and budget",
+  "overhead_definition": "100 * (gen_tok_s_OFF - gen_tok_s_ON) / gen_tok_s_OFF",
+  "budgets": {
+    "4G": {
+      "pairs": [
+        {
+          "round": 1,
+          "off_launch": 1,
+          "on_launch": 2,
+          "gen_tok_s_off": 6.3,
+          "gen_tok_s_on": 6.27,
+          "overhead_pct": 0.47619047619048016,
+          "ms_per_token_off": 158.73015873015873,
+          "ms_per_token_on": 159.4896331738437,
+          "delta_ms_per_token": 0.7594744436849794
+        },
+        {
+          "round": 2,
+          "off_launch": 8,
+          "on_launch": 7,
+          "gen_tok_s_off": 6.39,
+          "gen_tok_s_on": 6.31,
+          "overhead_pct": 1.2519561815336475,
+          "ms_per_token_off": 156.4945226917058,
+          "ms_per_token_on": 158.4786053882726,
+          "delta_ms_per_token": 1.9840826965667873
+        },
+        {
+          "round": 3,
+          "off_launch": 10,
+          "on_launch": 9,
+          "gen_tok_s_off": 6.39,
+          "gen_tok_s_on": 6.3,
+          "overhead_pct": 1.40845070422535,
+          "ms_per_token_off": 156.4945226917058,
+          "ms_per_token_on": 158.73015873015873,
+          "delta_ms_per_token": 2.235636038452924
+        },
+        {
+          "round": 4,
+          "off_launch": 15,
+          "on_launch": 16,
+          "gen_tok_s_off": 6.35,
+          "gen_tok_s_on": 6.26,
+          "overhead_pct": 1.4173228346456672,
+          "ms_per_token_off": 157.48031496062993,
+          "ms_per_token_on": 159.7444089456869,
+          "delta_ms_per_token": 2.2640939850569737
+        },
+        {
+          "round": 5,
+          "off_launch": 17,
+          "on_launch": 18,
+          "gen_tok_s_off": 6.38,
+          "gen_tok_s_on": 6.32,
+          "overhead_pct": 0.9404388714733481,
+          "ms_per_token_off": 156.73981191222572,
+          "ms_per_token_on": 158.2278481012658,
+          "delta_ms_per_token": 1.4880361890400877
+        }
+      ],
+      "gen_tok_s_off": {
+        "n": 5,
+        "values": [
+          6.3,
+          6.39,
+          6.39,
+          6.35,
+          6.38
+        ],
+        "mean": 6.362,
+        "median": 6.38,
+        "sd": 0.0383405790253616,
+        "cv": 0.00602649780342056,
+        "min": 6.3,
+        "max": 6.39
+      },
+      "gen_tok_s_on": {
+        "n": 5,
+        "values": [
+          6.27,
+          6.31,
+          6.3,
+          6.26,
+          6.32
+        ],
+        "mean": 6.292,
+        "median": 6.3,
+        "sd": 0.025884358211089722,
+        "cv": 0.004113852226810191,
+        "min": 6.26,
+        "max": 6.32
+      },
+      "overhead_pct": {
+        "n": 5,
+        "values": [
+          0.47619047619048016,
+          1.2519561815336475,
+          1.40845070422535,
+          1.4173228346456672,
+          0.9404388714733481
+        ],
+        "mean": 1.0988718136136986,
+        "median": 1.2519561815336475,
+        "sd": 0.39796922341448404,
+        "cv": 0.36216164477432633,
+        "min": 0.47619047619048016,
+        "max": 1.4173228346456672,
+        "se": 0.17797724730151745,
+        "df": 4,
+        "t_crit": 2.776445105,
+        "ci_low": 0.6047277565420259,
+        "ci_high": 1.5930158706853712
+      },
+      "delta_ms_per_token": {
+        "n": 5,
+        "values": [
+          0.7594744436849794,
+          1.9840826965667873,
+          2.235636038452924,
+          2.2640939850569737,
+          1.4880361890400877
+        ],
+        "mean": 1.7462646705603504,
+        "median": 1.9840826965667873,
+        "sd": 0.6333691357896468,
+        "cv": 0.3626993928625997,
+        "min": 0.7594744436849794,
+        "max": 2.2640939850569737,
+        "se": 0.28325128849518905,
+        "df": 4,
+        "t_crit": 2.776445105,
+        "ci_low": 0.9598330171329399,
+        "ci_high": 2.5326963239877607
+      },
+      "diagnostics": {
+        "OFF": {
+          "ttft_s_median": 3.367056799994316,
+          "prompt_tok_s_median": 22.99,
+          "ram_peak_median": 5927735296,
+          "cpu_mean_percent_median": 328.2,
+          "store_hit_pct_median": 90.8,
+          "read_modes": [
+            "asincrono"
+          ]
+        },
+        "ON": {
+          "ttft_s_median": 3.406097500002943,
+          "prompt_tok_s_median": 22.74,
+          "ram_peak_median": 5928488960,
+          "cpu_mean_percent_median": 335.0,
+          "store_hit_pct_median": 90.8,
+          "read_modes": [
+            "asincrono"
+          ]
+        }
+      }
+    },
+    "1.5G": {
+      "pairs": [
+        {
+          "round": 1,
+          "off_launch": 3,
+          "on_launch": 4,
+          "gen_tok_s_off": 3.92,
+          "gen_tok_s_on": 3.9,
+          "overhead_pct": 0.5102040816326535,
+          "ms_per_token_off": 255.10204081632654,
+          "ms_per_token_on": 256.4102564102564,
+          "delta_ms_per_token": 1.308215593929873
+        },
+        {
+          "round": 2,
+          "off_launch": 6,
+          "on_launch": 5,
+          "gen_tok_s_off": 3.92,
+          "gen_tok_s_on": 3.86,
+          "overhead_pct": 1.5306122448979607,
+          "ms_per_token_off": 255.10204081632654,
+          "ms_per_token_on": 259.0673575129534,
+          "delta_ms_per_token": 3.965316696626843
+        },
+        {
+          "round": 3,
+          "off_launch": 12,
+          "on_launch": 11,
+          "gen_tok_s_off": 3.84,
+          "gen_tok_s_on": 3.91,
+          "overhead_pct": -1.822916666666674,
+          "ms_per_token_off": 260.4166666666667,
+          "ms_per_token_on": 255.7544757033248,
+          "delta_ms_per_token": -4.662190963341885
+        },
+        {
+          "round": 4,
+          "off_launch": 13,
+          "on_launch": 14,
+          "gen_tok_s_off": 3.92,
+          "gen_tok_s_on": 3.91,
+          "overhead_pct": 0.2551020408163211,
+          "ms_per_token_off": 255.10204081632654,
+          "ms_per_token_on": 255.7544757033248,
+          "delta_ms_per_token": 0.6524348869982646
+        },
+        {
+          "round": 5,
+          "off_launch": 19,
+          "on_launch": 20,
+          "gen_tok_s_off": 3.96,
+          "gen_tok_s_on": 3.87,
+          "overhead_pct": 2.2727272727272694,
+          "ms_per_token_off": 252.52525252525254,
+          "ms_per_token_on": 258.39793281653743,
+          "delta_ms_per_token": 5.872680291284894
+        }
+      ],
+      "gen_tok_s_off": {
+        "n": 5,
+        "values": [
+          3.92,
+          3.92,
+          3.84,
+          3.92,
+          3.96
+        ],
+        "mean": 3.912,
+        "median": 3.92,
+        "sd": 0.043817804600413325,
+        "cv": 0.011200870296629173,
+        "min": 3.84,
+        "max": 3.96
+      },
+      "gen_tok_s_on": {
+        "n": 5,
+        "values": [
+          3.9,
+          3.86,
+          3.91,
+          3.91,
+          3.87
+        ],
+        "mean": 3.89,
+        "median": 3.9,
+        "sd": 0.023452078799117215,
+        "cv": 0.006028812030621391,
+        "min": 3.86,
+        "max": 3.91
+      },
+      "overhead_pct": {
+        "n": 5,
+        "values": [
+          0.5102040816326535,
+          1.5306122448979607,
+          -1.822916666666674,
+          0.2551020408163211,
+          2.2727272727272694
+        ],
+        "mean": 0.5491457946815061,
+        "median": 0.5102040816326535,
+        "sd": 1.5531152574022318,
+        "cv": 2.8282384613415976,
+        "min": -1.822916666666674,
+        "max": 2.2727272727272694,
+        "se": 0.6945742584886947,
+        "df": 4,
+        "t_crit": 2.776445105,
+        "ci_low": -1.379301505358435,
+        "ci_high": 2.4775930947214473
+      },
+      "delta_ms_per_token": {
+        "n": 5,
+        "values": [
+          1.308215593929873,
+          3.965316696626843,
+          -4.662190963341885,
+          0.6524348869982646,
+          5.872680291284894
+        ],
+        "mean": 1.4272913010995978,
+        "median": 1.308215593929873,
+        "sd": 3.996856011850477,
+        "cv": 2.8003085346146674,
+        "min": -4.662190963341885,
+        "max": 5.872680291284894,
+        "se": 1.787448347755274,
+        "df": 4,
+        "t_crit": 2.776445105,
+        "ci_low": -3.5354609144658706,
+        "ci_high": 6.390043516665067
+      },
+      "diagnostics": {
+        "OFF": {
+          "ttft_s_median": 3.518562200013548,
+          "prompt_tok_s_median": 21.96,
+          "ram_peak_median": 3241836544,
+          "cpu_mean_percent_median": 291.3,
+          "store_hit_pct_median": 80.4,
+          "read_modes": [
+            "asincrono"
+          ]
+        },
+        "ON": {
+          "ttft_s_median": 3.5456286999979056,
+          "prompt_tok_s_median": 21.83,
+          "ram_peak_median": 3243528192,
+          "cpu_mean_percent_median": 294.9,
+          "store_hit_pct_median": 80.4,
+          "read_modes": [
+            "asincrono"
+          ]
+        }
+      }
+    }
+  },
+  "decision": {
+    "verdict": "INCONCLUSIVE",
+    "threshold_pct": 2.0,
+    "reason": "the 95% CI does not lie entirely below the threshold at 1.5G, and no lower bound exceeds it"
+  },
+  "note": "raw effect and CI are reported whatever the verdict; secondary metrics are descriptive only"
+}

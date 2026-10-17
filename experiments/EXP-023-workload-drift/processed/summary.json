@@ -1,0 +1,290 @@
+{
+  "experiment": "EXP-023-workload-drift",
+  "historical_hypothesis": {
+    "text": "Transitions change the per-layer expert distribution measurably (JSD > within-segment noise) and cause a transient miss excess that adaptive allocation shortens.",
+    "status_note": "kept verbatim; conjunctive"
+  },
+  "established_evidence": {
+    "FH-028": "historical adaptation_steps has a floor at 16 and is not used; adaptation_v2.csv is used",
+    "FH-029": "the controller does not win by reacting to transitions; replicated on 30B DEV/EVAL and 80B DEV/EVAL",
+    "consistency_check": {
+      "role": "reproducibility / consistency evidence; not a decision rule",
+      "rows": 12,
+      "mean_allocation_gain_exceeds_controller_gain": "12 of 12",
+      "reaction_lag_cost_negative": "12 of 12",
+      "A_share_of_gain_mean_alloc_min": 1.129,
+      "A_share_of_gain_mean_alloc_min_at": "30b-eval 1.5G",
+      "A_share_of_gain_mean_alloc_max": 2.396,
+      "reaction_lag_cost_range": [
+        -1844,
+        -820
+      ],
+      "rounding_note": "the minimum share is 1.129 = 112.9%; the historical '>= 113%' wording is true only after rounding to an integer percentage. FH-029 is not modified here; this is flagged for a separate documentary correction",
+      "consistent_with_documented_FH029": true
+    }
+  },
+  "retrospective_jsd_operationalisation": {
+    "label": "[DERIVED, retrospective operationalisation]; specified after the data existed; not a confirmatory test",
+    "window_counted_decode_steps": 64,
+    "jsd_base": 2,
+    "reference": "adjacent within-segment window pairs of the old and new segment",
+    "pooled": [
+      {
+        "level": "trace",
+        "key": "30b-dev",
+        "boundary": "all",
+        "n_rows": 144,
+        "boundary_jsd_median": 0.47390358,
+        "boundary_jsd_q1": 0.37305058,
+        "boundary_jsd_q3": 0.56184561,
+        "within_median_median": 0.10914244,
+        "ratio_median": 3.810259,
+        "ratio_q1": 3.25783,
+        "ratio_q3": 4.995636,
+        "share_rows_boundary_above_within_max": 0.986111
+      },
+      {
+        "level": "trace",
+        "key": "30b-eval",
+        "boundary": "all",
+        "n_rows": 144,
+        "boundary_jsd_median": 0.49591813,
+        "boundary_jsd_q1": 0.41406078,
+        "boundary_jsd_q3": 0.58517857,
+        "within_median_median": 0.11956621,
+        "ratio_median": 4.021954,
+        "ratio_q1": 3.100955,
+        "ratio_q3": 4.979024,
+        "share_rows_boundary_above_within_max": 1.0
+      },
+      {
+        "level": "trace",
+        "key": "80b-dev",
+        "boundary": "all",
+        "n_rows": 144,
+        "boundary_jsd_median": 0.74589325,
+        "boundary_jsd_q1": 0.65700119,
+        "boundary_jsd_q3": 0.81802467,
+        "within_median_median": 0.22459795,
+        "ratio_median": 3.381423,
+        "ratio_q1": 2.757791,
+        "ratio_q3": 3.968259,
+        "share_rows_boundary_above_within_max": 1.0
+      },
+      {
+        "level": "trace",
+        "key": "80b-eval",
+        "boundary": "all",
+        "n_rows": 144,
+        "boundary_jsd_median": 0.75238965,
+        "boundary_jsd_q1": 0.67936331,
+        "boundary_jsd_q3": 0.82729767,
+        "within_median_median": 0.26082351,
+        "ratio_median": 2.839054,
+        "ratio_q1": 2.317402,
+        "ratio_q3": 3.435373,
+        "share_rows_boundary_above_within_max": 0.965278
+      },
+      {
+        "level": "model",
+        "key": "30b",
+        "boundary": "all",
+        "n_rows": 288,
+        "boundary_jsd_median": 0.48434069,
+        "boundary_jsd_q1": 0.39634847,
+        "boundary_jsd_q3": 0.56847888,
+        "within_median_median": 0.11331654,
+        "ratio_median": 3.926913,
+        "ratio_q1": 3.203731,
+        "ratio_q3": 4.994607,
+        "share_rows_boundary_above_within_max": 0.993056
+      },
+      {
+        "level": "model",
+        "key": "80b",
+        "boundary": "all",
+        "n_rows": 288,
+        "boundary_jsd_median": 0.74977737,
+        "boundary_jsd_q1": 0.66125271,
+        "boundary_jsd_q3": 0.82441089,
+        "within_median_median": 0.24022545,
+        "ratio_median": 3.037708,
+        "ratio_q1": 2.447996,
+        "ratio_q3": 3.707379,
+        "share_rows_boundary_above_within_max": 0.982639
+      }
+    ],
+    "note": "effect sizes only; no p-value and no success threshold; does not set the verdict"
+  },
+  "cross_trace_transient_synthesis": {
+    "comparison": "adaptive-e64 vs ablate-frozen; budgets ['4G', '2G', '1.5G']; boundaries [1, 2, 3]",
+    "rows": 36,
+    "adaptive_excess64_below_frozen": 11,
+    "adaptive_excess64_above_frozen": 25,
+    "negative_signed_excess64_values": 42,
+    "wording": "boundary transient = signed departure from the new-segment steady state; positive part reported separately",
+    "controller": [
+      {
+        "trace_key": "30b-dev",
+        "model": "30b",
+        "split": "dev",
+        "budget": "4G",
+        "controller_gain_vs_frozen_misses": 4030,
+        "A_fixed_mean_allocation_gain": 5457,
+        "A_share_of_gain_mean_alloc": 1.354,
+        "oracle_potential_B_segment_switching": 1658,
+        "reaction_lag_cost_vs_instant_piecewise": -1844
+      },
+      {
+        "trace_key": "30b-dev",
+        "model": "30b",
+        "split": "dev",
+        "budget": "2G",
+        "controller_gain_vs_frozen_misses": 5491,
+        "A_fixed_mean_allocation_gain": 6456,
+        "A_share_of_gain_mean_alloc": 1.176,
+        "oracle_potential_B_segment_switching": 1736,
+        "reaction_lag_cost_vs_instant_piecewise": -1762
+      },
+      {
+        "trace_key": "30b-dev",
+        "model": "30b",
+        "split": "dev",
+        "budget": "1.5G",
+        "controller_gain_vs_frozen_misses": 7294,
+        "A_fixed_mean_allocation_gain": 8447,
+        "A_share_of_gain_mean_alloc": 1.158,
+        "oracle_potential_B_segment_switching": 1180,
+        "reaction_lag_cost_vs_instant_piecewise": -1665
+      },
+      {
+        "trace_key": "30b-eval",
+        "model": "30b",
+        "split": "eval",
+        "budget": "4G",
+        "controller_gain_vs_frozen_misses": 3611,
+        "A_fixed_mean_allocation_gain": 5250,
+        "A_share_of_gain_mean_alloc": 1.454,
+        "oracle_potential_B_segment_switching": 1390,
+        "reaction_lag_cost_vs_instant_piecewise": -1668
+      },
+      {
+        "trace_key": "30b-eval",
+        "model": "30b",
+        "split": "eval",
+        "budget": "2G",
+        "controller_gain_vs_frozen_misses": 5536,
+        "A_fixed_mean_allocation_gain": 6256,
+        "A_share_of_gain_mean_alloc": 1.13,
+        "oracle_potential_B_segment_switching": 1418,
+        "reaction_lag_cost_vs_instant_piecewise": -1190
+      },
+      {
+        "trace_key": "30b-eval",
+        "model": "30b",
+        "split": "eval",
+        "budget": "1.5G",
+        "controller_gain_vs_frozen_misses": 8239,
+        "A_fixed_mean_allocation_gain": 9304,
+        "A_share_of_gain_mean_alloc": 1.129,
+        "oracle_potential_B_segment_switching": 1183,
+        "reaction_lag_cost_vs_instant_piecewise": -1391
+      },
+      {
+        "trace_key": "80b-dev",
+        "model": "80b",
+        "split": "dev",
+        "budget": "4G",
+        "controller_gain_vs_frozen_misses": 371,
+        "A_fixed_mean_allocation_gain": 889,
+        "A_share_of_gain_mean_alloc": 2.396,
+        "oracle_potential_B_segment_switching": 2258,
+        "reaction_lag_cost_vs_instant_piecewise": -1104
+      },
+      {
+        "trace_key": "80b-dev",
+        "model": "80b",
+        "split": "dev",
+        "budget": "2G",
+        "controller_gain_vs_frozen_misses": 1009,
+        "A_fixed_mean_allocation_gain": 1334,
+        "A_share_of_gain_mean_alloc": 1.322,
+        "oracle_potential_B_segment_switching": 1267,
+        "reaction_lag_cost_vs_instant_piecewise": -989
+      },
+      {
+        "trace_key": "80b-dev",
+        "model": "80b",
+        "split": "dev",
+        "budget": "1.5G",
+        "controller_gain_vs_frozen_misses": 2903,
+        "A_fixed_mean_allocation_gain": 3353,
+        "A_share_of_gain_mean_alloc": 1.155,
+        "oracle_potential_B_segment_switching": 1128,
+        "reaction_lag_cost_vs_instant_piecewise": -1272
+      },
+      {
+        "trace_key": "80b-eval",
+        "model": "80b",
+        "split": "eval",
+        "budget": "4G",
+        "controller_gain_vs_frozen_misses": 776,
+        "A_fixed_mean_allocation_gain": 1186,
+        "A_share_of_gain_mean_alloc": 1.528,
+        "oracle_potential_B_segment_switching": 2190,
+        "reaction_lag_cost_vs_instant_piecewise": -820
+      },
+      {
+        "trace_key": "80b-eval",
+        "model": "80b",
+        "split": "eval",
+        "budget": "2G",
+        "controller_gain_vs_frozen_misses": 766,
+        "A_fixed_mean_allocation_gain": 1003,
+        "A_share_of_gain_mean_alloc": 1.309,
+        "oracle_potential_B_segment_switching": 2507,
+        "reaction_lag_cost_vs_instant_piecewise": -1363
+      },
+      {
+        "trace_key": "80b-eval",
+        "model": "80b",
+        "split": "eval",
+        "budget": "1.5G",
+        "controller_gain_vs_frozen_misses": 3100,
+        "A_fixed_mean_allocation_gain": 3535,
+        "A_share_of_gain_mean_alloc": 1.14,
+        "oracle_potential_B_segment_switching": 1379,
+        "reaction_lag_cost_vs_instant_piecewise": -1207
+      }
+    ]
+  },
+  "final_status_logic": {
+    "verdict": "FALSIFIED",
+    "scope": "for the current (untuned adaptive-e64) controller",
+    "basis": {
+      "clause": "adaptive allocation shortens the transient (temporal-reaction clause of the hypothesis)",
+      "status": "FALSIFIED for the current controller",
+      "established": "FH-029, EXP-007 30B transition DEV trace (temporal analysis, write-up TRANSITION-ADAPTIVE-GAIN.md)",
+      "replicated": [
+        "30B EVAL",
+        "80B DEV",
+        "80B EVAL"
+      ],
+      "documented_facts": [
+        "the controller's mean allocation, applied as a fixed split, gains more than the controller itself in every trace and budget (documented as >= 113%)",
+        "against instantly switched per-segment splits, the reaction-lag cost is negative in every case"
+      ]
+    },
+    "reason": "the historical hypothesis is conjunctive and its clause 'adaptive allocation shortens the transient' is already falsified for the current controller by FH-029, replicated on 30B EVAL, 80B DEV and 80B EVAL",
+    "independent_of": [
+      "the retrospective JSD operationalisation",
+      "the numerical consistency summaries (which are reproducibility evidence only)"
+    ],
+    "does_not_mean": [
+      "that workloads are stationary",
+      "that workload dependence is falsified",
+      "that layer-aware allocation is useless",
+      "that no faster or different future controller could exploit transitions"
+    ]
+  }
+}

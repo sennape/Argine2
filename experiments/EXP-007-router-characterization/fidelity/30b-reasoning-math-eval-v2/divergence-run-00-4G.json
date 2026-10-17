@@ -1,0 +1,123 @@
+{
+  "divergences_seed0": [],
+  "first_divergence_seed0": null,
+  "node_completeness": {
+    "details": [
+      {
+        "excluded_segment": true,
+        "graph": 395,
+        "layer": 39,
+        "missing": [
+          [
+            39,
+            5,
+            2
+          ],
+          [
+            39,
+            8,
+            1
+          ],
+          [
+            39,
+            41,
+            2
+          ],
+          [
+            39,
+            52,
+            1
+          ],
+          [
+            39,
+            52,
+            2
+          ],
+          [
+            39,
+            75,
+            1
+          ]
+        ],
+        "node_kind": 0,
+        "unexpected": []
+      }
+    ],
+    "incomplete": 1,
+    "incomplete_in_workload": 0,
+    "nodes": 56998
+  },
+  "pin_model": "per-thread",
+  "reconstruct": {
+    "first": null,
+    "inconsistencies": {
+      "evict_not_resident": 0,
+      "hit_not_resident": 0,
+      "miss_already_resident": 0
+    },
+    "order": "per-shard seq (exact)",
+    "records": 1611252,
+    "shards_with_seq_gaps": 1,
+    "total": 0
+  },
+  "seq_gaps": {
+    "applicable": true,
+    "duplicates": 0,
+    "gaps": [
+      {
+        "class": "after the last workload record of the shard (warm-up / flush sentinel tail): replay-irrelevant",
+        "inside_excluded_segment": true,
+        "next": {
+          "key": [
+            39,
+            2,
+            2
+          ],
+          "seq": 96572,
+          "t_ns": 269860347878000,
+          "tid": 6,
+          "type": "A"
+        },
+        "prev": {
+          "key": [
+            38,
+            124,
+            0
+          ],
+          "seq": 96570,
+          "t_ns": 269860347037400,
+          "tid": 14,
+          "type": "A"
+        },
+        "replay_relevant": false,
+        "seq": 96571,
+        "shard": 9
+      }
+    ],
+    "missing": 1,
+    "shards_with_replay_relevant_seq_gaps": 0,
+    "shards_with_seq_gaps": 1
+  },
+  "thread_pools": {
+    "12": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "4": [
+      6,
+      12,
+      13,
+      14
+    ]
+  }
+}

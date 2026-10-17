@@ -1,0 +1,1564 @@
+{
+  "divergences_seed0": [
+    {
+      "context": {
+        "lru_tail_before (oldest first, pinned?)": [
+          [
+            [
+              29,
+              33,
+              0
+            ],
+            false
+          ],
+          [
+            [
+              29,
+              75,
+              0
+            ],
+            false
+          ],
+          [
+            [
+              29,
+              75,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              30,
+              44,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              30,
+              124,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              30,
+              124,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              31,
+              24,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              33,
+              82,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              33,
+              55,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              33,
+              64,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              55,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              68,
+              1
+            ],
+            false
+          ]
+        ],
+        "node_kind": 0,
+        "phase": "prefill",
+        "pinned_total": 1,
+        "pins_by_thread": {
+          "8": 1
+        },
+        "previous_requests_in_shard": [
+          [
+            [
+              28,
+              50,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              39,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              70,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              74,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              87,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              42,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              69,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              73,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              50,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              109,
+              2
+            ],
+            "h",
+            "hit"
+          ]
+        ],
+        "requesting_thread": 8,
+        "resident_after": 267669504,
+        "resident_before": 267669504,
+        "shard_budget": 268435456
+      },
+      "graph": 2,
+      "index": 18963,
+      "key": [
+        29,
+        12,
+        0
+      ],
+      "kind": "outcome",
+      "node": 375,
+      "replay": {
+        "failed": false,
+        "hit": false,
+        "skipped": [
+          0
+        ],
+        "victims": [
+          [
+            29,
+            33,
+            0
+          ]
+        ]
+      },
+      "runtime": {
+        "outcome": "h",
+        "seq": null,
+        "victims": null
+      },
+      "shard": 0
+    },
+    {
+      "context": {
+        "lru_tail_before (oldest first, pinned?)": [
+          [
+            [
+              30,
+              70,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              31,
+              56,
+              0
+            ],
+            false
+          ],
+          [
+            [
+              31,
+              75,
+              0
+            ],
+            false
+          ],
+          [
+            [
+              31,
+              24,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              32,
+              22,
+              0
+            ],
+            false
+          ],
+          [
+            [
+              32,
+              113,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              32,
+              45,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              33,
+              122,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              16,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              71,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              98,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              37,
+              14,
+              0
+            ],
+            false
+          ]
+        ],
+        "node_kind": 0,
+        "phase": "prefill",
+        "pinned_total": 82,
+        "pins_by_thread": {
+          "0": 6,
+          "1": 5,
+          "10": 6,
+          "11": 8,
+          "2": 6,
+          "3": 10,
+          "4": 11,
+          "5": 6,
+          "6": 5,
+          "7": 4,
+          "8": 7,
+          "9": 8
+        },
+        "previous_requests_in_shard": [
+          [
+            [
+              28,
+              89,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              97,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              58,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              64,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              13,
+              0
+            ],
+            "m",
+            "miss"
+          ],
+          [
+            [
+              29,
+              49,
+              0
+            ],
+            "m",
+            "miss"
+          ],
+          [
+            [
+              29,
+              12,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              48,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              118,
+              1
+            ],
+            "m",
+            "miss"
+          ],
+          [
+            [
+              29,
+              94,
+              1
+            ],
+            "m",
+            "miss"
+          ]
+        ],
+        "requesting_thread": 11,
+        "resident_after": 268148736,
+        "resident_before": 267743232,
+        "shard_budget": 268435456
+      },
+      "graph": 2,
+      "index": 19044,
+      "key": [
+        29,
+        55,
+        2
+      ],
+      "kind": "outcome",
+      "node": 375,
+      "replay": {
+        "failed": false,
+        "hit": false,
+        "skipped": [
+          0
+        ],
+        "victims": [
+          [
+            30,
+            70,
+            1
+          ]
+        ]
+      },
+      "runtime": {
+        "outcome": "h",
+        "seq": null,
+        "victims": null
+      },
+      "shard": 11
+    },
+    {
+      "context": {
+        "lru_tail_before (oldest first, pinned?)": [
+          [
+            [
+              30,
+              44,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              30,
+              124,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              30,
+              124,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              31,
+              24,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              33,
+              82,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              33,
+              55,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              33,
+              64,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              55,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              68,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              122,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              57,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              68,
+              2
+            ],
+            false
+          ]
+        ],
+        "node_kind": 0,
+        "phase": "prefill",
+        "pinned_total": 87,
+        "pins_by_thread": {
+          "0": 6,
+          "1": 5,
+          "10": 6,
+          "11": 10,
+          "2": 7,
+          "3": 10,
+          "4": 11,
+          "5": 6,
+          "6": 7,
+          "7": 4,
+          "8": 7,
+          "9": 8
+        },
+        "previous_requests_in_shard": [
+          [
+            [
+              28,
+              73,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              50,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              28,
+              109,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              12,
+              0
+            ],
+            "h",
+            "miss"
+          ],
+          [
+            [
+              29,
+              75,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              85,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              120,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              70,
+              1
+            ],
+            "m",
+            "miss"
+          ],
+          [
+            [
+              29,
+              108,
+              1
+            ],
+            "m",
+            "miss"
+          ],
+          [
+            [
+              29,
+              73,
+              2
+            ],
+            "h",
+            "hit"
+          ]
+        ],
+        "requesting_thread": 6,
+        "resident_after": 267669504,
+        "resident_before": 268148736,
+        "shard_budget": 268435456
+      },
+      "graph": 2,
+      "index": 19049,
+      "key": [
+        29,
+        75,
+        2
+      ],
+      "kind": "outcome",
+      "node": 375,
+      "replay": {
+        "failed": false,
+        "hit": false,
+        "skipped": [
+          0,
+          0
+        ],
+        "victims": [
+          [
+            30,
+            44,
+            1
+          ],
+          [
+            30,
+            124,
+            1
+          ]
+        ]
+      },
+      "runtime": {
+        "outcome": "h",
+        "seq": null,
+        "victims": null
+      },
+      "shard": 0
+    },
+    {
+      "context": {
+        "lru_tail_before (oldest first, pinned?)": [
+          [
+            [
+              0,
+              57,
+              0
+            ],
+            false
+          ],
+          [
+            [
+              0,
+              68,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              0,
+              68,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              11,
+              25,
+              0
+            ],
+            false
+          ],
+          [
+            [
+              11,
+              84,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              12,
+              64,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              12,
+              93,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              15,
+              26,
+              0
+            ],
+            false
+          ],
+          [
+            [
+              15,
+              26,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              29,
+              33,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              30,
+              71,
+              0
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              122,
+              0
+            ],
+            false
+          ]
+        ],
+        "node_kind": 0,
+        "phase": "prefill",
+        "pinned_total": 21,
+        "pins_by_thread": {
+          "0": 3,
+          "1": 2,
+          "11": 4,
+          "3": 2,
+          "4": 1,
+          "5": 2,
+          "6": 2,
+          "7": 3,
+          "8": 1,
+          "9": 1
+        },
+        "previous_requests_in_shard": [
+          [
+            [
+              29,
+              18,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              61,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              70,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              118,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              13,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              41,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              81,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              49,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              82,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              30,
+              24,
+              0
+            ],
+            "h",
+            "hit"
+          ]
+        ],
+        "requesting_thread": 9,
+        "resident_after": 224944128,
+        "resident_before": 224944128,
+        "shard_budget": 268435456
+      },
+      "graph": 2,
+      "index": 19280,
+      "key": [
+        30,
+        71,
+        0
+      ],
+      "kind": "outcome",
+      "node": 378,
+      "replay": {
+        "failed": false,
+        "hit": true,
+        "skipped": [],
+        "victims": []
+      },
+      "runtime": {
+        "outcome": "m",
+        "seq": null,
+        "victims": null
+      },
+      "shard": 1
+    },
+    {
+      "context": {
+        "lru_tail_before (oldest first, pinned?)": [
+          [
+            [
+              33,
+              82,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              33,
+              55,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              33,
+              64,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              55,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              68,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              122,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              57,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              34,
+              68,
+              2
+            ],
+            false
+          ],
+          [
+            [
+              35,
+              52,
+              0
+            ],
+            false
+          ],
+          [
+            [
+              35,
+              59,
+              1
+            ],
+            false
+          ],
+          [
+            [
+              36,
+              16,
+              0
+            ],
+            false
+          ],
+          [
+            [
+              37,
+              122,
+              1
+            ],
+            false
+          ]
+        ],
+        "node_kind": 0,
+        "phase": "prefill",
+        "pinned_total": 33,
+        "pins_by_thread": {
+          "0": 4,
+          "1": 3,
+          "11": 6,
+          "2": 2,
+          "3": 2,
+          "4": 3,
+          "5": 2,
+          "6": 2,
+          "7": 3,
+          "8": 2,
+          "9": 4
+        },
+        "previous_requests_in_shard": [
+          [
+            [
+              29,
+              75,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              85,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              120,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              70,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              108,
+              1
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              73,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              29,
+              75,
+              2
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              30,
+              58,
+              0
+            ],
+            "h",
+            "hit"
+          ],
+          [
+            [
+              30,
+              46,
+              0
+            ],
+            "m",
+            "miss"
+          ],
+          [
+            [
+              30,
+              35,
+              1
+            ],
+            "m",
+            "miss"
+          ]
+        ],
+        "requesting_thread": 2,
+        "resident_after": 267669504,
+        "resident_before": 267669504,
+        "shard_budget": 268435456
+      },
+      "graph": 2,
+      "index": 19292,
+      "key": [
+        30,
+        44,
+        1
+      ],
+      "kind": "outcome",
+      "node": 378,
+      "replay": {
+        "failed": false,
+        "hit": false,
+        "skipped": [
+          0
+        ],
+        "victims": [
+          [
+            33,
+            82,
+            1
+          ]
+        ]
+      },
+      "runtime": {
+        "outcome": "h",
+        "seq": null,
+        "victims": null
+      },
+      "shard": 0
+    }
+  ],
+  "first_divergence_seed0": {
+    "context": {
+      "lru_tail_before (oldest first, pinned?)": [
+        [
+          [
+            29,
+            33,
+            0
+          ],
+          false
+        ],
+        [
+          [
+            29,
+            75,
+            0
+          ],
+          false
+        ],
+        [
+          [
+            29,
+            75,
+            2
+          ],
+          false
+        ],
+        [
+          [
+            30,
+            44,
+            1
+          ],
+          false
+        ],
+        [
+          [
+            30,
+            124,
+            1
+          ],
+          false
+        ],
+        [
+          [
+            30,
+            124,
+            2
+          ],
+          false
+        ],
+        [
+          [
+            31,
+            24,
+            1
+          ],
+          false
+        ],
+        [
+          [
+            33,
+            82,
+            1
+          ],
+          false
+        ],
+        [
+          [
+            33,
+            55,
+            2
+          ],
+          false
+        ],
+        [
+          [
+            33,
+            64,
+            2
+          ],
+          false
+        ],
+        [
+          [
+            34,
+            55,
+            1
+          ],
+          false
+        ],
+        [
+          [
+            34,
+            68,
+            1
+          ],
+          false
+        ]
+      ],
+      "node_kind": 0,
+      "phase": "prefill",
+      "pinned_total": 1,
+      "pins_by_thread": {
+        "8": 1
+      },
+      "previous_requests_in_shard": [
+        [
+          [
+            28,
+            50,
+            1
+          ],
+          "h",
+          "hit"
+        ],
+        [
+          [
+            28,
+            39,
+            1
+          ],
+          "h",
+          "hit"
+        ],
+        [
+          [
+            28,
+            70,
+            1
+          ],
+          "h",
+          "hit"
+        ],
+        [
+          [
+            28,
+            74,
+            1
+          ],
+          "h",
+          "hit"
+        ],
+        [
+          [
+            28,
+            87,
+            1
+          ],
+          "h",
+          "hit"
+        ],
+        [
+          [
+            28,
+            42,
+            2
+          ],
+          "h",
+          "hit"
+        ],
+        [
+          [
+            28,
+            69,
+            2
+          ],
+          "h",
+          "hit"
+        ],
+        [
+          [
+            28,
+            73,
+            2
+          ],
+          "h",
+          "hit"
+        ],
+        [
+          [
+            28,
+            50,
+            2
+          ],
+          "h",
+          "hit"
+        ],
+        [
+          [
+            28,
+            109,
+            2
+          ],
+          "h",
+          "hit"
+        ]
+      ],
+      "requesting_thread": 8,
+      "resident_after": 267669504,
+      "resident_before": 267669504,
+      "shard_budget": 268435456
+    },
+    "graph": 2,
+    "index": 18963,
+    "key": [
+      29,
+      12,
+      0
+    ],
+    "kind": "outcome",
+    "node": 375,
+    "replay": {
+      "failed": false,
+      "hit": false,
+      "skipped": [
+        0
+      ],
+      "victims": [
+        [
+          29,
+          33,
+          0
+        ]
+      ]
+    },
+    "runtime": {
+      "outcome": "h",
+      "seq": null,
+      "victims": null
+    },
+    "shard": 0
+  },
+  "node_completeness": {
+    "details": [
+      {
+        "excluded_segment": true,
+        "graph": 395,
+        "layer": 1,
+        "missing": [
+          [
+            1,
+            5,
+            2
+          ],
+          [
+            1,
+            19,
+            2
+          ],
+          [
+            1,
+            70,
+            2
+          ],
+          [
+            1,
+            79,
+            0
+          ],
+          [
+            1,
+            79,
+            1
+          ],
+          [
+            1,
+            79,
+            2
+          ],
+          [
+            1,
+            84,
+            1
+          ],
+          [
+            1,
+            84,
+            2
+          ],
+          [
+            1,
+            108,
+            0
+          ],
+          [
+            1,
+            119,
+            0
+          ],
+          [
+            1,
+            127,
+            0
+          ],
+          [
+            1,
+            127,
+            1
+          ]
+        ],
+        "node_kind": 0,
+        "unexpected": []
+      }
+    ],
+    "incomplete": 1,
+    "incomplete_in_workload": 0,
+    "nodes": 56884
+  },
+  "pin_model": "per-thread",
+  "reconstruct": {
+    "first": {
+      "key": [
+        1,
+        119,
+        2
+      ],
+      "outcome": "m",
+      "record": "A",
+      "t_ns": 1123202966752600
+    },
+    "inconsistencies": {
+      "evict_not_resident": 0,
+      "hit_not_resident": 0,
+      "miss_already_resident": 1
+    },
+    "order": "timestamps across threads (approximate)",
+    "records": 1617888,
+    "shards_with_seq_gaps": null,
+    "total": 1
+  },
+  "seq_gaps": {
+    "applicable": false
+  },
+  "thread_pools": {
+    "12": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "4": [
+      1,
+      12,
+      13,
+      14
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "experiment": "EXP-027-current-thread-sweep",
+  "launches_valid": 24,
+  "launches_total": 24,
+  "models": {
+    "30b": {
+      "best": 12,
+      "second": 8,
+      "gap_tok_s": 0.11,
+      "gap_rel": 0.0163,
+      "pooled_sd_top2": 0.0173,
+      "max_cv": 0.0055,
+      "round_effect_rel": 0.0019,
+      "means": {
+        "4": 6.51,
+        "6": 6.44,
+        "12": 6.74,
+        "8": 6.63
+      },
+      "verdict": "CLEAR BEST",
+      "reason": "no range overlap, gap >= 2 x pooled SD, and the round (order/session) effect is smaller than the gap",
+      "recommend_fourth_round": false
+    },
+    "80b": {
+      "best": 4,
+      "second": 12,
+      "gap_tok_s": 0.1367,
+      "gap_rel": 0.0198,
+      "pooled_sd_top2": 0.0129,
+      "max_cv": 0.0231,
+      "round_effect_rel": 0.0094,
+      "means": {
+        "12": 6.77,
+        "4": 6.9067,
+        "8": 6.6367,
+        "6": 6.62
+      },
+      "verdict": "CLEAR BEST",
+      "reason": "no range overlap, gap >= 2 x pooled SD, and the round (order/session) effect is smaller than the gap",
+      "recommend_fourth_round": false
+    }
+  }
+}

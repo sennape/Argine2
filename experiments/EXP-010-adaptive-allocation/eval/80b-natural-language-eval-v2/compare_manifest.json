@@ -1,0 +1,48 @@
+{
+  "argv": [
+    "research",
+    "compare",
+    "experiments\\EXP-007-router-characterization\\raw\\80b-natural-language-eval-v2\\run-00-4G\\trace.jsonl.gz",
+    "--budgets",
+    "4G,2G,1.5G",
+    "--train",
+    "experiments\\EXP-007-router-characterization\\raw\\80b-natural-language-dev-v2\\run-00-4G\\trace.jsonl.gz",
+    "--out",
+    "experiments\\EXP-010-adaptive-allocation\\eval\\80b-natural-language-eval-v2"
+  ],
+  "budgets_bytes": [
+    4294967296,
+    2147483648,
+    1610612736
+  ],
+  "command": "compare",
+  "cost": null,
+  "opt_static": false,
+  "phase": "decode",
+  "trace": {
+    "meta": {
+      "model": "Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+      "n_experts": 512,
+      "n_layers": 48,
+      "split": "eval",
+      "top_k": 10,
+      "workload": "natural-language@71b170bc0fde"
+    },
+    "path": "experiments\\EXP-007-router-characterization\\raw\\80b-natural-language-eval-v2\\run-00-4G\\trace.jsonl.gz",
+    "sha256": "a1a1c612332a2e8f836bf23c3dfbe24f0ad3506b4b38f148ea1f0ba1f9343f95"
+  },
+  "train": {
+    "meta": {
+      "model": "Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+      "n_experts": 512,
+      "n_layers": 48,
+      "split": "dev",
+      "top_k": 10,
+      "workload": "natural-language@71b170bc0fde"
+    },
+    "path": "experiments\\EXP-007-router-characterization\\raw\\80b-natural-language-dev-v2\\run-00-4G\\trace.jsonl.gz",
+    "sha256": "7af0444d8880af4e971e418732c5e2f8093ddd06e644f90434b468dcb0907bcc"
+  },
+  "train_mode": "separate",
+  "written_utc": "2026-10-11T18:20:36Z"
+}

@@ -1,0 +1,37 @@
+analysis,target,model,predictor,concordant,discordant,ties,n,accuracy
+primary (EVAL),gen_tok_s,30b,P0,0,0,63,63,0.5
+primary (EVAL),gen_tok_s,30b,P1,25,38,0,63,0.396825
+primary (EVAL),gen_tok_s,30b,P2,31,32,0,63,0.492063
+primary (EVAL),gen_tok_s,80b,P0,0,0,63,63,0.5
+primary (EVAL),gen_tok_s,80b,P1,40,23,0,63,0.634921
+primary (EVAL),gen_tok_s,80b,P2,46,17,0,63,0.730159
+primary (EVAL),expert_level_hit_rate,30b,P0,0,0,63,63,0.5
+primary (EVAL),expert_level_hit_rate,30b,P1,53,10,0,63,0.84127
+primary (EVAL),expert_level_hit_rate,30b,P2,53,10,0,63,0.84127
+primary (EVAL),expert_level_hit_rate,80b,P0,0,0,63,63,0.5
+primary (EVAL),expert_level_hit_rate,80b,P1,50,13,0,63,0.793651
+primary (EVAL),expert_level_hit_rate,80b,P2,56,7,0,63,0.888889
+replication (DEV),gen_tok_s,30b,P0,0,0,63,63,0.5
+replication (DEV),gen_tok_s,30b,P1,24,39,0,63,0.380952
+replication (DEV),gen_tok_s,30b,P2,24,39,0,63,0.380952
+replication (DEV),gen_tok_s,80b,P0,0,0,63,63,0.5
+replication (DEV),gen_tok_s,80b,P1,40,23,0,63,0.634921
+replication (DEV),gen_tok_s,80b,P2,40,23,0,63,0.634921
+replication (DEV),expert_level_hit_rate,30b,P0,0,0,63,63,0.5
+replication (DEV),expert_level_hit_rate,30b,P1,55,8,0,63,0.873016
+replication (DEV),expert_level_hit_rate,30b,P2,55,8,0,63,0.873016
+replication (DEV),expert_level_hit_rate,80b,P0,0,0,63,63,0.5
+replication (DEV),expert_level_hit_rate,80b,P1,51,12,0,63,0.809524
+replication (DEV),expert_level_hit_rate,80b,P2,57,6,0,63,0.904762
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P0,0,0,63,63,0.5
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P1,37,26,0,63,0.587302
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P2,31,32,0,63,0.492063
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P0,0,0,63,63,0.5
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P1,55,8,0,63,0.873016
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P2,52,11,0,63,0.825397
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P0,0,0,63,63,0.5
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P1,45,18,0,63,0.714286
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P2,57,6,0,63,0.904762
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P0,0,0,63,63,0.5
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P1,51,12,0,63,0.809524
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P2,60,3,0,63,0.952381

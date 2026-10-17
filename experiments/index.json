@@ -1,0 +1,262 @@
+[
+  {
+    "id": "EXP-001-thread-sweep",
+    "title": "Generation threads on a hybrid CPU",
+    "status": "INCONCLUSIVE",
+    "rqs": [
+      "RQ-014"
+    ],
+    "period": "2026-09-27 → 2026-09-30"
+  },
+  {
+    "id": "EXP-002-repack",
+    "title": "llama.cpp weight repack buffer on a CPU without AMX",
+    "status": "SUPPORTED",
+    "rqs": [],
+    "period": "2026-09-27"
+  },
+  {
+    "id": "EXP-003-direct-io",
+    "title": "Explicit unbuffered reads vs memory-mapped page faults",
+    "status": "SUPPORTED",
+    "rqs": [
+      "RQ-008"
+    ],
+    "period": "2026-09-27 → 2026-10-03"
+  },
+  {
+    "id": "EXP-004-async-store",
+    "title": "Three read layers of the expert store on one binary",
+    "status": "SUPPORTED",
+    "rqs": [
+      "RQ-008",
+      "RQ-016"
+    ],
+    "period": "2026-10-03"
+  },
+  {
+    "id": "EXP-005-30b-budget-sweep",
+    "title": "Speed vs expert budget on Qwen3-30B-A3B",
+    "status": "SUPPORTED",
+    "rqs": [
+      "RQ-002",
+      "RQ-008",
+      "RQ-009"
+    ],
+    "period": "2026-10-02 → 2026-10-03"
+  },
+  {
+    "id": "EXP-006-80b-budget-sweep",
+    "title": "Qwen3-Next-80B-A3B: prediction, measurement, budget sweep",
+    "status": "FALSIFIED",
+    "rqs": [
+      "RQ-002",
+      "RQ-009",
+      "RQ-010"
+    ],
+    "period": "2026-10-03"
+  },
+  {
+    "id": "EXP-007-router-characterization",
+    "title": "Per-layer routing characterization",
+    "status": "SUPPORTED",
+    "rqs": [
+      "RQ-001",
+      "RQ-002",
+      "RQ-003",
+      "RQ-004",
+      "RQ-005",
+      "RQ-006",
+      "RQ-007",
+      "RQ-009",
+      "RQ-010"
+    ],
+    "period": "2026-10-03 → 2026-10-11"
+  },
+  {
+    "id": "EXP-008-working-set",
+    "title": "Effective Working Set (EWS) as a predictor",
+    "status": "INCONCLUSIVE",
+    "rqs": [
+      "RQ-002",
+      "RQ-003"
+    ],
+    "period": "2026-10-11"
+  },
+  {
+    "id": "EXP-009-policy-replay",
+    "title": "Counterfactual replay of cache and allocation policies",
+    "status": "INCONCLUSIVE",
+    "rqs": [
+      "RQ-001",
+      "RQ-005",
+      "RQ-007",
+      "RQ-017"
+    ],
+    "period": "2026-10-03 → 2026-10-11"
+  },
+  {
+    "id": "EXP-010-adaptive-allocation",
+    "title": "AdaptiveResidencyController (replay prototype) and ablations",
+    "status": "FALSIFIED",
+    "rqs": [
+      "RQ-001",
+      "RQ-006",
+      "RQ-007",
+      "RQ-008"
+    ],
+    "period": "2026-10-03 → 2026-10-11"
+  },
+  {
+    "id": "EXP-011-binary-rebuild",
+    "title": "Matched model and runtime plan, different binaries: the observed 1.74x factor",
+    "status": "SUPPORTED",
+    "rqs": [
+      "RQ-014",
+      "RQ-015"
+    ],
+    "period": "2026-10-01"
+  },
+  {
+    "id": "EXP-012-dense-14b-control",
+    "title": "Does a bigger compressed MoE know more than a smaller intact dense model?",
+    "status": "FALSIFIED",
+    "rqs": [],
+    "period": "2026-10-02"
+  },
+  {
+    "id": "EXP-013-quality-per-bit",
+    "title": "Perplexity vs expert bits per weight",
+    "status": "SUPPORTED",
+    "rqs": [],
+    "period": "2026-09-30 → 2026-10-01"
+  },
+  {
+    "id": "EXP-014-conversation-prefix-reuse",
+    "title": "TTFT in a growing conversation",
+    "status": "SUPPORTED",
+    "rqs": [],
+    "period": "2026-10-02"
+  },
+  {
+    "id": "EXP-015-pretouch",
+    "title": "PRETOUCH: page zeroing moved, not added",
+    "status": "SUPPORTED",
+    "rqs": [
+      "RQ-015"
+    ],
+    "period": "2026-10-02 → 2026-10-03"
+  },
+  {
+    "id": "EXP-016-coactivation-reorder",
+    "title": "Reordering the GGUF by expert co-activation",
+    "status": "FALSIFIED",
+    "rqs": [
+      "RQ-018"
+    ],
+    "period": "2026-09-27"
+  },
+  {
+    "id": "EXP-017-calibration-text",
+    "title": "A too-easy test text produced the wrong quality verdict",
+    "status": "SUPERSEDED",
+    "rqs": [],
+    "period": "2026-09-30"
+  },
+  {
+    "id": "EXP-018-reproducibility-audit",
+    "title": "Run-to-run and session-to-session dispersion in the raw logs",
+    "status": "FALSIFIED",
+    "rqs": [
+      "RQ-015"
+    ],
+    "period": "2026-10-03"
+  },
+  {
+    "id": "EXP-019-instrumentation-validation",
+    "title": "Research instrumentation: correctness and completeness",
+    "status": "SUPPORTED",
+    "rqs": [
+      "RQ-011",
+      "RQ-012"
+    ],
+    "period": "2026-10-03"
+  },
+  {
+    "id": "EXP-020-hit-rate-semantics",
+    "title": "What the runtime's hit rate counts",
+    "status": "SUPPORTED",
+    "rqs": [
+      "RQ-010"
+    ],
+    "period": "2026-10-03"
+  },
+  {
+    "id": "EXP-021-replay-fidelity",
+    "title": "Does replay reproduce the runtime?",
+    "status": "SUPPORTED",
+    "rqs": [
+      "RQ-011",
+      "RQ-010",
+      "RQ-018",
+      "RQ-005"
+    ],
+    "period": "2026-10-03 → 2026-10-04"
+  },
+  {
+    "id": "EXP-022-extreme-pressure",
+    "title": "Extreme memory pressure: where streaming stops being useful",
+    "status": "INCONCLUSIVE",
+    "rqs": [
+      "RQ-008"
+    ],
+    "period": "2026-10-14 → 2026-10-15"
+  },
+  {
+    "id": "EXP-023-workload-drift",
+    "title": "Routing under workload transitions",
+    "status": "FALSIFIED",
+    "rqs": [
+      "RQ-004",
+      "RQ-006"
+    ],
+    "period": "2026-10-12"
+  },
+  {
+    "id": "EXP-024-tracing-overhead",
+    "title": "Cost of the research instrumentation",
+    "status": "INCONCLUSIVE",
+    "rqs": [
+      "RQ-012"
+    ],
+    "period": "2026-10-12"
+  },
+  {
+    "id": "EXP-025-performance-model",
+    "title": "Interpretable per-token performance model",
+    "status": "SUPPORTED",
+    "rqs": [
+      "RQ-013"
+    ],
+    "period": "2026-10-15"
+  },
+  {
+    "id": "EXP-026-30b-vs-80b-regimes",
+    "title": "Two experimental regimes: 30B-A3B vs Next-80B-A3B",
+    "status": "INCONCLUSIVE",
+    "rqs": [
+      "RQ-002",
+      "RQ-009"
+    ],
+    "period": "2026-10-15 → 2026-10-16"
+  },
+  {
+    "id": "EXP-027-current-thread-sweep",
+    "title": "Generation thread count on the current research runtime",
+    "status": "FALSIFIED",
+    "rqs": [
+      "RQ-014"
+    ],
+    "period": "2026-10-11"
+  }
+]

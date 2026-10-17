@@ -1,0 +1,12 @@
+{
+  "accesses_by_node_kind_and_outcome": {
+    "down:h": 1023,
+    "gate:h": 952,
+    "gate:m": 71,
+    "up:h": 1023
+  },
+  "gate_node_hit_rate": 0.93059629,
+  "misses_outside_gate_nodes": 0,
+  "runtime_style_hit_rate": 0.97686543,
+  "unassigned_accesses": 0
+}

@@ -1,0 +1,42 @@
+{
+  "name": "structured-json",
+  "version": "v1",
+  "description": "Producing structured JSON output.",
+  "n_predict": 128,
+  "splits": {
+    "dev": [
+      {
+        "id": "json-dev-1",
+        "segment": "structured-json",
+        "prompt": "Return only JSON: a list of 5 fictional books, each with title, author, year (integer), genres (array of strings) and in_stock (boolean)."
+      },
+      {
+        "id": "json-dev-2",
+        "segment": "structured-json",
+        "prompt": "Convert this text to a JSON object with keys name, email, phone, and skills (array): 'Maria Rossi, maria.rossi@example.com, +39 333 1234567, skilled in Python, SQL and data visualisation.'"
+      },
+      {
+        "id": "json-dev-3",
+        "segment": "structured-json",
+        "prompt": "Produce a JSON Schema (draft 2020-12) for an object describing a weather reading with timestamp, station_id, temperature_c, humidity_pct and an optional notes field."
+      }
+    ],
+    "eval": [
+      {
+        "id": "json-eval-1",
+        "segment": "structured-json",
+        "prompt": "Return only JSON: an array describing 4 planets with fields name, mean_radius_km (number), moons (integer) and has_rings (boolean)."
+      },
+      {
+        "id": "json-eval-2",
+        "segment": "structured-json",
+        "prompt": "Turn this recipe into JSON with fields title, servings, ingredients (array of {item, quantity, unit}) and steps (array of strings): 'Pancakes for 2: 120 g flour, 1 egg, 200 ml milk, a pinch of salt. Whisk everything, rest 10 minutes, cook in a hot pan.'"
+      },
+      {
+        "id": "json-eval-3",
+        "segment": "structured-json",
+        "prompt": "Write a JSON object representing a small company org chart: a CEO with two managers, each with two employees; every person has id, name, role and reports_to (null for the CEO)."
+      }
+    ]
+  }
+}

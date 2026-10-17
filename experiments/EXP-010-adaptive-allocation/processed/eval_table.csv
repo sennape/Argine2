@@ -1,0 +1,295 @@
+model,family,budget,role,policy,comparison_class,note,misses,hit_rate,bytes_per_token,stall_ms_per_token_MODELLED,moves,bytes_moved,gap_closed_vs_lru_descriptive
+30b,coding,1.5G,global_lru,global-lru,no-fit baseline,,83559,0.428867,629931450.0,211.5466,,,0.0
+30b,coding,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,76038,0.480274,575689320.0,193.8046,,,0.19794188861985473
+30b,coding,1.5G,twoq,2q,online baseline,,84488,0.422517,637397330.0,213.9898,,,-0.024449942099168332
+30b,coding,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",73071,0.500554,555015680.0,187.1996,,,0.27602905569007263
+30b,coding,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,72716,0.50298,551532560.0,186.0802,,,0.28537214443625647
+30b,coding,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",45563,0.688573,344098930.0,118.8006,,,1.0
+30b,coding,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,73514,0.497526,556662850.0,187.7042,93.0,440414208.0,0.26436993367722916
+30b,coding,2G,global_lru,global-lru,no-fit baseline,,68810,0.529678,519536540.0,175.5724,,,0.0
+30b,coding,2G,uniform,per-layer-lru-uniform,no-fit baseline,,65258,0.553956,494874820.0,167.5945,,,0.10735658586713413
+30b,coding,2G,twoq,2q,online baseline,,69236,0.526766,522493600.0,176.5116,,,-0.012875536480686695
+30b,coding,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",63031,0.569178,479744810.0,162.7923,,,0.17466602188236716
+30b,coding,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,62513,0.572718,475124030.0,161.2636,,,0.19032219065465755
+30b,coding,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",35724,0.755823,269739790.0,94.6614,,,1.0
+30b,coding,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,63516,0.565863,481602620.0,163.3643,191.0,757297152.0,0.1600072538233694
+30b,coding,4G,global_lru,global-lru,no-fit baseline,,34809,0.762078,262663060.0,92.2827,,,0.0
+30b,coding,4G,uniform,per-layer-lru-uniform,no-fit baseline,,34819,0.762009,266066160.0,93.0982,,,-0.00048393341076267905
+30b,coding,4G,twoq,2q,online baseline,,34576,0.76367,260856820.0,91.7301,,,0.011275648470770422
+30b,coding,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",33416,0.771599,252931160.0,88.9738,,,0.0674119241192412
+30b,coding,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,32673,0.776677,247481580.0,87.2917,,,0.10336817653890824
+30b,coding,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",14145,0.903318,106573530.0,39.7812,,,1.0
+30b,coding,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,33059,0.774039,250506940.0,88.2204,213.0,871649280.0,0.08468834688346884
+30b,italian,1.5G,global_lru,global-lru,no-fit baseline,,76942,0.474095,580197850.0,195.3465,,,0.0
+30b,italian,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,70587,0.517532,534583050.0,180.4345,,,0.18224312465945916
+30b,italian,1.5G,twoq,2q,online baseline,,78444,0.463829,591542680.0,199.0118,,,-0.043073040635485074
+30b,italian,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",67914,0.535802,515108220.0,174.1539,,,0.2588970778010381
+30b,italian,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,67601,0.537942,512329580.0,173.2439,,,0.2678730176937857
+30b,italian,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",42071,0.712441,317624380.0,110.1466,,,1.0
+30b,italian,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,68366,0.532713,517268290.0,174.8451,118.0,517275648.0,0.2459350176364314
+30b,italian,2G,global_lru,global-lru,no-fit baseline,,62902,0.57006,474715530.0,161.0612,,,0.0
+30b,italian,2G,uniform,per-layer-lru-uniform,no-fit baseline,,60150,0.58887,455939850.0,154.9146,,,0.09093612662326934
+30b,italian,2G,twoq,2q,online baseline,,63757,0.564216,480903850.0,162.9607,,,-0.028252321316459043
+30b,italian,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",58185,0.602301,442136950.0,150.4991,,,0.15586690017513136
+30b,italian,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,57637,0.606046,438058590.0,149.1384,,,0.17397482073819515
+30b,italian,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",32639,0.77691,246365600.0,86.8519,,,1.0
+30b,italian,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,58480,0.600284,443257570.0,150.7963,146.0,604864512.0,0.14611902322968642
+30b,italian,4G,global_lru,global-lru,no-fit baseline,,29510,0.798297,222600800.0,78.9725,,,0.0
+30b,italian,4G,uniform,per-layer-lru-uniform,no-fit baseline,,30008,0.794893,229462050.0,80.9142,,,-0.027597672485453036
+30b,italian,4G,twoq,2q,online baseline,,29748,0.79667,224284350.0,79.6842,,,-0.013189249099473539
+30b,italian,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",28037,0.808365,212938460.0,75.5924,,,0.08162926018287614
+30b,italian,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,27648,0.811024,209932640.0,74.6363,,,0.10318647824882239
+30b,italian,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",11465,0.921636,86314492.0,32.8122,,,1.0
+30b,italian,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,28219,0.807121,214002000.0,75.91,192.0,815542272.0,0.0715433638126905
+30b,multi-turn-v2,1.5G,global_lru,global-lru,no-fit baseline,,853478,0.48894,564271490.0,190.1368,,,0.0
+30b,multi-turn-v2,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,775690,0.535519,515325620.0,174.1947,,,0.20124595117609925
+30b,multi-turn-v2,1.5G,twoq,2q,online baseline,,877271,0.474693,580064420.0,195.2612,,,-0.06155505883083419
+30b,multi-turn-v2,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",743039,0.555071,494047460.0,167.3816,,,0.285717611995902
+30b,multi-turn-v2,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,742085,0.555642,493408730.0,167.1458,,,0.2881857129552016
+30b,multi-turn-v2,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",466946,0.720394,309287550.0,107.5101,,,1.0
+30b,multi-turn-v2,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,745936,0.553336,494523010.0,167.4908,1312.0,4615114752.0,0.2782227603406704
+30b,multi-turn-v2,2G,global_lru,global-lru,no-fit baseline,,689910,0.586884,456622820.0,155.2018,,,0.0
+30b,multi-turn-v2,2G,uniform,per-layer-lru-uniform,no-fit baseline,,652745,0.609138,434248600.0,147.9536,,,0.11127678622221823
+30b,multi-turn-v2,2G,twoq,2q,online baseline,,693742,0.58459,459017170.0,155.9189,,,-0.011473500465586983
+30b,multi-turn-v2,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",628220,0.623824,417890800.0,142.6901,,,0.18470778802767773
+30b,multi-turn-v2,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,627033,0.624535,417477600.0,142.5767,,,0.18826181857377683
+30b,multi-turn-v2,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",355923,0.786874,235744470.0,83.4866,,,1.0
+30b,multi-turn-v2,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,631338,0.621957,418672590.0,142.9106,1826.0,6372864000.0,0.17537209532107537
+30b,multi-turn-v2,4G,global_lru,global-lru,no-fit baseline,,314729,0.811541,208409600.0,74.3754,,,0.0
+30b,multi-turn-v2,4G,uniform,per-layer-lru-uniform,no-fit baseline,,319201,0.808864,214597460.0,75.939,,,-0.02372577419132354
+30b,multi-turn-v2,4G,twoq,2q,online baseline,,308295,0.815394,204080770.0,73.1181,,,0.03413498013125574
+30b,multi-turn-v2,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",298597,0.821201,198734080.0,71.0838,,,0.08558680439499806
+30b,multi-turn-v2,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,297215,0.822029,197801040.0,70.8478,,,0.09291887504178006
+30b,multi-turn-v2,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",126242,0.924407,83422147.0,31.6735,,,1.0
+30b,multi-turn-v2,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,301017,0.819752,199162050.0,71.295,2245.0,7811776512.0,0.07274772265461278
+30b,natural-language,1.5G,global_lru,global-lru,no-fit baseline,,78503,0.463425,591996270.0,199.1764,,,0.0
+30b,natural-language,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,71629,0.51041,542619020.0,183.0936,,,0.18826171500561445
+30b,natural-language,1.5G,twoq,2q,online baseline,,79864,0.454123,602513150.0,202.6881,,,-0.03727439542080903
+30b,natural-language,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",68479,0.53194,519102790.0,175.5103,,,0.27453235833812617
+30b,natural-language,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,68236,0.533601,516860760.0,174.7991,,,0.2811875222523485
+30b,natural-language,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",41990,0.712995,317019660.0,110.0777,,,1.0
+30b,natural-language,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,69091,0.527757,523300250.0,176.8823,110.0,489369600.0,0.257771204776381
+30b,natural-language,2G,global_lru,global-lru,no-fit baseline,,64258,0.560791,485097540.0,164.4987,,,0.0
+30b,natural-language,2G,uniform,per-layer-lru-uniform,no-fit baseline,,60467,0.586703,458803830.0,155.9311,,,0.11862444458351587
+30b,natural-language,2G,twoq,2q,online baseline,,63743,0.564311,480833990.0,163.1239,,,0.016114900807309592
+30b,natural-language,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",58074,0.603059,441488200.0,150.428,,,0.19350397396583016
+30b,natural-language,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,57516,0.606873,436206680.0,148.6587,,,0.21096439076287626
+30b,natural-language,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",32300,0.779227,243606990.0,86.0506,,,1.0
+30b,natural-language,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,58300,0.601515,441600240.0,150.4114,154.0,644456448.0,0.18643219225233118
+30b,natural-language,4G,global_lru,global-lru,no-fit baseline,,29933,0.795405,225684890.0,80.0519,,,0.0
+30b,natural-language,4G,uniform,per-layer-lru-uniform,no-fit baseline,,29970,0.795153,229315460.0,80.9251,,,-0.001969656640936918
+30b,natural-language,4G,twoq,2q,online baseline,,29989,0.795023,225988800.0,80.3277,,,-0.0029811019430396593
+30b,natural-language,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",27921,0.809158,211655670.0,75.4617,,,0.10710673409635348
+30b,natural-language,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,27312,0.81332,206751120.0,73.7538,,,0.13952621772690976
+30b,natural-language,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",11148,0.923802,83984803.0,32.0019,,,1.0
+30b,natural-language,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,27830,0.80978,211097290.0,75.1369,202.0,842895360.0,0.11195102475379291
+30b,reasoning-math,1.5G,global_lru,global-lru,no-fit baseline,,82510,0.436037,621292210.0,208.6347,,,0.0
+30b,reasoning-math,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,74921,0.487909,566363500.0,190.7121,,,0.20486448547673036
+30b,reasoning-math,1.5G,twoq,2q,online baseline,,83414,0.429858,628319980.0,210.9245,,,-0.024403412158514198
+30b,reasoning-math,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",72323,0.505666,548461620.0,184.987,,,0.2749973005075046
+30b,reasoning-math,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,71923,0.5084,544665020.0,183.7477,,,0.28579527048914805
+30b,reasoning-math,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",45466,0.689236,342905930.0,118.3371,,,1.0
+30b,reasoning-math,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,72610,0.503705,548801720.0,185.0601,112.0,506695680.0,0.26724975704567544
+30b,reasoning-math,2G,global_lru,global-lru,no-fit baseline,,67418,0.539192,508078900.0,171.8401,,,0.0
+30b,reasoning-math,2G,uniform,per-layer-lru-uniform,no-fit baseline,,64239,0.560921,486106120.0,164.7364,,,0.1034493979824276
+30b,reasoning-math,2G,twoq,2q,online baseline,,68726,0.530252,517894500.0,174.9301,,,-0.04256426944354051
+30b,reasoning-math,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",62655,0.571748,475899340.0,161.4842,,,0.15499511877643996
+30b,reasoning-math,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,62041,0.575945,469804100.0,159.465,,,0.1749755938821998
+30b,reasoning-math,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",36688,0.749234,276530990.0,96.7835,,,1.0
+30b,reasoning-math,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,62664,0.571686,473501340.0,160.6715,123.0,535044096.0,0.1547022453628376
+30b,reasoning-math,4G,global_lru,global-lru,no-fit baseline,,38109,0.739522,287337080.0,100.2407,,,0.0
+30b,reasoning-math,4G,uniform,per-layer-lru-uniform,no-fit baseline,,37637,0.742748,286437250.0,99.7694,,,0.02199645819740889
+30b,reasoning-math,4G,twoq,2q,online baseline,,38802,0.734785,292280820.0,101.9498,,,-0.03229564731102619
+30b,reasoning-math,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",36681,0.749282,277251730.0,96.8844,,,0.06654860658029639
+30b,reasoning-math,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,36144,0.752953,273767250.0,95.7285,,,0.09157423804641625
+30b,reasoning-math,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",16651,0.886189,125385200.0,46.3739,,,1.0
+30b,reasoning-math,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,36678,0.749303,278074830.0,97.139,225.0,895168512.0,0.06668841457731382
+30b,structured-json,1.5G,global_lru,global-lru,no-fit baseline,,90642,0.380454,682453750.0,228.6686,,,0.0
+30b,structured-json,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,82240,0.437883,621581420.0,208.6943,,,0.2043486720498103
+30b,structured-json,1.5G,twoq,2q,online baseline,,91710,0.373155,691179580.0,231.5641,,,-0.025975289425041348
+30b,structured-json,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",79092,0.4594,599703260.0,201.7041,,,0.2809125401303629
+30b,structured-json,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,78843,0.461102,598365610.0,201.3164,,,0.2869685767097967
+30b,structured-json,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",49526,0.661486,373846140.0,128.3693,,,1.0
+30b,structured-json,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,79657,0.455538,602685670.0,202.6335,116.0,509386752.0,0.26717093102441875
+30b,structured-json,2G,global_lru,global-lru,no-fit baseline,,75701,0.482577,570737250.0,192.1112,,,0.0
+30b,structured-json,2G,uniform,per-layer-lru-uniform,no-fit baseline,,71409,0.511914,540577660.0,182.3433,,,0.11956430899518065
+30b,structured-json,2G,twoq,2q,online baseline,,75100,0.486685,566239650.0,190.6558,,,0.016742346157060477
+30b,structured-json,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",69186,0.527108,524479320.0,177.1644,,,0.18149148953951583
+30b,structured-json,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,68772,0.529938,521724000.0,176.3242,,,0.19302448672591024
+30b,structured-json,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",39804,0.727936,300309530.0,104.5495,,,1.0
+30b,structured-json,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,69457,0.525256,525398690.0,177.4432,141.0,592183296.0,0.173942112154219
+30b,structured-json,4G,global_lru,global-lru,no-fit baseline,,41476,0.716508,312867380.0,108.6337,,,0.0
+30b,structured-json,4G,uniform,per-layer-lru-uniform,no-fit baseline,,40736,0.721566,310601840.0,107.7841,,,0.032030472233043325
+30b,structured-json,4G,twoq,2q,online baseline,,42398,0.710206,319621430.0,110.8373,,,-0.03990823702549452
+30b,structured-json,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",39346,0.731067,297712790.0,103.631,,,0.09219581872484094
+30b,structured-json,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,38891,0.734177,295211460.0,102.8113,,,0.11189023070596892
+30b,structured-json,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",18373,0.874419,138390360.0,50.9284,,,1.0
+30b,structured-json,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,39207,0.732017,297503320.0,103.6232,197.0,799690752.0,0.09821235337402069
+30b,transition,1.5G,global_lru,global-lru,no-fit baseline,,265197,0.422561,636173020.0,213.6359,,,0.0
+30b,transition,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,239110,0.479363,576067810.0,193.9064,,,0.2119085333658259
+30b,transition,1.5G,twoq,2q,online baseline,,256685,0.441095,616122640.0,207.0028,,,0.06914422647333578
+30b,transition,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",229633,0.499998,554177620.0,186.8603,,,0.28889159660452457
+30b,transition,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,229078,0.501206,552405840.0,186.2822,,,0.29339994313797163
+30b,transition,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",142092,0.690609,341409520.0,117.9191,,,1.0
+30b,transition,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,230633,0.49782,555082700.0,187.1524,362.0,1312837632.0,0.28076844969741277
+30b,transition,2G,global_lru,global-lru,no-fit baseline,,212286,0.537769,509813250.0,172.3728,,,0.0
+30b,transition,2G,uniform,per-layer-lru-uniform,no-fit baseline,,202662,0.558724,488776390.0,165.5248,,,0.0946787474544757
+30b,transition,2G,twoq,2q,online baseline,,210592,0.541458,505685650.0,171.011,,,0.01666519100040335
+30b,transition,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",196530,0.572076,475557250.0,161.3394,,,0.15500398429891096
+30b,transition,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,195384,0.574571,472021600.0,160.1591,,,0.16627807455065963
+30b,transition,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",110637,0.759099,265681560.0,93.2908,,,1.0
+30b,transition,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,197059,0.570924,473947960.0,160.7806,508.0,1829892096.0,0.1497998012769432
+30b,transition,4G,global_lru,global-lru,no-fit baseline,,104604,0.772236,251221500.0,88.394,,,0.0
+30b,transition,4G,uniform,per-layer-lru-uniform,no-fit baseline,,103965,0.773627,252647700.0,88.5859,,,0.010406657655163428
+30b,transition,4G,twoq,2q,online baseline,,103807,0.773971,249088970.0,87.8719,,,0.012979821832809471
+30b,transition,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",98731,0.785023,237851240.0,83.9281,,,0.09564679250199502
+30b,transition,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,98204,0.786171,237042120.0,83.6453,,,0.10422943504389036
+30b,transition,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",43201,0.905934,103533440.0,38.7224,,,1.0
+30b,transition,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,99967,0.782332,240235510.0,84.6921,664.0,2389819392.0,0.07551748285914368
+80b,coding,1.5G,global_lru,global-lru,no-fit baseline,,80372,0.560521,317395320.0,106.8946,,,0.0
+80b,coding,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,77470,0.576389,306162950.0,103.2706,,,0.09463557802054459
+80b,coding,1.5G,twoq,2q,online baseline,,83324,0.544379,329003620.0,110.7184,,,-0.09626610141855535
+80b,coding,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",76537,0.581491,302684600.0,102.1931,,,0.1250611446274254
+80b,coding,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,76076,0.584011,300880590.0,101.5959,,,0.1400945703570846
+80b,coding,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",49707,0.728199,196438100.0,67.4941,,,1.0
+80b,coding,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,76640,0.580927,302952110.0,102.2434,249.0,412549120.0,0.12170226642752323
+80b,coding,2G,global_lru,global-lru,no-fit baseline,,70180,0.616251,277237060.0,93.812,,,0.0
+80b,coding,2G,uniform,per-layer-lru-uniform,no-fit baseline,,67813,0.629194,268216960.0,90.9137,,,0.08146618482188953
+80b,coding,2G,twoq,2q,online baseline,,71182,0.610772,281165350.0,95.0911,,,-0.03448631905007744
+80b,coding,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",67778,0.629385,268297420.0,90.9676,,,0.0826707967647565
+80b,coding,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,67206,0.632513,265955490.0,90.2062,,,0.10235759765961108
+80b,coding,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",41125,0.775126,162531300.0,56.4403,,,1.0
+80b,coding,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,67836,0.629068,268270150.0,90.9291,258.0,423018496.0,0.08067458268800551
+80b,coding,4G,global_lru,global-lru,no-fit baseline,,45965,0.74866,181686050.0,62.676,,,0.0
+80b,coding,4G,uniform,per-layer-lru-uniform,no-fit baseline,,46022,0.748349,182438210.0,62.8552,,,-0.002386634844868735
+80b,coding,4G,twoq,2q,online baseline,,46375,0.746418,183248850.0,63.1753,,,-0.01716702256835406
+80b,coding,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",45832,0.749388,181214090.0,62.4814,,,0.005568814638027049
+80b,coding,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,45023,0.753811,178041060.0,61.4595,,,0.039442281120462254
+80b,coding,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",22082,0.879254,87249831.0,31.5773,,,1.0
+80b,coding,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,45909,0.748967,181812990.0,62.6553,285.0,493993984.0,0.002344764058116652
+80b,italian,1.5G,global_lru,global-lru,no-fit baseline,,57881,0.683503,228634080.0,77.9674,,,0.0
+80b,italian,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,55979,0.693903,221408170.0,75.614,,,0.08025316455696202
+80b,italian,1.5G,twoq,2q,online baseline,,58525,0.679981,231051680.0,78.7645,,,-0.02717299578059072
+80b,italian,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",55207,0.698124,218356530.0,74.6124,,,0.11282700421940928
+80b,italian,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,54711,0.700837,216398710.0,73.9816,,,0.13375527426160339
+80b,italian,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",34181,0.813096,135118680.0,47.551,,,1.0
+80b,italian,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,55283,0.697709,218584790.0,74.6787,203.0,362070016.0,0.10962025316455697
+80b,italian,2G,global_lru,global-lru,no-fit baseline,,47785,0.738708,188826370.0,65.0522,,,0.0
+80b,italian,2G,uniform,per-layer-lru-uniform,no-fit baseline,,46609,0.745139,184518890.0,63.6029,,,0.058008188230651604
+80b,italian,2G,twoq,2q,online baseline,,49035,0.731873,193637420.0,66.6301,,,-0.06165836334040349
+80b,italian,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",46695,0.744669,184686510.0,63.6885,,,0.05376609283283185
+80b,italian,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,46068,0.748097,182259740.0,62.8926,,,0.08469392788437824
+80b,italian,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",27512,0.849563,108777030.0,38.8622,,,1.0
+80b,italian,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,46474,0.745877,183876040.0,63.3978,197.0,323567616.0,0.06466729147141519
+80b,italian,4G,global_lru,global-lru,no-fit baseline,,29137,0.840677,115222740.0,40.9589,,,0.0
+80b,italian,4G,uniform,per-layer-lru-uniform,no-fit baseline,,29620,0.838036,117513960.0,41.543,,,-0.03171372291529875
+80b,italian,4G,twoq,2q,online baseline,,29727,0.837451,117476160.0,41.7193,,,-0.038739330269205514
+80b,italian,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",29274,0.839928,115835910.0,41.1187,,,-0.008995403808273145
+80b,italian,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,28509,0.844111,112835060.0,40.1387,,,0.0412344057780696
+80b,italian,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",13907,0.923956,54938476.0,20.619,,,1.0
+80b,italian,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,29314,0.839709,116171680.0,41.1397,336.0,567885824.0,-0.011621799080761655
+80b,multi-turn-v2,1.5G,global_lru,global-lru,no-fit baseline,,579429,0.613095,279781620.0,94.6732,,,0.0
+80b,multi-turn-v2,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,560020,0.626055,270667020.0,91.7432,,,0.08558590339450917
+80b,multi-turn-v2,1.5G,twoq,2q,online baseline,,590889,0.605443,285262810.0,96.4511,,,-0.05053400241646015
+80b,multi-turn-v2,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",553712,0.630267,267813910.0,90.8526,,,0.11340165271763575
+80b,multi-turn-v2,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,551825,0.631527,266790520.0,90.5034,,,0.12172256568097435
+80b,multi-turn-v2,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",352651,0.764523,170415950.0,59.0674,,,1.0
+80b,multi-turn-v2,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,554266,0.629897,267947660.0,90.8743,1996.0,3131375616.0,0.11095873497429204
+80b,multi-turn-v2,2G,global_lru,global-lru,no-fit baseline,,506640,0.661699,244726090.0,83.2676,,,0.0
+80b,multi-turn-v2,2G,uniform,per-layer-lru-uniform,no-fit baseline,,492776,0.670956,238393330.0,81.2311,,,0.06377478264869589
+80b,multi-turn-v2,2G,twoq,2q,online baseline,,500795,0.665602,241875820.0,82.3174,,,0.026887161322967937
+80b,multi-turn-v2,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",490050,0.672776,237174270.0,80.8498,,,0.07631445788674732
+80b,multi-turn-v2,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,488082,0.674091,236229460.0,80.5465,,,0.08536731220387322
+80b,multi-turn-v2,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",289250,0.806858,139791680.0,49.044,,,1.0
+80b,multi-turn-v2,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,491060,0.672102,237586380.0,80.971,2359.0,3693527040.0,0.07166843001058007
+80b,multi-turn-v2,4G,global_lru,global-lru,no-fit baseline,,319328,0.786774,154335850.0,53.7902,,,0.0
+80b,multi-turn-v2,4G,uniform,per-layer-lru-uniform,no-fit baseline,,323337,0.784097,156937600.0,54.4289,,,-0.023591511998775995
+80b,multi-turn-v2,4G,twoq,2q,online baseline,,304959,0.796368,147374020.0,51.5299,,,0.08455635717396165
+80b,multi-turn-v2,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",314075,0.790281,152211650.0,53.0273,,,0.030912001129850413
+80b,multi-turn-v2,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,311363,0.792092,150913580.0,52.6567,,,0.04687113820659786
+80b,multi-turn-v2,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",149394,0.900244,72185415.0,26.4399,,,1.0
+80b,multi-turn-v2,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,314954,0.789694,152722860.0,53.2108,2761.0,4429234176.0,0.025739404710063907
+80b,natural-language,1.5G,global_lru,global-lru,no-fit baseline,,77006,0.578926,304389180.0,102.7495,,,0.0
+80b,natural-language,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,73933,0.595729,292483860.0,98.891,,,0.10049380293665587
+80b,natural-language,1.5G,twoq,2q,online baseline,,78621,0.570095,310789900.0,104.8477,,,-0.052814022695313774
+80b,natural-language,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",72732,0.602297,287885540.0,97.4125,,,0.13976912260047744
+80b,natural-language,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,72287,0.60473,286144150.0,96.8607,,,0.15432159325026978
+80b,natural-language,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",46427,0.746134,183739250.0,63.393,,,1.0
+80b,natural-language,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,72879,0.601493,288428110.0,97.5974,234.0,397508608.0,0.13496190195886065
+80b,natural-language,2G,global_lru,global-lru,no-fit baseline,,66968,0.633815,264843530.0,89.8614,,,0.0
+80b,natural-language,2G,uniform,per-layer-lru-uniform,no-fit baseline,,64368,0.648031,254932980.0,86.6534,,,0.09197353992005376
+80b,natural-language,2G,twoq,2q,online baseline,,67769,0.629435,268011060.0,90.8676,,,-0.028334925183062718
+80b,natural-language,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",63883,0.650684,253180230.0,86.0864,,,0.10913014255898687
+80b,natural-language,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,63421,0.65321,251441120.0,85.5313,,,0.12547313311401181
+80b,natural-language,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",38699,0.788391,153184680.0,53.3878,,,1.0
+80b,natural-language,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,64375,0.647993,255033990.0,86.6805,309.0,480034816.0,0.09172591885103824
+80b,natural-language,4G,global_lru,global-lru,no-fit baseline,,42042,0.770112,166438650.0,57.7254,,,0.0
+80b,natural-language,4G,uniform,per-layer-lru-uniform,no-fit baseline,,42908,0.765376,170459820.0,58.9492,,,-0.04116165216977993
+80b,natural-language,4G,twoq,2q,online baseline,,44239,0.758098,175085570.0,60.5727,,,-0.10442511526213223
+80b,natural-language,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",42287,0.768772,167670540.0,58.0871,,,-0.011645040163505871
+80b,natural-language,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,41453,0.773332,164233170.0,56.9577,,,0.027995627168591664
+80b,natural-language,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",21003,0.885154,83095563.0,30.1766,,,1.0
+80b,natural-language,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,42468,0.767782,168552570.0,58.3344,313.0,528596992.0,-0.02024811065164694
+80b,reasoning-math,1.5G,global_lru,global-lru,no-fit baseline,,97540,0.466645,384867130.0,128.9708,,,0.0
+80b,reasoning-math,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,94063,0.485657,371307930.0,124.53,,,0.09546690096372971
+80b,reasoning-math,1.5G,twoq,2q,online baseline,,98257,0.462724,387754110.0,129.9242,,,-0.01968644463359051
+80b,reasoning-math,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",92475,0.494341,365226490.0,122.6368,,,0.1390681200406359
+80b,reasoning-math,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,92076,0.496522,363674060.0,122.13,,,0.15002333818401473
+80b,reasoning-math,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",61119,0.665797,241416610.0,82.1129,,,1.0
+80b,reasoning-math,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,92892,0.49206,366820130.0,123.1266,273.0,449298432.0,0.1276186815298866
+80b,reasoning-math,2G,global_lru,global-lru,no-fit baseline,,87653,0.520708,345976710.0,116.2081,,,0.0
+80b,reasoning-math,2G,uniform,per-layer-lru-uniform,no-fit baseline,,84638,0.537194,334309030.0,112.4487,,,0.08372441753908529
+80b,reasoning-math,2G,twoq,2q,online baseline,,87555,0.521243,345641720.0,116.0665,,,0.002721390686179223
+80b,reasoning-math,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",84108,0.540092,332471010.0,111.9509,,,0.09844214267862597
+80b,reasoning-math,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,83520,0.543307,330175870.0,111.1744,,,0.11477048679570132
+80b,reasoning-math,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",51642,0.717618,203971340.0,69.9668,,,1.0
+80b,reasoning-math,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,84348,0.53878,333224410.0,112.1266,263.0,406454272.0,0.0917775124267585
+80b,reasoning-math,4G,global_lru,global-lru,no-fit baseline,,61580,0.663276,243278750.0,82.7028,,,0.0
+80b,reasoning-math,4G,uniform,per-layer-lru-uniform,no-fit baseline,,59847,0.672753,236882750.0,80.6987,,,0.05319704085704638
+80b,reasoning-math,4G,twoq,2q,online baseline,,59643,0.673868,235547780.0,80.1741,,,0.05945912760536575
+80b,reasoning-math,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",59873,0.67261,236821090.0,80.6423,,,0.052398931761672346
+80b,reasoning-math,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,58779,0.678593,232838960.0,79.4566,,,0.08598090677471835
+80b,reasoning-math,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",29003,0.84141,114515000.0,40.7843,,,1.0
+80b,reasoning-math,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,59946,0.672211,237359270.0,80.8652,333.0,526598144.0,0.0501580869938914
+80b,structured-json,1.5G,global_lru,global-lru,no-fit baseline,,93283,0.461663,388196820.0,130.12,,,0.0
+80b,structured-json,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,88734,0.487916,369451760.0,123.9338,,,0.11386448399289129
+80b,structured-json,1.5G,twoq,2q,online baseline,,88439,0.489618,368048220.0,123.4305,,,0.1212485294485745
+80b,structured-json,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",87718,0.493779,365429550.0,122.6303,,,0.13929563715551552
+80b,structured-json,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,86840,0.498846,361729310.0,121.4886,,,0.16127255888463368
+80b,structured-json,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",53332,0.692221,221951190.0,75.7533,,,1.0
+80b,structured-json,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,87704,0.49386,365354300.0,122.6165,232.0,388300800.0,0.13964606643137845
+80b,structured-json,2G,global_lru,global-lru,no-fit baseline,,81624,0.528947,339809420.0,114.1825,,,0.0
+80b,structured-json,2G,uniform,per-layer-lru-uniform,no-fit baseline,,77808,0.55097,324200960.0,109.0817,,,0.10077642212010775
+80b,structured-json,2G,twoq,2q,online baseline,,75649,0.563429,314633210.0,105.8684,,,0.1577932710082924
+80b,structured-json,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",77153,0.55475,321631580.0,108.3043,,,0.11807426187080758
+80b,structured-json,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,76221,0.560128,317346690.0,106.9389,,,0.14268737125653622
+80b,structured-json,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",43758,0.747472,182103030.0,62.862,,,1.0
+80b,structured-json,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,77107,0.555015,321419810.0,108.214,237.0,367689728.0,0.11928907199070406
+80b,structured-json,4G,global_lru,global-lru,no-fit baseline,,49428,0.714751,205696450.0,70.4969,,,0.0
+80b,structured-json,4G,uniform,per-layer-lru-uniform,no-fit baseline,,49518,0.714231,206654520.0,70.819,,,-0.003371291579262811
+80b,structured-json,4G,twoq,2q,online baseline,,48053,0.722686,199878950.0,68.6144,,,0.05150584357207072
+80b,structured-json,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",48983,0.717319,203725330.0,69.8204,,,0.016669163919688344
+80b,structured-json,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,48048,0.722715,200075780.0,68.6644,,,0.051693137548696436
+80b,structured-json,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",22732,0.868813,94467512.0,34.1199,,,1.0
+80b,structured-json,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,48807,0.718334,203363700.0,69.7385,263.0,434634752.0,0.023261911896913394
+80b,transition,1.5G,global_lru,global-lru,no-fit baseline,,265379,0.508557,354695990.0,119.1598,,,0.0
+80b,transition,1.5G,uniform,per-layer-lru-uniform,no-fit baseline,,254781,0.528183,340743150.0,114.5948,,,0.10004153451140312
+80b,transition,1.5G,twoq,2q,online baseline,,267370,0.50487,357330090.0,120.0104,,,-0.018794366409907868
+80b,transition,1.5G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",251463,0.534328,336520380.0,113.2551,,,0.13136233197402206
+80b,transition,1.5G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,250746,0.535656,335570160.0,112.938,,,0.1381305694003927
+80b,transition,1.5G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",159443,0.704735,213200450.0,72.9235,,,1.0
+80b,transition,1.5G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,251653,0.533976,336740500.0,113.3104,722.0,1150599168.0,0.12956879625434226
+80b,transition,2G,global_lru,global-lru,no-fit baseline,,232939,0.568631,311443980.0,104.9763,,,0.0
+80b,transition,2G,uniform,per-layer-lru-uniform,no-fit baseline,,225778,0.581893,302169400.0,101.9626,,,0.07220715315660513
+80b,transition,2G,twoq,2q,online baseline,,232220,0.569963,310400220.0,104.6003,,,0.007249957145594063
+80b,transition,2G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",224901,0.583517,301217890.0,101.7032,,,0.08105028586409607
+80b,transition,2G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,224021,0.585146,299856720.0,101.2351,,,0.0899236687404838
+80b,transition,2G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",133766,0.752285,178846900.0,61.742,,,1.0
+80b,transition,2G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,225090,0.583167,301114180.0,101.6263,825.0,1306738688.0,0.07914452522359916
+80b,transition,4G,global_lru,global-lru,no-fit baseline,,152594,0.717419,204063930.0,69.9608,,,0.0
+80b,transition,4G,uniform,per-layer-lru-uniform,no-fit baseline,,151755,0.718972,203479330.0,69.7272,,,0.010737825558328534
+80b,transition,4G,twoq,2q,online baseline,,151395,0.719639,202393710.0,69.4055,,,0.015345235809816343
+80b,transition,4G,static_dev,layer-aware-static,DEV-fitted workload-family-informed,"DEV-fitted, workload-family-informed, frozen; not a generic deployable baseline",150710,0.720907,201634790.0,69.1267,,,0.02411211364945287
+80b,transition,4G,ref_static_eval_insample,oracle-static-lru,reference,IN-SAMPLE on EVAL: reference only,149419,0.723298,199999460.0,68.5968,,,0.04063479874576054
+80b,transition,4G,ref_belady,belady-global,reference,"future-informed reference, not a proven bound",74459,0.862113,99544364.0,35.7073,,,1.0
+80b,transition,4G,adaptive_sel,adaptive-e32,online replay controller; DEV-selected configuration,,151234,0.719937,202535220.0,69.412,931.0,1500233728.0,0.017405772061176168

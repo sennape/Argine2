@@ -1,0 +1,226 @@
+{
+  "divergences_seed0": [],
+  "first_divergence_seed0": null,
+  "node_completeness": {
+    "details": [
+      {
+        "excluded_segment": true,
+        "graph": 395,
+        "layer": 26,
+        "missing": [
+          [
+            26,
+            1,
+            0
+          ],
+          [
+            26,
+            1,
+            1
+          ],
+          [
+            26,
+            1,
+            2
+          ],
+          [
+            26,
+            4,
+            0
+          ],
+          [
+            26,
+            4,
+            1
+          ],
+          [
+            26,
+            4,
+            2
+          ],
+          [
+            26,
+            22,
+            0
+          ],
+          [
+            26,
+            22,
+            2
+          ],
+          [
+            26,
+            76,
+            0
+          ],
+          [
+            26,
+            76,
+            1
+          ],
+          [
+            26,
+            76,
+            2
+          ],
+          [
+            26,
+            81,
+            0
+          ],
+          [
+            26,
+            81,
+            1
+          ],
+          [
+            26,
+            100,
+            0
+          ],
+          [
+            26,
+            100,
+            1
+          ],
+          [
+            26,
+            100,
+            2
+          ],
+          [
+            26,
+            104,
+            0
+          ],
+          [
+            26,
+            104,
+            1
+          ],
+          [
+            26,
+            104,
+            2
+          ],
+          [
+            26,
+            117,
+            0
+          ],
+          [
+            26,
+            117,
+            1
+          ],
+          [
+            26,
+            117,
+            2
+          ]
+        ],
+        "node_kind": 1,
+        "unexpected": []
+      }
+    ],
+    "incomplete": 1,
+    "incomplete_in_workload": 0,
+    "nodes": 56960
+  },
+  "pin_model": "per-thread",
+  "reconstruct": {
+    "first": null,
+    "inconsistencies": {
+      "evict_not_resident": 0,
+      "hit_not_resident": 0,
+      "miss_already_resident": 0
+    },
+    "order": "per-shard seq (exact)",
+    "records": 1951890,
+    "shards_with_seq_gaps": 2,
+    "total": 0
+  },
+  "seq_gaps": {
+    "applicable": true,
+    "duplicates": 0,
+    "gaps": [
+      {
+        "class": "after the last workload record of the shard (warm-up / flush sentinel tail): replay-irrelevant",
+        "inside_excluded_segment": true,
+        "next": {
+          "key": [
+            26,
+            81,
+            2
+          ],
+          "seq": 125908,
+          "t_ns": 694958965742700,
+          "tid": 6,
+          "type": "A"
+        },
+        "prev": {
+          "key": [
+            26,
+            104,
+            2
+          ],
+          "seq": 125906,
+          "t_ns": 694958962177600,
+          "tid": 5,
+          "type": "A"
+        },
+        "replay_relevant": false,
+        "seq": 125907,
+        "shard": 12
+      },
+      {
+        "class": "after the last workload record of the shard (warm-up / flush sentinel tail): replay-irrelevant",
+        "inside_excluded_segment": true,
+        "next": {
+          "key": [
+            26,
+            22,
+            1
+          ],
+          "seq": 129052,
+          "t_ns": 694958965740500,
+          "tid": 6,
+          "type": "A"
+        },
+        "prev": {
+          "key": [
+            26,
+            76,
+            2
+          ],
+          "seq": 129050,
+          "t_ns": 694958961105900,
+          "tid": 11,
+          "type": "A"
+        },
+        "replay_relevant": false,
+        "seq": 129051,
+        "shard": 15
+      }
+    ],
+    "missing": 2,
+    "shards_with_replay_relevant_seq_gaps": 0,
+    "shards_with_seq_gaps": 2
+  },
+  "thread_pools": {
+    "12": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  }
+}

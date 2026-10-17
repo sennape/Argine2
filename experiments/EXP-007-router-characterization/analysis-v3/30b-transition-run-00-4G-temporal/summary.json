@@ -1,0 +1,254 @@
+{
+  "boundaries_counted": [
+    299,
+    598,
+    897
+  ],
+  "boundaries_trace": [
+    311,
+    611,
+    911
+  ],
+  "budgets": {
+    "1.5G": {
+      "A_fixed_final_allocation_gain": 8455,
+      "A_fixed_mean_allocation_gain": 8447,
+      "A_share_of_gain_mean_alloc": 1.158,
+      "accesses": 459264,
+      "gain_in_first_segment_no_transition": 1541,
+      "gain_in_post64_windows": 1107,
+      "gain_outside_post64": 6187,
+      "gain_vs_frozen_misses": 7294,
+      "gain_vs_uniform_misses": 7289,
+      "misses": {
+        "ablate-frozen": 240795,
+        "ablate-no-cost-weighting": 233501,
+        "ablate-no-hysteresis": 233479,
+        "adaptive-e128": 234147,
+        "adaptive-e32": 233040,
+        "adaptive-e64": 233501,
+        "adaptive-e64-pin25": 236679,
+        "adaptive-e64-pin50": 239670,
+        "global-lru": 263180,
+        "per-layer-lru-uniform": 240790,
+        "piecewise:adaptive-segment-steady (instant switch)": 231836,
+        "piecewise:segment-opt (oracle, instant switch)": 230343,
+        "static:adaptive-final": 232340,
+        "static:adaptive-mean": 232348,
+        "static:global-opt (oracle)": 231523,
+        "static:opt:coding (oracle)": 232643,
+        "static:opt:natural-language (oracle)": 232593,
+        "static:opt:reasoning-math (oracle)": 232259,
+        "static:opt:structured-json (oracle)": 231984
+      },
+      "optimal_allocation_distances": {
+        "D(adaptive-mean, global-opt)": 0.0577,
+        "D(adaptive-mean, uniform)": 0.0849,
+        "D(global-opt, opt:coding)": 0.0785,
+        "D(global-opt, opt:natural-language)": 0.0787,
+        "D(global-opt, opt:reasoning-math)": 0.057,
+        "D(global-opt, opt:structured-json)": 0.0463,
+        "D(opt:coding, opt:reasoning-math)": 0.0996,
+        "D(opt:natural-language, opt:coding)": 0.1077,
+        "D(opt:reasoning-math, opt:structured-json)": 0.0841,
+        "D(uniform, global-opt)": 0.0856
+      },
+      "oracle_potential_A_global_static": 9272,
+      "oracle_potential_B_segment_switching": 1180,
+      "outside_steps": 1004,
+      "post64_steps": 192,
+      "reaction_lag_cost_vs_instant_piecewise": -1665,
+      "share_of_segment_optimum_gain": {
+        "coding": {
+          "adaptive_e64_share": 0.762,
+          "generic_share (other segments' optima)": 0.8,
+          "global_opt_share": 0.875
+        },
+        "natural-language": {
+          "adaptive_e64_share": 0.567,
+          "generic_share (other segments' optima)": 0.795,
+          "global_opt_share": 0.89
+        },
+        "reasoning-math": {
+          "adaptive_e64_share": 0.758,
+          "generic_share (other segments' optima)": 0.726,
+          "global_opt_share": 0.887
+        },
+        "structured-json": {
+          "adaptive_e64_share": 0.712,
+          "generic_share (other segments' optima)": 0.635,
+          "global_opt_share": 0.899
+        }
+      },
+      "uniform_vs_frozen_misses": -5
+    },
+    "2G": {
+      "A_fixed_final_allocation_gain": 6262,
+      "A_fixed_mean_allocation_gain": 6456,
+      "A_share_of_gain_mean_alloc": 1.176,
+      "accesses": 459264,
+      "gain_in_first_segment_no_transition": 1440,
+      "gain_in_post64_windows": 760,
+      "gain_outside_post64": 4731,
+      "gain_vs_frozen_misses": 5491,
+      "gain_vs_uniform_misses": 5534,
+      "misses": {
+        "ablate-frozen": 207421,
+        "ablate-no-cost-weighting": 202035,
+        "ablate-no-hysteresis": 202002,
+        "adaptive-e128": 202397,
+        "adaptive-e32": 202026,
+        "adaptive-e64": 201930,
+        "adaptive-e64-pin25": 205507,
+        "adaptive-e64-pin50": 209646,
+        "global-lru": 218424,
+        "per-layer-lru-uniform": 207464,
+        "piecewise:adaptive-segment-steady (instant switch)": 200168,
+        "piecewise:segment-opt (oracle, instant switch)": 198169,
+        "static:adaptive-final": 201159,
+        "static:adaptive-mean": 200965,
+        "static:global-opt (oracle)": 199905,
+        "static:opt:coding (oracle)": 201268,
+        "static:opt:natural-language (oracle)": 201033,
+        "static:opt:reasoning-math (oracle)": 200907,
+        "static:opt:structured-json (oracle)": 201123
+      },
+      "optimal_allocation_distances": {
+        "D(adaptive-mean, global-opt)": 0.0623,
+        "D(adaptive-mean, uniform)": 0.0801,
+        "D(global-opt, opt:coding)": 0.0776,
+        "D(global-opt, opt:natural-language)": 0.0686,
+        "D(global-opt, opt:reasoning-math)": 0.0834,
+        "D(global-opt, opt:structured-json)": 0.0825,
+        "D(opt:coding, opt:reasoning-math)": 0.1484,
+        "D(opt:natural-language, opt:coding)": 0.082,
+        "D(opt:reasoning-math, opt:structured-json)": 0.0984,
+        "D(uniform, global-opt)": 0.0974
+      },
+      "oracle_potential_A_global_static": 7516,
+      "oracle_potential_B_segment_switching": 1736,
+      "outside_steps": 1004,
+      "post64_steps": 192,
+      "reaction_lag_cost_vs_instant_piecewise": -1762,
+      "share_of_segment_optimum_gain": {
+        "coding": {
+          "adaptive_e64_share": 0.686,
+          "generic_share (other segments' optima)": 0.673,
+          "global_opt_share": 0.841
+        },
+        "natural-language": {
+          "adaptive_e64_share": 0.533,
+          "generic_share (other segments' optima)": 0.662,
+          "global_opt_share": 0.86
+        },
+        "reasoning-math": {
+          "adaptive_e64_share": 0.546,
+          "generic_share (other segments' optima)": 0.456,
+          "global_opt_share": 0.762
+        },
+        "structured-json": {
+          "adaptive_e64_share": 0.601,
+          "generic_share (other segments' optima)": 0.453,
+          "global_opt_share": 0.756
+        }
+      },
+      "uniform_vs_frozen_misses": 43
+    },
+    "4G": {
+      "A_fixed_final_allocation_gain": 5026,
+      "A_fixed_mean_allocation_gain": 5457,
+      "A_share_of_gain_mean_alloc": 1.354,
+      "accesses": 459264,
+      "gain_in_first_segment_no_transition": 1088,
+      "gain_in_post64_windows": 565,
+      "gain_outside_post64": 3465,
+      "gain_vs_frozen_misses": 4030,
+      "gain_vs_uniform_misses": 4370,
+      "misses": {
+        "ablate-frozen": 109486,
+        "ablate-no-cost-weighting": 105456,
+        "ablate-no-hysteresis": 105502,
+        "adaptive-e128": 105538,
+        "adaptive-e32": 105199,
+        "adaptive-e64": 105456,
+        "adaptive-e64-pin25": 109941,
+        "adaptive-e64-pin50": 112275,
+        "global-lru": 110242,
+        "per-layer-lru-uniform": 109826,
+        "piecewise:adaptive-segment-steady (instant switch)": 103612,
+        "piecewise:segment-opt (oracle, instant switch)": 101681,
+        "static:adaptive-final": 104460,
+        "static:adaptive-mean": 104029,
+        "static:global-opt (oracle)": 103339,
+        "static:opt:coding (oracle)": 104415,
+        "static:opt:natural-language (oracle)": 104097,
+        "static:opt:reasoning-math (oracle)": 106651,
+        "static:opt:structured-json (oracle)": 104680
+      },
+      "optimal_allocation_distances": {
+        "D(adaptive-mean, global-opt)": 0.0331,
+        "D(adaptive-mean, uniform)": 0.0677,
+        "D(global-opt, opt:coding)": 0.0389,
+        "D(global-opt, opt:natural-language)": 0.0315,
+        "D(global-opt, opt:reasoning-math)": 0.0849,
+        "D(global-opt, opt:structured-json)": 0.0629,
+        "D(opt:coding, opt:reasoning-math)": 0.1051,
+        "D(opt:natural-language, opt:coding)": 0.0495,
+        "D(opt:reasoning-math, opt:structured-json)": 0.1047,
+        "D(uniform, global-opt)": 0.0864
+      },
+      "oracle_potential_A_global_static": 6147,
+      "oracle_potential_B_segment_switching": 1658,
+      "outside_steps": 1004,
+      "post64_steps": 192,
+      "reaction_lag_cost_vs_instant_piecewise": -1844,
+      "share_of_segment_optimum_gain": {
+        "coding": {
+          "adaptive_e64_share": 0.705,
+          "generic_share (other segments' optima)": 0.458,
+          "global_opt_share": 0.859
+        },
+        "natural-language": {
+          "adaptive_e64_share": 0.466,
+          "generic_share (other segments' optima)": 0.568,
+          "global_opt_share": 0.903
+        },
+        "reasoning-math": {
+          "adaptive_e64_share": 0.304,
+          "generic_share (other segments' optima)": 0.212,
+          "global_opt_share": 0.522
+        },
+        "structured-json": {
+          "adaptive_e64_share": 0.525,
+          "generic_share (other segments' optima)": 0.414,
+          "global_opt_share": 0.752
+        }
+      },
+      "uniform_vs_frozen_misses": 340
+    }
+  },
+  "distance_metric": "D(a,b) = 1/2 * sum_L |a_L - b_L| / budget",
+  "segments": [
+    [
+      "natural-language",
+      0,
+      299
+    ],
+    [
+      "coding",
+      299,
+      598
+    ],
+    [
+      "reasoning-math",
+      598,
+      897
+    ],
+    [
+      "structured-json",
+      897,
+      1196
+    ]
+  ],
+  "steady_window": "last 128 counted steps of each segment"
+}

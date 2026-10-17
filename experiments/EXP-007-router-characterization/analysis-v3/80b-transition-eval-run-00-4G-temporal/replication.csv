@@ -1,0 +1,2 @@
+trace,workload_steps,workload_routing_sha256
+experiments\EXP-007-router-characterization\raw\80b-transition-eval-v2\run-00-4G\trace.jsonl.gz,1138,b4aef3568bf50c510f67a76e6b2f9a59439f26b97cb8dc8cfc333e2a6c415d29

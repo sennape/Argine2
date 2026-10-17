@@ -1,0 +1,108 @@
+{
+  "divergences_seed0": [],
+  "first_divergence_seed0": null,
+  "node_completeness": {
+    "details": [
+      {
+        "excluded_segment": true,
+        "graph": 395,
+        "layer": 44,
+        "missing": [
+          [
+            44,
+            51,
+            2
+          ],
+          [
+            44,
+            104,
+            0
+          ],
+          [
+            44,
+            104,
+            2
+          ]
+        ],
+        "node_kind": 2,
+        "unexpected": []
+      }
+    ],
+    "incomplete": 1,
+    "incomplete_in_workload": 0,
+    "nodes": 57015
+  },
+  "pin_model": "per-thread",
+  "reconstruct": {
+    "first": null,
+    "inconsistencies": {
+      "evict_not_resident": 0,
+      "hit_not_resident": 0,
+      "miss_already_resident": 0
+    },
+    "order": "per-shard seq (exact)",
+    "records": 1752206,
+    "shards_with_seq_gaps": 1,
+    "total": 0
+  },
+  "seq_gaps": {
+    "applicable": true,
+    "duplicates": 0,
+    "gaps": [
+      {
+        "class": "after the last workload record of the shard (warm-up / flush sentinel tail): replay-irrelevant",
+        "inside_excluded_segment": true,
+        "next": {
+          "key": [
+            44,
+            102,
+            1
+          ],
+          "seq": 105147,
+          "t_ns": 270440161640700,
+          "tid": 8,
+          "type": "A"
+        },
+        "prev": {
+          "key": [
+            44,
+            104,
+            2
+          ],
+          "seq": 105145,
+          "t_ns": 270440161245900,
+          "tid": 13,
+          "type": "A"
+        },
+        "replay_relevant": false,
+        "seq": 105146,
+        "shard": 10
+      }
+    ],
+    "missing": 1,
+    "shards_with_replay_relevant_seq_gaps": 0,
+    "shards_with_seq_gaps": 1
+  },
+  "thread_pools": {
+    "12": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "4": [
+      8,
+      12,
+      13,
+      14
+    ]
+  }
+}

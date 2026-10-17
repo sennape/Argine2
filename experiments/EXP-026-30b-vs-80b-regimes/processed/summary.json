@@ -1,0 +1,685 @@
+{
+  "experiment": "EXP-026-30b-vs-80b-regimes",
+  "protocol_version": "EXP026-P1",
+  "blocks": {
+    "diskbench": "complete",
+    "perf": "complete",
+    "diag": "complete"
+  },
+  "diskbench": {
+    "b_mix": {
+      "30b": {
+        "2": [
+          2639.174274579702,
+          2804.8584771025116,
+          2812.560591442197
+        ],
+        "4": [
+          3972.58159504434,
+          3960.1576142792755,
+          3907.2132948597523
+        ],
+        "8": [
+          4364.892008942282,
+          4373.77230653621,
+          4366.658298521938
+        ],
+        "16": [
+          4422.847990372801,
+          4391.302105208689,
+          4413.542017144195
+        ]
+      },
+      "80b": {
+        "2": [
+          2010.5883096282118,
+          1995.697957727205,
+          1984.6046994867816
+        ],
+        "4": [
+          3179.8729388645825,
+          3210.8411146324147,
+          3102.1092091405926
+        ],
+        "8": [
+          3818.8465196707393,
+          3875.902424879514,
+          3875.3894970049473
+        ],
+        "16": [
+          4099.775332322394,
+          4099.233921862179,
+          4083.187801051577
+        ]
+      }
+    },
+    "device": {
+      "status": "INDETERMINATE",
+      "comparisons": [
+        {
+          "30b_readers": 2,
+          "80b_readers": 4,
+          "80b": [
+            3179.8729388645825,
+            3210.8411146324147,
+            3102.1092091405926
+          ],
+          "30b": [
+            2639.174274579702,
+            2804.8584771025116,
+            2812.560591442197
+          ],
+          "result": "favours"
+        },
+        {
+          "30b_readers": 4,
+          "80b_readers": 8,
+          "80b": [
+            3818.8465196707393,
+            3875.902424879514,
+            3875.3894970049473
+          ],
+          "30b": [
+            3972.58159504434,
+            3960.1576142792755,
+            3907.2132948597523
+          ],
+          "result": "disfavours"
+        },
+        {
+          "30b_readers": 8,
+          "80b_readers": 16,
+          "80b": [
+            4099.775332322394,
+            4099.233921862179,
+            4083.187801051577
+          ],
+          "30b": [
+            4364.892008942282,
+            4373.77230653621,
+            4366.658298521938
+          ],
+          "result": "disfavours"
+        }
+      ]
+    }
+  },
+  "performance_cells": {
+    "80b-t4-P1": {
+      "scheduled": 3,
+      "recorded": 3,
+      "outcomes": {
+        "VALID": 3
+      },
+      "valid_values": [
+        5.11,
+        6.06,
+        6.06
+      ],
+      "evaluable": true,
+      "center": 6.06,
+      "center_kind": "median of 3 VALID"
+    },
+    "80b-t4-P3": {
+      "scheduled": 3,
+      "recorded": 3,
+      "outcomes": {
+        "VALID": 3
+      },
+      "valid_values": [
+        3.17,
+        3.59,
+        3.59
+      ],
+      "evaluable": true,
+      "center": 3.59,
+      "center_kind": "median of 3 VALID"
+    },
+    "30b-t12-P2": {
+      "scheduled": 3,
+      "recorded": 3,
+      "outcomes": {
+        "VALID": 3
+      },
+      "valid_values": [
+        3.48,
+        3.6,
+        4.09
+      ],
+      "evaluable": true,
+      "center": 3.6,
+      "center_kind": "median of 3 VALID"
+    },
+    "80b-t4-P2": {
+      "scheduled": 3,
+      "recorded": 3,
+      "outcomes": {
+        "VALID": 3
+      },
+      "valid_values": [
+        3.42,
+        3.73,
+        4.8
+      ],
+      "evaluable": true,
+      "center": 3.73,
+      "center_kind": "median of 3 VALID"
+    },
+    "30b-t12-P1": {
+      "scheduled": 3,
+      "recorded": 3,
+      "outcomes": {
+        "VALID": 3
+      },
+      "valid_values": [
+        5.13,
+        6.62,
+        6.62
+      ],
+      "evaluable": true,
+      "center": 6.62,
+      "center_kind": "median of 3 VALID"
+    },
+    "30b-t4-P2": {
+      "scheduled": 3,
+      "recorded": 3,
+      "outcomes": {
+        "VALID": 3
+      },
+      "valid_values": [
+        3.63,
+        3.92,
+        3.96
+      ],
+      "evaluable": true,
+      "center": 3.92,
+      "center_kind": "median of 3 VALID"
+    },
+    "30b-t4-P1": {
+      "scheduled": 3,
+      "recorded": 3,
+      "outcomes": {
+        "VALID": 3
+      },
+      "valid_values": [
+        4.95,
+        6.25,
+        6.41
+      ],
+      "evaluable": true,
+      "center": 6.25,
+      "center_kind": "median of 3 VALID"
+    },
+    "30b-t4-P3": {
+      "scheduled": 3,
+      "recorded": 3,
+      "outcomes": {
+        "VALID": 3
+      },
+      "valid_values": [
+        2.6,
+        2.66,
+        3.04
+      ],
+      "evaluable": true,
+      "center": 2.66,
+      "center_kind": "median of 3 VALID"
+    }
+  },
+  "explanandum": {
+    "outcome": "NOT DISTINGUISHED",
+    "beta": {
+      "30b": 0.47560756218632283,
+      "80b": 0.49478700287061783
+    },
+    "envelope": {
+      "30b": [
+        0.22750499195351992,
+        0.5797406846398588
+      ],
+      "80b": [
+        0.0638067085678771,
+        0.5832505986644648
+      ]
+    },
+    "delta_beta": 0.019179440684295
+  },
+  "not_reproduced_text": "EXPLANANDUM NOT REPRODUCED. At matched budget/F (P1→P2, 4 generation threads, current runtime) the 80B's pressure-response exponent was not distinguishable from the 30B's. The historical regime difference did not reproduce in the matched-F region on the current runtime. This does not retrospectively falsify EXP-006 or alter F-004. Those were measured over different budget/F regions on earlier binaries and remain valid descriptions of those sessions. The candidate-mechanism hypothesis is INCONCLUSIVE: its object was absent at matched budget/F, so the candidates could not be discriminated against it. Secondary results are reported descriptively.",
+  "secondary_R": {
+    "P1": {
+      "R_ms_per_token_80_over_30": 1.0313531353135315,
+      "label": "secondary, descriptive"
+    },
+    "P2": {
+      "R_ms_per_token_80_over_30": 1.0509383378016086,
+      "label": "secondary, descriptive"
+    },
+    "P3": {
+      "R_ms_per_token_80_over_30": 0.7409470752089137,
+      "label": "secondary, descriptive"
+    }
+  },
+  "sensitivity": {
+    "beta_30b_t12": 0.6210678592796517,
+    "envelope_30b_t12": [
+      0.2309889192561218,
+      0.6556320319647378
+    ],
+    "label": "descriptive; not part of the primary decision"
+  },
+  "diagnostic_cells": {
+    "30b-P1": {
+      "eligible_2_of_2": true,
+      "launches": [
+        {
+          "graphs": 378,
+          "T": 150148421.6931217,
+          "Res": 81215692.32804233,
+          "N": 68932729.36507936,
+          "E_r_lo": 68336974.86772487,
+          "E_r_hi": 72369570.37037037,
+          "E_nr_lo": 8846121.957671957,
+          "E_nr_hi": 12878717.46031746,
+          "M": 228797586.2857143,
+          "N_over_T": 0.4590972624804965,
+          "m": 0.20855281404676568,
+          "q_lo": 0.298678740353441,
+          "q_hi": 0.3163039066329914,
+          "depth": 4.135933305535589,
+          "E_nr_share_lo": 0.1089213390183408,
+          "E_nr_share_hi": 0.15857424952185833,
+          "reads_per_graph": 238.8862433862434
+        },
+        {
+          "graphs": 378,
+          "T": 149834546.2962963,
+          "Res": 81106123.54497355,
+          "N": 68728422.75132275,
+          "E_r_lo": 68429814.81481482,
+          "E_r_hi": 72255871.42857143,
+          "E_nr_lo": 8850252.116402116,
+          "E_nr_hi": 12676308.73015873,
+          "M": 228935875.04761904,
+          "N_over_T": 0.4586954374020861,
+          "m": 0.20867886655857085,
+          "q_lo": 0.2989038515723291,
+          "q_hi": 0.3156162021943572,
+          "depth": 4.163443080662264,
+          "E_nr_share_lo": 0.10911940713693005,
+          "E_nr_share_hi": 0.15629286885015145,
+          "reads_per_graph": 239.07407407407408
+        }
+      ]
+    },
+    "30b-P2": {
+      "eligible_2_of_2": true,
+      "launches": [
+        {
+          "graphs": 378,
+          "T": 243131278.83597884,
+          "Res": 169851729.62962964,
+          "N": 73279549.20634921,
+          "E_r_lo": 139835624.6031746,
+          "E_r_hi": 158655709.7883598,
+          "E_nr_lo": 11196019.841269841,
+          "E_nr_hi": 30016105.026455026,
+          "M": 589072384.0,
+          "N_over_T": 0.30139910239926404,
+          "m": 0.536949298088411,
+          "q_lo": 0.23738275363316744,
+          "q_hi": 0.26933143378922986,
+          "depth": 6.000481435807034,
+          "E_nr_share_lo": 0.0659164311466438,
+          "E_nr_share_hi": 0.17671945462025423,
+          "reads_per_graph": 614.989417989418
+        },
+        {
+          "graphs": 378,
+          "T": 244822066.66666666,
+          "Res": 170966308.2010582,
+          "N": 73855758.46560846,
+          "E_r_lo": 138632767.72486773,
+          "E_r_hi": 159432862.16931218,
+          "E_nr_lo": 11533446.031746032,
+          "E_nr_hi": 32333540.476190478,
+          "M": 588897036.1904762,
+          "N_over_T": 0.30167116661981913,
+          "m": 0.5367894656369119,
+          "q_lo": 0.23541087695341628,
+          "q_hi": 0.27073130338822815,
+          "depth": 5.954957197579338,
+          "E_nr_share_lo": 0.06746034439828096,
+          "E_nr_share_hi": 0.1891222944240329,
+          "reads_per_graph": 614.7936507936508
+        }
+      ]
+    },
+    "30b-P3": {
+      "eligible_2_of_2": true,
+      "launches": [
+        {
+          "graphs": 378,
+          "T": 323466593.3862434,
+          "Res": 247764815.07936507,
+          "N": 75701778.30687831,
+          "E_r_lo": 195450778.83597884,
+          "E_r_hi": 236266955.55555555,
+          "E_nr_lo": 11497859.523809524,
+          "E_nr_hi": 52314036.243386246,
+          "M": 936068339.8095238,
+          "N_over_T": 0.23403275594671596,
+          "m": 0.8532418963702566,
+          "q_lo": 0.20879968964205137,
+          "q_hi": 0.2524035324211824,
+          "depth": 7.480509989254241,
+          "E_nr_share_lo": 0.04640634514681385,
+          "E_nr_share_hi": 0.21114392786816316,
+          "reads_per_graph": 981.8650793650794
+        },
+        {
+          "graphs": 378,
+          "T": 328602241.7989418,
+          "Res": 249189088.62433863,
+          "N": 79413153.17460318,
+          "E_r_lo": 181815850.26455027,
+          "E_r_hi": 238573272.2222222,
+          "E_nr_lo": 10615816.402116403,
+          "E_nr_hi": 67373238.35978836,
+          "M": 939431448.3809524,
+          "N_over_T": 0.24166954169227128,
+          "m": 0.8563074258974797,
+          "q_lo": 0.1935381773496063,
+          "q_hi": 0.25395495608901253,
+          "depth": 7.132893414133729,
+          "E_nr_share_lo": 0.04260144960889568,
+          "E_nr_share_hi": 0.2703699376715322,
+          "reads_per_graph": 984.3968253968254
+        }
+      ]
+    },
+    "80b-P1": {
+      "eligible_2_of_2": true,
+      "launches": [
+        {
+          "graphs": 378,
+          "T": 172405149.73544973,
+          "Res": 82061653.7037037,
+          "N": 90343496.03174603,
+          "E_r_lo": 68003338.09523809,
+          "E_r_hi": 73541515.34391534,
+          "E_nr_lo": 8520138.35978836,
+          "E_nr_hi": 14058315.608465608,
+          "M": 226150779.25925925,
+          "N_over_T": 0.5240185468379296,
+          "m": 0.3142793294204952,
+          "q_lo": 0.30069911020416634,
+          "q_hi": 0.3251879811548531,
+          "depth": 5.784013649735357,
+          "E_nr_share_lo": 0.10382606217700216,
+          "E_nr_share_hi": 0.17131406660686282,
+          "reads_per_graph": 450.07936507936506
+        },
+        {
+          "graphs": 378,
+          "T": 176625701.05820104,
+          "Res": 82534048.41269842,
+          "N": 94091652.64550264,
+          "E_r_lo": 68112739.15343915,
+          "E_r_hi": 73905174.6031746,
+          "E_nr_lo": 8628873.80952381,
+          "E_nr_hi": 14421309.25925926,
+          "M": 226092004.9100529,
+          "N_over_T": 0.5327177872856561,
+          "m": 0.3141976513333526,
+          "q_lo": 0.301261157733272,
+          "q_hi": 0.3268809732240492,
+          "depth": 5.767246180899047,
+          "E_nr_share_lo": 0.10454926149237821,
+          "E_nr_share_hi": 0.1747316354475645,
+          "reads_per_graph": 449.984126984127
+        }
+      ]
+    },
+    "80b-P2": {
+      "eligible_2_of_2": true,
+      "launches": [
+        {
+          "graphs": 378,
+          "T": 215787777.51322752,
+          "Res": 120793420.37037037,
+          "N": 94994357.14285715,
+          "E_r_lo": 98154529.1005291,
+          "E_r_hi": 111665029.62962963,
+          "E_nr_lo": 9128390.74074074,
+          "E_nr_hi": 22638891.26984127,
+          "M": 381169295.5767196,
+          "N_over_T": 0.4402212128860455,
+          "m": 0.5297069105926119,
+          "q_lo": 0.25750901302797385,
+          "q_hi": 0.29295389456980625,
+          "depth": 7.256512476425502,
+          "E_nr_share_lo": 0.07557026461169618,
+          "E_nr_share_hi": 0.18741824844786334,
+          "reads_per_graph": 760.3650793650794
+        },
+        {
+          "graphs": 378,
+          "T": 220104261.1111111,
+          "Res": 121339143.38624339,
+          "N": 98765117.72486773,
+          "E_r_lo": 97248546.82539682,
+          "E_r_hi": 112052367.72486773,
+          "E_nr_lo": 9286775.66137566,
+          "E_nr_hi": 24090596.56084656,
+          "M": 380774389.16402113,
+          "N_over_T": 0.4487196986841158,
+          "m": 0.5291581133566561,
+          "q_lo": 0.2553967640494496,
+          "q_hi": 0.2942749589090678,
+          "depth": 7.174071311847647,
+          "E_nr_share_lo": 0.07653569493081268,
+          "E_nr_share_hi": 0.19853936568648786,
+          "reads_per_graph": 759.494708994709
+        }
+      ]
+    },
+    "80b-P3": {
+      "eligible_2_of_2": true,
+      "launches": [
+        {
+          "graphs": 378,
+          "T": 282984123.2804233,
+          "Res": 184356201.85185185,
+          "N": 98627921.42857143,
+          "E_r_lo": 137778087.83068782,
+          "E_r_hi": 174244280.15873015,
+          "E_nr_lo": 10111921.693121694,
+          "E_nr_hi": 46578114.02116402,
+          "M": 644053436.2751323,
+          "N_over_T": 0.3485281092283613,
+          "m": 0.8950342011931266,
+          "q_lo": 0.21392337975482922,
+          "q_hi": 0.2705432039404491,
+          "depth": 9.292006035636472,
+          "E_nr_share_lo": 0.05484991332837073,
+          "E_nr_share_hi": 0.2526528185832016,
+          "reads_per_graph": 1288.0925925925926
+        },
+        {
+          "graphs": 378,
+          "T": 282076557.14285713,
+          "Res": 182639952.3809524,
+          "N": 99436604.76190476,
+          "E_r_lo": 139218758.73015872,
+          "E_r_hi": 172700205.29100528,
+          "E_nr_lo": 9939747.08994709,
+          "E_nr_hi": 43421193.65079365,
+          "M": 640573201.6084656,
+          "N_over_T": 0.35251637275034264,
+          "m": 0.8901977561415174,
+          "q_lo": 0.21733465961514375,
+          "q_hi": 0.26960260725450075,
+          "depth": 9.32460179457451,
+          "E_nr_share_lo": 0.05442263294733377,
+          "E_nr_share_hi": 0.23774203335437394,
+          "reads_per_graph": 1281.2354497354497
+        }
+      ]
+    }
+  },
+  "gate": {
+    "status": "FAIL",
+    "reason": "sign of delta_beta_traced differs from the primary delta_beta",
+    "beta_traced": {
+      "30b": 0.49600284314003246,
+      "80b": 0.2265779473696097
+    },
+    "envelope_traced": {
+      "30b": [
+        0.49139771806963495,
+        0.5005968429823467
+      ],
+      "80b": [
+        0.20417682526155956,
+        0.24902817574331673
+      ]
+    },
+    "delta_beta_traced": -0.2694248957704227,
+    "traced_classification": "REPRODUCED"
+  },
+  "counterfactuals": {
+    "label": "DESCRIPTIVE ACCOUNTING ONLY"
+  },
+  "candidates": {
+    "a": {
+      "status": "NOT EVALUABLE"
+    },
+    "b": {
+      "status": "NOT EVALUABLE",
+      "device": "INDETERMINATE"
+    },
+    "c": {
+      "status": "NOT EVALUABLE"
+    },
+    "d": {
+      "status": "NOT EVALUABLE"
+    }
+  },
+  "lifecycle_status": "INCONCLUSIVE",
+  "rq009": {
+    "status": "PARTIALLY ANSWERED",
+    "kind": "unchanged, data note",
+    "resolved": [],
+    "remaining": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "note": "the historical slope difference is not reproduced at matched budget/F; consistent with a normalization/region difference"
+  },
+  "routing": {
+    "historical_premise_exp007": {
+      "30b": {
+        "eval": [
+          2179,
+          6144
+        ],
+        "dev": [
+          2069,
+          6144
+        ]
+      },
+      "80b": {
+        "eval": [
+          6331,
+          24576
+        ],
+        "dev": [
+          6403,
+          24576
+        ]
+      }
+    },
+    "per_launch": {
+      "80b-P3-L01": {
+        "ews90_experts": 6060,
+        "historical_ews_fraction": 0.24658203125,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.2473904969262295,
+        "pressure_normalized_ews_bytes_over_F": 12.666393442622951
+      },
+      "80b-P3-L11": {
+        "ews90_experts": 6060,
+        "historical_ews_fraction": 0.24658203125,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.2473904969262295,
+        "pressure_normalized_ews_bytes_over_F": 12.666393442622951
+      },
+      "30b-P1-L02": {
+        "ews90_experts": 2140,
+        "historical_ews_fraction": 0.3483072916666667,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.34906964045698924,
+        "pressure_normalized_ews_bytes_over_F": 5.585114247311828
+      },
+      "30b-P1-L10": {
+        "ews90_experts": 2140,
+        "historical_ews_fraction": 0.3483072916666667,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.34906964045698924,
+        "pressure_normalized_ews_bytes_over_F": 5.585114247311828
+      },
+      "80b-P1-L03": {
+        "ews90_experts": 6060,
+        "historical_ews_fraction": 0.24658203125,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.2473904969262295,
+        "pressure_normalized_ews_bytes_over_F": 12.666393442622951
+      },
+      "80b-P1-L12": {
+        "ews90_experts": 6060,
+        "historical_ews_fraction": 0.24658203125,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.2473904969262295,
+        "pressure_normalized_ews_bytes_over_F": 12.666393442622951
+      },
+      "80b-P2-L04": {
+        "ews90_experts": 6060,
+        "historical_ews_fraction": 0.24658203125,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.2473904969262295,
+        "pressure_normalized_ews_bytes_over_F": 12.666393442622951
+      },
+      "80b-P2-L09": {
+        "ews90_experts": 6060,
+        "historical_ews_fraction": 0.24658203125,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.2473904969262295,
+        "pressure_normalized_ews_bytes_over_F": 12.666393442622951
+      },
+      "30b-P3-L05": {
+        "ews90_experts": 2140,
+        "historical_ews_fraction": 0.3483072916666667,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.34906964045698924,
+        "pressure_normalized_ews_bytes_over_F": 5.585114247311828
+      },
+      "30b-P3-L07": {
+        "ews90_experts": 2140,
+        "historical_ews_fraction": 0.3483072916666667,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.34906964045698924,
+        "pressure_normalized_ews_bytes_over_F": 5.585114247311828
+      },
+      "30b-P2-L06": {
+        "ews90_experts": 2140,
+        "historical_ews_fraction": 0.3483072916666667,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.34906964045698924,
+        "pressure_normalized_ews_bytes_over_F": 5.585114247311828
+      },
+      "30b-P2-L08": {
+        "ews90_experts": 2140,
+        "historical_ews_fraction": 0.3483072916666667,
+        "byte_weighted_variant_ews_bytes_over_store_bytes": 0.34906964045698924,
+        "pressure_normalized_ews_bytes_over_F": 5.585114247311828
+      }
+    },
+    "taxonomy": {
+      "historical_ews_fraction": "EWS90 routed experts / total routed experts (the literal 'smaller EWS fraction'); EXP-007 values are historical/descriptive premises only",
+      "byte_weighted_variant": "EWS90 bytes / store bytes: NOT equivalent (expert size varies by layer in both models); reported separately, labelled",
+      "pressure_normalized_predictor": "EWS90 bytes / F with exact per-layer expert sizes: a predictor under budget/F normalization; not the historical statement and not a decision endpoint",
+      "mechanism_consequence": "candidate (a) endpoint m and its elasticity e_a (see CANDIDATE_RULES['a'])"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+target,model,quantity,resamples,p2.5,median,p97.5
+gen_tok_s,30b,rho P0,2000,0.8291,0.8501,0.9494
+gen_tok_s,30b,rho P1,2000,0.5318,0.6688,0.9817
+gen_tok_s,30b,rho P2,2000,0.6636,0.7246,1.0
+gen_tok_s,30b,|rho P1| - |rho P0|,2000,-0.3014,-0.1789,0.0331
+gen_tok_s,30b,|rho P2| - |rho P0|,2000,-0.1673,-0.1244,0.0506
+gen_tok_s,80b,rho P0,2000,0.5597,0.7162,0.8559
+gen_tok_s,80b,rho P1,2000,0.6157,0.7437,0.9279
+gen_tok_s,80b,rho P2,2000,0.6413,0.8031,0.9449
+gen_tok_s,80b,|rho P1| - |rho P0|,2000,-0.1592,0.0421,0.1757
+gen_tok_s,80b,|rho P2| - |rho P0|,2000,-0.115,0.1043,0.2647
+expert_level_hit_rate,30b,rho P0,2000,0.9071,0.9457,0.9542
+expert_level_hit_rate,30b,rho P1,2000,0.9121,0.9726,0.9961
+expert_level_hit_rate,30b,rho P2,2000,0.9059,0.9778,1.0
+expert_level_hit_rate,30b,|rho P1| - |rho P0|,2000,-0.0364,0.0301,0.0785
+expert_level_hit_rate,30b,|rho P2| - |rho P0|,2000,-0.039,0.0373,0.0736
+expert_level_hit_rate,80b,rho P0,2000,0.6562,0.772,0.8646
+expert_level_hit_rate,80b,rho P1,2000,0.804,0.8951,0.9642
+expert_level_hit_rate,80b,rho P2,2000,0.8859,0.9138,0.951
+expert_level_hit_rate,80b,|rho P1| - |rho P0|,2000,-0.0027,0.1336,0.2092
+expert_level_hit_rate,80b,|rho P2| - |rho P0|,2000,0.053,0.1533,0.2543

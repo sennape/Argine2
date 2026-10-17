@@ -1,0 +1,42 @@
+{
+  "name": "natural-language",
+  "version": "v1",
+  "description": "Expository natural-language explanations in English.",
+  "n_predict": 128,
+  "splits": {
+    "dev": [
+      {
+        "id": "nl-dev-1",
+        "segment": "natural-language",
+        "prompt": "Explain how a refrigerator moves heat from its inside to the room, step by step, for someone with no physics background."
+      },
+      {
+        "id": "nl-dev-2",
+        "segment": "natural-language",
+        "prompt": "Describe the main causes of seasonal weather changes on Earth and correct one common misconception about them."
+      },
+      {
+        "id": "nl-dev-3",
+        "segment": "natural-language",
+        "prompt": "What happens, in order, between pressing a key on a keyboard and the letter appearing on the screen?"
+      }
+    ],
+    "eval": [
+      {
+        "id": "nl-eval-1",
+        "segment": "natural-language",
+        "prompt": "Explain why bread goes stale and why toasting stale bread makes it taste fresher for a short time."
+      },
+      {
+        "id": "nl-eval-2",
+        "segment": "natural-language",
+        "prompt": "Describe how tides are produced and why most coastlines see two high tides per day."
+      },
+      {
+        "id": "nl-eval-3",
+        "segment": "natural-language",
+        "prompt": "Explain what a central bank does when it raises interest rates, and who feels the effect first."
+      }
+    ]
+  }
+}

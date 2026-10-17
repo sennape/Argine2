@@ -1,0 +1,14 @@
+{
+  "id": "EXP-001-thread-sweep",
+  "title": "Generation threads on a hybrid CPU",
+  "status": "INCONCLUSIVE",
+  "period": "2026-09-27 → 2026-09-30",
+  "origin": "Argine v1 (historical); data re-derived from raw logs by Argine2",
+  "rqs": [
+    "RQ-014"
+  ],
+  "commands": [
+    "argine benchmark MODEL --sweep-threads 4,6,8,12"
+  ],
+  "supersedes": "—"
+}

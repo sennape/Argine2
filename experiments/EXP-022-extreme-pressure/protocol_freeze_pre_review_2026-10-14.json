@@ -1,0 +1,762 @@
+{
+  "experiment": "EXP-022-extreme-pressure",
+  "protocol_version": "EXP022-P1",
+  "status": "prospective freeze before any EXP-022 launch; pending independent review",
+  "supersedes": null,
+  "protocol_hash_method": "sha256 of the UTF-8, LF-normalised README text strictly between '<!-- EXP-022 PROTOCOL-BEGIN -->' and '<!-- EXP-022 PROTOCOL-END -->'",
+  "spec_hash_method": "sha256 of json.dumps(protocol_spec(), sort_keys=True, ensure_ascii=False)",
+  "code_hash_method": "sha256 of the LF-normalised file bytes",
+  "protocol_sha256": "e34cf7b084e5a2b5d3c22566743824e98de65194712a3642e1e1ac0e3ab689c2",
+  "spec_sha256": "871ebecc3f4c1f554b3d714771ee55ad5ea41f6cef838d3fc35ed8f27f9bc842",
+  "tool_sha256": "99057435771e0ca65c5fa9d757deea412813635959dd36072d662f6d8b42d6c0",
+  "tests_sha256": "59e6e9380ccd79581618ce9e773a04db9382f781c7016d9d7b40ba74795623d4",
+  "argine2_at_freeze": {
+    "head": "af1529322e0afc5a93af6bf7dc75aac8259e5863",
+    "error": null,
+    "porcelain": [
+      " M experiments/EXP-022-extreme-pressure/README.md",
+      " M experiments/EXP-022-extreme-pressure/config.json",
+      "?? tests/test_exp022.py",
+      "?? tools/exp022_run.py"
+    ],
+    "note": "the protocol files are uncommitted at freeze time by construction; --run requires them committed, HEAD descending from this commit, and a clean tree"
+  },
+  "frozen_utc": "2026-10-14T18:42:39+00:00",
+  "spec": {
+    "experiment": "EXP-022-extreme-pressure",
+    "protocol_version": "EXP022-P1",
+    "freeze_kind": "prospective: written before any EXP-022 launch; no measurement exists",
+    "historical_hypothesis_verbatim": "[HYPOTHESIS] Prediction written before measuring (from the EXP-009 pilot): on Qwen3-30B-A3B, below one token's expert footprint (~1.02 GiB, 384 experts) the runtime's sharded LRU collapses (pilot replay: 0-20% expert hits at 1 GiB, ~0-2% at 768 MiB), while frequency-based retention would keep ~30-45%. If the runtime keeps more than 30% expert-level hits at 768 MiB, the prediction is falsified.",
+    "h5": {
+      "model": "30b",
+      "budget": "768M",
+      "budget_bytes": 805306368,
+      "phase": "diag",
+      "threshold": 0.3,
+      "comparison": "strictly greater than",
+      "metric_field": "manifest.final_store_stats.expert_level_hit_rate",
+      "metric_definition": "EXP-020 workload gate-slice hit rate: slice hits over slice accesses made in the gate (first) MUL_MAT_ID node of each layer, prefill + decode, workload requests only (warm-up and flush sentinel excluded); computed by argine.research.rawlog.node_attributed_outcomes from the research trace of the launch. It is the runtime field `expert_level_hit_rate`, not the expert-event decode-only counterfactual metric of the EXP-009 pilot.",
+      "aggregation": "arithmetic mean over the H-5-eligible launches of the 30B diag block at 768 MiB (2 scheduled); individual launches and dispersion reported; no launch-level vote",
+      "eligibility": "launch outcome VALID, manifest publication_quality true, trace complete over the workload, budget_violations == 0",
+      "minimum_eligible_launches": 1,
+      "falsified_if": "aggregate > 0.30",
+      "otherwise": "not falsified by this test; formal status INCONCLUSIVE",
+      "not_evaluable": "0 eligible launches (or the 30B diag block incomplete): formal status INCONCLUSIVE, reported as not evaluable, with the outcomes observed at 768 MiB",
+      "positive_support_threshold": null,
+      "positive_support_note": "No positive support threshold is introduced. The 2026-10-03 prediction recorded only a falsification condition; any support bound chosen now (e.g. <=10%, <=2%, a fraction of the 1.5G anchor) would be selected after the pilot values were known. Agreement with the predicted range may be reported descriptively only."
+    },
+    "outputs": {
+      "A": "H-5 mechanism test (30B, traced diag block, historical >30% falsifier)",
+      "B": "RQ-008 usability envelope (untraced perf blocks; descriptive; does not set H-5)"
+    },
+    "model_roles": {
+      "30b": "primary (H-5 mechanism test + usability envelope)",
+      "80b": "exploratory (usability envelope + descriptive diagnostics; no frozen prediction)"
+    },
+    "models": {
+      "30b": {
+        "name": "Qwen3-30B-A3B Q4_K_M",
+        "path": "C:\\modelli\\Qwen_Qwen3-30B-A3B-Q4_K_M.gguf",
+        "store": "C:\\modelli\\Qwen_Qwen3-30B-A3B-Q4_K_M.psxs",
+        "gen_threads": 12,
+        "n_layers": 48,
+        "n_experts": 128,
+        "top_k": 8,
+        "footprint_bytes": 1097072640,
+        "whole_layer_bytes": 391643136,
+        "footprint_source": "experiments/EXP-007-router-characterization/analysis-v3/30b-natural-language-dev-run-00-4G/analysis_manifest.json"
+      },
+      "80b": {
+        "name": "Qwen3-Next-80B-A3B-Instruct Q3_K_M",
+        "path": "C:\\modelli\\Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+        "store": "C:\\modelli\\Qwen3-Next-80B-A3B-Instruct-Q3_K_M.psxs",
+        "gen_threads": 4,
+        "n_layers": 48,
+        "n_experts": 512,
+        "top_k": 10,
+        "footprint_bytes": 719585280,
+        "whole_layer_bytes": 830472192,
+        "footprint_source": "experiments/EXP-007-router-characterization/analysis-v3/80b-natural-language-dev-run-00-4G/analysis_manifest.json"
+      }
+    },
+    "footprint_definition": "one decode token's routed-expert footprint as the store accounts it: sum over the 48 MoE layers of top_k x the bytes the store needs for one expert of that layer (gate + up + down slices, each rounded up to 4096 B: argine.research.runner.expert_bytes_from_model). The shared expert of the 80B is not in the store. Derived from existing metadata, not measured by EXP-022.",
+    "budgets": {
+      "30b": {
+        "1.5G": {
+          "bytes": 1610612736,
+          "mib": 1536.0,
+          "gib": 1.5,
+          "role": "in-session anchor",
+          "fraction_of_footprint": 1.468100358422939,
+          "shards": 16,
+          "per_shard_bytes": 100663296,
+          "below_whole_layer": false
+        },
+        "1152M": {
+          "bytes": 1207959552,
+          "mib": 1152.0,
+          "gib": 1.125,
+          "role": "above the one-token footprint",
+          "fraction_of_footprint": 1.1010752688172043,
+          "shards": 16,
+          "per_shard_bytes": 75497472,
+          "below_whole_layer": false
+        },
+        "1024M": {
+          "bytes": 1073741824,
+          "mib": 1024.0,
+          "gib": 1.0,
+          "role": "approximately at the footprint",
+          "fraction_of_footprint": 0.9787335722819593,
+          "shards": 16,
+          "per_shard_bytes": 67108864,
+          "below_whole_layer": false
+        },
+        "768M": {
+          "bytes": 805306368,
+          "mib": 768.0,
+          "gib": 0.75,
+          "role": "H-5 primary falsification point",
+          "fraction_of_footprint": 0.7340501792114695,
+          "shards": 16,
+          "per_shard_bytes": 50331648,
+          "below_whole_layer": false
+        },
+        "512M": {
+          "bytes": 536870912,
+          "mib": 512.0,
+          "gib": 0.5,
+          "role": "far below the footprint",
+          "fraction_of_footprint": 0.48936678614097967,
+          "shards": 16,
+          "per_shard_bytes": 33554432,
+          "below_whole_layer": false
+        }
+      },
+      "80b": {
+        "1.5G": {
+          "bytes": 1610612736,
+          "mib": 1536.0,
+          "gib": 1.5,
+          "role": "in-session anchor",
+          "fraction_of_footprint": 2.2382513661202186,
+          "shards": 16,
+          "per_shard_bytes": 100663296,
+          "below_whole_layer": false
+        },
+        "768M": {
+          "bytes": 805306368,
+          "mib": 768.0,
+          "gib": 0.75,
+          "role": "above the one-token footprint",
+          "fraction_of_footprint": 1.1191256830601093,
+          "shards": 16,
+          "per_shard_bytes": 50331648,
+          "below_whole_layer": true
+        },
+        "672M": {
+          "bytes": 704643072,
+          "mib": 672.0,
+          "gib": 0.65625,
+          "role": "approximately at the footprint",
+          "fraction_of_footprint": 0.9792349726775956,
+          "shards": 16,
+          "per_shard_bytes": 44040192,
+          "below_whole_layer": true
+        },
+        "512M": {
+          "bytes": 536870912,
+          "mib": 512.0,
+          "gib": 0.5,
+          "role": "below the footprint",
+          "fraction_of_footprint": 0.7460837887067395,
+          "shards": 16,
+          "per_shard_bytes": 33554432,
+          "below_whole_layer": true
+        }
+      }
+    },
+    "excluded_budgets": {
+      "80b-336M": {
+        "bytes": 352321536,
+        "reason": "below 512 MiB the store uses floor(budget / 32 MiB) < 16 shards (10 at 336 MiB): a second structural variable. Not part of EXP022-P1. If ever run, it is a separately labelled exploratory feasibility probe, never pooled with or compared directly against the 16-shard arm."
+      }
+    },
+    "shard_rule": {
+      "rule": "n = min(16, floor(budget / 32 MiB)), >= 1; per-shard budget = budget / n",
+      "source": "patches/argine-store.cpp psx_cache_new_n (certified by BUILD-INFO)"
+    },
+    "runtime": {
+      "binary": "llama-research-v2/llama-server.exe",
+      "server_sha256": "a0063720ec4bb5d1ba3e4f7c0387dd1bc6a239b0ce038ba3d755351dab3f5cf3",
+      "build_info_sha256": "cc76046a98ce03b445e83d5948bcae22b7c2e46376e9f3cc414505b2bde97d04",
+      "llama_cpp_commit": "254b177307b14d055bbe4c050c9c441a1e06d8a4",
+      "instrumentation": "argine2-research-v2",
+      "backend": "cpu",
+      "read_mode": "asincrono",
+      "direct_io": "on (store-open line 'cache dell'OS scavalcata')",
+      "pretouch": "off (forced 0 by argine)",
+      "ctx": 4096,
+      "batch": 2048,
+      "ubatch": 512,
+      "kv_type": "f16",
+      "flash_attn": "on",
+      "gpu_layers": 0,
+      "parallel": 1,
+      "batch_threads": 12,
+      "gen_threads": {
+        "30b": 12,
+        "80b": 4
+      },
+      "thread_scope_note": "EXP-027 established these generation-thread optima at 4 GiB only; they are a frozen configuration choice here, not a claim of optimality below 1.5 GiB",
+      "repeat": 1,
+      "retries": 0,
+      "expert_stats": true,
+      "no_runtime_changes": "llama.cpp, expert store, shard and wait logic, allocator and binary are measured as they are"
+    },
+    "performance_phase": {
+      "tracing": "OFF (ARGINE_RESEARCH_TRACE absent)",
+      "reason": "EXP-024: < 2% supported at 4G only, inconclusive at 1.5G, unknown below",
+      "tool": "argine benchmark",
+      "prompt": "argine.bench.DEFAULT_PROMPT",
+      "prompt_sha256": "b1677835fc599087f01f08bf9ab3a07f088351e443740209de52be40778095f3",
+      "prompt_chars": 304,
+      "n_predict": 128,
+      "cache_prompt": false,
+      "warmup": "argine.bench default (8-token request), not measured",
+      "rounds": 3,
+      "rounds_order": {
+        "30b": [
+          [
+            "1.5G",
+            "1152M",
+            "1024M",
+            "768M",
+            "512M"
+          ],
+          [
+            "1152M",
+            "512M",
+            "768M",
+            "1024M",
+            "1.5G"
+          ],
+          [
+            "512M",
+            "1024M",
+            "1152M",
+            "1.5G",
+            "768M"
+          ]
+        ],
+        "80b": [
+          [
+            "1.5G",
+            "768M",
+            "512M",
+            "672M"
+          ],
+          [
+            "768M",
+            "672M",
+            "1.5G",
+            "512M"
+          ],
+          [
+            "672M",
+            "512M",
+            "768M",
+            "1.5G"
+          ]
+        ]
+      },
+      "primary_metric": "generation tok/s of the single measured request per launch"
+    },
+    "diagnostic_phase": {
+      "tracing": "ON (argine research trace, one budget per invocation)",
+      "workload": {
+        "name": "natural-language",
+        "version": "v1",
+        "split": "eval",
+        "file": "workloads/v1/natural-language.json",
+        "sha256": "71b170bc0fde211e3694fede63192c72ea70ef7f561791ac28b82ebac25105cc",
+        "requests": 3,
+        "n_predict": 128,
+        "split_rationale": "repository rule 'tune on dev, claim on eval' (workloads/README.md); nothing in EXP-022 is tuned on traces, and EXP-007 already holds natural-language EVAL runs of both models at >= 1.5 GiB"
+      },
+      "launches_per_budget": 2,
+      "rounds_order": {
+        "30b": [
+          [
+            "1.5G",
+            "1152M",
+            "1024M",
+            "768M",
+            "512M"
+          ],
+          [
+            "1152M",
+            "512M",
+            "768M",
+            "1024M",
+            "1.5G"
+          ]
+        ],
+        "80b": [
+          [
+            "1.5G",
+            "768M",
+            "512M",
+            "672M"
+          ],
+          [
+            "768M",
+            "672M",
+            "1.5G",
+            "512M"
+          ]
+        ]
+      },
+      "runs_after": "the same model's performance block is complete",
+      "reason_two_launches": "shard assignment hashes the store region pointer, so it may differ between launches",
+      "objectives": [
+        "workload gate-slice expert_level_hit_rate",
+        "phase semantics",
+        "misses / read bytes",
+        "pin waits (w records)",
+        "resident bytes vs budget",
+        "invariant violations",
+        "generated-token completeness",
+        "misses_outside_gate_nodes",
+        "routing / workload identity",
+        "qualification"
+      ],
+      "traced_throughput": "secondary only"
+    },
+    "blocks": [
+      "30b-perf",
+      "30b-diag",
+      "80b-perf",
+      "80b-diag"
+    ],
+    "launch_order": [
+      {
+        "block": "30b-perf",
+        "launch_index": 1,
+        "round": 1,
+        "position_in_round": 1,
+        "budget": "1.5G",
+        "budget_bytes": 1610612736
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 2,
+        "round": 1,
+        "position_in_round": 2,
+        "budget": "1152M",
+        "budget_bytes": 1207959552
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 3,
+        "round": 1,
+        "position_in_round": 3,
+        "budget": "1024M",
+        "budget_bytes": 1073741824
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 4,
+        "round": 1,
+        "position_in_round": 4,
+        "budget": "768M",
+        "budget_bytes": 805306368
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 5,
+        "round": 1,
+        "position_in_round": 5,
+        "budget": "512M",
+        "budget_bytes": 536870912
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 6,
+        "round": 2,
+        "position_in_round": 1,
+        "budget": "1152M",
+        "budget_bytes": 1207959552
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 7,
+        "round": 2,
+        "position_in_round": 2,
+        "budget": "512M",
+        "budget_bytes": 536870912
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 8,
+        "round": 2,
+        "position_in_round": 3,
+        "budget": "768M",
+        "budget_bytes": 805306368
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 9,
+        "round": 2,
+        "position_in_round": 4,
+        "budget": "1024M",
+        "budget_bytes": 1073741824
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 10,
+        "round": 2,
+        "position_in_round": 5,
+        "budget": "1.5G",
+        "budget_bytes": 1610612736
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 11,
+        "round": 3,
+        "position_in_round": 1,
+        "budget": "512M",
+        "budget_bytes": 536870912
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 12,
+        "round": 3,
+        "position_in_round": 2,
+        "budget": "1024M",
+        "budget_bytes": 1073741824
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 13,
+        "round": 3,
+        "position_in_round": 3,
+        "budget": "1152M",
+        "budget_bytes": 1207959552
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 14,
+        "round": 3,
+        "position_in_round": 4,
+        "budget": "1.5G",
+        "budget_bytes": 1610612736
+      },
+      {
+        "block": "30b-perf",
+        "launch_index": 15,
+        "round": 3,
+        "position_in_round": 5,
+        "budget": "768M",
+        "budget_bytes": 805306368
+      },
+      {
+        "block": "30b-diag",
+        "launch_index": 1,
+        "round": 1,
+        "position_in_round": 1,
+        "budget": "1.5G",
+        "budget_bytes": 1610612736
+      },
+      {
+        "block": "30b-diag",
+        "launch_index": 2,
+        "round": 1,
+        "position_in_round": 2,
+        "budget": "1152M",
+        "budget_bytes": 1207959552
+      },
+      {
+        "block": "30b-diag",
+        "launch_index": 3,
+        "round": 1,
+        "position_in_round": 3,
+        "budget": "1024M",
+        "budget_bytes": 1073741824
+      },
+      {
+        "block": "30b-diag",
+        "launch_index": 4,
+        "round": 1,
+        "position_in_round": 4,
+        "budget": "768M",
+        "budget_bytes": 805306368
+      },
+      {
+        "block": "30b-diag",
+        "launch_index": 5,
+        "round": 1,
+        "position_in_round": 5,
+        "budget": "512M",
+        "budget_bytes": 536870912
+      },
+      {
+        "block": "30b-diag",
+        "launch_index": 6,
+        "round": 2,
+        "position_in_round": 1,
+        "budget": "1152M",
+        "budget_bytes": 1207959552
+      },
+      {
+        "block": "30b-diag",
+        "launch_index": 7,
+        "round": 2,
+        "position_in_round": 2,
+        "budget": "512M",
+        "budget_bytes": 536870912
+      },
+      {
+        "block": "30b-diag",
+        "launch_index": 8,
+        "round": 2,
+        "position_in_round": 3,
+        "budget": "768M",
+        "budget_bytes": 805306368
+      },
+      {
+        "block": "30b-diag",
+        "launch_index": 9,
+        "round": 2,
+        "position_in_round": 4,
+        "budget": "1024M",
+        "budget_bytes": 1073741824
+      },
+      {
+        "block": "30b-diag",
+        "launch_index": 10,
+        "round": 2,
+        "position_in_round": 5,
+        "budget": "1.5G",
+        "budget_bytes": 1610612736
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 1,
+        "round": 1,
+        "position_in_round": 1,
+        "budget": "1.5G",
+        "budget_bytes": 1610612736
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 2,
+        "round": 1,
+        "position_in_round": 2,
+        "budget": "768M",
+        "budget_bytes": 805306368
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 3,
+        "round": 1,
+        "position_in_round": 3,
+        "budget": "512M",
+        "budget_bytes": 536870912
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 4,
+        "round": 1,
+        "position_in_round": 4,
+        "budget": "672M",
+        "budget_bytes": 704643072
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 5,
+        "round": 2,
+        "position_in_round": 1,
+        "budget": "768M",
+        "budget_bytes": 805306368
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 6,
+        "round": 2,
+        "position_in_round": 2,
+        "budget": "672M",
+        "budget_bytes": 704643072
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 7,
+        "round": 2,
+        "position_in_round": 3,
+        "budget": "1.5G",
+        "budget_bytes": 1610612736
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 8,
+        "round": 2,
+        "position_in_round": 4,
+        "budget": "512M",
+        "budget_bytes": 536870912
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 9,
+        "round": 3,
+        "position_in_round": 1,
+        "budget": "672M",
+        "budget_bytes": 704643072
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 10,
+        "round": 3,
+        "position_in_round": 2,
+        "budget": "512M",
+        "budget_bytes": 536870912
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 11,
+        "round": 3,
+        "position_in_round": 3,
+        "budget": "768M",
+        "budget_bytes": 805306368
+      },
+      {
+        "block": "80b-perf",
+        "launch_index": 12,
+        "round": 3,
+        "position_in_round": 4,
+        "budget": "1.5G",
+        "budget_bytes": 1610612736
+      },
+      {
+        "block": "80b-diag",
+        "launch_index": 1,
+        "round": 1,
+        "position_in_round": 1,
+        "budget": "1.5G",
+        "budget_bytes": 1610612736
+      },
+      {
+        "block": "80b-diag",
+        "launch_index": 2,
+        "round": 1,
+        "position_in_round": 2,
+        "budget": "768M",
+        "budget_bytes": 805306368
+      },
+      {
+        "block": "80b-diag",
+        "launch_index": 3,
+        "round": 1,
+        "position_in_round": 3,
+        "budget": "512M",
+        "budget_bytes": 536870912
+      },
+      {
+        "block": "80b-diag",
+        "launch_index": 4,
+        "round": 1,
+        "position_in_round": 4,
+        "budget": "672M",
+        "budget_bytes": 704643072
+      },
+      {
+        "block": "80b-diag",
+        "launch_index": 5,
+        "round": 2,
+        "position_in_round": 1,
+        "budget": "768M",
+        "budget_bytes": 805306368
+      },
+      {
+        "block": "80b-diag",
+        "launch_index": 6,
+        "round": 2,
+        "position_in_round": 2,
+        "budget": "672M",
+        "budget_bytes": 704643072
+      },
+      {
+        "block": "80b-diag",
+        "launch_index": 7,
+        "round": 2,
+        "position_in_round": 3,
+        "budget": "1.5G",
+        "budget_bytes": 1610612736
+      },
+      {
+        "block": "80b-diag",
+        "launch_index": 8,
+        "round": 2,
+        "position_in_round": 4,
+        "budget": "512M",
+        "budget_bytes": 536870912
+      }
+    ],
+    "cooldown_s": 60,
+    "completion_rule": {
+      "cap_s": {
+        "perf": 2400,
+        "diag": 6000
+      },
+      "formula": "READY_TIMEOUT_S (600, LlamaServerProcess.wait_ready) + REQUEST_TIMEOUT_S (1800, argine.bench request timeout) x measured requests",
+      "normal_duration_reference": {
+        "perf": "EXP-024 30B 1.5G untraced launches: process monitor duration 46.2-49.0 s (raw/records.jsonl)",
+        "diag": "EXP-007 natural-language EVAL 1.5G traced runs: workload wall 108-109 s (30B), 89-94 s (80B)"
+      },
+      "token_completeness": {
+        "perf": "measured request generated_tokens == 128",
+        "diag": "3 workload responses without error, predicted_n == 128 each"
+      },
+      "fixed_before_data": true
+    },
+    "outcome_taxonomy": {
+      "INVALID": "provenance / configuration / invariant failure or a harness safety condition; stops the block",
+      "INFEASIBLE": "the launch's llama-server log segment contains 'argine: impossibile rendere residenti gli expert del layer' (GGML_ABORT: the store could not make a node's slices resident); a scientific outcome",
+      "NON_COMPLETION": "no abort signature, but the workload did not complete within the cap or the token-completeness rule; a scientific outcome",
+      "VALID": "provenance verified, measured workload complete, exit status 0, no abort signature",
+      "precedence": "INVALID > INFEASIBLE > NON_COMPLETION > VALID",
+      "on_infeasible_or_non_completion": "the block continues with the next scheduled launch; no budget is removed adaptively; nothing is retried"
+    },
+    "usability_reporting_conventions": {
+      "INTERACTIVE": ">= 5 tok/s",
+      "DEGRADED": ">= 1 and < 5 tok/s",
+      "NON_INTERACTIVE": "< 1 tok/s",
+      "note": "reporting labels for VALID performance launches only; not hypothesis thresholds; I/O_DOMINATED is not used (no validated estimator exists)"
+    },
+    "replay_scope": {
+      "role": "diagnostic / mechanism only; never replaces measured throughput or the measured runtime hit rate",
+      "tool": "tools/validate_replay_fidelity.py per diag launch, after the session",
+      "conditional_fidelity": "report whether w / U records occurred; EXP-021-level fidelity is not claimed where those unvalidated paths occur; disagreement is reported, never used to exclude a launch",
+      "counterfactuals": "LFU / static-frequency / Belady may be reported as mechanism context; sharded-lru-16-expert is not a runtime model (FH-025)"
+    },
+    "exclusion_and_qualification": {
+      "h5_eligibility": "launch outcome VALID, manifest publication_quality true, trace complete over the workload, budget_violations == 0",
+      "replacement_runs": "none under EXP022-P1",
+      "stopped_block": "a block stopped by an INVALID launch is not resumed or repeated under this freeze",
+      "pooling": "no pooling across blocks or sessions without explicit labelling"
+    },
+    "machine_state": {
+      "min_free_ram_to_start_block_bytes": 8589934592,
+      "per_launch": "free RAM before launch recorded; below 8 GiB is a warning",
+      "browsers_closed": [
+        "chrome.exe",
+        "msedge.exe",
+        "firefox.exe",
+        "brave.exe",
+        "opera.exe"
+      ],
+      "no_orphan_llama_server": true,
+      "ac_power": "must not be reported as battery"
+    },
+    "registry_side_effect": "`argine research trace` appends one line per run to the tracked llama-research-v2/VALIDATIONS.jsonl; the block gate accepts only append-only lines whose run_dir lies under this experiment's raw/"
+  }
+}

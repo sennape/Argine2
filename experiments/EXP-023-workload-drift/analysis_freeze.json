@@ -1,0 +1,272 @@
+{
+  "experiment": "EXP-023-workload-drift",
+  "version": "EXP023-R1",
+  "supersedes": "analysis_freeze_pre_spec-validation_2026-10-12.json",
+  "label": "retrospective synthesis / reproducibility freeze (NOT frozen before data)",
+  "statements": [
+    "the original EXP-023 hypothesis (2026-10-03) predates the transition campaign",
+    "the exact closure operationalisation is frozen now (2026-10-12)",
+    "all four source traces and their temporal analyses already exist",
+    "FH-028 and FH-029 outcomes are already known",
+    "the JSD operationalisation was specified after the data existed",
+    "no untouched-holdout or confirmatory claim is made"
+  ],
+  "jsd": {
+    "window_counted_decode_steps": 64,
+    "base": 2,
+    "phase": "decode, counted steps only",
+    "unit": "routed selections per layer (each token's top-k once each)",
+    "definition": "M=(P+Q)/2; JSD = 1/2 sum_{P>0} P log2(P/M) + 1/2 sum_{Q>0} Q log2(Q/M); zero terms 0; no smoothing",
+    "boundary": "last W counted steps of the old segment vs first W of the new segment",
+    "within_reference": "non-overlapping complete W-step windows from each segment start; JSD of adjacent pairs; reference of a boundary = pairs of its old and new segment; pooled over all four segments reported too",
+    "outputs": "effect sizes and descriptive summaries only"
+  },
+  "transient": {
+    "policies": [
+      "ablate-frozen",
+      "adaptive-e64"
+    ],
+    "budgets": [
+      "4G",
+      "2G",
+      "1.5G"
+    ],
+    "boundaries": [
+      1,
+      2,
+      3
+    ],
+    "source": "adaptation_v2.csv (signed values kept)",
+    "summary_keys": [
+      "gain_vs_frozen_misses",
+      "A_fixed_mean_allocation_gain",
+      "A_share_of_gain_mean_alloc",
+      "oracle_potential_B_segment_switching",
+      "reaction_lag_cost_vs_instant_piecewise"
+    ]
+  },
+  "verdict_logic": "deterministic: FALSIFIED for the current controller, from the historical FH-029 record (conjunctive hypothesis; temporal-reaction clause falsified on 30B DEV and replicated on 30B EVAL, 80B DEV, 80B EVAL). Neither the JSD characterisation nor the numerical summaries are inputs. The FH-029 facts are re-checked as reproducibility evidence (mean-allocation gain vs controller gain; sign of the reaction-lag cost); a contradiction is an evidence/provenance inconsistency error to investigate, never a verdict change.",
+  "output_schema": {
+    "source_manifest.json": "sources with file paths and SHA-256",
+    "jsd_by_layer.csv": [
+      "trace_key",
+      "model",
+      "split",
+      "layer",
+      "boundary",
+      "before_segment",
+      "after_segment",
+      "before_window",
+      "after_window",
+      "boundary_jsd",
+      "within_n",
+      "within_jsd_values",
+      "within_median",
+      "within_min",
+      "within_max",
+      "ratio_boundary_over_within_median",
+      "within_all_segments_median"
+    ],
+    "jsd_summary.csv": [
+      "level",
+      "key",
+      "boundary",
+      "n_rows",
+      "boundary_jsd_median",
+      "boundary_jsd_q1",
+      "boundary_jsd_q3",
+      "within_median_median",
+      "ratio_median",
+      "ratio_q1",
+      "ratio_q3",
+      "share_rows_boundary_above_within_max"
+    ],
+    "transient_summary.csv": "36 rows: 4 traces x 3 budgets x 3 boundaries",
+    "controller_summary.csv": "12 rows: 4 traces x 3 budgets",
+    "summary.json": [
+      "historical_hypothesis",
+      "established_evidence",
+      "retrospective_jsd_operationalisation",
+      "cross_trace_transient_synthesis",
+      "final_status_logic"
+    ]
+  },
+  "sources": [
+    {
+      "key": "30b-dev",
+      "model": "30b",
+      "split": "dev",
+      "campaign": "30b-transition-dev-v2",
+      "run": "run-00-4G",
+      "temporal_dir": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal",
+      "workload_routing_sha256": "84371c06dda9d887f8292f8f5dfdb3f3f45c02b92047656e59d960c523b30fc5",
+      "files": {
+        "summary.json": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal/summary.json",
+          "sha256": "5aae0ec14ca656518b9f638981fbefc29066ad0502896bde2416ab9cc6d6c065"
+        },
+        "adaptation_v2.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal/adaptation_v2.csv",
+          "sha256": "54e36108e6a94a0f32015ac593bd5baa229d9c94fd61b647bfbd6098bc8d798b"
+        },
+        "segments.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal/segments.csv",
+          "sha256": "ad785a985dd5c0798d23ca7a1da3bd036288339817a252b2525083ad90b89bae"
+        },
+        "cross_segment.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal/cross_segment.csv",
+          "sha256": "1e61ac411ae97c1bbc97e43048d59634072bea4cd467bebf7f8a65afdcb10cfb"
+        },
+        "replication.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal/replication.csv",
+          "sha256": "b866ca591a4827fd5bebb340b723891d2858a788493f0a27c031614b7f688457"
+        },
+        "trace": {
+          "path": "experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-00-4G/trace.jsonl.gz",
+          "sha256": "4dc1a0a97ac0acb5000b43986a74eec6a3b2dc18fb0db96196e2be5354b42acc"
+        },
+        "manifest": {
+          "path": "experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-00-4G/manifest.json",
+          "sha256": "86b233582c28a406a39f1667f298a002729a7fac75d51588b27490ee914ee027"
+        },
+        "runtime_hit_rates": {
+          "path": "experiments/EXP-007-router-characterization/runtime-hit-rates.csv",
+          "sha256": "671fc593e2b66cfecb7a8dbfda9c55dfba036234c86710c753381fec986a81c4"
+        }
+      }
+    },
+    {
+      "key": "30b-eval",
+      "model": "30b",
+      "split": "eval",
+      "campaign": "30b-transition-eval-v2",
+      "run": "run-00-4G",
+      "temporal_dir": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal",
+      "workload_routing_sha256": "86f46cb6af2f4984b4a10d2571d3305cf8cfb6fca0fc6fb0f576c8b55a2660d7",
+      "files": {
+        "summary.json": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal/summary.json",
+          "sha256": "33541487e0a53c9dd4e813b83d6d18c86c9a67d41416b88ea5b66c6e4f31ba01"
+        },
+        "adaptation_v2.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal/adaptation_v2.csv",
+          "sha256": "62542f917dea2554e932004664449268c2cf64e9b05b1a9fa61ca274419aceb2"
+        },
+        "segments.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal/segments.csv",
+          "sha256": "b062eee9605937b8827c0688dec47ccfb862cc5128ce97a323c577664d41dbb5"
+        },
+        "cross_segment.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal/cross_segment.csv",
+          "sha256": "359f96a6c31375e0b577c63876a4a31e9c2789eca20baf1cabb1f9ce141e41f8"
+        },
+        "replication.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal/replication.csv",
+          "sha256": "dbe01b8a93c8134ddcd51d5e8ee6daf424b94dd159a55d0814618a39352333c7"
+        },
+        "trace": {
+          "path": "experiments/EXP-007-router-characterization/raw/30b-transition-eval-v2/run-00-4G/trace.jsonl.gz",
+          "sha256": "832b9a88716e81a7f29769fe8f16f61f2d5e5896543e13e16c79c5596df9d05a"
+        },
+        "manifest": {
+          "path": "experiments/EXP-007-router-characterization/raw/30b-transition-eval-v2/run-00-4G/manifest.json",
+          "sha256": "7e7899e4838ac4f4649d6955de18474ec4f881211ddc9fc8a53b411c0385a15f"
+        },
+        "runtime_hit_rates": {
+          "path": "experiments/EXP-007-router-characterization/runtime-hit-rates.csv",
+          "sha256": "671fc593e2b66cfecb7a8dbfda9c55dfba036234c86710c753381fec986a81c4"
+        }
+      }
+    },
+    {
+      "key": "80b-dev",
+      "model": "80b",
+      "split": "dev",
+      "campaign": "80b-transition-dev-v2",
+      "run": "run-00-4G",
+      "temporal_dir": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal",
+      "workload_routing_sha256": "a541ee9926d67d5d4c691cfb219123f5bb4fa3b4454783d7fff7d08799480e03",
+      "files": {
+        "summary.json": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal/summary.json",
+          "sha256": "9d8e984d26359b993bbb325bd937008d6ddcd6650929087bee0e411fad93197a"
+        },
+        "adaptation_v2.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal/adaptation_v2.csv",
+          "sha256": "ba4ae3c08b3b746e3844046cb00ce8f6b782ab754515cf2c0892ad37ebdf44f0"
+        },
+        "segments.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal/segments.csv",
+          "sha256": "fa981d21513e9b1878784f433cda7f4115e2d13005bf739273e851e04032a1a7"
+        },
+        "cross_segment.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal/cross_segment.csv",
+          "sha256": "553fae82d6abb907b52f81d8a880161165a53272b9923342602f130861197716"
+        },
+        "replication.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal/replication.csv",
+          "sha256": "6efbbc77da55b8c2d4896934fafe94d062b9805a01d28dc17d56dd3f0d8e40d9"
+        },
+        "trace": {
+          "path": "experiments/EXP-007-router-characterization/raw/80b-transition-dev-v2/run-00-4G/trace.jsonl.gz",
+          "sha256": "55cba7b3c6d916963a2a3c88dbf5cc3dc88deb67be2f529b6fbb83f80f37bd28"
+        },
+        "manifest": {
+          "path": "experiments/EXP-007-router-characterization/raw/80b-transition-dev-v2/run-00-4G/manifest.json",
+          "sha256": "2ffef3f184ad4d253fbad315b0a23105892c1ba28ab9201ada4687f564f7fe61"
+        },
+        "runtime_hit_rates": {
+          "path": "experiments/EXP-007-router-characterization/runtime-hit-rates.csv",
+          "sha256": "671fc593e2b66cfecb7a8dbfda9c55dfba036234c86710c753381fec986a81c4"
+        }
+      }
+    },
+    {
+      "key": "80b-eval",
+      "model": "80b",
+      "split": "eval",
+      "campaign": "80b-transition-eval-v2",
+      "run": "run-00-4G",
+      "temporal_dir": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal",
+      "workload_routing_sha256": "b4aef3568bf50c510f67a76e6b2f9a59439f26b97cb8dc8cfc333e2a6c415d29",
+      "files": {
+        "summary.json": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal/summary.json",
+          "sha256": "09e9210c6d721477a4579043d4c0d06a515baffd8b2065605d5cff25681b9cbf"
+        },
+        "adaptation_v2.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal/adaptation_v2.csv",
+          "sha256": "b650476a0f57b396833974946290b05a27dcfb57fcf264807efaee3723beebc6"
+        },
+        "segments.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal/segments.csv",
+          "sha256": "de9cb806454ef492dc4d033f927517f1e66cab38220200fc12f7d235aa384e6e"
+        },
+        "cross_segment.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal/cross_segment.csv",
+          "sha256": "6b81d03af198fa6416d94802620691effc302de7af0ad4866c4035d0a59d8064"
+        },
+        "replication.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal/replication.csv",
+          "sha256": "a961115fb283836cbe224b4be086a41c19c3a9ac0d511c0ab8625bd2dbea4c68"
+        },
+        "trace": {
+          "path": "experiments/EXP-007-router-characterization/raw/80b-transition-eval-v2/run-00-4G/trace.jsonl.gz",
+          "sha256": "89f2a859210cabe64a7ecd398f913ded563d4a6d8e819ea79bc4d7b6a5c025c0"
+        },
+        "manifest": {
+          "path": "experiments/EXP-007-router-characterization/raw/80b-transition-eval-v2/run-00-4G/manifest.json",
+          "sha256": "3c58e87fcc1c07440c1e0cfac313456498e42b0168de5369c59fceeb5257e638"
+        },
+        "runtime_hit_rates": {
+          "path": "experiments/EXP-007-router-characterization/runtime-hit-rates.csv",
+          "sha256": "671fc593e2b66cfecb7a8dbfda9c55dfba036234c86710c753381fec986a81c4"
+        }
+      }
+    }
+  ],
+  "tool_sha256": "4f2c2387602e5101a4d48eb66a6f31accf595b4b3a0cf65d589447f40613d7e8",
+  "tests_sha256": "df46510162742f876d3d1aa5886bbb83a903e06f4787a776cf1927e0bed56b99",
+  "argine2_head_at_freeze": "99da89f54bdb1cd16a817f3b4ad7713a0ece849e",
+  "frozen_utc": "2026-10-12T11:19:41+00:00"
+}

@@ -1,0 +1,33 @@
+{
+  "llama_cpp_commit": "254b177307b14d055bbe4c050c9c441a1e06d8a4",
+  "llama_cpp_repo": "https://github.com/ggml-org/llama.cpp",
+  "llama_cpp_commit_date": "2026-10-02T09:10:45+02:00",
+  "patches": [
+    "0002-argine-expert-store.patch",
+    "argine-store.{h,cpp} (Argine2: research hooks + violazioni counter)",
+    "argine-experts.{h,cpp} (Argine2: research hooks)",
+    "0001-argine-route-log.patch",
+    "0003-argine-research-trace.patch",
+    "argine-research.{h,cpp}"
+  ],
+  "compiler": "x86_64-w64-mingw32-g++-posix (GCC) 13-posix",
+  "target": "x86_64-w64-mingw32 (posix threads)",
+  "cmake_flags": "-DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DLLAMA_CURL=OFF -DLLAMA_OPENSSL=OFF -DGGML_NATIVE=OFF -DGGML_AVX=ON -DGGML_AVX2=ON -DGGML_FMA=ON -DGGML_F16C=ON -DGGML_BMI2=ON -DGGML_OPENMP=OFF -DLLAMA_BUILD_TESTS=OFF -DLLAMA_BUILD_EXAMPLES=OFF -DCMAKE_EXE_LINKER_FLAGS='-static -static-libgcc -static-libstdc++'",
+  "dll_dependencies": [
+    "ADVAPI32.dll",
+    "KERNEL32.dll",
+    "msvcrt.dll",
+    "SHELL32.dll",
+    "WS2_32.dll"
+  ],
+  "built_utc": "2026-10-03T17:42:00Z",
+  "built_on": "Argine2 build container (Linux), cross-compiled",
+  "runtime_tested": false,
+  "runtime_test_note": "Not executed on Windows before delivery. The same sources were built natively for Linux and validated end-to-end (EXP-019). Run `argine.bat doctor` and one short `argine.bat research trace` before relying on it.",
+  "binaries": {
+    "llama-imatrix.exe": "e4e519a218ea21f8c4a78515fc685dc0ce66a71fbdf639c35d82f8ddcf5bfb1a",
+    "llama-perplexity.exe": "1a2f8ba7b3759b5b2fb76f812cc1324080f1b06d0b0b78a18454b688120db9cf",
+    "llama-quantize.exe": "0025a47f74dcd7e1093b9a1441877dddf114fd7db62e949e28f22115111b502c",
+    "llama-server.exe": "ee46315866e7441e44d0ecd983cfb2681b2ebdfc33323abff728138341e3b562"
+  }
+}

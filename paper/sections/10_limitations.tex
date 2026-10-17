@@ -1,0 +1,39 @@
+\section{Limitations}
+\label{sec:limitations}
+
+The scope of the results is intentionally narrower than the general problem of MoE memory management.
+
+\paragraph{One hardware platform.}
+All end-to-end measurements were collected on one Windows~11 consumer system with an Intel Core i5-1340P, 16\,GB of RAM, NVMe storage, and CPU-only execution. The results therefore do not establish transfer to servers, different storage devices, NUMA systems, GPUs, unified memory, CXL, or heterogeneous CPU--GPU inference.
+
+\paragraph{Two model regimes.}
+The study evaluates two quantized MoE models. They differ simultaneously in total parameter count, routed-expert count, expert sizes, quantization, architecture, and shared-expert structure. Cross-model observations should therefore be interpreted as comparisons of two concrete regimes, not as a scaling law over model size.
+
+\paragraph{Binary provenance matters.}
+The research campaign spans more than one validated runtime binary. Historical findings remain descriptions of the sessions in which they were measured, while later confirmatory experiments use the current research runtime. This design preserves evidence but limits direct pooling of timings across the full campaign.
+
+\paragraph{Replay is not end-to-end execution.}
+The allocation and selection comparisons rely on event-atomic replay validated against the expert store under qualified conditions. Replay is appropriate for counterfactual cache-policy comparisons, but it does not reproduce every timing effect of a live runtime. In particular, replay hit-rate improvements should not be interpreted directly as equivalent throughput improvements.
+
+\paragraph{The future-informed reference is unattainable online.}
+The Belady-style policy uses future information. It is included only to quantify residual selection opportunity. Its headroom is not a realizable performance claim and may overstate what a causal online predictor can recover.
+
+\paragraph{The tested adaptive controller is narrow.}
+The negative temporal result applies to the current, untuned \texttt{adaptive-e64} mechanism and the evaluated transition traces. It does not test all adaptive controllers, prediction horizons, change detectors, or actuation strategies. Dynamic adaptation as a general approach remains open.
+
+\paragraph{The latency model is primarily a 30B result.}
+EXP-025 validates the interpretable time decomposition on five preregistered 30B memory configurations. The median leave-one-configuration-out error is low, but the study does not establish the same predictive accuracy for the 80B, other binaries, other machines, or other workload families. In addition, the constant nodes/token term makes the fitted compute/intercept and synchronization contributions collinear.
+
+\paragraph{Tracing overhead is not universally bounded.}
+EXP-024 places the 95\% confidence interval for tracing overhead entirely below 2\% at 4\,GiB, but the 1.5\,GiB result is inconclusive. Traced mechanism data at stronger pressure should therefore not be treated as interchangeable with untraced performance measurements.
+
+\paragraph{Extreme-pressure feasibility is workload-specific.}
+The observation that the 30B continues to execute below its one-token expert footprint applies to the tested prompt, runtime, and shard configuration. It does not prove that every workload or every model can execute at the same $M/F$, nor does the exploratory mixed 80B outcome at 512\,MiB define a universal lower bound.
+
+\paragraph{The matched-pressure mechanism test remains inconclusive.}
+In EXP-026 the primary untraced slopes are not distinguished, while the traced slopes disagree in sign with the primary difference. The preregistered agreement gate therefore fails, leaving the candidate explanations not evaluable. The experiment narrows the historical observation but does not identify its cause.
+
+\paragraph{No final universal policy claim.}
+Several replay analyses are in-sample memory-value studies, and the project does not contain an untouched final holdout covering every policy question. The evidence supports specific structural conclusions---for example, that uniform allocation can be suboptimal and that hit rate alone is insufficient---but does not establish a universally optimal online memory manager.
+
+These limitations are also the main axes along which the results should be replicated: additional MoE architectures, independent machines and storage devices, live implementations of predictive retention and adaptive allocation, and prospective workload holdouts.

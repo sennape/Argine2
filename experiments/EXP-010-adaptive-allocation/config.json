@@ -1,0 +1,158 @@
+{
+  "id": "EXP-010-adaptive-allocation",
+  "title": "AdaptiveResidencyController (replay prototype) and ablations",
+  "status": "FALSIFIED",
+  "period": "2026-10-03 → 2026-10-11",
+  "closure": "CLOSED 2026-10-11 under frozen protocol EXP010-P1a: both models STATIC_BETTER_OR_EQUAL vs the DEV-fitted workload-family-informed static comparator; verdict applies to the surviving retrospective-holdout sub-question only",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-001",
+    "RQ-006",
+    "RQ-007",
+    "RQ-008"
+  ],
+  "commands": [
+    "argine research adaptive EVAL_TRACE --budgets 4G,2G,1.5G --out DIR"
+  ],
+  "supersedes": "—",
+  "protocol": {
+    "version": "EXP010-P1a (pre-execution amendment, frozen 2026-10-11)",
+    "amendment_from": "EXP010-P1",
+    "amendment_scope": "Pre-execution terminology and validation hardening only; no scientific decision rule changed and no EXP-010 DEV/EVAL replay or result was computed under P1.",
+    "date": "2026-10-11",
+    "design": "DEV-selected, frozen, EVAL-tested retrospective holdout",
+    "leakage_classification": "B - RETROSPECTIVE HOLDOUT (EVAL traces and adaptive candidate outcomes inspected during EXP-007; not a preregistration)",
+    "surviving_subquestion": "Does a controller configuration selected using DEV only keep an advantage over static allocation when applied unchanged to EVAL?",
+    "candidate_set": [
+      {
+        "id": "e32",
+        "variant": "adaptive-e32",
+        "epoch": 32,
+        "pinned": 0.0
+      },
+      {
+        "id": "e64",
+        "variant": "adaptive-e64",
+        "epoch": 64,
+        "pinned": 0.0
+      },
+      {
+        "id": "e128",
+        "variant": "adaptive-e128",
+        "epoch": 128,
+        "pinned": 0.0
+      },
+      {
+        "id": "e64-pin25",
+        "variant": "adaptive-e64-pin25",
+        "epoch": 64,
+        "pinned": 0.25
+      },
+      {
+        "id": "e64-pin50",
+        "variant": "adaptive-e64-pin50",
+        "epoch": 64,
+        "pinned": 0.5
+      }
+    ],
+    "fixed_parameters": {
+      "decay": 0.5,
+      "hysteresis": 0.1,
+      "max_move": 0.05,
+      "estimator": "stack",
+      "cost_weighting": true,
+      "stability_epochs": 4,
+      "min_slots": "top_k",
+      "initial_allocation": "uniform",
+      "cost_model": "default CostModel"
+    },
+    "selection_level": "per model (30B, 80B)",
+    "dev_objective": "G_DEV = geometric mean over 21 equal-weight DEV cells (7 workloads x 3 budgets) of misses(candidate) / misses(per-layer-lru-uniform); lowest wins; tie-break |dG| < 1e-4 -> fewer bytes moved -> larger epoch -> no pinning",
+    "budgets": [
+      "4G",
+      "2G",
+      "1.5G"
+    ],
+    "workloads": [
+      "natural-language",
+      "coding",
+      "reasoning-math",
+      "structured-json",
+      "italian",
+      "transition",
+      "multi-turn-v2"
+    ],
+    "subgroups": [
+      "transition",
+      "multi-turn-v2"
+    ],
+    "primary_eval_comparison": "DEV-selected adaptive vs DEV-fitted, workload-family-informed static allocation (layer-aware-static, compare --train DEV) applied unchanged to EVAL",
+    "primary_metric": "expert-event misses (decode, replay v2)",
+    "secondary_metrics": [
+      "expert-level hit rate",
+      "bytes read per token",
+      "stall ms/token (MODELLED)",
+      "moves",
+      "bytes moved"
+    ],
+    "closure_rule": "EXP010-CR1-directional (no effect-size threshold): per model ADAPTIVE_BETTER if G_pool < 1 and W > 10.5 and G_uniform <= 1; STATIC_BETTER_OR_EQUAL if G_pool >= 1 and W <= 10.5; else MIXED. SUPPORTED if both ADAPTIVE_BETTER; FALSIFIED if both STATIC_BETTER_OR_EQUAL or G_uniform > 1 in both; else INCONCLUSIVE",
+    "descriptive_sensitivity_thresholds": [
+      0.005,
+      0.01,
+      0.02
+    ],
+    "planned_outputs": [
+      "dev/",
+      "selection.json",
+      "eval/",
+      "eval-adaptive/",
+      "step5_eval_adaptive.bat",
+      "processed/dev_selection.csv",
+      "processed/eval_table.csv",
+      "processed/decomposition.csv",
+      "processed/subgroups.csv",
+      "processed/sensitivity.csv",
+      "processed/determinism_check.csv",
+      "processed/summary.json"
+    ],
+    "analysis_tool": "tools/exp010_analysis.py",
+    "freeze_file": "protocol_freeze.json",
+    "selected_configuration": {
+      "30b": "e32",
+      "80b": "e32"
+    }
+  },
+  "result": {
+    "verdict": "FALSIFIED",
+    "applies_to": "surviving retrospective-holdout sub-question (DEV-selected adaptive vs DEV-fitted workload-family-informed static on EVAL); not layer-aware allocation, not the central RQ; 'approach the oracle' has no verdict",
+    "selection_canonical_sha256": "dfcc9895c338bb80d429478872b73f24084b9612e9cea2b489d67bfb24bbfa51",
+    "protocol_sha256": "72737bb4c3354d98860523b4b1db5a4cb7e600f90b6325fa862be9e4e75658b7",
+    "tool_sha256": "cbbf2e408d25d943a1c0de6e2a45ccb452f6ead11d135e08cc86bb18cbd7263d",
+    "determinism": {
+      "rows": 1050,
+      "non_identical": 0
+    },
+    "30b": {
+      "selected": "e32",
+      "G_DEV": 0.961340862118,
+      "G_pool": 1.0037472856234697,
+      "G_uniform": 0.9628393865616494,
+      "wins": 4,
+      "losses": 17,
+      "ties": 0,
+      "W": 4.0,
+      "classification": "STATIC_BETTER_OR_EQUAL"
+    },
+    "80b": {
+      "selected": "e32",
+      "G_DEV": 0.992689060682,
+      "G_pool": 1.001475832175211,
+      "G_uniform": 0.9918586302085141,
+      "wins": 4,
+      "losses": 17,
+      "ties": 0,
+      "W": 4.0,
+      "classification": "STATIC_BETTER_OR_EQUAL"
+    }
+  }
+}

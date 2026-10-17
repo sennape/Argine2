@@ -1,0 +1,14 @@
+{
+  "id": "EXP-020-hit-rate-semantics",
+  "title": "What the runtime's hit rate counts",
+  "status": "SUPPORTED",
+  "period": "2026-10-03",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-010"
+  ],
+  "commands": [
+    "argine research iotimeline experiments/EXP-019-instrumentation-validation/raw/e2e-fixture"
+  ],
+  "supersedes": "—"
+}

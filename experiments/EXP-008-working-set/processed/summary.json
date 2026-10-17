@@ -1,0 +1,1002 @@
+{
+  "experiment": "EXP-008-working-set",
+  "tool_sha256": "ef40da64b363c858e7691bc4901b68332ff7ff2e759a6563670655b61d34162d",
+  "constants": {
+    "primary_split": "eval",
+    "truncate_decode_tokens": 320,
+    "denning_tau": 16,
+    "budgets": {
+      "4G": 4294967296,
+      "2G": 2147483648,
+      "1.5G": 1610612736
+    },
+    "bootstrap_n": 2000,
+    "bootstrap_seed": 20261011
+  },
+  "observations": {
+    "primary": 42,
+    "replication_dev": 42,
+    "cells_with_fewer_than_3_runs": []
+  },
+  "primary_throughput_verdict": "INCONCLUSIVE",
+  "secondary_hit_rate_verdict": "SUPPORTED",
+  "replication_dev_verdicts": {
+    "gen_tok_s": "INCONCLUSIVE",
+    "expert_level_hit_rate": "SUPPORTED"
+  },
+  "primary": {
+    "gen_tok_s": {
+      "decision": {
+        "verdict": "INCONCLUSIVE",
+        "supported_by": [],
+        "comparisons": {
+          "30b": {
+            "P1": {
+              "spearman": "P0",
+              "fit": "P0",
+              "pairs": "P0"
+            },
+            "P2": {
+              "spearman": "P0",
+              "fit": "P0",
+              "pairs": "P0"
+            }
+          },
+          "80b": {
+            "P1": {
+              "spearman": "X",
+              "fit": "P0",
+              "pairs": "X"
+            },
+            "P2": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            }
+          }
+        }
+      },
+      "per_model": {
+        "30b": {
+          "P0": {
+            "rho": 0.8475655413823615,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.4280663520162842,
+            "relative_mae": 0.09445961258881298,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.6649350649350649,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.652889285456916,
+            "relative_mae": 0.14407034955483058,
+            "pair_accuracy": 0.3968253968253968,
+            "pairs": {
+              "concordant": 25,
+              "discordant": 38,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.3968253968253968
+            },
+            "fixed_budget_rho": {
+              "4G": -0.3214285714285714,
+              "2G": -0.3571428571428571,
+              "1.5G": -0.3571428571428571
+            }
+          },
+          "P2": {
+            "rho": 0.7246753246753247,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.5182040060057561,
+            "relative_mae": 0.11434991192069341,
+            "pair_accuracy": 0.49206349206349204,
+            "pairs": {
+              "concordant": 31,
+              "discordant": 32,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.49206349206349204
+            },
+            "fixed_budget_rho": {
+              "4G": -0.24999999999999997,
+              "2G": -0.2857142857142857,
+              "1.5G": -0.2857142857142857
+            }
+          }
+        },
+        "80b": {
+          "P0": {
+            "rho": 0.6838312890698599,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.43154793212814346,
+            "relative_mae": 0.08467876682963296,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.7272727272727273,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.4710823269703868,
+            "relative_mae": 0.09243624532359293,
+            "pair_accuracy": 0.6349206349206349,
+            "pairs": {
+              "concordant": 40,
+              "discordant": 23,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.6349206349206349
+            },
+            "fixed_budget_rho": {
+              "4G": 0.2857142857142857,
+              "2G": 0.2857142857142857,
+              "1.5G": 0.46428571428571425
+            }
+          },
+          "P2": {
+            "rho": 0.7948051948051948,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.353982902729086,
+            "relative_mae": 0.06945887918881793,
+            "pair_accuracy": 0.7301587301587301,
+            "pairs": {
+              "concordant": 46,
+              "discordant": 17,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.7301587301587301
+            },
+            "fixed_budget_rho": {
+              "4G": 0.46428571428571425,
+              "2G": 0.46428571428571425,
+              "1.5G": 0.5714285714285714
+            }
+          }
+        }
+      }
+    },
+    "expert_level_hit_rate": {
+      "decision": {
+        "verdict": "SUPPORTED",
+        "supported_by": [
+          "P1",
+          "P2"
+        ],
+        "comparisons": {
+          "30b": {
+            "P1": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            },
+            "P2": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            }
+          },
+          "80b": {
+            "P1": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            },
+            "P2": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            }
+          }
+        }
+      },
+      "per_model": {
+        "30b": {
+          "P0": {
+            "rho": 0.9342483808419212,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.0362614071102597,
+            "relative_mae": 0.06531968827138876,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.9727272727272728,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.02211459679360869,
+            "relative_mae": 0.03983625247673483,
+            "pair_accuracy": 0.8412698412698413,
+            "pairs": {
+              "concordant": 53,
+              "discordant": 10,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.8412698412698413
+            },
+            "fixed_budget_rho": {
+              "4G": 0.8928571428571428,
+              "2G": 0.8214285714285713,
+              "1.5G": 0.8214285714285713
+            }
+          },
+          "P2": {
+            "rho": 0.9753246753246754,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.021611007053636968,
+            "relative_mae": 0.03892910828534697,
+            "pair_accuracy": 0.8412698412698413,
+            "pairs": {
+              "concordant": 53,
+              "discordant": 10,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.8412698412698413
+            },
+            "fixed_budget_rho": {
+              "4G": 0.8928571428571428,
+              "2G": 0.7499999999999999,
+              "1.5G": 0.7499999999999999
+            }
+          }
+        },
+        "80b": {
+          "P0": {
+            "rho": 0.7319884221029486,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.06726206034392625,
+            "relative_mae": 0.11412628738799845,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.887012987012987,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.05109498245608328,
+            "relative_mae": 0.08669494544251294,
+            "pair_accuracy": 0.7936507936507936,
+            "pairs": {
+              "concordant": 50,
+              "discordant": 13,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.7936507936507936
+            },
+            "fixed_budget_rho": {
+              "4G": 0.8928571428571428,
+              "2G": 0.7142857142857142,
+              "1.5G": 0.7142857142857142
+            }
+          },
+          "P2": {
+            "rho": 0.9116883116883117,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.04987629957342936,
+            "relative_mae": 0.08462715637703637,
+            "pair_accuracy": 0.8888888888888888,
+            "pairs": {
+              "concordant": 56,
+              "discordant": 7,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.8888888888888888
+            },
+            "fixed_budget_rho": {
+              "4G": 0.9642857142857142,
+              "2G": 0.857142857142857,
+              "1.5G": 0.857142857142857
+            }
+          }
+        }
+      }
+    }
+  },
+  "replication_dev": {
+    "gen_tok_s": {
+      "decision": {
+        "verdict": "INCONCLUSIVE",
+        "supported_by": [],
+        "comparisons": {
+          "30b": {
+            "P1": {
+              "spearman": "P0",
+              "fit": "P0",
+              "pairs": "P0"
+            },
+            "P2": {
+              "spearman": "P0",
+              "fit": "P0",
+              "pairs": "P0"
+            }
+          },
+          "80b": {
+            "P1": {
+              "spearman": "X",
+              "fit": "P0",
+              "pairs": "X"
+            },
+            "P2": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            }
+          }
+        }
+      },
+      "per_model": {
+        "30b": {
+          "P0": {
+            "rho": 0.8571969679889793,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.4033723203470738,
+            "relative_mae": 0.08834383507124344,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.6558441558441559,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.6888282529305493,
+            "relative_mae": 0.1508624327939726,
+            "pair_accuracy": 0.38095238095238093,
+            "pairs": {
+              "concordant": 24,
+              "discordant": 39,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.38095238095238093
+            },
+            "fixed_budget_rho": {
+              "4G": -0.3214285714285714,
+              "2G": -0.3928571428571428,
+              "1.5G": -0.4285714285714285
+            }
+          },
+          "P2": {
+            "rho": 0.7324675324675325,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.5096131315720329,
+            "relative_mae": 0.11161196783904748,
+            "pair_accuracy": 0.38095238095238093,
+            "pairs": {
+              "concordant": 24,
+              "discordant": 39,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.38095238095238093
+            },
+            "fixed_budget_rho": {
+              "4G": -0.3214285714285714,
+              "2G": -0.3928571428571428,
+              "1.5G": -0.4285714285714285
+            }
+          }
+        },
+        "80b": {
+          "P0": {
+            "rho": 0.7127255688897131,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.4296757752154508,
+            "relative_mae": 0.08581355412340472,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.7350649350649351,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.45363349362701194,
+            "relative_mae": 0.09059831762223801,
+            "pair_accuracy": 0.6349206349206349,
+            "pairs": {
+              "concordant": 40,
+              "discordant": 23,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.6349206349206349
+            },
+            "fixed_budget_rho": {
+              "4G": 0.17857142857142855,
+              "2G": 0.3214285714285714,
+              "1.5G": 0.3571428571428571
+            }
+          },
+          "P2": {
+            "rho": 0.7844155844155845,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.3687458728412525,
+            "relative_mae": 0.0736448171903061,
+            "pair_accuracy": 0.6349206349206349,
+            "pairs": {
+              "concordant": 40,
+              "discordant": 23,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.6349206349206349
+            },
+            "fixed_budget_rho": {
+              "4G": 0.24999999999999997,
+              "2G": 0.3928571428571428,
+              "1.5G": 0.4285714285714285
+            }
+          }
+        }
+      }
+    },
+    "expert_level_hit_rate": {
+      "decision": {
+        "verdict": "SUPPORTED",
+        "supported_by": [
+          "P1",
+          "P2"
+        ],
+        "comparisons": {
+          "30b": {
+            "P1": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            },
+            "P2": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            }
+          },
+          "80b": {
+            "P1": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            },
+            "P2": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            }
+          }
+        }
+      },
+      "per_model": {
+        "30b": {
+          "P0": {
+            "rho": 0.9246169542353034,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.03062998244840317,
+            "relative_mae": 0.05551412026804557,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.9701298701298702,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.029633359634933437,
+            "relative_mae": 0.05370783001560957,
+            "pair_accuracy": 0.873015873015873,
+            "pairs": {
+              "concordant": 55,
+              "discordant": 8,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.873015873015873
+            },
+            "fixed_budget_rho": {
+              "4G": 0.8928571428571428,
+              "2G": 0.857142857142857,
+              "1.5G": 0.857142857142857
+            }
+          },
+          "P2": {
+            "rho": 0.9818181818181818,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.017246486577005983,
+            "relative_mae": 0.031257723756451486,
+            "pair_accuracy": 0.873015873015873,
+            "pairs": {
+              "concordant": 55,
+              "discordant": 8,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.873015873015873
+            },
+            "fixed_budget_rho": {
+              "4G": 0.8928571428571428,
+              "2G": 0.857142857142857,
+              "1.5G": 0.857142857142857
+            }
+          }
+        },
+        "80b": {
+          "P0": {
+            "rho": 0.7897769817426551,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.05353730021130243,
+            "relative_mae": 0.09139450117475308,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.9415584415584416,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.030781624291498243,
+            "relative_mae": 0.05254787197648464,
+            "pair_accuracy": 0.8095238095238095,
+            "pairs": {
+              "concordant": 51,
+              "discordant": 12,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.8095238095238095
+            },
+            "fixed_budget_rho": {
+              "4G": 0.8214285714285713,
+              "2G": 0.8214285714285713,
+              "1.5G": 0.8214285714285713
+            }
+          },
+          "P2": {
+            "rho": 0.9376623376623376,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.03993583488227635,
+            "relative_mae": 0.06817519175709959,
+            "pair_accuracy": 0.9047619047619048,
+            "pairs": {
+              "concordant": 57,
+              "discordant": 6,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.9047619047619048
+            },
+            "fixed_budget_rho": {
+              "4G": 0.9285714285714285,
+              "2G": 0.9285714285714285,
+              "1.5G": 0.9285714285714285
+            }
+          }
+        }
+      }
+    }
+  },
+  "exploratory_full_trace": {
+    "gen_tok_s": {
+      "decision": {
+        "verdict": "INCONCLUSIVE",
+        "supported_by": [],
+        "comparisons": {
+          "30b": {
+            "P1": {
+              "spearman": "P0",
+              "fit": "X",
+              "pairs": "X"
+            },
+            "P2": {
+              "spearman": "P0",
+              "fit": "P0",
+              "pairs": "P0"
+            }
+          },
+          "80b": {
+            "P1": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            },
+            "P2": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            }
+          }
+        }
+      },
+      "per_model": {
+        "30b": {
+          "P0": {
+            "rho": 0.8475655413823615,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.4280663520162842,
+            "relative_mae": 0.09445961258881298,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.8,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.4238182085859811,
+            "relative_mae": 0.09352219253522075,
+            "pair_accuracy": 0.5873015873015873,
+            "pairs": {
+              "concordant": 37,
+              "discordant": 26,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.5873015873015873
+            },
+            "fixed_budget_rho": {
+              "4G": 0.14285714285714285,
+              "2G": 0.07142857142857142,
+              "1.5G": 0.07142857142857142
+            }
+          },
+          "P2": {
+            "rho": 0.7701298701298701,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.4518183599899774,
+            "relative_mae": 0.099700868905348,
+            "pair_accuracy": 0.49206349206349204,
+            "pairs": {
+              "concordant": 31,
+              "discordant": 32,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.49206349206349204
+            },
+            "fixed_budget_rho": {
+              "4G": 0.0,
+              "2G": -0.03571428571428571,
+              "1.5G": -0.03571428571428571
+            }
+          }
+        },
+        "80b": {
+          "P0": {
+            "rho": 0.6838312890698599,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.43154793212814346,
+            "relative_mae": 0.08467876682963296,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.9,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.2976909187298687,
+            "relative_mae": 0.0584132097913529,
+            "pair_accuracy": 0.873015873015873,
+            "pairs": {
+              "concordant": 55,
+              "discordant": 8,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.873015873015873
+            },
+            "fixed_budget_rho": {
+              "4G": 0.8214285714285713,
+              "2G": 0.8214285714285713,
+              "1.5G": 0.9285714285714285
+            }
+          },
+          "P2": {
+            "rho": 0.874025974025974,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.3334710396136595,
+            "relative_mae": 0.06543402089456757,
+            "pair_accuracy": 0.8253968253968254,
+            "pairs": {
+              "concordant": 52,
+              "discordant": 11,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.8253968253968254
+            },
+            "fixed_budget_rho": {
+              "4G": 0.7857142857142856,
+              "2G": 0.7857142857142856,
+              "1.5G": 0.857142857142857
+            }
+          }
+        }
+      }
+    },
+    "expert_level_hit_rate": {
+      "decision": {
+        "verdict": "SUPPORTED",
+        "supported_by": [
+          "P1",
+          "P2"
+        ],
+        "comparisons": {
+          "30b": {
+            "P1": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            },
+            "P2": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            }
+          },
+          "80b": {
+            "P1": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            },
+            "P2": {
+              "spearman": "X",
+              "fit": "X",
+              "pairs": "X"
+            }
+          }
+        }
+      },
+      "per_model": {
+        "30b": {
+          "P0": {
+            "rho": 0.9342483808419212,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.0362614071102597,
+            "relative_mae": 0.06531968827138876,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.9363636363636364,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.03184432963353442,
+            "relative_mae": 0.057362961082811616,
+            "pair_accuracy": 0.7142857142857143,
+            "pairs": {
+              "concordant": 45,
+              "discordant": 18,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.7142857142857143
+            },
+            "fixed_budget_rho": {
+              "4G": 0.46428571428571425,
+              "2G": 0.5714285714285714,
+              "1.5G": 0.5714285714285714
+            }
+          },
+          "P2": {
+            "rho": 0.9896103896103896,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.023871800800904473,
+            "relative_mae": 0.043001601731847444,
+            "pair_accuracy": 0.9047619047619048,
+            "pairs": {
+              "concordant": 57,
+              "discordant": 6,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.9047619047619048
+            },
+            "fixed_budget_rho": {
+              "4G": 0.8928571428571428,
+              "2G": 0.9285714285714285,
+              "1.5G": 0.9285714285714285
+            }
+          }
+        },
+        "80b": {
+          "P0": {
+            "rho": 0.7319884221029486,
+            "n": 21,
+            "distinct_predictor_values": 3,
+            "mae": 0.06726206034392625,
+            "relative_mae": 0.11412628738799845,
+            "pair_accuracy": 0.5,
+            "pairs": {
+              "concordant": 0,
+              "discordant": 0,
+              "ties": 63,
+              "n": 63,
+              "accuracy": 0.5
+            },
+            "fixed_budget_rho": {
+              "4G": null,
+              "2G": null,
+              "1.5G": null
+            }
+          },
+          "P1": {
+            "rho": 0.8441558441558441,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.06159582005895703,
+            "relative_mae": 0.10451214586653307,
+            "pair_accuracy": 0.8095238095238095,
+            "pairs": {
+              "concordant": 51,
+              "discordant": 12,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.8095238095238095
+            },
+            "fixed_budget_rho": {
+              "4G": 0.7499999999999999,
+              "2G": 0.7499999999999999,
+              "1.5G": 0.7499999999999999
+            }
+          },
+          "P2": {
+            "rho": 0.925974025974026,
+            "n": 21,
+            "distinct_predictor_values": 21,
+            "mae": 0.0474819686854613,
+            "relative_mae": 0.08056459728168627,
+            "pair_accuracy": 0.9523809523809523,
+            "pairs": {
+              "concordant": 60,
+              "discordant": 3,
+              "ties": 0,
+              "n": 63,
+              "accuracy": 0.9523809523809523
+            },
+            "fixed_budget_rho": {
+              "4G": 0.9642857142857142,
+              "2G": 0.9642857142857142,
+              "1.5G": 0.9642857142857142
+            }
+          }
+        }
+      }
+    }
+  },
+  "exploratory_pooled_spearman_eval": {
+    "gen_tok_s": {
+      "P0": 0.25246797804726956,
+      "P1": 0.46616967830807876,
+      "P2": 0.8152499797423224
+    },
+    "expert_level_hit_rate": {
+      "P0": 0.490558508597542,
+      "P1": 0.7629041406693137,
+      "P2": 0.9209140264160117
+    }
+  }
+}

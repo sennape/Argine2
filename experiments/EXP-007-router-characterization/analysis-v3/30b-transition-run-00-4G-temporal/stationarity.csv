@@ -1,0 +1,8 @@
+source,decode_tokens,EWS90_global_frac,EWS95_global_frac,EWS99_global_frac,ews95_frac_layer_mean,hot_set_stability_mean,overlap_prev_mean,reuse_median_mean,entropy_norm_mean,ws_tau16_mean
+transition: all 4 segments (workload decode),1196,0.55159505,0.65315755,0.80582682,0.6584,0.4969,0.4112,2.375,0.9088,41.6759
+transition: natural-language,299,0.2750651,0.33479818,0.45458984,0.3407,0.8151,0.4584,2.0625,0.752,37.0788
+transition: coding,299,0.34928385,0.43424479,0.59016927,0.4406,0.7139,0.4096,2.4792,0.8016,41.078
+transition: reasoning-math,299,0.39648438,0.48860677,0.63069661,0.4933,0.6379,0.3702,2.6042,0.8228,44.1699
+transition: structured-json,299,0.42985026,0.52115885,0.6726888,0.526,0.5416,0.4104,2.2708,0.8559,41.2231
+coding (stationary): whole workload decode,381,0.36442057,0.45345052,0.61425781,0.4595,0.7167,0.4278,2.2812,0.8157,41.4501
+coding (stationary): first 299 decode tokens,299,0.36669922,0.45572917,0.61083984,0.4621,0.705,0.4261,2.1667,0.8163,41.5562

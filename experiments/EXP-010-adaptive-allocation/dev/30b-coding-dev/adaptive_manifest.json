@@ -1,0 +1,83 @@
+{
+  "ablate": true,
+  "argv": [
+    "research",
+    "adaptive",
+    "experiments\\EXP-007-router-characterization\\raw\\30b-coding-dev\\run-00-4G\\trace.jsonl.gz",
+    "--budgets",
+    "4G,2G,1.5G",
+    "--epochs",
+    "32,64,128",
+    "--pinned",
+    "0,0.25,0.5",
+    "--out",
+    "experiments\\EXP-010-adaptive-allocation\\dev\\30b-coding-dev"
+  ],
+  "budgets_bytes": [
+    4294967296,
+    2147483648,
+    1610612736
+  ],
+  "command": "adaptive",
+  "cost": null,
+  "epochs": [
+    32,
+    64,
+    128
+  ],
+  "phase": "decode",
+  "pinned": [
+    0.0,
+    0.25,
+    0.5
+  ],
+  "trace": {
+    "meta": {
+      "model": "Qwen_Qwen3-30B-A3B-Q4_K_M.gguf",
+      "n_experts": 128,
+      "n_layers": 48,
+      "split": "dev",
+      "top_k": 8,
+      "workload": "coding@460949e7abf0"
+    },
+    "path": "experiments\\EXP-007-router-characterization\\raw\\30b-coding-dev\\run-00-4G\\trace.jsonl.gz",
+    "sha256": "ea777c4ef9a7fb0af849a6ed1a6a9246986b291ca8eecf9e9e353414591ec1f7"
+  },
+  "train": null,
+  "variants": [
+    "per-layer-lru-uniform",
+    "global-lru",
+    "adaptive-e32",
+    "adaptive-e64",
+    "adaptive-e128",
+    "adaptive-e64-pin25",
+    "adaptive-e64-pin50",
+    "ablate-frozen",
+    "ablate-freq-estimator",
+    "ablate-no-cost-weighting",
+    "ablate-no-hysteresis",
+    "per-layer-lru-uniform",
+    "global-lru",
+    "adaptive-e32",
+    "adaptive-e64",
+    "adaptive-e128",
+    "adaptive-e64-pin25",
+    "adaptive-e64-pin50",
+    "ablate-frozen",
+    "ablate-freq-estimator",
+    "ablate-no-cost-weighting",
+    "ablate-no-hysteresis",
+    "per-layer-lru-uniform",
+    "global-lru",
+    "adaptive-e32",
+    "adaptive-e64",
+    "adaptive-e128",
+    "adaptive-e64-pin25",
+    "adaptive-e64-pin50",
+    "ablate-frozen",
+    "ablate-freq-estimator",
+    "ablate-no-cost-weighting",
+    "ablate-no-hysteresis"
+  ],
+  "written_utc": "2026-10-11T13:36:48Z"
+}

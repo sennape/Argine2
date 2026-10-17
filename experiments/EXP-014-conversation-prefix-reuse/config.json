@@ -1,0 +1,12 @@
+{
+  "id": "EXP-014-conversation-prefix-reuse",
+  "title": "TTFT in a growing conversation",
+  "status": "SUPPORTED",
+  "period": "2026-10-02",
+  "origin": "Argine v1 (historical); data re-derived from raw logs by Argine2",
+  "rqs": [],
+  "commands": [
+    "argine benchmark MODEL --conversazione 6"
+  ],
+  "supersedes": "—"
+}

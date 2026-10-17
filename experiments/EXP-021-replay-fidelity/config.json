@@ -1,0 +1,21 @@
+{
+  "id": "EXP-021-replay-fidelity",
+  "title": "Does replay reproduce the runtime?",
+  "status": "SUPPORTED",
+  "period": "2026-10-03 \u2192 2026-10-04",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-011",
+    "RQ-010",
+    "RQ-018",
+    "RQ-005"
+  ],
+  "commands": [
+    "argine research fidelity experiments/EXP-007-router-characterization/raw/30b-coding-dev --out experiments/EXP-021-replay-fidelity/processed/30b-coding-dev",
+    "argine research fidelity experiments/EXP-021-replay-fidelity/raw/linux-mid-moe-v2 --out experiments/EXP-021-replay-fidelity/processed/linux-mid-moe-v2",
+    "python -m unittest tests.test_fidelity",
+    "argine research fidelity experiments/EXP-021-replay-fidelity/raw/30b-coding-dev-v2 --out experiments/EXP-021-replay-fidelity/processed/30b-coding-dev-v2-per-thread-pins"
+  ],
+  "supersedes": "sharded-lru-16 runtime-model rows (EXP-009), DP-optimal static numbers (EXP-008/EXP-010 pilot, EXP-007 analysis/run-00-4G)",
+  "doc": "docs/research/REPLAY-FIDELITY-VALIDATION.md"
+}

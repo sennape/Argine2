@@ -1,0 +1,41 @@
+model,scope,stage,G_misses_ratio,n_cells
+30b,all 21 cells,1 global LRU -> per-layer uniform (layer isolation / partitioning),0.9518524478046443,21
+30b,all 21 cells,2 per-layer uniform -> DEV-fitted static (uses DEV workload-family information),0.9592448222299195,21
+30b,all 21 cells,3 DEV-fitted static -> DEV-selected adaptive (dynamic adaptive gain),1.0037472856234697,21
+30b,all 21 cells,direct: per-layer uniform -> DEV-selected adaptive,0.9628393865616494,21
+30b,all 21 cells,direct: global LRU -> DEV-selected adaptive,0.9164810269414281,21
+30b,budget 4G,1 global LRU -> per-layer uniform (layer isolation / partitioning),0.999396377226371,7
+30b,budget 4G,2 per-layer uniform -> DEV-fitted static (uses DEV workload-family information),0.9500461238158255,7
+30b,budget 4G,3 DEV-fitted static -> DEV-selected adaptive (dynamic adaptive gain),1.0013376354750771,7
+30b,budget 4G,direct: per-layer uniform -> DEV-selected adaptive,0.9513169392140013,7
+30b,budget 4G,direct: global LRU -> DEV-selected adaptive,0.9507427026445526,7
+30b,budget 2G,1 global LRU -> per-layer uniform (layer isolation / partitioning),0.948924283108317,7
+30b,budget 2G,2 per-layer uniform -> DEV-fitted static (uses DEV workload-family information),0.9671338637428268,7
+30b,budget 2G,3 DEV-fitted static -> DEV-selected adaptive (dynamic adaptive gain),1.0040508154962793,7
+30b,budget 2G,direct: per-layer uniform -> DEV-selected adaptive,0.9710515445850528,7
+30b,budget 2G,direct: global LRU -> DEV-selected adaptive,0.9214543908065951,7
+30b,budget 1.5G,1 global LRU -> per-layer uniform (layer isolation / partitioning),0.9093677788327378,7
+30b,budget 1.5G,2 per-layer uniform -> DEV-fitted static (uses DEV workload-family information),0.9606321347707494,7
+30b,budget 1.5G,3 DEV-fitted static -> DEV-selected adaptive (dynamic adaptive gain),1.005858566112135,7
+30b,budget 1.5G,direct: per-layer uniform -> DEV-selected adaptive,0.9662600616417454,7
+30b,budget 1.5G,direct: global LRU -> DEV-selected adaptive,0.8786857660299383,7
+80b,all 21 cells,1 global LRU -> per-layer uniform (layer isolation / partitioning),0.9767320367353325,21
+80b,all 21 cells,2 per-layer uniform -> DEV-fitted static (uses DEV workload-family information),0.9903969704932286,21
+80b,all 21 cells,3 DEV-fitted static -> DEV-selected adaptive (dynamic adaptive gain),1.001475832175211,21
+80b,all 21 cells,direct: per-layer uniform -> DEV-selected adaptive,0.9918586302085141,21
+80b,all 21 cells,direct: global LRU -> DEV-selected adaptive,0.9687801000370789,21
+80b,budget 4G,1 global LRU -> per-layer uniform (layer isolation / partitioning),1.0026185212116099,7
+80b,budget 4G,2 per-layer uniform -> DEV-fitted static (uses DEV workload-family information),0.9890790051017647,7
+80b,budget 4G,3 DEV-fitted static -> DEV-selected adaptive (dynamic adaptive gain),1.0016012563189045,7
+80b,budget 4G,direct: per-layer uniform -> DEV-selected adaptive,0.9906627741085796,7
+80b,budget 4G,direct: global LRU -> DEV-selected adaptive,0.9932568455961353,7
+80b,budget 2G,1 global LRU -> per-layer uniform (layer isolation / partitioning),0.966201816975917,7
+80b,budget 2G,2 per-layer uniform -> DEV-fitted static (uses DEV workload-family information),0.9956650252524638,7
+80b,budget 2G,3 DEV-fitted static -> DEV-selected adaptive (dynamic adaptive gain),1.001277285254719,7
+80b,budget 2G,direct: per-layer uniform -> DEV-selected adaptive,0.9969367735078581,7
+80b,budget 2G,direct: global LRU -> DEV-selected adaptive,0.9632421219734008,7
+80b,budget 1.5G,1 global LRU -> per-layer uniform (layer isolation / partitioning),0.9618840547994923,7
+80b,budget 1.5G,2 per-layer uniform -> DEV-fitted static (uses DEV workload-family information),0.9864695279332908,7
+80b,budget 1.5G,3 DEV-fitted static -> DEV-selected adaptive (dynamic adaptive gain),1.0015489851609725,7
+80b,budget 1.5G,direct: per-layer uniform -> DEV-selected adaptive,0.987997554593811,7
+80b,budget 1.5G,direct: global LRU -> DEV-selected adaptive,0.9503390939446777,7

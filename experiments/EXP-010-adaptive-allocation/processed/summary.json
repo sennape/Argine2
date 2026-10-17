@@ -1,0 +1,450 @@
+{
+  "experiment": "EXP-010-adaptive-allocation",
+  "protocol_version": "EXP010-P1a (pre-execution amendment, frozen 2026-10-11)",
+  "framing": "DEV-selected, frozen, EVAL-tested retrospective holdout",
+  "leakage": "B - RETROSPECTIVE HOLDOUT",
+  "closure_rule": "EXP010-CR1-directional (no effect-size threshold)",
+  "primary_comparison": "DEV-selected adaptive vs DEV-fitted, workload-family-informed static allocation applied unchanged to EVAL",
+  "primary_metric": "expert-event misses (decode, replay v2, expert-unit, event-atomic)",
+  "selection_canonical_sha256": "dfcc9895c338bb80d429478872b73f24084b9612e9cea2b489d67bfb24bbfa51",
+  "selected": {
+    "30b": "e32",
+    "80b": "e32"
+  },
+  "per_model": {
+    "30b": {
+      "G_pool": 1.0037472856234697,
+      "G_uniform": 0.9628393865616494,
+      "wins": 4,
+      "ties": 0,
+      "losses": 17,
+      "W": 4.0,
+      "n_cells": 21,
+      "classification": "STATIC_BETTER_OR_EQUAL",
+      "G_adaptive_vs_global_lru_descriptive": 0.9164810269414281,
+      "G_adaptive_vs_2q_descriptive": 0.9121120383439592,
+      "per_budget": {
+        "4G": {
+          "G_static": 1.0013376354750771,
+          "G_uniform": 0.9513169392140013,
+          "wins": 4,
+          "ties": 0,
+          "losses": 3,
+          "W": 4.0,
+          "n_cells": 7
+        },
+        "2G": {
+          "G_static": 1.0040508154962793,
+          "G_uniform": 0.9710515445850528,
+          "wins": 0,
+          "ties": 0,
+          "losses": 7,
+          "W": 0.0,
+          "n_cells": 7
+        },
+        "1.5G": {
+          "G_static": 1.005858566112135,
+          "G_uniform": 0.9662600616417454,
+          "wins": 0,
+          "ties": 0,
+          "losses": 7,
+          "W": 0.0,
+          "n_cells": 7
+        }
+      },
+      "per_workload": {
+        "natural-language": {
+          "4G": {
+            "ratio_adaptive_vs_static": 0.9967408044124494,
+            "ratio_adaptive_vs_uniform": 0.9285952619285953
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.0038915865964115,
+            "ratio_adaptive_vs_uniform": 0.9641622703292705
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.008937046393785,
+            "ratio_adaptive_vs_uniform": 0.9645674238087926
+          }
+        },
+        "coding": {
+          "4G": {
+            "ratio_adaptive_vs_static": 0.9893164950921715,
+            "ratio_adaptive_vs_uniform": 0.9494528849191534
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.0076946264536497,
+            "ratio_adaptive_vs_uniform": 0.973305954825462
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0060625966525707,
+            "ratio_adaptive_vs_uniform": 0.9668060706488861
+          }
+        },
+        "reasoning-math": {
+          "4G": {
+            "ratio_adaptive_vs_static": 0.9999182137891551,
+            "ratio_adaptive_vs_uniform": 0.9745197544969046
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.0001436437634665,
+            "ratio_adaptive_vs_uniform": 0.97548218372017
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0039683088367464,
+            "ratio_adaptive_vs_uniform": 0.9691541757317708
+          }
+        },
+        "structured-json": {
+          "4G": {
+            "ratio_adaptive_vs_static": 0.9964672393635948,
+            "ratio_adaptive_vs_uniform": 0.9624656323644933
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.0039169774231782,
+            "ratio_adaptive_vs_uniform": 0.9726645100757607
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0071435796287866,
+            "ratio_adaptive_vs_uniform": 0.9685919260700389
+          }
+        },
+        "italian": {
+          "4G": {
+            "ratio_adaptive_vs_static": 1.0064914220494348,
+            "ratio_adaptive_vs_uniform": 0.9403825646494268
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.0050700352324482,
+            "ratio_adaptive_vs_uniform": 0.9722360764754779
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0066554760432311,
+            "ratio_adaptive_vs_uniform": 0.9685352827007806
+          }
+        },
+        "transition": {
+          "4G": {
+            "ratio_adaptive_vs_static": 1.0125188643890977,
+            "ratio_adaptive_vs_uniform": 0.9615447506372337
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.002691701012568,
+            "ratio_adaptive_vs_uniform": 0.9723529818120812
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0043547747928216,
+            "ratio_adaptive_vs_uniform": 0.9645476977123499
+          }
+        },
+        "multi-turn-v2": {
+          "4G": {
+            "ratio_adaptive_vs_static": 1.008104569034518,
+            "ratio_adaptive_vs_uniform": 0.9430327599224313
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.0049632294419153,
+            "ratio_adaptive_vs_uniform": 0.967204651127163
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0038988532230475,
+            "ratio_adaptive_vs_uniform": 0.9616418930242752
+          }
+        }
+      },
+      "budget_reversals": []
+    },
+    "80b": {
+      "G_pool": 1.001475832175211,
+      "G_uniform": 0.9918586302085141,
+      "wins": 4,
+      "ties": 0,
+      "losses": 17,
+      "W": 4.0,
+      "n_cells": 21,
+      "classification": "STATIC_BETTER_OR_EQUAL",
+      "G_adaptive_vs_global_lru_descriptive": 0.9687801000370789,
+      "G_adaptive_vs_2q_descriptive": 0.96994482070083,
+      "per_budget": {
+        "4G": {
+          "G_static": 1.0016012563189045,
+          "G_uniform": 0.9906627741085796,
+          "wins": 1,
+          "ties": 0,
+          "losses": 6,
+          "W": 1.0,
+          "n_cells": 7
+        },
+        "2G": {
+          "G_static": 1.001277285254719,
+          "G_uniform": 0.9969367735078581,
+          "wins": 2,
+          "ties": 0,
+          "losses": 5,
+          "W": 2.0,
+          "n_cells": 7
+        },
+        "1.5G": {
+          "G_static": 1.0015489851609725,
+          "G_uniform": 0.987997554593811,
+          "wins": 1,
+          "ties": 0,
+          "losses": 6,
+          "W": 1.0,
+          "n_cells": 7
+        }
+      },
+      "per_workload": {
+        "natural-language": {
+          "4G": {
+            "ratio_adaptive_vs_static": 1.004280275261901,
+            "ratio_adaptive_vs_uniform": 0.9897455020042882
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.007701579449932,
+            "ratio_adaptive_vs_uniform": 1.0001087496892866
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0020211186272892,
+            "ratio_adaptive_vs_uniform": 0.9857438491607265
+          }
+        },
+        "coding": {
+          "4G": {
+            "ratio_adaptive_vs_static": 1.001680048874149,
+            "ratio_adaptive_vs_uniform": 0.9975446525574725
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.0008557348992297,
+            "ratio_adaptive_vs_uniform": 1.0003391680061344
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0013457543410376,
+            "ratio_adaptive_vs_uniform": 0.989286175293662
+          }
+        },
+        "reasoning-math": {
+          "4G": {
+            "ratio_adaptive_vs_static": 1.0012192474070114,
+            "ratio_adaptive_vs_uniform": 1.0016542182565542
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.0028534741047226,
+            "ratio_adaptive_vs_uniform": 0.9965736430444954
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0045093268450933,
+            "ratio_adaptive_vs_uniform": 0.9875508967394193
+          }
+        },
+        "structured-json": {
+          "4G": {
+            "ratio_adaptive_vs_static": 0.9964069166853806,
+            "ratio_adaptive_vs_uniform": 0.9856415848782261
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 0.9994037820953171,
+            "ratio_adaptive_vs_uniform": 0.9909906436356158
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 0.999840397637885,
+            "ratio_adaptive_vs_uniform": 0.9883922735366376
+          }
+        },
+        "italian": {
+          "4G": {
+            "ratio_adaptive_vs_static": 1.001366400218624,
+            "ratio_adaptive_vs_uniform": 0.9896691424713032
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 0.9952671592247564,
+            "ratio_adaptive_vs_uniform": 0.9971035636894162
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0013766370206676,
+            "ratio_adaptive_vs_uniform": 0.9875667661087193
+          }
+        },
+        "transition": {
+          "4G": {
+            "ratio_adaptive_vs_static": 1.0034768761197002,
+            "ratio_adaptive_vs_uniform": 0.9965668347006689
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.0008403697626955,
+            "ratio_adaptive_vs_uniform": 0.9969527589047649
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0007555783554638,
+            "ratio_adaptive_vs_uniform": 0.9877227893759739
+          }
+        },
+        "multi-turn-v2": {
+          "4G": {
+            "ratio_adaptive_vs_static": 1.0027986945793201,
+            "ratio_adaptive_vs_uniform": 0.974073489888259
+          },
+          "2G": {
+            "ratio_adaptive_vs_static": 1.0020610141822264,
+            "ratio_adaptive_vs_uniform": 0.9965176875497184
+          },
+          "1.5G": {
+            "ratio_adaptive_vs_static": 1.0010005201259862,
+            "ratio_adaptive_vs_uniform": 0.9897253669511803
+          }
+        }
+      },
+      "budget_reversals": []
+    }
+  },
+  "verdict": "FALSIFIED",
+  "verdict_note": "applies to the surviving retrospective-holdout sub-question only; 'approach the oracle' has no verdict (no original threshold)",
+  "descriptive_only": {
+    "pooled_two_model_G_adaptive_vs_static": 1.0026109156414433,
+    "comparisons_already_seen_on_EVAL": [
+      "adaptive vs global LRU",
+      "adaptive vs per-layer uniform",
+      "adaptive vs 2Q"
+    ],
+    "sensitivity_thresholds": [
+      0.005,
+      0.01,
+      0.02
+    ],
+    "sensitivity_affects_verdict": false,
+    "stall_is": "MODELLED, not measured"
+  },
+  "determinism": {
+    "rows": 1050,
+    "non_identical": 0
+  },
+  "eval_sources": {
+    "30b-natural-language-eval-v2": {
+      "model": "30b",
+      "family": "natural-language",
+      "dev_campaign": "30b-natural-language-dev-v2",
+      "policy_comparison_sha256": "c5d980bfb9226f2bf1c37e4550c562a4282e06c50ef0afb56170d885593b9970",
+      "adaptive_csv_sha256": "87f1476a1350da75b9730a4299cf67e8cc1b230966df13f25fc10b2131817641",
+      "eval_trace_sha256": "92d602fe764f648ee634c499090772d21e248b104c6e0de581f7067ae35d49ab",
+      "train_trace_sha256": "69891597ae7684185fa27c914facf7c2a0cbd085b01bd0353214466f2f2905c8"
+    },
+    "30b-coding-eval-v2": {
+      "model": "30b",
+      "family": "coding",
+      "dev_campaign": "30b-coding-dev",
+      "policy_comparison_sha256": "b44762c67ff54611626aa7600df97bd3b598d41eec813d2fce021552c49f27d1",
+      "adaptive_csv_sha256": "fd9f3f44081657ec90bad249c301bc8b3017a9b13abac79cdbf658e4c2a199a9",
+      "eval_trace_sha256": "c0888e89263b20671d08020ddfff2df35ee7fa848f46f3fa891d09106dcea436",
+      "train_trace_sha256": "ea777c4ef9a7fb0af849a6ed1a6a9246986b291ca8eecf9e9e353414591ec1f7"
+    },
+    "30b-reasoning-math-eval-v2": {
+      "model": "30b",
+      "family": "reasoning-math",
+      "dev_campaign": "30b-reasoning-math-dev-v2",
+      "policy_comparison_sha256": "bcd42d73003bb344080c8710fcca67482c3dc0e1a57e5986d8698ef4321e04b3",
+      "adaptive_csv_sha256": "6a6bd037888ab38aecf9fe6ca6269bc377572722806caf74d31d85055bd649dc",
+      "eval_trace_sha256": "828e32fbf6062248e0c20435593986f85ac5312f5ba4a09ce89b146edf880d1f",
+      "train_trace_sha256": "2fb5e9648a8c2378b9f1c2511ea647e28cedf05afe7f1575ed75ae61287f3893"
+    },
+    "30b-structured-json-eval-v2": {
+      "model": "30b",
+      "family": "structured-json",
+      "dev_campaign": "30b-structured-json-dev-v2",
+      "policy_comparison_sha256": "70b833c31deda08644799d74e168f34ef8f10c4ec70183b816b805dec74cd1d3",
+      "adaptive_csv_sha256": "cfa9d8088acc71b000262e49e8123881654cf947f64d1fe97ba28fdd7c6e98b8",
+      "eval_trace_sha256": "0190dac911f97d85b03257d34011188dfdaac1b29abb6d3fdf25e17ac32b6df2",
+      "train_trace_sha256": "984c546e337a5d2cd716e52e51d607dd4879b9655a79eb0e770ab3588e30b5c9"
+    },
+    "30b-italian-eval-v2": {
+      "model": "30b",
+      "family": "italian",
+      "dev_campaign": "30b-italian-dev-v2",
+      "policy_comparison_sha256": "f764ff6e1c5f0cd2d2e9a76d1e64294e4aff68487e53b17a04659b686582e0e2",
+      "adaptive_csv_sha256": "7ba80289c4d8d9426be487b88f78e4693f30b3a1b1d308009d3841b55c9cc510",
+      "eval_trace_sha256": "c5af75b6721a46c98c3015c6f928b2ec19352911b8c4c1d914daf933bac6ba7e",
+      "train_trace_sha256": "b5b18f46cffca0b68eb7dcc6de2d70d7a85fd3b4261c94e64e2450c0ca1e040c"
+    },
+    "30b-transition-eval-v2": {
+      "model": "30b",
+      "family": "transition",
+      "dev_campaign": "30b-transition-dev-v2",
+      "policy_comparison_sha256": "6fbda64c3eb948bff640c95652e76db8d829ea544b531ee68dff362bfada3f65",
+      "adaptive_csv_sha256": "33a99853c121a88837f9c66ac2de753b2531fbb4516c86c37c9b214690d0231d",
+      "eval_trace_sha256": "832b9a88716e81a7f29769fe8f16f61f2d5e5896543e13e16c79c5596df9d05a",
+      "train_trace_sha256": "4dc1a0a97ac0acb5000b43986a74eec6a3b2dc18fb0db96196e2be5354b42acc"
+    },
+    "30b-multi-turn-v2-eval": {
+      "model": "30b",
+      "family": "multi-turn-v2",
+      "dev_campaign": "30b-multi-turn-v2-dev",
+      "policy_comparison_sha256": "00d3add00b07dbc3b95dac67d07e378ccb452dcf9fb1f3da7caaf9d9e0cbab96",
+      "adaptive_csv_sha256": "da6ba92b04e48281093e1df5244ad4f735b98cbddb314b9bd1b547f0cfc7581a",
+      "eval_trace_sha256": "d5d670d6f0f5c02c52adb25d62308d9a6b432c22a49c0fc92511824c4a57de84",
+      "train_trace_sha256": "c583c788731a470cb24abeabe60cfc344bcbfc6ef4564b05f1782cc90d1c30d2"
+    },
+    "80b-natural-language-eval-v2": {
+      "model": "80b",
+      "family": "natural-language",
+      "dev_campaign": "80b-natural-language-dev-v2",
+      "policy_comparison_sha256": "e768278ff601005e58d9d4e0d0ea36b846c5f2544356baa423ede3de7cd8162a",
+      "adaptive_csv_sha256": "979d82d0c26081be4fb8786a22635723957901d14674827607e5035e5a79d2ea",
+      "eval_trace_sha256": "a1a1c612332a2e8f836bf23c3dfbe24f0ad3506b4b38f148ea1f0ba1f9343f95",
+      "train_trace_sha256": "7af0444d8880af4e971e418732c5e2f8093ddd06e644f90434b468dcb0907bcc"
+    },
+    "80b-coding-eval-v2": {
+      "model": "80b",
+      "family": "coding",
+      "dev_campaign": "80b-coding-dev-v2",
+      "policy_comparison_sha256": "5e06384c383ccf122c7c6bedd97ffda600f0eb150999d6f97efe493a5b313cfc",
+      "adaptive_csv_sha256": "95fe657aba0b0de8f6f96f23ed68ddcf442a6a8982da2d8c0f810a6723bcabee",
+      "eval_trace_sha256": "c833c90d48308f19001a931a19a11f63492ad36cb994594bc2e39f1619fdc883",
+      "train_trace_sha256": "9d9fbe796387e24cafee89f945d14b61960d95ef376ee4957b966ebf51bf6694"
+    },
+    "80b-reasoning-math-eval-v2": {
+      "model": "80b",
+      "family": "reasoning-math",
+      "dev_campaign": "80b-reasoning-math-dev-v2",
+      "policy_comparison_sha256": "1985c343edea71128b4ee1035329c406e528442c3aede77c14fa93a0886cef6c",
+      "adaptive_csv_sha256": "93069dc5827ce94e4372aa07584b7b4f31739fb1277c2beccb5764f0740d6df3",
+      "eval_trace_sha256": "005ec326611652f41c0af0a9668b601807e0b30b11e8cb53b9b5bcd8629a7efa",
+      "train_trace_sha256": "1d676a3b8682882622bdeae17543c4a7c77b2dbf749ea6e333577e7892530a5f"
+    },
+    "80b-structured-json-eval-v2": {
+      "model": "80b",
+      "family": "structured-json",
+      "dev_campaign": "80b-structured-json-dev-v2",
+      "policy_comparison_sha256": "0f6be0c881cef73fb577375521956fe2e32673ef1ed0584bc55573811654e343",
+      "adaptive_csv_sha256": "0c39ebea32550e0c89a9b01599005709a0075f802c4bb4a99cdb2a208c9c9a25",
+      "eval_trace_sha256": "42c6c8f9f5a53ae6e5933a81bbc25b9cbfa1c17252d6269f6be76be46936205a",
+      "train_trace_sha256": "f9029b8e82a01d9c5a4c4806e3fd3e35ec68dfb7768d9696aa5f9fbc35238be7"
+    },
+    "80b-italian-eval-v2": {
+      "model": "80b",
+      "family": "italian",
+      "dev_campaign": "80b-italian-dev-v2",
+      "policy_comparison_sha256": "449e87460667784c748467498934fdda91348ded06a70e5e840d5e509ac2d572",
+      "adaptive_csv_sha256": "8abf18bafe9bf98031808b39757250dbadc740cbed990dd348adf0e31a6499df",
+      "eval_trace_sha256": "ba5a8c79e2a3f00fb7ce18b15ef77aa168dac8e4e38a98655ed700cc3c7ccfe8",
+      "train_trace_sha256": "16145763c347011f737cd9ad1f5c0b3a310bb062aaf5e2cff39d35de3f23e4dc"
+    },
+    "80b-transition-eval-v2": {
+      "model": "80b",
+      "family": "transition",
+      "dev_campaign": "80b-transition-dev-v2",
+      "policy_comparison_sha256": "9c53343121985c0725ff4db5ab0017a273f0dc36cec52fa2c1f36fcb0f8b00f7",
+      "adaptive_csv_sha256": "5b1285a2fbf11b3f5976e0365a71e9c427ee8a38611923bf0a19be3e476f0c96",
+      "eval_trace_sha256": "89f2a859210cabe64a7ecd398f913ded563d4a6d8e819ea79bc4d7b6a5c025c0",
+      "train_trace_sha256": "55cba7b3c6d916963a2a3c88dbf5cc3dc88deb67be2f529b6fbb83f80f37bd28"
+    },
+    "80b-multi-turn-v2-eval": {
+      "model": "80b",
+      "family": "multi-turn-v2",
+      "dev_campaign": "80b-multi-turn-v2-dev",
+      "policy_comparison_sha256": "9e26c69746899b90e6ee0985e0623c40e2b6fbdeea3adb9316753b48b4525e97",
+      "adaptive_csv_sha256": "980fac1dd99861e51b5122d5a49bd73085138bd02d73a9d14897dd0735ae1fc6",
+      "eval_trace_sha256": "d0ff5d1f38ecc310b13cd649afaa4627f65ae28db285a86aa6571fed837d3db7",
+      "train_trace_sha256": "a2d3060bb449758872913161a2f28d73862c6b54791a374bf00b8539212999c0"
+    }
+  },
+  "written_utc": "2026-10-11T18:51:49Z"
+}

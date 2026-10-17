@@ -1,0 +1,376 @@
+diff --git a/ggml/src/ggml-cpu/ggml-cpu.c b/ggml/src/ggml-cpu/ggml-cpu.c
+index 046f17c..e0e420b 100644
+--- a/ggml/src/ggml-cpu/ggml-cpu.c
++++ b/ggml/src/ggml-cpu/ggml-cpu.c
+@@ -1545,6 +1545,341 @@ static void * incr_ptr_aligned(void ** p, size_t size, size_t align) {
+     return ptr;
+ }
+ 
++
++// ----------------------------------------------------------------------------
++// Argine: registrazione delle scelte del router MoE.
++//
++// Attivata da ARGINE_ROUTE_LOG=<file>. Serve a ricavare quali expert si
++// attivano insieme, per poi riordinare il GGUF su disco in modo che gli expert
++// co-attivati siano contigui (letture sequenziali invece che casuali).
++//
++// Formato, una riga per chiamata:
++//   <nome_tensore> <n_token> <n_expert_usati> <id> <id> ...
++// Scrive solo il thread 0 e solo se la variabile d'ambiente e' impostata.
++// ----------------------------------------------------------------------------
++static FILE * argine_route_log(void) {
++    static FILE * f = NULL;
++    static int    tried = 0;
++    if (!tried) {
++        tried = 1;
++        const char * path = getenv("ARGINE_ROUTE_LOG");
++        if (path && *path) {
++            f = fopen(path, "a");
++        }
++    }
++    return f;
++}
++
++
++// ----------------------------------------------------------------------------
++// Argine: prefetch degli expert dei layer successivi.
++//
++// Attivato da ARGINE_PREFETCH=<profondita'> (es. 2 = due layer avanti).
++//
++// Perche' serve: su un modello piu' grande della RAM ogni miss va a prendere
++// pochi MiB in un punto casuale del file, una richiesta per volta. Misurato su
++// Qwen3-30B-A3B Q4_K_M: 562 MB/s su un NVMe che ne fa alcuni GB/s. Il limite
++// non e' il dispositivo, e' la profondita' di coda.
++//
++// Che cosa facciamo: gli indirizzi degli expert sono gia' noti dentro
++// MUL_MAT_ID (src0->data + e*nb[2]), quindi non serve gestire la residenza:
++// basta DICHIARARE al sistema operativo cosa servira'. PrefetchVirtualMemory
++// accetta un array di intervalli in una sola chiamata e li emette in parallelo,
++// che e' esattamente cio' che alza la profondita' di coda.
++//
++// Predizione: il routing di un token e' molto correlato con quello del token
++// precedente, quindi per il layer L+k usiamo gli expert che L+k ha usato al giro
++// prima. Non serve indovinare sempre: serve tenere la coda piena.
++//
++// Non cambia NULLA dei risultati numerici: e' solo un suggerimento al kernel.
++// ----------------------------------------------------------------------------
++#define ARGINE_MAX_LAYERS 512
++#define ARGINE_MAX_USED    64
++#define ARGINE_KINDS        3   // gate, up, down
++
++struct argine_slot {
++    void * data;
++    size_t stride;     // byte fra un expert e il successivo
++};
++
++struct argine_layer {
++    struct argine_slot slots[ARGINE_KINDS];
++    int32_t ids[ARGINE_MAX_USED];
++    int     n_ids;
++    // ultimo token per cui abbiamo gia' chiesto il prefetch di questo layer:
++    // senza questo marcatore ogni expert verrebbe richiesto una volta per
++    // ciascuno dei 144 MUL_MAT_ID del token, cioe' ~18 GiB di richieste
++    // ridondanti che sfrattano le pagine in uso.
++    long long prefetched_at;
++};
++
++static struct argine_layer argine_hist[ARGINE_MAX_LAYERS];
++static int argine_depth = -1;   // -1 = non ancora letto
++static long long argine_token = 0;   // avanza quando ricomincia il giro dei layer
++static int argine_last_layer = -1;
++
++static int argine_prefetch_depth(void) {
++    if (argine_depth < 0) {
++        const char * v = getenv("ARGINE_PREFETCH");
++        argine_depth = (v && *v) ? atoi(v) : 0;
++        if (argine_depth < 0) argine_depth = 0;
++        if (argine_depth > 8) argine_depth = 8;
++    }
++    return argine_depth;
++}
++
++// "blk.12.ffn_gate_exps.weight" -> layer 12, kind 0
++static int argine_parse_name(const char * name, int * layer, int * kind) {
++    const char * b = strstr(name, "blk.");
++    if (!b) return 0;
++    int l = atoi(b + 4);
++    if (l < 0 || l >= ARGINE_MAX_LAYERS) return 0;
++    int k;
++    if      (strstr(name, "gate_exps")) k = 0;
++    else if (strstr(name, "up_exps"))   k = 1;
++    else if (strstr(name, "down_exps")) k = 2;
++    else return 0;
++    *layer = l; *kind = k;
++    return 1;
++}
++
++#if defined(_WIN32)
++#include <windows.h>
++typedef BOOL (WINAPI * argine_pvm_t)(HANDLE, ULONG_PTR, PWIN32_MEMORY_RANGE_ENTRY, ULONG);
++static argine_pvm_t argine_pvm(void) {
++    static argine_pvm_t fn = NULL;
++    static int tried = 0;
++    if (!tried) {
++        tried = 1;
++        HMODULE h = GetModuleHandleW(L"kernel32.dll");
++        if (h) fn = (argine_pvm_t)(void *) GetProcAddress(h, "PrefetchVirtualMemory");
++    }
++    return fn;
++}
++#else
++#include <sys/mman.h>
++#include <pthread.h>
++#include <semaphore.h>
++#endif
++
++// ---------------------------------------------------------------------------
++// Prefetch ASINCRONO.
++//
++// Perche' asincrono: su questa classe di macchine il throughput dell'SSD e'
++// determinato da quanti page fault sono in volo contemporaneamente, non dal
++// volume richiesto. Misura: 8 thread che faultano in parallelo rendono
++// ~560 MB/s; una PrefetchVirtualMemory sincrona chiamata dal thread 0 mentre
++// gli altri aspettano alla barriera scende a ~210 MB/s, perche' mette l'I/O
++// IN FILA al calcolo invece di sovrapporlo.
++//
++// Struttura: un piccolo insieme di worker, ognuno con la propria casella e il
++// proprio semaforo. Il produttore (thread 0 di ggml) deposita una richiesta e
++// prosegue subito; se il worker e' occupato la richiesta viene SCARTATA, perche'
++// un prefetch in ritardo non serve e bloccarsi sarebbe peggio del problema.
++// ---------------------------------------------------------------------------
++
++#define ARGINE_Q_RANGES   96
++#define ARGINE_MAX_WORKERS 8
++
++struct argine_req {
++    void * addrs[ARGINE_Q_RANGES];
++    size_t sizes[ARGINE_Q_RANGES];
++    int    n;
++};
++
++struct argine_worker {
++    struct argine_req req;
++    int busy;          // letto/scritto con atomiche
++    int stop;
++#if defined(_WIN32)
++    HANDLE sem;
++    HANDLE thread;
++#else
++    sem_t  sem;
++    pthread_t thread;
++#endif
++};
++
++static struct argine_worker argine_workers[ARGINE_MAX_WORKERS];
++static int  argine_n_workers = -1;
++static int  argine_rr        = 0;
++
++static void argine_serve(struct argine_req * r) {
++    if (r->n <= 0) return;
++#if defined(_WIN32)
++    argine_pvm_t fn = argine_pvm();
++    if (fn) {
++        WIN32_MEMORY_RANGE_ENTRY ranges[ARGINE_Q_RANGES];
++        for (int i = 0; i < r->n; ++i) {
++            ranges[i].VirtualAddress = r->addrs[i];
++            ranges[i].NumberOfBytes  = r->sizes[i];
++        }
++        fn(GetCurrentProcess(), (ULONG_PTR) r->n, ranges, 0);
++        return;
++    }
++    // senza PrefetchVirtualMemory: tocchiamo una byte per pagina, che genera
++    // fault veri da questo thread e quindi concorrenza reale sull'SSD
++    for (int i = 0; i < r->n; ++i) {
++        volatile const char * p = (const char *) r->addrs[i];
++        for (size_t off = 0; off < r->sizes[i]; off += 4096) (void) p[off];
++    }
++#else
++    for (int i = 0; i < r->n; ++i) {
++        madvise(r->addrs[i], r->sizes[i], MADV_WILLNEED);
++    }
++#endif
++}
++
++#if defined(_WIN32)
++static DWORD WINAPI argine_worker_main(LPVOID arg) {
++#else
++static void * argine_worker_main(void * arg) {
++#endif
++    struct argine_worker * w = (struct argine_worker *) arg;
++    for (;;) {
++#if defined(_WIN32)
++        WaitForSingleObject(w->sem, INFINITE);
++#else
++        while (sem_wait(&w->sem) != 0) { }
++#endif
++        if (__atomic_load_n(&w->stop, __ATOMIC_ACQUIRE)) break;
++        argine_serve(&w->req);
++        __atomic_store_n(&w->busy, 0, __ATOMIC_RELEASE);
++    }
++    return 0;
++}
++
++static int argine_start_workers(void) {
++    if (argine_n_workers >= 0) return argine_n_workers;
++    const char * v = getenv("ARGINE_PREFETCH_THREADS");
++    int n = (v && *v) ? atoi(v) : 2;
++    if (n < 1) n = 1;
++    if (n > ARGINE_MAX_WORKERS) n = ARGINE_MAX_WORKERS;
++    for (int i = 0; i < n; ++i) {
++        struct argine_worker * w = &argine_workers[i];
++        w->busy = 0; w->stop = 0;
++#if defined(_WIN32)
++        w->sem = CreateSemaphoreW(NULL, 0, 1024, NULL);
++        if (!w->sem) { n = i; break; }
++        w->thread = CreateThread(NULL, 0, argine_worker_main, w, 0, NULL);
++        if (!w->thread) { CloseHandle(w->sem); w->sem = NULL; n = i; break; }
++#else
++        if (sem_init(&w->sem, 0, 0) != 0) { n = i; break; }
++        if (pthread_create(&w->thread, NULL, argine_worker_main, w) != 0) { n = i; break; }
++#endif
++    }
++    argine_n_workers = n;
++    return n;
++}
++
++// Deposita la richiesta e torna subito. Scarta se tutti i worker sono occupati.
++static void argine_issue_prefetch(void ** addrs, size_t * sizes, int n) {
++    if (n <= 0) return;
++    const int nw = argine_start_workers();
++    if (nw <= 0) return;
++    if (n > ARGINE_Q_RANGES) n = ARGINE_Q_RANGES;
++
++    for (int tentativo = 0; tentativo < nw; ++tentativo) {
++        struct argine_worker * w = &argine_workers[(argine_rr + tentativo) % nw];
++        int atteso = 0;
++        if (!__atomic_compare_exchange_n(&w->busy, &atteso, 1, 0,
++                                        __ATOMIC_ACQ_REL, __ATOMIC_ACQUIRE)) {
++            continue;   // occupato: proviamo il prossimo
++        }
++        for (int i = 0; i < n; ++i) { w->req.addrs[i] = addrs[i]; w->req.sizes[i] = sizes[i]; }
++        w->req.n = n;
++        argine_rr = (argine_rr + tentativo + 1) % nw;
++#if defined(_WIN32)
++        ReleaseSemaphore(w->sem, 1, NULL);
++#else
++        sem_post(&w->sem);
++#endif
++        return;
++    }
++    // tutti occupati: lasciamo perdere. Un prefetch tardivo non aiuta.
++}
++
++static void argine_prefetch(const struct ggml_tensor * src0,
++                              const struct ggml_tensor * ids) {
++    const int depth = argine_prefetch_depth();
++    if (depth <= 0 || !src0->data || !ids || ids->type != GGML_TYPE_I32) return;
++
++    int layer, kind;
++    if (!argine_parse_name(src0->name, &layer, &kind)) return;
++
++    // Nuovo token quando l'indice di layer non avanza piu' (il grafo riparte
++    // dal primo layer MoE): serve a datare le richieste di prefetch.
++    if (layer <= argine_last_layer) {
++        argine_token++;
++    }
++    argine_last_layer = layer;
++
++    // 1) memorizza dove vive questo tensore e quali expert ha usato ora
++    struct argine_layer * cur = &argine_hist[layer];
++    cur->slots[kind].data   = src0->data;
++    cur->slots[kind].stride = src0->nb[2];
++
++    const int64_t n_used   = ids->ne[0];
++    const int64_t n_tokens = ids->ne[1];
++    int n = 0;
++    for (int64_t t = 0; t < n_tokens && n < ARGINE_MAX_USED; ++t) {
++        const int32_t * row = (const int32_t *)((const char *) ids->data + t*ids->nb[1]);
++        for (int64_t k = 0; k < n_used && n < ARGINE_MAX_USED; ++k) {
++            int32_t e = row[k];
++            int dup = 0;
++            for (int j = 0; j < n; ++j) if (cur->ids[j] == e) { dup = 1; break; }
++            if (!dup) cur->ids[n++] = e;
++        }
++    }
++    cur->n_ids = n;
++
++    // 2) chiedi al sistema gli expert che serviranno ai prossimi layer,
++    //    usando quelli che hanno usato al token precedente
++    // gate, up e down di uno stesso layer usano gli stessi expert: emettere da
++    // tutti e tre triplicherebbe il volume senza aggiungere informazione
++    if (kind != 0) return;
++
++    static void * addrs[ARGINE_MAX_USED * ARGINE_KINDS * 8];
++    static size_t sizes[ARGINE_MAX_USED * ARGINE_KINDS * 8];
++    int cnt = 0;
++    const int max = (int)(sizeof(addrs)/sizeof(addrs[0]));
++    for (int d = 1; d <= depth; ++d) {
++        const int L = layer + d;
++        if (L >= ARGINE_MAX_LAYERS) break;
++        struct argine_layer * nx = &argine_hist[L];
++        if (nx->n_ids == 0) continue;
++        if (nx->prefetched_at == argine_token) continue;   // gia' chiesto
++        nx->prefetched_at = argine_token;
++        for (int kk = 0; kk < ARGINE_KINDS; ++kk) {
++            if (!nx->slots[kk].data || nx->slots[kk].stride == 0) continue;
++            for (int i = 0; i < nx->n_ids && cnt < max; ++i) {
++                addrs[cnt] = (char *) nx->slots[kk].data + (size_t) nx->ids[i] * nx->slots[kk].stride;
++                sizes[cnt] = nx->slots[kk].stride;
++                cnt++;
++            }
++        }
++    }
++    argine_issue_prefetch(addrs, sizes, cnt);
++}
++
++static void argine_log_routing(const struct ggml_tensor * src0,
++                                 const struct ggml_tensor * ids) {
++    FILE * f = argine_route_log();
++    if (!f || !ids || ids->type != GGML_TYPE_I32) {
++        return;
++    }
++    const int64_t n_used   = ids->ne[0];
++    const int64_t n_tokens = ids->ne[1];
++    fprintf(f, "%s %lld %lld", src0->name, (long long) n_tokens, (long long) n_used);
++    for (int64_t t = 0; t < n_tokens; ++t) {
++        const int32_t * row = (const int32_t *)((const char *) ids->data + t*ids->nb[1]);
++        for (int64_t k = 0; k < n_used; ++k) {
++            fprintf(f, " %d", row[k]);
++        }
++    }
++    fputc('\n', f);
++}
++
+ static void ggml_compute_forward_mul_mat_id(
+         const struct ggml_compute_params * params,
+               struct ggml_tensor * dst) {
+@@ -1553,6 +1888,11 @@ static void ggml_compute_forward_mul_mat_id(
+     const struct ggml_tensor * src1 = dst->src[1];
+     const struct ggml_tensor * ids = dst->src[2];
+ 
++    if (params->ith == 0) {
++        argine_log_routing(src0, ids);
++        argine_prefetch(src0, ids);
++    }
++
+     GGML_TENSOR_BINARY_OP_LOCALS
+ 
+     const int ith = params->ith;
+@@ -2570,6 +2910,17 @@ static bool ggml_thread_apply_priority(int32_t prio) {
+         // all our threads onto the first 4 cores which results in terrible performance with
+         // n_threads > 4
+         #if _WIN32_WINNT >= 0x0602
++#if defined(__MINGW32__) && !defined(THREAD_POWER_THROTTLING_CURRENT_VERSION)
++        // MinGW non dichiara queste strutture: le definiamo come da SDK Windows
++        typedef struct _TPT_STATE {
++            ULONG Version;
++            ULONG ControlMask;
++            ULONG StateMask;
++        } THREAD_POWER_THROTTLING_STATE;
++#       define THREAD_POWER_THROTTLING_CURRENT_VERSION 1
++#       define THREAD_POWER_THROTTLING_EXECUTION_SPEED 0x1
++#       define ThreadPowerThrottling 3
++#endif
+         THREAD_POWER_THROTTLING_STATE t;
+         ZeroMemory(&t, sizeof(t));
+         t.Version     = THREAD_POWER_THROTTLING_CURRENT_VERSION;

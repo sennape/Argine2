@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "argine2"
+version = "0.2.0"
+description = "Argine2: open research on MoE expert-memory allocation under a hard DRAM budget (llama.cpp expert store + research toolchain)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "sennape" }]
+keywords = ["llm", "gguf", "llama.cpp", "moe", "mixture-of-experts", "expert-caching", "expert-offloading", "nvme", "memory-tiered-inference", "research"]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "psutil>=5.9",
+]
+
+[project.scripts]
+argine2 = "argine.cli:main"
+
+[project.urls]
+Repository = "https://github.com/sennape/Argine2"
+
+[tool.setuptools]
+packages = ["argine", "argine.research"]

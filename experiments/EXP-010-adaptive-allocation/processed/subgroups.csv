@@ -1,0 +1,5 @@
+model,subgroup,n_cells,G_static,G_uniform,wins,ties,losses,W,decides_status
+30b,transition,3,1.0065126343717843,0.9661377539539664,0,0,3,0.0,False
+30b,multi-turn,3,1.0056539666780682,0.95723707338397,0,0,3,0.0,False
+80b,transition,3,1.001690145241265,0.9937382987819161,0,0,3,0.0,False
+80b,multi-turn,3,1.0019531377839959,0.9867273035279539,0,0,3,0.0,False

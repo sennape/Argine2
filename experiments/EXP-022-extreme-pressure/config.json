@@ -1,0 +1,130 @@
+{
+  "id": "EXP-022-extreme-pressure",
+  "title": "Extreme memory pressure: where streaming stops being useful",
+  "status": "INCONCLUSIVE",
+  "period": "2026-10-14 → 2026-10-15",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-008"
+  ],
+  "commands": [
+    "python tools/exp022_run.py --check",
+    "python tools/exp022_run.py --dry-run",
+    "python tools/exp022_run.py --preflight --block 30b-perf",
+    "python tools/exp022_run.py --run --block 30b-perf",
+    "python tools/exp022_run.py --run --block 30b-diag",
+    "python tools/exp022_run.py --run --block 80b-perf",
+    "python tools/exp022_run.py --run --block 80b-diag",
+    "python tools/exp022_run.py --analyze",
+    "python -m unittest discover -s tests -p \"test_exp022.py\" -v"
+  ],
+  "historical_commands_superseded": [
+    "argine research trace MODEL --expert-store --budgets 1.5G,1G,768M,512M --repeat 3 --workload natural-language --out experiments/EXP-022-extreme-pressure/raw"
+  ],
+  "supersedes": "—",
+  "protocol": {
+    "version": "EXP022-P1",
+    "freeze": "experiments/EXP-022-extreme-pressure/protocol_freeze.json",
+    "tool": "tools/exp022_run.py",
+    "tests": "tests/test_exp022.py",
+    "kind": "prospective; frozen before any EXP-022 launch",
+    "models": {
+      "30b": {
+        "role": "primary (H-5 mechanism test + usability envelope)",
+        "gen_threads": 12,
+        "batch_threads": 12,
+        "footprint_bytes": 1097072640,
+        "budgets_bytes": {
+          "1.5G": 1610612736,
+          "1152M": 1207959552,
+          "1024M": 1073741824,
+          "768M": 805306368,
+          "512M": 536870912
+        }
+      },
+      "80b": {
+        "role": "exploratory (usability envelope + diagnostics)",
+        "gen_threads": 4,
+        "batch_threads": 12,
+        "footprint_bytes": 719585280,
+        "budgets_bytes": {
+          "1.5G": 1610612736,
+          "768M": 805306368,
+          "672M": 704643072,
+          "512M": 536870912
+        }
+      }
+    },
+    "excluded_budgets": {
+      "80b-336M": "below 512 MiB the shard count changes (10 shards); not part of EXP022-P1"
+    },
+    "h5": {
+      "point": "30b at 768M (805306368 B), traced diag block, 2 launches",
+      "metric": "manifest.final_store_stats.expert_level_hit_rate (EXP-020 workload gate-slice, prefill + decode)",
+      "aggregation": "arithmetic mean of both scheduled launches",
+      "minimum_eligible_launches": 2,
+      "not_evaluable": "fewer than 2 eligible launches -> NOT EVALUABLE, formal status INCONCLUSIVE",
+      "falsified_if": "> 0.30",
+      "otherwise": "not falsified by this test; formal status INCONCLUSIVE",
+      "positive_support_threshold": null
+    },
+    "blocks": [
+      "30b-perf",
+      "30b-diag",
+      "80b-perf",
+      "80b-diag"
+    ],
+    "launches": 45,
+    "performance": {
+      "tracing": false,
+      "workload": "argine.bench.DEFAULT_PROMPT",
+      "n_predict": 128,
+      "rounds": 3,
+      "cap_s": 2400
+    },
+    "diagnostic": {
+      "tracing": true,
+      "workload": "natural-language v1 EVAL",
+      "launches_per_budget": 2,
+      "cap_s": 6000
+    },
+    "cooldown_s": 60,
+    "outcomes": [
+      "VALID",
+      "STORE_RESIDENCY_ABORT",
+      "NON_COMPLETION",
+      "INVALID"
+    ],
+    "outcome_precedence": "INVALID > STORE_RESIDENCY_ABORT > NON_COMPLETION > VALID",
+    "store_residency_abort_causes": [
+      "capacity_or_pinning",
+      "commit_or_read_failure",
+      "cause_unresolved"
+    ],
+    "amendments": [
+      "A1 2026-10-14: H-5 requires both scheduled replicas",
+      "A2 2026-10-14: INFEASIBLE renamed STORE_RESIDENCY_ABORT (causally neutral)"
+    ],
+    "superseded_freeze": "experiments/EXP-022-extreme-pressure/protocol_freeze_pre_review_2026-10-14.json",
+    "usability_reporting_conventions": {
+      "INTERACTIVE": ">= 5 tok/s",
+      "DEGRADED": ">= 1 and < 5 tok/s",
+      "NON_INTERACTIVE": "< 1 tok/s"
+    },
+    "measurements_made": true
+  },
+  "result": {
+    "closed": true,
+    "closed_date": "2026-10-15",
+    "formal_status": "INCONCLUSIVE",
+    "historical_prediction": "NOT FALSIFIED BY THIS TEST",
+    "h5_mean_expert_level_hit_rate_30b_768m": 0.0023221839,
+    "launches_total": 45,
+    "fidelity_diagnostics_total": 18,
+    "evidence": [
+      "experiments/EXP-022-extreme-pressure/results.csv",
+      "experiments/EXP-022-extreme-pressure/processed/summary.json",
+      "experiments/EXP-022-extreme-pressure/fidelity/"
+    ]
+  }
+}

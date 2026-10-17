@@ -1,0 +1,56 @@
+{
+  "ablate": false,
+  "argv": [
+    "research",
+    "adaptive",
+    "experiments\\EXP-007-router-characterization\\raw\\30b-reasoning-math-eval-v2\\run-00-4G\\trace.jsonl.gz",
+    "--budgets",
+    "4G,2G,1.5G",
+    "--epochs",
+    "32",
+    "--pinned",
+    "0",
+    "--no-ablate",
+    "--out",
+    "experiments\\EXP-010-adaptive-allocation\\eval-adaptive\\30b-reasoning-math-eval-v2"
+  ],
+  "budgets_bytes": [
+    4294967296,
+    2147483648,
+    1610612736
+  ],
+  "command": "adaptive",
+  "cost": null,
+  "epochs": [
+    32
+  ],
+  "phase": "decode",
+  "pinned": [
+    0.0
+  ],
+  "trace": {
+    "meta": {
+      "model": "Qwen_Qwen3-30B-A3B-Q4_K_M.gguf",
+      "n_experts": 128,
+      "n_layers": 48,
+      "split": "eval",
+      "top_k": 8,
+      "workload": "reasoning-math@de60c25a04b7"
+    },
+    "path": "experiments\\EXP-007-router-characterization\\raw\\30b-reasoning-math-eval-v2\\run-00-4G\\trace.jsonl.gz",
+    "sha256": "828e32fbf6062248e0c20435593986f85ac5312f5ba4a09ce89b146edf880d1f"
+  },
+  "train": null,
+  "variants": [
+    "per-layer-lru-uniform",
+    "global-lru",
+    "adaptive-e32",
+    "per-layer-lru-uniform",
+    "global-lru",
+    "adaptive-e32",
+    "per-layer-lru-uniform",
+    "global-lru",
+    "adaptive-e32"
+  ],
+  "written_utc": "2026-10-11T18:37:44Z"
+}

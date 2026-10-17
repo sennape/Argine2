@@ -1,0 +1,16 @@
+{
+  "id": "EXP-019-instrumentation-validation",
+  "title": "Research instrumentation: correctness and completeness",
+  "status": "SUPPORTED",
+  "period": "2026-10-03",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-011",
+    "RQ-012"
+  ],
+  "commands": [
+    "g++ -fsanitize=thread argine-store.cpp argine-research.cpp argine-research-test.cpp -o arxtest && ./arxtest tiny.psxs 2 8 trace.raw",
+    "ARGINE_EXPERT_STORE=tiny.psxs ARGINE_EXPERT_BUDGET=275251 ARGINE_RESEARCH_TRACE=e2e.raw llama-server -m tiny.gguf"
+  ],
+  "supersedes": "—"
+}

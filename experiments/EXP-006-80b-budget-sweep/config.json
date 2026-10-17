@@ -1,0 +1,17 @@
+{
+  "id": "EXP-006-80b-budget-sweep",
+  "title": "Qwen3-Next-80B-A3B: prediction, measurement, budget sweep",
+  "status": "FALSIFIED",
+  "period": "2026-10-03",
+  "origin": "Argine v1 (historical); data re-derived from raw logs by Argine2",
+  "rqs": [
+    "RQ-002",
+    "RQ-009",
+    "RQ-010"
+  ],
+  "commands": [
+    "argine benchmark Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf --expert-store --expert-budget 4G",
+    "argine benchmark Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf --expert-store --sweep-expert-budget 4G,3G,2G,1.5G"
+  ],
+  "supersedes": "—"
+}

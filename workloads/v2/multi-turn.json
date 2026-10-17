@@ -1,0 +1,75 @@
+{
+ "name": "multi-turn-v2",
+ "version": "v2",
+ "description": "Same four-turn conversations as v1/multi-turn, with explicit assistant-history semantics: the history receives only the non-empty final answer (message.content), never reasoning_content; a turn without final content invalidates the sample. Generation budget raised so thinking models can finish reasoning and answer.",
+ "supersedes": {
+  "workload": "v1/multi-turn.json",
+  "sha256": "41909d23a8a739e3"
+ },
+ "conversation_history": {
+  "assistant_source": "content",
+  "reasoning_content_in_history": false,
+  "empty_final_content_policy": "invalidate",
+  "final_turn_requires_content": true,
+  "provenance_text": "reasoning_content_plus_content"
+ },
+ "n_predict": 1536,
+ "splits": {
+  "dev": [
+   {
+    "id": "mt2-dev-1",
+    "segment": "multi-turn",
+    "turns": [
+     {
+      "content": "I want to plan a three-day trip to a city I have never visited. What should I decide first?",
+      "segment": "multi-turn",
+      "n_predict": 1536
+     },
+     {
+      "content": "Let's say the city is Lisbon and my budget is moderate. Suggest a rough plan for day one.",
+      "segment": "multi-turn",
+      "n_predict": 1536
+     },
+     {
+      "content": "Day two should include something outside the city. What are two options and how do I get there?",
+      "segment": "multi-turn",
+      "n_predict": 1536
+     },
+     {
+      "content": "Summarise the whole plan as a short checklist.",
+      "segment": "multi-turn",
+      "n_predict": 1536
+     }
+    ]
+   }
+  ],
+  "eval": [
+   {
+    "id": "mt2-eval-1",
+    "segment": "multi-turn",
+    "turns": [
+     {
+      "content": "I am learning to cook and want to master a basic tomato sauce. What ingredients do I need?",
+      "segment": "multi-turn",
+      "n_predict": 1536
+     },
+     {
+      "content": "How do I avoid the sauce being too acidic?",
+      "segment": "multi-turn",
+      "n_predict": 1536
+     },
+     {
+      "content": "Now I want to turn the same sauce into a pizza sauce. What changes?",
+      "segment": "multi-turn",
+      "n_predict": 1536
+     },
+     {
+      "content": "Write the final recipe in five numbered steps.",
+      "segment": "multi-turn",
+      "n_predict": 1536
+     }
+    ]
+   }
+  ]
+ }
+}

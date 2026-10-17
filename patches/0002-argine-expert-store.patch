@@ -1,0 +1,41 @@
+diff --git a/ggml/src/ggml-cpu/CMakeLists.txt b/ggml/src/ggml-cpu/CMakeLists.txt
+index 2765c27..c9a912c 100644
+--- a/ggml/src/ggml-cpu/CMakeLists.txt
++++ b/ggml/src/ggml-cpu/CMakeLists.txt
+@@ -37,6 +37,10 @@ function(ggml_add_cpu_backend_variant_impl tag_name)
+         ggml-cpu/quants.h
+         ggml-cpu/traits.cpp
+         ggml-cpu/traits.h
++        ggml-cpu/argine-store.cpp
++        ggml-cpu/argine-store.h
++        ggml-cpu/argine-experts.cpp
++        ggml-cpu/argine-experts.h
+         ggml-cpu/amx/amx.cpp
+         ggml-cpu/amx/amx.h
+         ggml-cpu/amx/mmq.cpp
+diff --git a/ggml/src/ggml-cpu/ggml-cpu.cpp b/ggml/src/ggml-cpu/ggml-cpu.cpp
+index 1df0f2b..dd62cee 100644
+--- a/ggml/src/ggml-cpu/ggml-cpu.cpp
++++ b/ggml/src/ggml-cpu/ggml-cpu.cpp
+@@ -39,10 +39,21 @@
+ 
+ // ggml-backend interface
+ 
++// Argine: expert MoE serviti da disco con letture esplicite invece che per
++// page fault. Restituisce nullptr se ARGINE_EXPERT_STORE non e' impostata,
++// quindi senza configurazione non cambia niente.
++extern "C" ggml_backend_buffer_type_t ggml_backend_cpu_argine_buffer_type(void);
++
+ std::vector<ggml_backend_buffer_type_t> & ggml_backend_cpu_get_extra_buffer_types() {
+     static std::vector<ggml_backend_buffer_type_t> bufts = []() {
+         std::vector<ggml_backend_buffer_type_t> bufts;
+ 
++        // prima di repack: i due competono per gli stessi tensori, e per gli
++        // expert vogliamo la residenza nostra, non una copia SIMD in piu'
++        if (auto * psx = ggml_backend_cpu_argine_buffer_type()) {
++            bufts.push_back(psx);
++        }
++
+ #if defined(__AMX_INT8__) && defined(__AVX512VNNI__)
+         if (ggml_backend_amx_buffer_type()) {
+             bufts.push_back(ggml_backend_amx_buffer_type());

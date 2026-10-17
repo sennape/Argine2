@@ -1,0 +1,315 @@
+{
+  "id": "EXP-026-30b-vs-80b-regimes",
+  "title": "Two experimental regimes: 30B-A3B vs Next-80B-A3B",
+  "status": "INCONCLUSIVE",
+  "period": "2026-10-15 → 2026-10-16",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-002",
+    "RQ-009"
+  ],
+  "commands": [
+    "python tools/exp026_run.py --check",
+    "python tools/exp026_run.py --dry-run",
+    "python tools/exp026_run.py --preflight --block diskbench",
+    "python tools/exp026_run.py --run --block diskbench",
+    "python tools/exp026_run.py --preflight --block perf",
+    "python tools/exp026_run.py --run --block perf",
+    "python tools/exp026_run.py --preflight --block diag",
+    "python tools/exp026_run.py --run --block diag",
+    "python tools/exp026_run.py --analyze",
+    "python -m unittest discover -s tests -p \"test_exp026.py\" -v"
+  ],
+  "historical_commands_superseded": [
+    "argine research trace ... on both models",
+    "argine research analyze ..."
+  ],
+  "supersedes": "—",
+  "protocol": {
+    "version": "EXP026-P1",
+    "freeze": "experiments/EXP-026-30b-vs-80b-regimes/protocol_freeze.json",
+    "tool": "tools/exp026_run.py",
+    "tests": "tests/test_exp026.py",
+    "kind": "prospective; frozen before any EXP-026 measurement",
+    "primary_explanandum": "delta_beta = beta_80b - beta_30b, beta = dln(gen_tok_s)/dln(budget/F) P1->P2, untraced, 4 generation threads; outcomes REPRODUCED / REVERSED / NOT DISTINGUISHED / NOT EVALUABLE",
+    "F30": 1097072640,
+    "F80": 719585280,
+    "models": {
+      "30b": {
+        "name": "Qwen3-30B-A3B Q4_K_M",
+        "path": "C:\\modelli\\Qwen_Qwen3-30B-A3B-Q4_K_M.gguf",
+        "store": "C:\\modelli\\Qwen_Qwen3-30B-A3B-Q4_K_M.psxs",
+        "top_k": 8,
+        "n_experts": 128,
+        "footprint_bytes": 1097072640,
+        "whole_layer_bytes_max": 391643136,
+        "slice_sizes": [
+          884736,
+          1290240
+        ]
+      },
+      "80b": {
+        "name": "Qwen3-Next-80B-A3B-Instruct Q3_K_M",
+        "path": "C:\\modelli\\Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+        "store": "C:\\modelli\\Qwen3-Next-80B-A3B-Instruct-Q3_K_M.psxs",
+        "top_k": 10,
+        "n_experts": 512,
+        "footprint_bytes": 719585280,
+        "whole_layer_bytes_max": 830472192,
+        "slice_sizes": [
+          450560,
+          589824,
+          720896
+        ]
+      }
+    },
+    "budgets_bytes": {
+      "30b": {
+        "P1": {
+          "label": "4096M",
+          "bytes": 4294967296
+        },
+        "P2": {
+          "label": "1536M",
+          "bytes": 1610612736
+        },
+        "P3": {
+          "label": "1024M",
+          "bytes": 1073741824
+        }
+      },
+      "80b": {
+        "P1": {
+          "label": "2688M",
+          "bytes": 2818572288
+        },
+        "P2": {
+          "label": "1008M",
+          "bytes": 1056964608
+        },
+        "P3": {
+          "label": "672M",
+          "bytes": 704643072
+        }
+      }
+    },
+    "points": {
+      "P1": "primary slope endpoint",
+      "P2": "primary slope endpoint",
+      "P3": "secondary sub-F probe (not used for the primary beta)"
+    },
+    "threads": {
+      "primary_and_diagnostic": 4,
+      "sensitivity": {
+        "model": "30b",
+        "threads": 12,
+        "points": [
+          "P1",
+          "P2"
+        ]
+      }
+    },
+    "prompt_threads": 12,
+    "workloads": {
+      "performance": {
+        "prompt": "argine.bench.DEFAULT_PROMPT",
+        "sha256": "b1677835fc599087f01f08bf9ab3a07f088351e443740209de52be40778095f3",
+        "n_predict": 128,
+        "tracing": false
+      },
+      "diagnostic": {
+        "name": "natural-language",
+        "version": "v1",
+        "split": "eval",
+        "sha256": "71b170bc0fde211e3694fede63192c72ea70ef7f561791ac28b82ebac25105cc",
+        "tracing": true
+      }
+    },
+    "blocks": [
+      "diskbench",
+      "perf",
+      "diag"
+    ],
+    "performance_replicas": 3,
+    "diagnostic_replicas": 2,
+    "launches": 36,
+    "launch_breakdown": {
+      "perf_primary": 18,
+      "perf_sensitivity": 6,
+      "diag": 12
+    },
+    "diskbench": {
+      "sizes": [
+        450560,
+        589824,
+        720896,
+        884736,
+        1290240
+      ],
+      "readers": [
+        2,
+        4,
+        8,
+        16
+      ],
+      "repetitions": 3,
+      "runs": 60,
+      "kind": "direct",
+      "file": "C:\\modelli\\Qwen3-Next-80B-A3B-Instruct-Q3_K_M.psxs",
+      "seconds": 4,
+      "role": "device-level calibration only"
+    },
+    "no_retry": true,
+    "no_replacement": true,
+    "no_adaptive_pruning": true,
+    "categorical_failures_add_launches": false,
+    "retries_flag": 0,
+    "performance_eligibility": "3/3 VALID",
+    "diagnostic_eligibility": "2/2 eligible",
+    "outcome_taxonomy": [
+      "VALID",
+      "STORE_RESIDENCY_ABORT",
+      "NON_COMPLETION",
+      "INVALID"
+    ],
+    "outcome_precedence": "INVALID > STORE_RESIDENCY_ABORT > NON_COMPLETION > VALID",
+    "seeds": {
+      "perf": 2602601,
+      "diag": 2602602,
+      "diskbench": 2602603
+    },
+    "cooldown_s": 60,
+    "accounting": "BOUND DECOMPOSITION ONLY",
+    "decision_rules": {
+      "explanandum": {
+        "beta": "beta_m = (ln s_P1 - ln s_P2) / (ln x_P1 - ln x_P2), s = gen tok/s (cell median of 3 VALID untraced launches at 4 generation threads), x = budget / F",
+        "delta_beta": "delta_beta = beta_80b - beta_30b (point value from the cell medians)",
+        "envelope": "for each model, beta is computed for every pairing of one P1 value with one P2 value (3 x 3 for performance cells, 2 x 2 for diagnostic cells); the envelope is [min, max] of those betas",
+        "REPRODUCED": "beta80 < beta30 and the envelopes do not overlap (max env80 < min env30)",
+        "REVERSED": "beta80 > beta30 and the envelopes do not overlap (min env80 > max env30)",
+        "NOT DISTINGUISHED": "the envelopes overlap",
+        "NOT EVALUABLE": "a P1 or P2 primary cell of either model fails eligibility (fewer than 3 of 3 VALID)",
+        "historical_direction": "the 80B had the flatter speed/residency response (F-004: 0.384 vs 0.50-0.58)",
+        "no_imported_thresholds": "no pooled-SD threshold, no CV threshold, no p-value"
+      },
+      "gate": {
+        "beta_traced": "per model, from traced decode T (launch means) at P1 and P2: beta = (ln T_P2 - ln T_P1) / (ln x_P1 - ln x_P2); point from cell means, envelope over the 2 x 2 launch pairings",
+        "FAIL": "sign(delta_beta_traced) differs from sign(primary delta_beta), OR the traced envelopes overlap while the primary outcome is REPRODUCED or REVERSED",
+        "NOT EVALUABLE": "primary explanandum NOT EVALUABLE, or a P1/P2 diagnostic cell of either model not 2/2 eligible",
+        "PASS": "otherwise",
+        "effect": "if the gate is not PASS every candidate test is NOT EVALUABLE; the untraced performance result stands; traced results are never primary throughput results"
+      },
+      "candidates": {
+        "a": {
+          "premise": "historical EWS-fraction metric (EWS90 routed experts / total routed experts) reported separately",
+          "endpoint": "m = decode store-read bytes / eligible decode graphs / F per diagnostic launch; e_a = (ln m_P2 - ln m_P1) / (ln x_P2 - ln x_P1), envelope over the 2 x 2 launch pairings",
+          "UNRESOLVED_first": "the 4 e_a values do not all have the same sign, or some m <= 0",
+          "SUPPORTED": "max |e_a|80 < min |e_a|30 AND the M counterfactual moves beta80 toward beta30 at both bounds",
+          "FALSIFIED AS STATED": "min |e_a|80 >= max |e_a|30",
+          "WEAKENED": "the |e_a| envelopes overlap",
+          "UNRESOLVED": "otherwise (80B smaller without overlap but the counterfactual does not move beta80 toward beta30 at both bounds)",
+          "NOT EVALUABLE": "a P1/P2 diagnostic cell not 2/2 eligible, or the gate is not PASS",
+          "wording": "consistent with routing concentration contributing to the regime difference"
+        },
+        "b": {
+          "device": "B_mix per model and round; comparison k: 80B at 2N vs 30B at N, N in {2, 4, 8}; favours 80B if min over rounds B_mix80 > max over rounds B_mix30, disfavours if max80 < min30, else indeterminate; device FAVOURS if all three favour, DISFAVOURS if all three disfavour, else INDETERMINATE",
+          "trace": "q = E_r / M (bounded); at a point 80B LOWER if max(80B q_hi over eligible launches) < min(30B q_lo), HIGHER if min(80B q_lo) > max(30B q_hi), else indeterminate; trace LOWER/HIGHER if so at both P1 and P2, else INDETERMINATE",
+          "SUPPORTED": "device FAVOURS and trace LOWER",
+          "FALSIFIED AS STATED": "device DISFAVOURS and trace HIGHER",
+          "WEAKENED": "(FAVOURS and trace INDETERMINATE) or (device INDETERMINATE and LOWER)",
+          "UNRESOLVED": "device and trace contradict (FAVOURS+HIGHER or DISFAVOURS+LOWER), a relevant traced depth (P1/P2, both models) outside [2, 16], or any other evaluable combination",
+          "NOT EVALUABLE": "required diagnostic cells not eligible, diskbench comparison incomplete, or gate not PASS",
+          "limitation": "diskbench does not reproduce store asincrono behaviour; device evidence is device-level only"
+        },
+        "c": {
+          "counters": "whole-process store counters (commit/decommit/lock/read) are DIAGNOSTIC ONLY",
+          "FALSIFIED AS STATED": "at BOTH P1 and P2, in BOTH eligible 80B diagnostic launches: E_nr_hi < E_r_lo",
+          "WEAKENED": "the falsification condition holds at exactly one of P1, P2; OR at both P1 and P2 max over 80B launches of E_nr_hi / Res <= min over 30B launches of E_nr_lo / Res (the 80B is demonstrably not more non-read dominated than the 30B)",
+          "UNRESOLVED": "otherwise",
+          "SUPPORTED": "NOT REACHABLE with existing instrumentation (E_nr also contains barrier waits and hit lookups); no positive bookkeeping rule exists; inability to support (c) does not make it false",
+          "NOT EVALUABLE": "required diagnostic cells not eligible or gate not PASS"
+        },
+        "d": {
+          "endpoint": "N / T per launch: non-residency (compute-inclusive) time share; never 'pure compute'; Gated DeltaNet itself is not isolated",
+          "SUPPORTED": "at P1 AND P2: min(80B N/T) > max(30B N/T) AND the N counterfactual moves beta80 toward beta30",
+          "FALSIFIED AS STATED": "at BOTH P1 and P2: max(80B N/T) < min(30B N/T)",
+          "WEAKENED": "otherwise when evaluable",
+          "NOT EVALUABLE": "required diagnostic cells not eligible or gate not PASS"
+        }
+      }
+    },
+    "lifecycle_rules": {
+      "SUPPORTED": "explanandum REPRODUCED AND gate PASS AND at least one of (a), (b), (c), (d) SUPPORTED under its own frozen rule (others may be anything)",
+      "FALSIFIED": "explanandum REPRODUCED AND gate PASS AND all four candidates FALSIFIED AS STATED under their own rules; UNRESOLVED, WEAKENED or NOT EVALUABLE never count as falsified",
+      "INCONCLUSIVE": "every other case (explanandum NOT EVALUABLE, NOT DISTINGUISHED or REVERSED; gate failure; no supported candidate while at least one candidate is not falsified)",
+      "during_freeze": "PLANNED, measurements_made = false"
+    },
+    "rq009_rules": {
+      "ANSWERED": "explanandum evaluable and all four candidates resolved (SUPPORTED, WEAKENED or FALSIFIED AS STATED)",
+      "PARTIALLY ANSWERED": "explanandum evaluable and at least one candidate resolved; the Unknown text is narrowed to the remaining candidates",
+      "otherwise": "RQ-009 remains PARTIALLY ANSWERED with a data note; it never regresses",
+      "not_reproduced_note": "the historical slope difference is not reproduced at matched budget/F; consistent with a normalization/region difference",
+      "forbidden_wording": "caused by normalization",
+      "open_questions_edit": "OPEN_QUESTIONS.md is not modified by the freeze; it is updated only at closure"
+    },
+    "measurements_made": true
+  },
+  "result": {
+    "closed": true,
+    "closed_date": "2026-10-16",
+    "formal_status": "INCONCLUSIVE",
+    "protocol_commit": "7168b936853b2c019e1c55000d81a11174a58682",
+    "primary_explanandum": {
+      "outcome": "NOT DISTINGUISHED",
+      "beta_30b": 0.47560756218632283,
+      "beta_80b": 0.49478700287061783,
+      "delta_beta": 0.019179440684295,
+      "envelope_30b": [
+        0.22750499195351992,
+        0.5797406846398588
+      ],
+      "envelope_80b": [
+        0.0638067085678771,
+        0.5832505986644648
+      ]
+    },
+    "traced_gate": {
+      "status": "FAIL",
+      "reason": "sign of delta_beta_traced differs from the primary delta_beta",
+      "delta_beta_traced": -0.2694248957704227,
+      "traced_classification": "REPRODUCED"
+    },
+    "candidates": {
+      "a": "NOT EVALUABLE",
+      "b": "NOT EVALUABLE",
+      "c": "NOT EVALUABLE",
+      "d": "NOT EVALUABLE"
+    },
+    "diskbench_device": "INDETERMINATE",
+    "rq009": {
+      "status": "PARTIALLY ANSWERED",
+      "kind": "unchanged, data note",
+      "note": "the historical slope difference is not reproduced at matched budget/F; consistent with a normalization/region difference"
+    },
+    "launches_total": 36,
+    "diskbench_runs_total": 60,
+    "outcomes": {
+      "diskbench": "60/60 VALID",
+      "perf": "24/24 VALID",
+      "diag": "12/12 VALID and eligible"
+    },
+    "retries": 0,
+    "replacements": 0,
+    "evidence": [
+      "experiments/EXP-026-30b-vs-80b-regimes/results.csv",
+      "experiments/EXP-026-30b-vs-80b-regimes/processed/summary.json",
+      "experiments/EXP-026-30b-vs-80b-regimes/raw/",
+      "llama-research-v2/VALIDATIONS.jsonl"
+    ]
+  },
+  "amendments": [
+    "A1 2026-10-16: test-only, post-measurement; tests/test_exp026.py test_34 made lifecycle-aware; scientific protocol, measurements, analysis, decision rules and results unchanged"
+  ],
+  "superseded_freeze": "experiments/EXP-026-30b-vs-80b-regimes/protocol_freeze_pre_test_amendment_2026-10-16.json",
+  "amendments_location_note": "recorded at top level, not inside 'protocol' as in EXP-022: the EXP-026 protocol object is hash-frozen and must equal the harness-generated object"
+}

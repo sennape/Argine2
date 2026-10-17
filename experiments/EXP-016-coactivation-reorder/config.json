@@ -1,0 +1,16 @@
+{
+  "id": "EXP-016-coactivation-reorder",
+  "title": "Reordering the GGUF by expert co-activation",
+  "status": "FALSIFIED",
+  "period": "2026-09-27",
+  "origin": "Argine v1 (historical); data re-derived from raw logs by Argine2",
+  "rqs": [
+    "RQ-018"
+  ],
+  "commands": [
+    "argine run MODEL --route-log route.log",
+    "argine reorder MODEL --trace route.log",
+    "argine benchmark MODEL-reordered.gguf"
+  ],
+  "supersedes": "—"
+}

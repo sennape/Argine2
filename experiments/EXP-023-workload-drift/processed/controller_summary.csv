@@ -1,0 +1,13 @@
+trace_key,model,split,budget,controller_gain_vs_frozen_misses,A_fixed_mean_allocation_gain,A_share_of_gain_mean_alloc,oracle_potential_B_segment_switching,reaction_lag_cost_vs_instant_piecewise
+30b-dev,30b,dev,4G,4030,5457,1.354,1658,-1844
+30b-dev,30b,dev,2G,5491,6456,1.176,1736,-1762
+30b-dev,30b,dev,1.5G,7294,8447,1.158,1180,-1665
+30b-eval,30b,eval,4G,3611,5250,1.454,1390,-1668
+30b-eval,30b,eval,2G,5536,6256,1.13,1418,-1190
+30b-eval,30b,eval,1.5G,8239,9304,1.129,1183,-1391
+80b-dev,80b,dev,4G,371,889,2.396,2258,-1104
+80b-dev,80b,dev,2G,1009,1334,1.322,1267,-989
+80b-dev,80b,dev,1.5G,2903,3353,1.155,1128,-1272
+80b-eval,80b,eval,4G,776,1186,1.528,2190,-820
+80b-eval,80b,eval,2G,766,1003,1.309,2507,-1363
+80b-eval,80b,eval,1.5G,3100,3535,1.14,1379,-1207

@@ -1,0 +1,14 @@
+{
+  "id": "EXP-015-pretouch",
+  "title": "PRETOUCH: page zeroing moved, not added",
+  "status": "SUPPORTED",
+  "period": "2026-10-02 → 2026-10-03",
+  "origin": "Argine v1 (historical); summary measurements transcribed from the historical Argine v1 README; raw run linkage incomplete",
+  "rqs": [
+    "RQ-015"
+  ],
+  "commands": [
+    "argine benchmark MODEL --expert-store --sweep-expert-budget 4G,1.5G [--pretouch] --expert-stats"
+  ],
+  "supersedes": "—"
+}

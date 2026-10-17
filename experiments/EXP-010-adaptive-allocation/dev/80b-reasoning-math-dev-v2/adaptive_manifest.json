@@ -1,0 +1,83 @@
+{
+  "ablate": true,
+  "argv": [
+    "research",
+    "adaptive",
+    "experiments\\EXP-007-router-characterization\\raw\\80b-reasoning-math-dev-v2\\run-00-4G\\trace.jsonl.gz",
+    "--budgets",
+    "4G,2G,1.5G",
+    "--epochs",
+    "32,64,128",
+    "--pinned",
+    "0,0.25,0.5",
+    "--out",
+    "experiments\\EXP-010-adaptive-allocation\\dev\\80b-reasoning-math-dev-v2"
+  ],
+  "budgets_bytes": [
+    4294967296,
+    2147483648,
+    1610612736
+  ],
+  "command": "adaptive",
+  "cost": null,
+  "epochs": [
+    32,
+    64,
+    128
+  ],
+  "phase": "decode",
+  "pinned": [
+    0.0,
+    0.25,
+    0.5
+  ],
+  "trace": {
+    "meta": {
+      "model": "Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+      "n_experts": 512,
+      "n_layers": 48,
+      "split": "dev",
+      "top_k": 10,
+      "workload": "reasoning-math@de60c25a04b7"
+    },
+    "path": "experiments\\EXP-007-router-characterization\\raw\\80b-reasoning-math-dev-v2\\run-00-4G\\trace.jsonl.gz",
+    "sha256": "1d676a3b8682882622bdeae17543c4a7c77b2dbf749ea6e333577e7892530a5f"
+  },
+  "train": null,
+  "variants": [
+    "per-layer-lru-uniform",
+    "global-lru",
+    "adaptive-e32",
+    "adaptive-e64",
+    "adaptive-e128",
+    "adaptive-e64-pin25",
+    "adaptive-e64-pin50",
+    "ablate-frozen",
+    "ablate-freq-estimator",
+    "ablate-no-cost-weighting",
+    "ablate-no-hysteresis",
+    "per-layer-lru-uniform",
+    "global-lru",
+    "adaptive-e32",
+    "adaptive-e64",
+    "adaptive-e128",
+    "adaptive-e64-pin25",
+    "adaptive-e64-pin50",
+    "ablate-frozen",
+    "ablate-freq-estimator",
+    "ablate-no-cost-weighting",
+    "ablate-no-hysteresis",
+    "per-layer-lru-uniform",
+    "global-lru",
+    "adaptive-e32",
+    "adaptive-e64",
+    "adaptive-e128",
+    "adaptive-e64-pin25",
+    "adaptive-e64-pin50",
+    "ablate-frozen",
+    "ablate-freq-estimator",
+    "ablate-no-cost-weighting",
+    "ablate-no-hysteresis"
+  ],
+  "written_utc": "2026-10-11T13:46:53Z"
+}

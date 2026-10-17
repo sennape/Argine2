@@ -1,0 +1,211 @@
+{
+  "divergences_seed0": [],
+  "first_divergence_seed0": null,
+  "node_completeness": {
+    "details": [
+      {
+        "excluded_segment": true,
+        "graph": 395,
+        "layer": 39,
+        "missing": [
+          [
+            39,
+            2,
+            2
+          ],
+          [
+            39,
+            5,
+            0
+          ],
+          [
+            39,
+            5,
+            1
+          ],
+          [
+            39,
+            8,
+            0
+          ],
+          [
+            39,
+            8,
+            2
+          ],
+          [
+            39,
+            41,
+            1
+          ],
+          [
+            39,
+            49,
+            1
+          ],
+          [
+            39,
+            49,
+            2
+          ],
+          [
+            39,
+            52,
+            0
+          ],
+          [
+            39,
+            59,
+            0
+          ],
+          [
+            39,
+            59,
+            1
+          ],
+          [
+            39,
+            75,
+            2
+          ]
+        ],
+        "node_kind": 1,
+        "unexpected": []
+      }
+    ],
+    "incomplete": 1,
+    "incomplete_in_workload": 0,
+    "nodes": 56999
+  },
+  "pin_model": "per-thread",
+  "reconstruct": {
+    "first": null,
+    "inconsistencies": {
+      "evict_not_resident": 0,
+      "hit_not_resident": 0,
+      "miss_already_resident": 0
+    },
+    "order": "per-shard seq (exact)",
+    "records": 1701995,
+    "shards_with_seq_gaps": 3,
+    "total": 0
+  },
+  "seq_gaps": {
+    "applicable": true,
+    "duplicates": 0,
+    "gaps": [
+      {
+        "class": "after the last workload record of the shard (warm-up / flush sentinel tail): replay-irrelevant",
+        "inside_excluded_segment": true,
+        "next": {
+          "key": [
+            39,
+            8,
+            1
+          ],
+          "seq": 108291,
+          "t_ns": 262227667405700,
+          "tid": 12,
+          "type": "A"
+        },
+        "prev": {
+          "key": [
+            39,
+            5,
+            2
+          ],
+          "seq": 108289,
+          "t_ns": 262227667130300,
+          "tid": 14,
+          "type": "A"
+        },
+        "replay_relevant": false,
+        "seq": 108290,
+        "shard": 0
+      },
+      {
+        "class": "after the last workload record of the shard (warm-up / flush sentinel tail): replay-irrelevant",
+        "inside_excluded_segment": true,
+        "next": {
+          "key": [
+            39,
+            52,
+            2
+          ],
+          "seq": 113712,
+          "t_ns": 262227667410000,
+          "tid": 6,
+          "type": "A"
+        },
+        "prev": {
+          "key": [
+            39,
+            52,
+            2
+          ],
+          "seq": 113710,
+          "t_ns": 262227667133000,
+          "tid": 14,
+          "type": "A"
+        },
+        "replay_relevant": false,
+        "seq": 113711,
+        "shard": 3
+      },
+      {
+        "class": "after the last workload record of the shard (warm-up / flush sentinel tail): replay-irrelevant",
+        "inside_excluded_segment": true,
+        "next": {
+          "key": [
+            39,
+            2,
+            1
+          ],
+          "seq": 109398,
+          "t_ns": 262227667405900,
+          "tid": 6,
+          "type": "A"
+        },
+        "prev": {
+          "key": [
+            39,
+            59,
+            1
+          ],
+          "seq": 109396,
+          "t_ns": 262227667188700,
+          "tid": 12,
+          "type": "A"
+        },
+        "replay_relevant": false,
+        "seq": 109397,
+        "shard": 4
+      }
+    ],
+    "missing": 3,
+    "shards_with_replay_relevant_seq_gaps": 0,
+    "shards_with_seq_gaps": 3
+  },
+  "thread_pools": {
+    "12": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "4": [
+      6,
+      12,
+      13,
+      14
+    ]
+  }
+}

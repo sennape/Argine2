@@ -1,0 +1,145 @@
+analysis,target,model,predictor,scope,n,distinct_predictor_values,spearman_rho
+primary (EVAL),gen_tok_s,30b,P0,all 21 rows,21,3,0.847566
+primary (EVAL),gen_tok_s,30b,P0,fixed budget 4G (7 workloads),7,1,
+primary (EVAL),gen_tok_s,30b,P0,fixed budget 2G (7 workloads),7,1,
+primary (EVAL),gen_tok_s,30b,P0,fixed budget 1.5G (7 workloads),7,1,
+primary (EVAL),gen_tok_s,30b,P1,all 21 rows,21,21,0.664935
+primary (EVAL),gen_tok_s,30b,P1,fixed budget 4G (7 workloads),7,7,-0.321429
+primary (EVAL),gen_tok_s,30b,P1,fixed budget 2G (7 workloads),7,7,-0.357143
+primary (EVAL),gen_tok_s,30b,P1,fixed budget 1.5G (7 workloads),7,7,-0.357143
+primary (EVAL),gen_tok_s,30b,P2,all 21 rows,21,21,0.724675
+primary (EVAL),gen_tok_s,30b,P2,fixed budget 4G (7 workloads),7,7,-0.25
+primary (EVAL),gen_tok_s,30b,P2,fixed budget 2G (7 workloads),7,7,-0.285714
+primary (EVAL),gen_tok_s,30b,P2,fixed budget 1.5G (7 workloads),7,7,-0.285714
+primary (EVAL),gen_tok_s,80b,P0,all 21 rows,21,3,0.683831
+primary (EVAL),gen_tok_s,80b,P0,fixed budget 4G (7 workloads),7,1,
+primary (EVAL),gen_tok_s,80b,P0,fixed budget 2G (7 workloads),7,1,
+primary (EVAL),gen_tok_s,80b,P0,fixed budget 1.5G (7 workloads),7,1,
+primary (EVAL),gen_tok_s,80b,P1,all 21 rows,21,21,0.727273
+primary (EVAL),gen_tok_s,80b,P1,fixed budget 4G (7 workloads),7,7,0.285714
+primary (EVAL),gen_tok_s,80b,P1,fixed budget 2G (7 workloads),7,7,0.285714
+primary (EVAL),gen_tok_s,80b,P1,fixed budget 1.5G (7 workloads),7,7,0.464286
+primary (EVAL),gen_tok_s,80b,P2,all 21 rows,21,21,0.794805
+primary (EVAL),gen_tok_s,80b,P2,fixed budget 4G (7 workloads),7,7,0.464286
+primary (EVAL),gen_tok_s,80b,P2,fixed budget 2G (7 workloads),7,7,0.464286
+primary (EVAL),gen_tok_s,80b,P2,fixed budget 1.5G (7 workloads),7,7,0.571429
+primary (EVAL),expert_level_hit_rate,30b,P0,all 21 rows,21,3,0.934248
+primary (EVAL),expert_level_hit_rate,30b,P0,fixed budget 4G (7 workloads),7,1,
+primary (EVAL),expert_level_hit_rate,30b,P0,fixed budget 2G (7 workloads),7,1,
+primary (EVAL),expert_level_hit_rate,30b,P0,fixed budget 1.5G (7 workloads),7,1,
+primary (EVAL),expert_level_hit_rate,30b,P1,all 21 rows,21,21,0.972727
+primary (EVAL),expert_level_hit_rate,30b,P1,fixed budget 4G (7 workloads),7,7,0.892857
+primary (EVAL),expert_level_hit_rate,30b,P1,fixed budget 2G (7 workloads),7,7,0.821429
+primary (EVAL),expert_level_hit_rate,30b,P1,fixed budget 1.5G (7 workloads),7,7,0.821429
+primary (EVAL),expert_level_hit_rate,30b,P2,all 21 rows,21,21,0.975325
+primary (EVAL),expert_level_hit_rate,30b,P2,fixed budget 4G (7 workloads),7,7,0.892857
+primary (EVAL),expert_level_hit_rate,30b,P2,fixed budget 2G (7 workloads),7,7,0.75
+primary (EVAL),expert_level_hit_rate,30b,P2,fixed budget 1.5G (7 workloads),7,7,0.75
+primary (EVAL),expert_level_hit_rate,80b,P0,all 21 rows,21,3,0.731988
+primary (EVAL),expert_level_hit_rate,80b,P0,fixed budget 4G (7 workloads),7,1,
+primary (EVAL),expert_level_hit_rate,80b,P0,fixed budget 2G (7 workloads),7,1,
+primary (EVAL),expert_level_hit_rate,80b,P0,fixed budget 1.5G (7 workloads),7,1,
+primary (EVAL),expert_level_hit_rate,80b,P1,all 21 rows,21,21,0.887013
+primary (EVAL),expert_level_hit_rate,80b,P1,fixed budget 4G (7 workloads),7,7,0.892857
+primary (EVAL),expert_level_hit_rate,80b,P1,fixed budget 2G (7 workloads),7,7,0.714286
+primary (EVAL),expert_level_hit_rate,80b,P1,fixed budget 1.5G (7 workloads),7,7,0.714286
+primary (EVAL),expert_level_hit_rate,80b,P2,all 21 rows,21,21,0.911688
+primary (EVAL),expert_level_hit_rate,80b,P2,fixed budget 4G (7 workloads),7,7,0.964286
+primary (EVAL),expert_level_hit_rate,80b,P2,fixed budget 2G (7 workloads),7,7,0.857143
+primary (EVAL),expert_level_hit_rate,80b,P2,fixed budget 1.5G (7 workloads),7,7,0.857143
+replication (DEV),gen_tok_s,30b,P0,all 21 rows,21,3,0.857197
+replication (DEV),gen_tok_s,30b,P0,fixed budget 4G (7 workloads),7,1,
+replication (DEV),gen_tok_s,30b,P0,fixed budget 2G (7 workloads),7,1,
+replication (DEV),gen_tok_s,30b,P0,fixed budget 1.5G (7 workloads),7,1,
+replication (DEV),gen_tok_s,30b,P1,all 21 rows,21,21,0.655844
+replication (DEV),gen_tok_s,30b,P1,fixed budget 4G (7 workloads),7,7,-0.321429
+replication (DEV),gen_tok_s,30b,P1,fixed budget 2G (7 workloads),7,7,-0.392857
+replication (DEV),gen_tok_s,30b,P1,fixed budget 1.5G (7 workloads),7,7,-0.428571
+replication (DEV),gen_tok_s,30b,P2,all 21 rows,21,21,0.732468
+replication (DEV),gen_tok_s,30b,P2,fixed budget 4G (7 workloads),7,7,-0.321429
+replication (DEV),gen_tok_s,30b,P2,fixed budget 2G (7 workloads),7,7,-0.392857
+replication (DEV),gen_tok_s,30b,P2,fixed budget 1.5G (7 workloads),7,7,-0.428571
+replication (DEV),gen_tok_s,80b,P0,all 21 rows,21,3,0.712726
+replication (DEV),gen_tok_s,80b,P0,fixed budget 4G (7 workloads),7,1,
+replication (DEV),gen_tok_s,80b,P0,fixed budget 2G (7 workloads),7,1,
+replication (DEV),gen_tok_s,80b,P0,fixed budget 1.5G (7 workloads),7,1,
+replication (DEV),gen_tok_s,80b,P1,all 21 rows,21,21,0.735065
+replication (DEV),gen_tok_s,80b,P1,fixed budget 4G (7 workloads),7,7,0.178571
+replication (DEV),gen_tok_s,80b,P1,fixed budget 2G (7 workloads),7,7,0.321429
+replication (DEV),gen_tok_s,80b,P1,fixed budget 1.5G (7 workloads),7,7,0.357143
+replication (DEV),gen_tok_s,80b,P2,all 21 rows,21,21,0.784416
+replication (DEV),gen_tok_s,80b,P2,fixed budget 4G (7 workloads),7,7,0.25
+replication (DEV),gen_tok_s,80b,P2,fixed budget 2G (7 workloads),7,7,0.392857
+replication (DEV),gen_tok_s,80b,P2,fixed budget 1.5G (7 workloads),7,7,0.428571
+replication (DEV),expert_level_hit_rate,30b,P0,all 21 rows,21,3,0.924617
+replication (DEV),expert_level_hit_rate,30b,P0,fixed budget 4G (7 workloads),7,1,
+replication (DEV),expert_level_hit_rate,30b,P0,fixed budget 2G (7 workloads),7,1,
+replication (DEV),expert_level_hit_rate,30b,P0,fixed budget 1.5G (7 workloads),7,1,
+replication (DEV),expert_level_hit_rate,30b,P1,all 21 rows,21,21,0.97013
+replication (DEV),expert_level_hit_rate,30b,P1,fixed budget 4G (7 workloads),7,7,0.892857
+replication (DEV),expert_level_hit_rate,30b,P1,fixed budget 2G (7 workloads),7,7,0.857143
+replication (DEV),expert_level_hit_rate,30b,P1,fixed budget 1.5G (7 workloads),7,7,0.857143
+replication (DEV),expert_level_hit_rate,30b,P2,all 21 rows,21,21,0.981818
+replication (DEV),expert_level_hit_rate,30b,P2,fixed budget 4G (7 workloads),7,7,0.892857
+replication (DEV),expert_level_hit_rate,30b,P2,fixed budget 2G (7 workloads),7,7,0.857143
+replication (DEV),expert_level_hit_rate,30b,P2,fixed budget 1.5G (7 workloads),7,7,0.857143
+replication (DEV),expert_level_hit_rate,80b,P0,all 21 rows,21,3,0.789777
+replication (DEV),expert_level_hit_rate,80b,P0,fixed budget 4G (7 workloads),7,1,
+replication (DEV),expert_level_hit_rate,80b,P0,fixed budget 2G (7 workloads),7,1,
+replication (DEV),expert_level_hit_rate,80b,P0,fixed budget 1.5G (7 workloads),7,1,
+replication (DEV),expert_level_hit_rate,80b,P1,all 21 rows,21,21,0.941558
+replication (DEV),expert_level_hit_rate,80b,P1,fixed budget 4G (7 workloads),7,7,0.821429
+replication (DEV),expert_level_hit_rate,80b,P1,fixed budget 2G (7 workloads),7,7,0.821429
+replication (DEV),expert_level_hit_rate,80b,P1,fixed budget 1.5G (7 workloads),7,7,0.821429
+replication (DEV),expert_level_hit_rate,80b,P2,all 21 rows,21,21,0.937662
+replication (DEV),expert_level_hit_rate,80b,P2,fixed budget 4G (7 workloads),7,7,0.928571
+replication (DEV),expert_level_hit_rate,80b,P2,fixed budget 2G (7 workloads),7,7,0.928571
+replication (DEV),expert_level_hit_rate,80b,P2,fixed budget 1.5G (7 workloads),7,7,0.928571
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P0,all 21 rows,21,3,0.847566
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P0,fixed budget 4G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P0,fixed budget 2G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P0,fixed budget 1.5G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P1,all 21 rows,21,21,0.8
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P1,fixed budget 4G (7 workloads),7,7,0.142857
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P1,fixed budget 2G (7 workloads),7,7,0.071429
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P1,fixed budget 1.5G (7 workloads),7,7,0.071429
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P2,all 21 rows,21,21,0.77013
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P2,fixed budget 4G (7 workloads),7,7,0.0
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P2,fixed budget 2G (7 workloads),7,7,-0.035714
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,30b,P2,fixed budget 1.5G (7 workloads),7,7,-0.035714
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P0,all 21 rows,21,3,0.683831
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P0,fixed budget 4G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P0,fixed budget 2G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P0,fixed budget 1.5G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P1,all 21 rows,21,21,0.9
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P1,fixed budget 4G (7 workloads),7,7,0.821429
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P1,fixed budget 2G (7 workloads),7,7,0.821429
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P1,fixed budget 1.5G (7 workloads),7,7,0.928571
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P2,all 21 rows,21,21,0.874026
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P2,fixed budget 4G (7 workloads),7,7,0.785714
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P2,fixed budget 2G (7 workloads),7,7,0.785714
+exploratory: full-trace P1/P2 (EVAL),gen_tok_s,80b,P2,fixed budget 1.5G (7 workloads),7,7,0.857143
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P0,all 21 rows,21,3,0.934248
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P0,fixed budget 4G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P0,fixed budget 2G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P0,fixed budget 1.5G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P1,all 21 rows,21,21,0.936364
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P1,fixed budget 4G (7 workloads),7,7,0.464286
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P1,fixed budget 2G (7 workloads),7,7,0.571429
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P1,fixed budget 1.5G (7 workloads),7,7,0.571429
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P2,all 21 rows,21,21,0.98961
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P2,fixed budget 4G (7 workloads),7,7,0.892857
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P2,fixed budget 2G (7 workloads),7,7,0.928571
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,30b,P2,fixed budget 1.5G (7 workloads),7,7,0.928571
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P0,all 21 rows,21,3,0.731988
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P0,fixed budget 4G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P0,fixed budget 2G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P0,fixed budget 1.5G (7 workloads),7,1,
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P1,all 21 rows,21,21,0.844156
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P1,fixed budget 4G (7 workloads),7,7,0.75
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P1,fixed budget 2G (7 workloads),7,7,0.75
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P1,fixed budget 1.5G (7 workloads),7,7,0.75
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P2,all 21 rows,21,21,0.925974
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P2,fixed budget 4G (7 workloads),7,7,0.964286
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P2,fixed budget 2G (7 workloads),7,7,0.964286
+exploratory: full-trace P1/P2 (EVAL),expert_level_hit_rate,80b,P2,fixed budget 1.5G (7 workloads),7,7,0.964286

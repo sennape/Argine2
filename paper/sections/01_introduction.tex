@@ -1,0 +1,44 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Mixture-of-experts (MoE) architectures increase model capacity by activating only a subset of experts for each token. This conditional computation changes the memory problem, but it does not remove it. When the complete expert set does not fit in DRAM, inference must decide which expert weights remain resident, which are evicted, and which non-resident experts are fetched from secondary storage. Under a hard expert-memory budget, these decisions interact with routing, I/O concurrency, and the temporal structure of the workload.
+
+A natural first abstraction is \emph{residency}: performance should improve as a larger fraction of the expert weights fits in memory. Our measurements show that this view is incomplete. Equal-sized layers do not exhibit equal working-set demand. The same number of misses can imply different stall time because reads overlap differently at different queue depths. Routing distributions can drift across workload boundaries without a controller obtaining useful gain from reacting quickly to that drift. Moreover, historical pressure-response differences observed across models and binaries in different pressure regions need not reproduce in a matched-$M/F$ comparison on the current runtime.
+
+This paper studies that gap between nominal residency and realized performance. We use \argine{}, an experimental framework for CPU-only MoE inference with expert weights streamed from NVMe under an explicit DRAM cap. The goal is not to present a universal production memory manager. Instead, we use controlled replay, end-to-end execution, preregistered experiments, and negative results to isolate which parts of the problem are explained by layer allocation, which remain attributable to expert selection and I/O behavior, and which apparently simple performance abstractions fail under stronger pressure.
+
+\subsection{From cache capacity to allocation and retention}
+
+Let $\budget$ denote the DRAM budget available to resident expert weights. A conventional cache-capacity view asks whether the total resident fraction is large enough and which objects should be evicted on a miss. MoE inference introduces an additional structure: expert demand is partitioned by layer, and a token visits these layers in a fixed computational order while router decisions determine which experts are required within each layer. The memory manager therefore faces at least two coupled decisions:
+\begin{enumerate}
+    \item \emph{allocation}: how much of $\budget$ to assign to each layer; and
+    \item \emph{retention}: which experts to keep within each layer's allocation.
+\end{enumerate}
+
+This distinction matters empirically. If layer working sets differ, a uniform split can waste capacity even when total memory is fixed. Conversely, improving the split does not solve the entire problem if the dominant remaining misses arise from poor expert selection within the allocated space. We therefore separate the value of layer-aware allocation from the residual headroom exposed by a future-informed selection reference.
+
+\subsection{Why hit rate is not enough}
+
+Hit rate is useful for describing reuse, but it is not itself a time model. In the evaluated runtime, expert-level reuse and runtime-style hit accounting are distinct quantities, and miss count does not map linearly to stall time. As memory pressure rises, more misses can increase I/O queue depth and overlap, reducing the average time attributable to each individual read. A policy that prevents more misses can therefore save less wall-clock time than a simple hit-rate comparison suggests.
+
+This motivates a second question: can measured token latency be explained by a decomposition that explicitly represents unhidden I/O rather than by miss count alone? We test an interpretable model of token time and evaluate it out of configuration rather than only by in-sample fit.
+
+\subsection{Pressure regimes and mechanism tests}
+
+A further temptation is to normalize memory by a model-specific footprint and treat the resulting ratio as a universal pressure coordinate. We use the one-token expert footprint $\footprint$ as such a scale and study $\budget/\footprint$ down to regimes where expert reuse nearly vanishes. The resulting measurements separate three notions that are often conflated: reuse collapse, degraded but continuing execution, and hard non-completion. We then compare two MoE models at matched $\budget/\footprint$ to test whether a previously observed cross-model difference in pressure response reproduces under a controlled matched-pressure protocol.
+
+The answer is deliberately mixed. Some structural effects reproduce strongly: layer demand is heterogeneous, uniform allocation is suboptimal, and workload boundaries exhibit substantial routing drift. Other hypotheses do not survive direct tests: the tested adaptive controller does not obtain its gain from rapid temporal reaction, and the historical cross-model pressure-regime difference is not distinguished in the matched-pressure experiment on the current runtime. We retain these negative and inconclusive outcomes because they constrain the design space as much as the positive results do.
+
+\subsection{Contributions}
+
+The paper makes six empirical and methodological contributions:
+\begin{enumerate}
+    \item \textbf{Layer heterogeneity.} We quantify per-layer expert working sets across two MoE models and show that a uniform per-layer memory split is measurably suboptimal in the evaluated traces.
+    \item \textbf{Allocation versus selection.} We show that layer-aware allocation becomes increasingly valuable under memory pressure, while the remaining future-informed expert-selection headroom is substantially larger than the allocation gain.
+    \item \textbf{Temporal adaptation.} We measure strong routing-distribution drift at workload boundaries but falsify the temporal mechanism of the current \texttt{adaptive-e64} controller: a fixed allocation equal to its mean allocation explains most or all of the observed gain.
+    \item \textbf{Metric semantics.} We separate expert-level reuse from runtime-style hit accounting and show why miss count alone is insufficient to model elapsed time under changing I/O concurrency.
+    \item \textbf{Interpretable latency prediction.} A decomposition of token latency into compute, unhidden I/O, synchronization, and controller components achieves a median leave-one-configuration-out absolute percentage error of 2.25\% on the preregistered 30B primary test; the decomposition is predictive rather than component-identifying.
+    \item \textbf{Pressure-regime limits.} Extreme-pressure experiments show that the one-token expert footprint is not a hard execution threshold, and a preregistered matched-pressure experiment does not reproduce the historical cross-model regime difference.
+\end{enumerate}
+
+Together, these results support a more cautious systems abstraction: expert residency under hard memory constraints should be treated as a coupled allocation-and-retention problem whose performance is mediated by routing structure, selection quality, and I/O concurrency. We do not claim that this settles the general theory of MoE memory management; rather, it identifies which simpler abstractions fail in the evaluated regimes and where the largest measured optimization headroom remains.

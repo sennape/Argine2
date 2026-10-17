@@ -1,0 +1,18 @@
+{
+  "id": "EXP-009-policy-replay",
+  "title": "Counterfactual replay of cache and allocation policies",
+  "status": "INCONCLUSIVE",
+  "period": "2026-10-03 → 2026-10-11",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-001",
+    "RQ-005",
+    "RQ-007",
+    "RQ-017"
+  ],
+  "commands": [
+    "argine research analyze data/processed/legacy-30b-route-request1.jsonl.gz --budgets 4G,3G,2G,1.5G,1G,768M,512M --out data/processed/pilot-legacy-30b"
+  ],
+  "supersedes": "—",
+  "closure": "CLOSED 2026-10-11: primary hypothesis ('significant part of the LRU-to-oracle gap') had no pre-specified quantitative criterion; regime-specific findings recorded separately"
+}

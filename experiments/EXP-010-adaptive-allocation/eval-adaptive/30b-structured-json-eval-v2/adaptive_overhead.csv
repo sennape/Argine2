@@ -1,0 +1,10 @@
+variant,budget,replay_wall_s,controller_ms,controller_ms_per_token
+per-layer-lru-uniform,4G,0.235,0.091,0.00023910821
+global-lru,4G,0.185,0.075,0.00019632482
+adaptive-e32,4G,0.915,759.755,1.9941087
+per-layer-lru-uniform,2G,0.225,0.075,0.00019737561
+global-lru,2G,0.208,0.076,0.00020052463
+adaptive-e32,2G,0.986,775.288,2.0348761
+per-layer-lru-uniform,1.5G,0.324,0.11,0.00028897522
+global-lru,1.5G,0.284,0.09,0.00023517056
+adaptive-e32,1.5G,1.397,1056.518,2.7730129

@@ -1,0 +1,13 @@
+{
+  "id": "EXP-002-repack",
+  "title": "llama.cpp weight repack buffer on a CPU without AMX",
+  "status": "SUPPORTED",
+  "period": "2026-09-27",
+  "origin": "Argine v1 (historical); data re-derived from raw logs by Argine2",
+  "rqs": [],
+  "commands": [
+    "argine benchmark Qwen3-8B-Q4_K_M.gguf --repack",
+    "argine benchmark Qwen3-8B-Q4_K_M.gguf"
+  ],
+  "supersedes": "—"
+}

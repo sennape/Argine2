@@ -1,0 +1,15 @@
+{
+  "id": "EXP-011-binary-rebuild",
+  "title": "Matched model and runtime plan, different binaries: the observed 1.74x factor",
+  "status": "SUPPORTED",
+  "period": "2026-10-01",
+  "origin": "Argine v1 (historical); data re-derived from raw logs by Argine2",
+  "rqs": [
+    "RQ-014",
+    "RQ-015"
+  ],
+  "commands": [
+    "argine benchmark qwen30b-IQ2S.gguf --threads 4"
+  ],
+  "supersedes": "—"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "EXP-012-dense-14b-control",
+  "title": "Does a bigger compressed MoE know more than a smaller intact dense model?",
+  "status": "FALSIFIED",
+  "period": "2026-10-02",
+  "origin": "Argine v1 (historical); data re-derived from raw logs by Argine2",
+  "rqs": [],
+  "commands": [
+    "argine ppl MODEL --text testo-riferimento.txt --ctx 512 --chunks 60",
+    "argine benchmark MODEL --threads 4"
+  ],
+  "supersedes": "—"
+}

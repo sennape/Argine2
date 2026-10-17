@@ -1,0 +1,69 @@
+\section{Discussion}
+\label{sec:discussion}
+
+The experiments in Sections~\ref{sec:heterogeneity}--\ref{sec:pressure-regimes} point to a systems problem that is broader than conventional cache sizing. Under a hard DRAM ceiling, expert streaming couples three decisions: how capacity is partitioned across layers, which experts are retained within that capacity, and how the resulting misses are scheduled and overlapped with computation. The data do not support reducing this interaction to resident fraction, a single hit-rate metric, or one universal pressure threshold.
+
+\subsection{Expert residency is a joint allocation-and-retention problem}
+
+The first implication is structural. Layer working sets are heterogeneous, and a uniform split is measurably suboptimal in the evaluated replay traces. This establishes that memory placement across layers has value. Yet the residual future-informed selection headroom remains larger than the gain recovered by the tested re-allocation mechanism in every model/budget group summarized in Figure~\ref{fig:allocation-selection}. The resulting design priority is therefore not ``find the optimal layer split'' in isolation. A practical system must coordinate layer allocation with the policy that decides which experts occupy each layer's capacity.
+
+This distinction also explains why routing concentration alone is not a sufficient allocation signal. The 80B exposes larger per-layer EWS variability than the 30B while yielding a smaller uniform-allocation penalty. More heterogeneous demand does not automatically imply more value from re-partitioning memory. A controller therefore needs a memory-value objective that is closer to avoided time cost than to routing concentration by itself.
+
+\subsection{Selection quality is the larger measured opportunity}
+
+The Belady-style reference is deliberately unattainable online, but its role is informative: it measures the amount of replay headroom left after the tested layer-aware policy. The fact that this gap remains 8.5--20.8 percentage points across the evaluated model/budget groups means that a substantial part of the remaining opportunity lies inside the layer partitions.
+
+This suggests a progression for future systems. First, avoid obviously poor global or uniform allocation under strong pressure. Second, invest in expert-level prediction and retention mechanisms that anticipate near-future demand. Third, evaluate those mechanisms using wall-clock value rather than hit rate alone. Candidate approaches include short-horizon reuse prediction, cost-aware admission, asymmetric eviction, and prefetching, but the present experiments do not compare such algorithms and therefore do not establish which is preferable.
+
+\subsection{Workload drift requires prediction, not merely reaction}
+
+EXP-023 separates the existence of non-stationarity from the usefulness of the tested controller's temporal response. Routing distributions change strongly at workload boundaries, yet the current \texttt{adaptive-e64} controller obtains no demonstrated benefit from reacting rapidly to those boundaries. A fixed allocation equal to the controller's mean allocation matches or exceeds the controller gain in every aggregate transition condition.
+
+The important conclusion is not that adaptation is unnecessary. Rather, \emph{reactivity without an effective temporal mechanism is insufficient}. A useful adaptive controller must detect a change early enough, estimate whether the new regime will persist long enough to repay movement costs, and move capacity in a direction that improves future retention. In this sense the failed temporal mechanism narrows the design problem: the useful signal exists, but the tested way of exploiting it does not.
+
+The transition experiment also motivates a distinction between \emph{partition adaptation} and \emph{retention adaptation}. A workload boundary may alter which experts are valuable without requiring a large change in the layer-level memory split. Future controllers should therefore test both timescales separately rather than assuming that routing drift implies rapid movement of capacity between layers.
+
+\subsection{Performance objectives should be expressed in time}
+
+The performance-model experiment provides a second design implication. Misses are not equal-cost events. Their exposed cost depends on queue depth, read overlap, slice size, and the amount of I/O hidden behind computation. This is why expert-level reuse and runtime-style hit accounting can both be useful yet remain insufficient as direct optimization objectives.
+
+A practical controller should ideally estimate the marginal latency value of keeping or fetching an expert:
+\begin{equation}
+    V(e,l,t)
+    \approx
+    \Pr(\text{reuse of } e)
+    \times
+    \mathbb{E}[\text{unhidden I/O saved}]
+    -
+    \text{opportunity cost of resident bytes}.
+    \label{eq:memory-value}
+\end{equation}
+Equation~\eqref{eq:memory-value} is a design abstraction rather than a fitted model in this paper. Its purpose is to make explicit what the experiments imply: the relevant benefit is avoided exposed time, not avoided misses in the abstract.
+
+The success of the EXP-025 latency decomposition strengthens this view. A small set of interpretable time components predicts the five held-out 30B configurations with 2.25\% median absolute percentage error, while simple miss count is not a sufficient elapsed-time model. The fitted coefficients should not be read as uniquely identified physical constants, but the predictive result supports a time-based objective for future policy work.
+
+\subsection{Normalized pressure is useful but not universal}
+
+The one-token footprint $F$ provides a useful physical scale because it relates memory capacity to the routed expert demand of one token. It is particularly helpful when the two models have very different total expert-store sizes. Nevertheless, the extreme-pressure and matched-pressure experiments show why $M/F$ should be treated as a coordinate rather than a universal law.
+
+For the 30B, execution remains valid well below $F$ even after diagnostic expert-level reuse has collapsed to approximately zero. Conversely, matching $M/F$ across the two models does not reproduce the historical cross-model pressure-response difference on the current runtime. These observations rule out two simple interpretations: $F$ is not a hard feasibility threshold in the evaluated workload, and matched $M/F$ does not by itself guarantee a model-independent throughput response.
+
+The more defensible interpretation is that $F$ identifies a pressure region in which retention becomes difficult, while the realized performance curve still depends on model architecture, expert sizes, routing, binary behavior, concurrency, and the workload. The present data do not identify a single causal variable that explains the historical 30B/80B difference.
+
+\subsection{Negative results constrain the design space}
+
+Two preregistered mechanism questions do not produce positive confirmations. The temporal mechanism of \texttt{adaptive-e64} is falsified in EXP-023, and the historical cross-model slope difference is not distinguished in the matched-pressure primary test of EXP-026. These outcomes are useful precisely because the artifact retains them without redefining the hypothesis after observing the data.
+
+This discipline matters for systems work, where many plausible explanations can be constructed retrospectively from the same performance curve. The experiment ledger, frozen decision rules, replay validation, and explicit distinction between measured, derived, descriptive, supported, falsified, and inconclusive quantities reduce that flexibility. The resulting narrative is less universal, but it is more informative about what a future system must still demonstrate.
+
+\subsection{Implications for an online expert-streaming runtime}
+
+Taken together, the evidence suggests four requirements for a stronger online runtime:
+\begin{enumerate}
+    \item \textbf{Layer-aware capacity management.} Uniform partitioning leaves measurable reuse on the table under pressure.
+    \item \textbf{Predictive expert retention.} The larger residual replay headroom lies in within-layer expert selection.
+    \item \textbf{Cost-aware I/O decisions.} Policies should value avoided \emph{unhidden} latency rather than assuming a constant cost per miss.
+    \item \textbf{Evidence-based temporal control.} Adaptation should move memory only when detected regime changes are expected to persist long enough to repay the change.
+\end{enumerate}
+
+Argine does not yet implement all four as one production controller. The contribution of the present study is to separate these requirements experimentally and to show where simpler abstractions fail.

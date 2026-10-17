@@ -1,0 +1,113 @@
+\section{Experimental Methodology}
+\label{sec:methodology}
+
+\subsection{Reference platform}
+
+All measurements in this paper were collected on one controlled consumer machine; hardware generalization is therefore outside the scope of the empirical claims. The reference system uses an Intel Core i5-1340P with four performance cores, eight efficiency cores, 16 logical CPUs, and AVX2 support; 16\,GB of RAM (15.72\,GiB usable); NVMe storage; integrated Intel Iris Xe graphics; and Windows~11. All reported model execution uses the CPU backend with zero GPU layers.
+
+The expert-store runtime is a patched \texttt{llama.cpp}~\cite{gerganov2023llamacpp}. The current research binary used by the later confirmatory experiments is based on \texttt{llama.cpp} commit \texttt{254b177} with the Argine expert-store and research instrumentation. It uses asynchronous direct I/O, bypassing the operating-system file cache on the measured expert-store path. Unless an experiment explicitly states otherwise, the later frozen configuration uses context size 4096, batch size 2048, micro-batch size 512, f16 KV storage, flash attention enabled, and pretouch disabled.
+
+The repository retains historical binary provenance because the binary itself is an experimental variable. The EXP-007 characterization campaign spans the validated trace formats used during its collection; later controlled experiments use the current \texttt{llama-research-v2} runtime. We do not pool timings across binaries unless the corresponding experiment explicitly licenses that comparison.
+
+\subsection{Models}
+
+Table~\ref{tab:models} summarizes the two experimental regimes. We refer to them as 30B and 80B for brevity, but do not interpret them simply as ``small'' and ``large'': architecture, expert count, quantization, slice sizes, and active parameter count all differ.
+
+\begin{table}[t]
+    \centering
+    \caption{Evaluated MoE models. Expert and non-expert byte counts are those recorded by the Argine artifact for the quantized GGUFs used in the experiments.}
+    \label{tab:models}
+    \small
+    \begin{tabular}{lcc}
+        \toprule
+        & \textbf{30B} & \textbf{80B} \\
+        \midrule
+        Model & Qwen3-30B-A3B~\cite{qwen3technicalreport} & Qwen3-Next-80B-A3B-Instruct~\cite{qwen3next2025} \\
+        Total / active parameters & 30.5B / 3.35B & 79.7B / 3.87B \\
+        MoE layers & 48 & 48 \\
+        Routed experts / layer & 128 & 512 \\
+        Active routed experts / token & 8 & 10 \\
+        Quantization & Q4\_K\_M & Q3\_K\_M \\
+        Expert bytes & 16.35\,GiB & 34.31\,GiB \\
+        Non-expert bytes & $\sim$1.0\,GiB & 1.35\,GiB \\
+        One-token footprint $F$ & 1.0217\,GiB & 0.6702\,GiB \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+The 80B architecture also contains a shared expert that is not managed by the expert store; it is excluded from the routed-expert footprint defined in Eq.~\eqref{eq:footprint}. At a 4\,GiB expert-memory budget, the nominal expert-byte residency is approximately 24.5\% for the 30B and 11.7\% for the 80B, illustrating why raw resident fraction is not directly comparable to active demand.
+
+\subsection{Workloads and splits}
+
+The main routing characterization uses seven workload families: natural language, coding, reasoning/math, structured JSON, Italian, multi-turn, and transition traces. Where a workload has DEV/EVAL splits, DEV is used for tuning or hypothesis formation and EVAL for held-out or retrospective evaluation according to the protocol of the corresponding experiment.
+
+EXP-007 closes a $2\times 7\times 2$ characterization grid: two models, seven workload families, and DEV/EVAL, for 28 cells. Each cell is evaluated at the relevant memory budgets, and the closed characterization retains three replay-qualified runs per cell-budget. Transition traces concatenate qualitatively different segments and are used separately to study temporal drift rather than being treated as another stationary workload.
+
+Later performance experiments use frozen prompts or workload files specified by their protocols. In particular, the extreme-pressure performance arm uses an unchanged benchmark prompt with 128 generated tokens per measured request, while its diagnostic arm uses the natural-language EVAL workload. The replication unit for performance experiments is a fresh complete launch rather than an individual token.
+
+\subsection{Tracing and event-atomic replay}
+
+Argine records expert-routing and expert-store events without allowing the instrumentation to control the policy. Replay operates on \emph{events}: the set of experts required together by one forward-pass MoE node. The runtime pins the slices required by the current node; replay therefore treats the event as atomic and does not permit a policy to evict a member of the event while it is being served.
+
+Replay fidelity was validated separately before policy conclusions were drawn. Under the qualified conditions, the replay reproduces the expert-store decisions required for the reported counterfactual comparisons. This qualification is essential because the runtime caches address-keyed slices rather than idealized whole experts, and a replay that ignores pins, sharding, or slice granularity can overstate achievable hit rates.
+
+Instrumentation overhead was also measured separately. At the 4\,GiB configuration, the measured 95\% confidence interval lies entirely below 2\%; at 1.5\,GiB the result is inconclusive. Accordingly, traced data are used for routing and mechanism claims, while the strongest performance claims rely on the untraced performance blocks specified by their experiments.
+
+\subsection{Policy comparisons}
+
+The replay experiments compare policies at a fixed total expert-memory budget. The key references used in this paper are:
+\begin{itemize}
+    \item \textbf{global LRU}, a conventional global recency baseline;
+    \item \textbf{per-layer uniform LRU}, which partitions the budget equally across layers and applies recency within each partition;
+    \item \textbf{\texttt{adaptive-e64}}, the tested layer-aware controller used in the final replay analysis; and
+    \item \textbf{Belady-style future-informed selection}, an offline reference that uses future information and is therefore not an implementable online policy.
+\end{itemize}
+
+The Belady-style reference is included to estimate residual selection opportunity, not to claim an achievable runtime speedup. Likewise, the adaptive controller exists in replay only in the experiments reported here; the paper does not present a runtime implementation of dynamic layer allocation.
+
+\subsection{Memory-pressure experiments}
+
+Three experimental designs supply the performance evidence used later in the paper.
+
+\paragraph{Extreme pressure.}
+The 30B primary arm evaluates 1.5\,GiB, 1152\,MiB, 1024\,MiB, 768\,MiB, and 512\,MiB. The 80B exploratory arm evaluates 1.5\,GiB, 768\,MiB, 672\,MiB, and 512\,MiB. Budgets are rotated across three rounds to reduce simple order effects. The principal performance outcome is generation tokens/s from an untraced launch. Separate diagnostic launches measure expert-level reuse. Budgets below 512\,MiB are excluded from the main arm because the expert-store shard count would change, introducing a second structural variable.
+
+\paragraph{Interpretable performance model.}
+The 30B performance-model experiment uses five memory configurations spanning 1.5\,GiB to 512\,MiB. The preregistered primary test is leave-one-configuration-out prediction error rather than in-sample fit. The model is
+\begin{equation}
+    T_{\mathrm{token}}
+    =
+    T_{\mathrm{compute}}
+    +
+    T_{\mathrm{unhidden\,I/O}}
+    +
+    T_{\mathrm{sync}}
+    +
+    T_{\mathrm{controller}} .
+    \label{eq:latency-model}
+\end{equation}
+The design tests predictive usefulness of this decomposition; it does not guarantee separate causal identification of each fitted component.
+
+\paragraph{Matched-pressure cross-model test.}
+The final cross-model experiment fixes generation threads at four for both models and matches memory pressure using $\rho=M/F$. Three pressure points are measured with three complete launches per cell. The preregistered primary explanandum compares the P1$\rightarrow$P2 pressure-response exponent; P3 is secondary. This design was introduced specifically because the historical cross-model observations compared different normalized pressure regions on earlier binaries.
+
+\subsection{Measurement semantics}
+
+The paper keeps metric definitions tied to the mechanism that produces them.
+
+\paragraph{Expert-level diagnostic hit rate.}
+For the extreme-pressure diagnostic experiment, this is the workload gate-slice hit rate: slice hits divided by slice accesses in the first gate \texttt{MUL\_MAT\_ID} node of each layer, over prefill and decode, excluding warm-up and the flush sentinel.
+
+\paragraph{Runtime-style hit rate.}
+This follows the store's lower-level accounting and therefore reflects the slice-granular runtime rather than a whole-expert abstraction. The distinction is preserved throughout the paper instead of collapsing both quantities into a generic ``hit rate.''
+
+\paragraph{Throughput and latency.}
+Generation throughput is measured in tokens/s. Token latency is reported in ms/token and is the primary response for the interpretable performance model. Queue depth, reads/token, bytes/token, time-to-first-token, and prompt throughput are secondary mechanism or diagnostic quantities where relevant.
+
+\subsection{Experimental discipline}
+
+The research artifact uses permanent experiment identifiers, frozen protocols for confirmatory tests, explicit success or falsification criteria where applicable, and versioned analysis outputs. New criteria are not introduced after inspecting an outcome. When a preregistered test lacks a positive support threshold, a result may be ``not falsified by this test'' while the experiment remains formally inconclusive.
+
+Negative results are retained rather than reinterpreted. In particular, the workload-drift experiment distinguishes positive descriptive evidence of routing drift from the falsified claim that the tested controller shortens the transition transient. Likewise, failure to reproduce the historical 30B/80B regime difference in the matched-pressure experiment does not rewrite measurements from earlier binaries and pressure regions.
+
+The repository distinguishes \emph{measured} quantities read from run artifacts, \emph{derived} quantities computed by declared analyses, hypotheses, supported or falsified tests, open questions, and limitations. This separation is part of the methodology: the paper's claims are restricted to the scope licensed by the corresponding experiment rather than extrapolated from a single benchmark curve.

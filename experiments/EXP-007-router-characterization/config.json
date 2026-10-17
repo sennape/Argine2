@@ -1,0 +1,28 @@
+{
+  "id": "EXP-007-router-characterization",
+  "title": "Per-layer routing characterization",
+  "status": "SUPPORTED",
+  "period": "2026-10-03 → 2026-10-11",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-001",
+    "RQ-002",
+    "RQ-003",
+    "RQ-004",
+    "RQ-005",
+    "RQ-006",
+    "RQ-007",
+    "RQ-009",
+    "RQ-010"
+  ],
+  "commands": [
+    "argine research convert data/raw/legacy/route.log --to data/processed/legacy-30b-route-request1.jsonl.gz --n-experts 128 --expert-bytes 2857370 --request 1",
+    "argine research characterize data/processed/legacy-30b-route-request1.jsonl.gz --out data/processed/pilot-legacy-30b",
+    "argine research trace MODEL.gguf --expert-store --budgets 4G --workload coding --split dev --out experiments/EXP-007-router-characterization/raw/30b-coding-dev",
+    "argine research trace MODEL.gguf --expert-store --budgets 4G,2G,1.5G --repeat 3 --workload WORKLOAD --split dev|eval --out experiments/EXP-007-router-characterization/raw/MODEL-WORKLOAD-SPLIT-v2",
+    "argine research analyze experiments/EXP-007-router-characterization/raw/CELL/run-00-4G/trace.jsonl.gz --budgets 4G,2G,1.5G --out experiments/EXP-007-router-characterization/analysis-v3/CELL-run-00-4G",
+    "python tools/exp007_summary.py"
+  ],
+  "supersedes": "—",
+  "collection": "CLOSED 2026-10-11: 28/28 model x workload x split cells, 3 EXP-021-qualified runs per cell-budget; analyses in-sample"
+}

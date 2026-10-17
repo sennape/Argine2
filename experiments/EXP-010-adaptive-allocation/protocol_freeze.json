@@ -1,0 +1,25 @@
+{
+  "experiment": "EXP-010-adaptive-allocation",
+  "protocol_version": "EXP010-P1a (pre-execution amendment, frozen 2026-10-11)",
+  "leakage": "B - RETROSPECTIVE HOLDOUT",
+  "framing": "DEV-selected, frozen, EVAL-tested retrospective holdout",
+  "closure_rule": "EXP010-CR1-directional (no effect-size threshold)",
+  "protocol_hash_method": "sha256 of the UTF-8, LF-normalised README text strictly between '<!-- EXP-010 PROTOCOL-BEGIN -->' and '<!-- EXP-010 PROTOCOL-END -->'",
+  "code_hash_method": "sha256 of the raw file bytes",
+  "argine2_commit": "Argine2 commit unavailable / repository not a git checkout",
+  "protocol_sha256": "72737bb4c3354d98860523b4b1db5a4cb7e600f90b6325fa862be9e4e75658b7",
+  "tool_sha256": "cbbf2e408d25d943a1c0de6e2a45ccb452f6ead11d135e08cc86bb18cbd7263d",
+  "code_sha256": {
+    "argine/research/controller.py": "630044da24cbd94a7a98017d0659b2ac283ae129a9ff16878e71d2757bd35389",
+    "argine/research/analysis.py": "699cd6abe80a2589843077781420e623cc23fbc1dec225b293535ce266aa970a",
+    "argine/research/replay.py": "065edb9bf71ad2481b3af16ffc4630c9cc2f6dc8a7ff11596ca245b0e354541f",
+    "argine/research/policies.py": "2bd62163bb859fa2600f2c881219d3d47acf7ab7d7f403d9d9a678194d26a2dd",
+    "argine/research/allocator.py": "d8efec619d4167927b6b9cc2a684439aafb4ad1f8f2def61673853d789d2ea80",
+    "argine/research/elasticity.py": "856ba5f91a94affe88b5bba88b4a9309a0b16fa0f43e0dcb7056dfaeef42511d",
+    "argine/research/costmodel.py": "0af3db026ade55ff18e2c4538f460a011d1bfebb5d94e0a6017a9edba610cac8",
+    "argine/research/cli.py": "caf393f4b4eeaab4b2517ba83a82185fd684f835c918a11b4dec8f03d3c12f78",
+    "argine/research/trace.py": "53a582c263c63b7397d6a6547054be4e007f190348b57e82edbb4fbf51fcfe47",
+    "argine/research/metrics.py": "038187d98c30967c5ac1db5ff8f07e23c5cc13487d7b78d72ef4eb8d5f9ac62d"
+  },
+  "frozen_utc": "2026-10-11T13:29:42Z"
+}

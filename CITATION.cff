@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: >-
+  If you use Argine2's data, code or findings, please cite the repository and the
+  commit hash of the results you use, together with the EXP- identifiers.
+title: "Argine2: expert memory as a resource-allocation problem in sparse MoE inference under a hard DRAM budget"
+type: software
+authors:
+  - name: "sennape"
+version: "0.2.0"
+date-released: "2026-10-17"
+license: MIT
+repository-code: "https://github.com/sennape/Argine2"
+keywords:
+  - Mixture-of-Experts
+  - MoE inference
+  - expert caching
+  - expert offloading
+  - expert streaming
+  - NVMe inference
+  - memory-tiered inference
+  - llama.cpp
+  - expert working set
+  - routing concentration
+  - online residency
+abstract: >-
+  An open, executable investigation of whether a fixed expert-memory budget should be
+  allocated across MoE layers by measured marginal value rather than managed as a cache,
+  on a 16 GB consumer PC streaming experts from NVMe through a hard-capped expert store
+  in llama.cpp. Contains the runtime, research instrumentation, an event-atomic replay
+  engine with offline oracles, committed historical raw measurement logs, processed
+  experimental evidence, cryptographic metadata for the larger external raw trace corpus,
+  and an experiment registry including
+  falsified hypotheses.

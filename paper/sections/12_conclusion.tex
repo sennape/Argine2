@@ -1,0 +1,8 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper examined expert streaming for mixture-of-experts inference under a hard DRAM budget. The experiments show that the problem is not adequately described by resident fraction or conventional hit rate alone.
+
+Layer demand is heterogeneous, and uniform per-layer partitioning produces measurable excess misses. Layer-aware allocation helps increasingly under strong pressure, but the larger measured replay opportunity remains in future-informed expert selection. Routing distributions change sharply at workload boundaries, yet the current \texttt{adaptive-e64} controller does not obtain its gain from rapid temporal reaction. At the performance level, miss count is not a sufficient time model: an interpretable decomposition predicts the preregistered 30B token latencies with 2.25\% median leave-one-configuration-out error while preserving the distinction between reuse and exposed I/O cost. Finally, the one-token expert footprint is not a hard execution threshold in the evaluated extreme-pressure workload, and the historical 30B/80B pressure-regime difference does not reproduce in the matched-$M/F$ primary comparison on the current runtime.
+
+The resulting systems view is therefore a coupled one. Under hard memory constraints, expert residency should be treated as a joint allocation-and-retention problem whose value is mediated by selection quality, I/O concurrency, and workload dynamics. The evidence does not establish a universal optimal policy. It instead identifies where simple abstractions fail and where the remaining optimization headroom lies: predictive expert selection, cost-aware I/O management, and temporal control that demonstrates value beyond a good static partition.

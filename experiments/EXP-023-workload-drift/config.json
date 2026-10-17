@@ -1,0 +1,91 @@
+{
+  "id": "EXP-023-workload-drift",
+  "title": "Routing under workload transitions",
+  "status": "FALSIFIED",
+  "period": "2026-10-12",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-004",
+    "RQ-006"
+  ],
+  "commands": [
+    "python tools/exp023_analyze.py --check",
+    "python tools/exp023_analyze.py --analyze",
+    "python -m unittest discover -s tests -p \"test_exp023.py\" -v"
+  ],
+  "historical_commands_superseded": [
+    "argine research trace MODEL --expert-store --budgets 2G --workload transition --split dev --out experiments/EXP-023-workload-drift/raw",
+    "argine research analyze TRACE --budgets 4G,2G,1.5G --out experiments/EXP-023-workload-drift/processed"
+  ],
+  "supersedes": "—",
+  "closure_plan": {
+    "kind": "retrospective, analysis-only synthesis of the four EXP-007 transition sessions",
+    "tool": "tools/exp023_analyze.py",
+    "freeze": "experiments/EXP-023-workload-drift/analysis_freeze.json",
+    "new_traces": false,
+    "sources": [
+      "30b-transition-dev-v2/run-00-4G",
+      "30b-transition-eval-v2/run-00-4G",
+      "80b-transition-dev-v2/run-00-4G",
+      "80b-transition-eval-v2/run-00-4G"
+    ],
+    "analysis_run": true
+  },
+  "result": {
+    "verdict": "FALSIFIED for the current (untuned adaptive-e64) controller",
+    "verdict_basis": "conjunctive hypothesis; its clause 'adaptive allocation shortens the transient' is falsified for the current controller by FH-029 (30B DEV, replicated on 30B EVAL, 80B DEV, 80B EVAL); independent of the retrospective JSD characterisation",
+    "does_not_mean": [
+      "workloads are stationary",
+      "workload dependence is falsified",
+      "layer-aware allocation is useless",
+      "no faster or different controller could exploit workload transitions"
+    ],
+    "jsd_retrospective_descriptive": {
+      "label": "[DERIVED, retrospective operationalisation]; descriptive, not confirmatory; no p-value, no threshold",
+      "median_boundary_over_within_ratio": {
+        "30b-dev": 3.810259,
+        "30b-eval": 4.021954,
+        "80b-dev": 3.381423,
+        "80b-eval": 2.839054,
+        "30b": 3.926913,
+        "80b": 3.037708
+      },
+      "share_boundary_above_within_max": {
+        "30b-dev": 0.986111,
+        "30b-eval": 1.0,
+        "80b-dev": 1.0,
+        "80b-eval": 0.965278,
+        "30b": 0.993056,
+        "80b": 0.982639
+      }
+    },
+    "transient_synthesis": {
+      "comparisons": 36,
+      "adaptive_below_frozen": 11,
+      "adaptive_above_frozen": 25,
+      "ties": 0,
+      "negative_signed_excess64_values": 42,
+      "wording": "boundary transient / signed departure from the new-segment steady state"
+    },
+    "fh029_consistency": {
+      "mean_alloc_gain_gt_controller_gain": "12/12",
+      "reaction_lag_cost_negative": "12/12",
+      "A_share_of_gain_mean_alloc_range": [
+        1.129,
+        2.396
+      ],
+      "reaction_lag_cost_range": [
+        -1844,
+        -820
+      ],
+      "rounding_note": "1.129 = 112.9%; FH-029's '>= 113%' holds only after rounding"
+    },
+    "new_model_runs": false,
+    "evidence": [
+      "experiments/EXP-023-workload-drift/results.csv",
+      "experiments/EXP-023-workload-drift/processed/summary.json",
+      "experiments/EXP-023-workload-drift/processed/jsd_summary.csv",
+      "experiments/EXP-023-workload-drift/processed/controller_summary.csv"
+    ]
+  }
+}

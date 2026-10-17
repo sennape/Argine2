@@ -1,0 +1,373 @@
+{
+  "experiment": "EXP-023-workload-drift",
+  "sources": [
+    {
+      "key": "30b-dev",
+      "model": "30b",
+      "split": "dev",
+      "campaign": "30b-transition-dev-v2",
+      "run": "run-00-4G",
+      "temporal_dir": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal",
+      "segments": [
+        [
+          "natural-language",
+          0,
+          299
+        ],
+        [
+          "coding",
+          299,
+          598
+        ],
+        [
+          "reasoning-math",
+          598,
+          897
+        ],
+        [
+          "structured-json",
+          897,
+          1196
+        ]
+      ],
+      "boundaries_counted": [
+        299,
+        598,
+        897
+      ],
+      "boundaries_trace": [
+        311,
+        611,
+        911
+      ],
+      "counted_decode_steps": 1196,
+      "workload_steps": 1202,
+      "workload_routing_sha256": "84371c06dda9d887f8292f8f5dfdb3f3f45c02b92047656e59d960c523b30fc5",
+      "routing_identity_source": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal/replication.csv row /mnt/user-data/uploads/Desktop/Argine2/experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-00-4G/trace.jsonl.gz",
+      "layers": 48,
+      "n_experts": 128,
+      "top_k": 8,
+      "run_manifest": {
+        "workload": "transition",
+        "split": "dev",
+        "workload_sha256": "5ba6e15e2b68f8f73a419d5a1f68a443cbcb1d655f81cd5c177608e572c5bdba",
+        "model_path": "C:\\modelli\\Qwen_Qwen3-30B-A3B-Q4_K_M.gguf",
+        "publication_quality": false
+      },
+      "exp007_qualification": {
+        "qualified": "True",
+        "exp021_closure": "PASS"
+      },
+      "files": {
+        "summary.json": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal/summary.json",
+          "sha256": "5aae0ec14ca656518b9f638981fbefc29066ad0502896bde2416ab9cc6d6c065"
+        },
+        "adaptation_v2.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal/adaptation_v2.csv",
+          "sha256": "54e36108e6a94a0f32015ac593bd5baa229d9c94fd61b647bfbd6098bc8d798b"
+        },
+        "segments.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal/segments.csv",
+          "sha256": "ad785a985dd5c0798d23ca7a1da3bd036288339817a252b2525083ad90b89bae"
+        },
+        "cross_segment.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal/cross_segment.csv",
+          "sha256": "1e61ac411ae97c1bbc97e43048d59634072bea4cd467bebf7f8a65afdcb10cfb"
+        },
+        "replication.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-run-00-4G-temporal/replication.csv",
+          "sha256": "b866ca591a4827fd5bebb340b723891d2858a788493f0a27c031614b7f688457"
+        },
+        "trace": {
+          "path": "experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-00-4G/trace.jsonl.gz",
+          "sha256": "4dc1a0a97ac0acb5000b43986a74eec6a3b2dc18fb0db96196e2be5354b42acc"
+        },
+        "manifest": {
+          "path": "experiments/EXP-007-router-characterization/raw/30b-transition-dev-v2/run-00-4G/manifest.json",
+          "sha256": "86b233582c28a406a39f1667f298a002729a7fac75d51588b27490ee914ee027"
+        },
+        "runtime_hit_rates": {
+          "path": "experiments/EXP-007-router-characterization/runtime-hit-rates.csv",
+          "sha256": "671fc593e2b66cfecb7a8dbfda9c55dfba036234c86710c753381fec986a81c4"
+        }
+      }
+    },
+    {
+      "key": "30b-eval",
+      "model": "30b",
+      "split": "eval",
+      "campaign": "30b-transition-eval-v2",
+      "run": "run-00-4G",
+      "temporal_dir": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal",
+      "segments": [
+        [
+          "natural-language",
+          0,
+          299
+        ],
+        [
+          "coding",
+          299,
+          598
+        ],
+        [
+          "reasoning-math",
+          598,
+          897
+        ],
+        [
+          "structured-json",
+          897,
+          1196
+        ]
+      ],
+      "boundaries_counted": [
+        299,
+        598,
+        897
+      ],
+      "boundaries_trace": [
+        311,
+        611,
+        911
+      ],
+      "counted_decode_steps": 1196,
+      "workload_steps": 1202,
+      "workload_routing_sha256": "86f46cb6af2f4984b4a10d2571d3305cf8cfb6fca0fc6fb0f576c8b55a2660d7",
+      "routing_identity_source": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal/replication.csv row experiments\\EXP-007-router-characterization\\raw\\30b-transition-eval-v2\\run-00-4G\\trace.jsonl.gz",
+      "layers": 48,
+      "n_experts": 128,
+      "top_k": 8,
+      "run_manifest": {
+        "workload": "transition",
+        "split": "eval",
+        "workload_sha256": "5ba6e15e2b68f8f73a419d5a1f68a443cbcb1d655f81cd5c177608e572c5bdba",
+        "model_path": "C:\\modelli\\Qwen_Qwen3-30B-A3B-Q4_K_M.gguf",
+        "publication_quality": false
+      },
+      "exp007_qualification": {
+        "qualified": "True",
+        "exp021_closure": "PASS"
+      },
+      "files": {
+        "summary.json": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal/summary.json",
+          "sha256": "33541487e0a53c9dd4e813b83d6d18c86c9a67d41416b88ea5b66c6e4f31ba01"
+        },
+        "adaptation_v2.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal/adaptation_v2.csv",
+          "sha256": "62542f917dea2554e932004664449268c2cf64e9b05b1a9fa61ca274419aceb2"
+        },
+        "segments.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal/segments.csv",
+          "sha256": "b062eee9605937b8827c0688dec47ccfb862cc5128ce97a323c577664d41dbb5"
+        },
+        "cross_segment.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal/cross_segment.csv",
+          "sha256": "359f96a6c31375e0b577c63876a4a31e9c2789eca20baf1cabb1f9ce141e41f8"
+        },
+        "replication.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/30b-transition-eval-run-00-4G-temporal/replication.csv",
+          "sha256": "dbe01b8a93c8134ddcd51d5e8ee6daf424b94dd159a55d0814618a39352333c7"
+        },
+        "trace": {
+          "path": "experiments/EXP-007-router-characterization/raw/30b-transition-eval-v2/run-00-4G/trace.jsonl.gz",
+          "sha256": "832b9a88716e81a7f29769fe8f16f61f2d5e5896543e13e16c79c5596df9d05a"
+        },
+        "manifest": {
+          "path": "experiments/EXP-007-router-characterization/raw/30b-transition-eval-v2/run-00-4G/manifest.json",
+          "sha256": "7e7899e4838ac4f4649d6955de18474ec4f881211ddc9fc8a53b411c0385a15f"
+        },
+        "runtime_hit_rates": {
+          "path": "experiments/EXP-007-router-characterization/runtime-hit-rates.csv",
+          "sha256": "671fc593e2b66cfecb7a8dbfda9c55dfba036234c86710c753381fec986a81c4"
+        }
+      }
+    },
+    {
+      "key": "80b-dev",
+      "model": "80b",
+      "split": "dev",
+      "campaign": "80b-transition-dev-v2",
+      "run": "run-00-4G",
+      "temporal_dir": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal",
+      "segments": [
+        [
+          "natural-language",
+          0,
+          299
+        ],
+        [
+          "coding",
+          299,
+          598
+        ],
+        [
+          "reasoning-math",
+          598,
+          897
+        ],
+        [
+          "structured-json",
+          897,
+          1196
+        ]
+      ],
+      "boundaries_counted": [
+        299,
+        598,
+        897
+      ],
+      "boundaries_trace": [
+        315,
+        617,
+        919
+      ],
+      "counted_decode_steps": 1196,
+      "workload_steps": 1209,
+      "workload_routing_sha256": "a541ee9926d67d5d4c691cfb219123f5bb4fa3b4454783d7fff7d08799480e03",
+      "routing_identity_source": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal/replication.csv row experiments\\EXP-007-router-characterization\\raw\\80b-transition-dev-v2\\run-00-4G\\trace.jsonl.gz",
+      "layers": 48,
+      "n_experts": 512,
+      "top_k": 10,
+      "run_manifest": {
+        "workload": "transition",
+        "split": "dev",
+        "workload_sha256": "5ba6e15e2b68f8f73a419d5a1f68a443cbcb1d655f81cd5c177608e572c5bdba",
+        "model_path": "C:\\modelli\\Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+        "publication_quality": false
+      },
+      "exp007_qualification": {
+        "qualified": "True",
+        "exp021_closure": "PASS"
+      },
+      "files": {
+        "summary.json": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal/summary.json",
+          "sha256": "9d8e984d26359b993bbb325bd937008d6ddcd6650929087bee0e411fad93197a"
+        },
+        "adaptation_v2.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal/adaptation_v2.csv",
+          "sha256": "ba4ae3c08b3b746e3844046cb00ce8f6b782ab754515cf2c0892ad37ebdf44f0"
+        },
+        "segments.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal/segments.csv",
+          "sha256": "fa981d21513e9b1878784f433cda7f4115e2d13005bf739273e851e04032a1a7"
+        },
+        "cross_segment.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal/cross_segment.csv",
+          "sha256": "553fae82d6abb907b52f81d8a880161165a53272b9923342602f130861197716"
+        },
+        "replication.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-dev-run-00-4G-temporal/replication.csv",
+          "sha256": "6efbbc77da55b8c2d4896934fafe94d062b9805a01d28dc17d56dd3f0d8e40d9"
+        },
+        "trace": {
+          "path": "experiments/EXP-007-router-characterization/raw/80b-transition-dev-v2/run-00-4G/trace.jsonl.gz",
+          "sha256": "55cba7b3c6d916963a2a3c88dbf5cc3dc88deb67be2f529b6fbb83f80f37bd28"
+        },
+        "manifest": {
+          "path": "experiments/EXP-007-router-characterization/raw/80b-transition-dev-v2/run-00-4G/manifest.json",
+          "sha256": "2ffef3f184ad4d253fbad315b0a23105892c1ba28ab9201ada4687f564f7fe61"
+        },
+        "runtime_hit_rates": {
+          "path": "experiments/EXP-007-router-characterization/runtime-hit-rates.csv",
+          "sha256": "671fc593e2b66cfecb7a8dbfda9c55dfba036234c86710c753381fec986a81c4"
+        }
+      }
+    },
+    {
+      "key": "80b-eval",
+      "model": "80b",
+      "split": "eval",
+      "campaign": "80b-transition-eval-v2",
+      "run": "run-00-4G",
+      "temporal_dir": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal",
+      "segments": [
+        [
+          "natural-language",
+          0,
+          299
+        ],
+        [
+          "coding",
+          299,
+          598
+        ],
+        [
+          "reasoning-math",
+          598,
+          897
+        ],
+        [
+          "structured-json",
+          897,
+          1125
+        ]
+      ],
+      "boundaries_counted": [
+        299,
+        598,
+        897
+      ],
+      "boundaries_trace": [
+        315,
+        617,
+        919
+      ],
+      "counted_decode_steps": 1125,
+      "workload_steps": 1138,
+      "workload_routing_sha256": "b4aef3568bf50c510f67a76e6b2f9a59439f26b97cb8dc8cfc333e2a6c415d29",
+      "routing_identity_source": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal/replication.csv row experiments\\EXP-007-router-characterization\\raw\\80b-transition-eval-v2\\run-00-4G\\trace.jsonl.gz",
+      "layers": 48,
+      "n_experts": 512,
+      "top_k": 10,
+      "run_manifest": {
+        "workload": "transition",
+        "split": "eval",
+        "workload_sha256": "5ba6e15e2b68f8f73a419d5a1f68a443cbcb1d655f81cd5c177608e572c5bdba",
+        "model_path": "C:\\modelli\\Qwen3-Next-80B-A3B-Instruct-Q3_K_M.gguf",
+        "publication_quality": false
+      },
+      "exp007_qualification": {
+        "qualified": "True",
+        "exp021_closure": "PASS"
+      },
+      "files": {
+        "summary.json": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal/summary.json",
+          "sha256": "09e9210c6d721477a4579043d4c0d06a515baffd8b2065605d5cff25681b9cbf"
+        },
+        "adaptation_v2.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal/adaptation_v2.csv",
+          "sha256": "b650476a0f57b396833974946290b05a27dcfb57fcf264807efaee3723beebc6"
+        },
+        "segments.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal/segments.csv",
+          "sha256": "de9cb806454ef492dc4d033f927517f1e66cab38220200fc12f7d235aa384e6e"
+        },
+        "cross_segment.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal/cross_segment.csv",
+          "sha256": "6b81d03af198fa6416d94802620691effc302de7af0ad4866c4035d0a59d8064"
+        },
+        "replication.csv": {
+          "path": "experiments/EXP-007-router-characterization/analysis-v3/80b-transition-eval-run-00-4G-temporal/replication.csv",
+          "sha256": "a961115fb283836cbe224b4be086a41c19c3a9ac0d511c0ab8625bd2dbea4c68"
+        },
+        "trace": {
+          "path": "experiments/EXP-007-router-characterization/raw/80b-transition-eval-v2/run-00-4G/trace.jsonl.gz",
+          "sha256": "89f2a859210cabe64a7ecd398f913ded563d4a6d8e819ea79bc4d7b6a5c025c0"
+        },
+        "manifest": {
+          "path": "experiments/EXP-007-router-characterization/raw/80b-transition-eval-v2/run-00-4G/manifest.json",
+          "sha256": "3c58e87fcc1c07440c1e0cfac313456498e42b0168de5369c59fceeb5257e638"
+        },
+        "runtime_hit_rates": {
+          "path": "experiments/EXP-007-router-characterization/runtime-hit-rates.csv",
+          "sha256": "671fc593e2b66cfecb7a8dbfda9c55dfba036234c86710c753381fec986a81c4"
+        }
+      }
+    }
+  ]
+}

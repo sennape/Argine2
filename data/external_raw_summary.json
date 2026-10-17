@@ -1,0 +1,146 @@
+{
+  "algorithm": "sha256",
+  "experiments": [
+    {
+      "bytes": 38346,
+      "experiment": "EXP-001-thread-sweep",
+      "files": 1
+    },
+    {
+      "bytes": 5996,
+      "experiment": "EXP-002-repack",
+      "files": 1
+    },
+    {
+      "bytes": 21679,
+      "experiment": "EXP-003-direct-io",
+      "files": 1
+    },
+    {
+      "bytes": 51536,
+      "experiment": "EXP-004-async-store",
+      "files": 1
+    },
+    {
+      "bytes": 114159,
+      "experiment": "EXP-005-30b-budget-sweep",
+      "files": 1
+    },
+    {
+      "bytes": 25788,
+      "experiment": "EXP-006-80b-budget-sweep",
+      "files": 1
+    },
+    {
+      "bytes": 110096792925,
+      "experiment": "EXP-007-router-characterization",
+      "files": 2657
+    },
+    {
+      "bytes": 0,
+      "experiment": "EXP-008-working-set",
+      "files": 1
+    },
+    {
+      "bytes": 0,
+      "experiment": "EXP-009-policy-replay",
+      "files": 1
+    },
+    {
+      "bytes": 0,
+      "experiment": "EXP-010-adaptive-allocation",
+      "files": 1
+    },
+    {
+      "bytes": 9940,
+      "experiment": "EXP-011-binary-rebuild",
+      "files": 1
+    },
+    {
+      "bytes": 10556,
+      "experiment": "EXP-012-dense-14b-control",
+      "files": 1
+    },
+    {
+      "bytes": 1925,
+      "experiment": "EXP-013-quality-per-bit",
+      "files": 1
+    },
+    {
+      "bytes": 4603,
+      "experiment": "EXP-014-conversation-prefix-reuse",
+      "files": 1
+    },
+    {
+      "bytes": 0,
+      "experiment": "EXP-015-pretouch",
+      "files": 1
+    },
+    {
+      "bytes": 11388,
+      "experiment": "EXP-016-coactivation-reorder",
+      "files": 1
+    },
+    {
+      "bytes": 2598,
+      "experiment": "EXP-017-calibration-text",
+      "files": 1
+    },
+    {
+      "bytes": 134030,
+      "experiment": "EXP-018-reproducibility-audit",
+      "files": 1
+    },
+    {
+      "bytes": 130363619,
+      "experiment": "EXP-019-instrumentation-validation",
+      "files": 12
+    },
+    {
+      "bytes": 0,
+      "experiment": "EXP-020-hit-rate-semantics",
+      "files": 1
+    },
+    {
+      "bytes": 277106393,
+      "experiment": "EXP-021-replay-fidelity",
+      "files": 43
+    },
+    {
+      "bytes": 4352390601,
+      "experiment": "EXP-022-extreme-pressure",
+      "files": 252
+    },
+    {
+      "bytes": 0,
+      "experiment": "EXP-023-workload-drift",
+      "files": 1
+    },
+    {
+      "bytes": 409499219,
+      "experiment": "EXP-024-tracing-overhead",
+      "files": 33
+    },
+    {
+      "bytes": 0,
+      "experiment": "EXP-025-performance-model",
+      "files": 1
+    },
+    {
+      "bytes": 2479356354,
+      "experiment": "EXP-026-30b-vs-80b-regimes",
+      "files": 236
+    },
+    {
+      "bytes": 285729,
+      "experiment": "EXP-027-current-thread-sweep",
+      "files": 27
+    }
+  ],
+  "manifest": "data/external_raw_manifest.csv",
+  "manifest_sha256": "da1d920dea3065bdde7800e644550647804fa64817c79e03229ec1d48a0b9b57",
+  "schema_version": 1,
+  "scope": "experiments/EXP-*/raw/**",
+  "total_bytes": 117746227384,
+  "total_files": 3280
+}

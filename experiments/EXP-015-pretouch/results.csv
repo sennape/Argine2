@@ -1,0 +1,8 @@
+quantity,budget,without_pretouch,with_pretouch,unit,source
+read_per_miss,4 GiB,1.233,0.932,ms,Argine v1 README (store counters printed to stderr; not in raw logs)
+read_per_miss,1.5 GiB,1.063,0.773,ms,Argine v1 README (store counters printed to stderr; not in raw logs)
+new_pages_per_miss,4 GiB,,0.370,ms,Argine v1 README
+new_pages_per_miss,1.5 GiB,,0.395,ms,Argine v1 README
+gen_tok_s,4 GiB,6.14,5.90,tok/s,Argine v1 README
+gen_tok_s,1.5 GiB,3.61,3.32,tok/s,Argine v1 README
+exponent_2.67x_span,4->1.5 GiB,0.54 +- 0.03,0.58 +- 0.06,-,Argine v1 README

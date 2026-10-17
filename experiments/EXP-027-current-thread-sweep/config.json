@@ -1,0 +1,110 @@
+{
+  "id": "EXP-027-current-thread-sweep",
+  "title": "Generation thread count on the current research runtime",
+  "status": "FALSIFIED",
+  "period": "2026-10-11",
+  "origin": "Argine2",
+  "rqs": [
+    "RQ-014"
+  ],
+  "commands": [
+    "python tools/exp027_run.py plan",
+    "python tools/exp027_run.py preflight",
+    "python tools/exp027_run.py run",
+    "python tools/exp027_run.py analyze"
+  ],
+  "supersedes": "—",
+  "protocol": {
+    "models": [
+      "Qwen3-30B-A3B Q4_K_M",
+      "Qwen3-Next-80B-A3B-Instruct Q3_K_M"
+    ],
+    "threads": [
+      4,
+      6,
+      8,
+      12
+    ],
+    "batch_threads": 12,
+    "expert_store": true,
+    "expert_budget": "4G",
+    "read_mode": "asincrono",
+    "backend": "cpu",
+    "n_predict": 128,
+    "repeat": 1,
+    "retries": 0,
+    "cooldown_s": 60,
+    "launches_per_configuration": 3,
+    "launches_total": 24,
+    "schedule": {
+      "30b": [
+        [
+          4,
+          6,
+          12,
+          8
+        ],
+        [
+          6,
+          8,
+          4,
+          12
+        ],
+        [
+          8,
+          12,
+          6,
+          4
+        ]
+      ],
+      "80b": [
+        [
+          12,
+          4,
+          8,
+          6
+        ],
+        [
+          4,
+          6,
+          12,
+          8
+        ],
+        [
+          6,
+          8,
+          4,
+          12
+        ]
+      ]
+    },
+    "conditional_fourth_round": {
+      "30b": [
+        12,
+        4,
+        8,
+        6
+      ],
+      "80b": [
+        8,
+        12,
+        6,
+        4
+      ],
+      "run_only_if": "PRACTICAL TIE or INCONCLUSIVE, or a plausible order effect"
+    }
+  },
+  "session": "20261011T124307-1a3efd64",
+  "result": {
+    "verdicts": {
+      "30b": "CLEAR BEST: 12 threads",
+      "80b": "CLEAR BEST: 4 threads"
+    },
+    "pre_registered": {
+      "P1": "FALSIFIED",
+      "P2": "FALSIFIED"
+    },
+    "finding": "throughput-optimal generation thread count is model-dependent (tested configuration only)",
+    "fourth_round": "not required"
+  }
+}

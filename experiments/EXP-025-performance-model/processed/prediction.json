@@ -1,0 +1,46 @@
+{
+  "full_fit": {
+    "coefficients": {
+      "compute": 85.5716,
+      "io_bytes_over_bw": 0.85973422,
+      "reads": 0.043179181,
+      "sync_nodes": 1.0843354e-15
+    },
+    "n": 5
+  },
+  "loo": [
+    {
+      "abs_pct_error": 3.0267209,
+      "label": "1.5G",
+      "measured_ms": 258.11498,
+      "predicted_ms": 265.9274
+    },
+    {
+      "abs_pct_error": 2.520833,
+      "label": "1152M",
+      "measured_ms": 302.79354,
+      "predicted_ms": 295.16062
+    },
+    {
+      "abs_pct_error": 1.1097639,
+      "label": "1024M",
+      "measured_ms": 347.33938,
+      "predicted_ms": 351.19403
+    },
+    {
+      "abs_pct_error": 2.1828968,
+      "label": "768M",
+      "measured_ms": 391.97368,
+      "predicted_ms": 400.53006
+    },
+    {
+      "abs_pct_error": 2.2546885,
+      "label": "512M",
+      "measured_ms": 402.70998,
+      "predicted_ms": 393.63013
+    }
+  ],
+  "median_abs_pct_error": 2.2546885,
+  "meets_target_15pct": true,
+  "note": "needs at least 5 configurations for leave-one-out with 4 coefficients"
+}

@@ -1,0 +1,4 @@
+for %%S in (dev eval) do argine.bat research trace "C:\modelli\Qwen_Qwen3-30B-A3B-Q4_K_M.gguf" --expert-store --budgets 4G,2G,1.5G --repeat 3 --workload multi-turn-v2 --split %%S --out "experiments\EXP-007-router-characterization\raw\30b-multi-turn-v2-%%S"
+for %%S in (dev eval) do argine.bat research fidelity "experiments\EXP-007-router-characterization\raw\30b-multi-turn-v2-%%S" --out "experiments\EXP-007-router-characterization\fidelity\30b-multi-turn-v2-%%S"
+for %%S in (dev eval) do type "experiments\EXP-007-router-characterization\raw\30b-multi-turn-v2-%%S\runs.csv"
+for %%S in (dev eval) do type "experiments\EXP-007-router-characterization\fidelity\30b-multi-turn-v2-%%S\fidelity_runs.csv"

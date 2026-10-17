@@ -1,0 +1,42 @@
+{
+  "name": "italian",
+  "version": "v1",
+  "description": "Italian-language prompts (the reference machine's user writes in Italian).",
+  "n_predict": 128,
+  "splits": {
+    "dev": [
+      {
+        "id": "it-dev-1",
+        "segment": "italian",
+        "prompt": "Spiega in modo semplice come funziona la fotosintesi e perché è importante per la vita sulla Terra."
+      },
+      {
+        "id": "it-dev-2",
+        "segment": "italian",
+        "prompt": "Scrivi una breve lettera formale a un comune per segnalare un lampione guasto in via Garibaldi."
+      },
+      {
+        "id": "it-dev-3",
+        "segment": "italian",
+        "prompt": "Quali sono le differenze principali tra il passato prossimo e il passato remoto? Fai tre esempi per ciascuno."
+      }
+    ],
+    "eval": [
+      {
+        "id": "it-eval-1",
+        "segment": "italian",
+        "prompt": "Spiega perché il cielo è azzurro durante il giorno e rosso al tramonto."
+      },
+      {
+        "id": "it-eval-2",
+        "segment": "italian",
+        "prompt": "Scrivi un riassunto di circa cento parole della trama dei Promessi Sposi."
+      },
+      {
+        "id": "it-eval-3",
+        "segment": "italian",
+        "prompt": "Dammi cinque consigli pratici per risparmiare energia in casa durante l'inverno, spiegando il perché di ciascuno."
+      }
+    ]
+  }
+}

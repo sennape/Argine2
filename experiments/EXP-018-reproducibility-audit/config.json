@@ -1,0 +1,14 @@
+{
+  "id": "EXP-018-reproducibility-audit",
+  "title": "Run-to-run and session-to-session dispersion in the raw logs",
+  "status": "FALSIFIED",
+  "period": "2026-10-03",
+  "origin": "Argine2 (analysis of Argine v1 raw logs)",
+  "rqs": [
+    "RQ-015"
+  ],
+  "commands": [
+    "python tools/build_historical_data.py"
+  ],
+  "supersedes": "—"
+}

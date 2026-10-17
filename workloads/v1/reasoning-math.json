@@ -1,0 +1,42 @@
+{
+  "name": "reasoning-math",
+  "version": "v1",
+  "description": "Step-by-step mathematical reasoning.",
+  "n_predict": 128,
+  "splits": {
+    "dev": [
+      {
+        "id": "math-dev-1",
+        "segment": "reasoning-math",
+        "prompt": "A train leaves at 9:40 and travels 210 km at an average of 84 km/h. It then waits 25 minutes and travels another 96 km at 72 km/h. At what time does it arrive? Show your work."
+      },
+      {
+        "id": "math-dev-2",
+        "segment": "reasoning-math",
+        "prompt": "Prove that the sum of the first n odd numbers is n squared."
+      },
+      {
+        "id": "math-dev-3",
+        "segment": "reasoning-math",
+        "prompt": "How many ways can 6 people sit around a round table if two of them refuse to sit next to each other? Explain the counting."
+      }
+    ],
+    "eval": [
+      {
+        "id": "math-eval-1",
+        "segment": "reasoning-math",
+        "prompt": "A rectangle's perimeter is 46 cm and its diagonal is 17 cm. Find its sides, showing each step."
+      },
+      {
+        "id": "math-eval-2",
+        "segment": "reasoning-math",
+        "prompt": "Show that the square root of 2 is irrational."
+      },
+      {
+        "id": "math-eval-3",
+        "segment": "reasoning-math",
+        "prompt": "A bag has 5 red and 7 blue marbles. Three are drawn without replacement. What is the probability that exactly two are red? Explain."
+      }
+    ]
+  }
+}

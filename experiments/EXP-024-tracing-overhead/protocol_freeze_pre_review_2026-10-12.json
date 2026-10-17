@@ -1,0 +1,22 @@
+{
+  "experiment": "EXP-024-tracing-overhead",
+  "protocol_version": "EXP024-P1",
+  "status": "frozen before any measurement; pending independent review",
+  "protocol_hash_method": "sha256 of the UTF-8, LF-normalised README text strictly between '<!-- EXP-024 PROTOCOL-BEGIN -->' and '<!-- EXP-024 PROTOCOL-END -->'",
+  "code_hash_method": "sha256 of the LF-normalised file bytes",
+  "protocol_sha256": "0cfb34cb5847a8b5b09d4044a02e2a969f82147bf049791213b5d2c28aef5957",
+  "tool_sha256": "4f2f182ecd0bdde0ec5066ff2041c021b2681d4b82cb627b1b2ffd092dfb8175",
+  "tests_sha256": "4542236ac6b806753284ef4cd517c5178c523776eb7d5e5f4b027ea8acc6b4ba",
+  "argine2": {
+    "commit": "9b842d6e1e6d2508ccf244523384502b0ebbb295",
+    "dirty": true,
+    "dirty_definition": "tracked files modified (untracked files ignored)",
+    "modified_tracked_files": [
+      "experiments/EXP-024-tracing-overhead/README.md",
+      "experiments/EXP-024-tracing-overhead/config.json"
+    ],
+    "source": "git rev-parse HEAD / git status --porcelain --untracked-files=no run directly at freeze time; fingerprint.git_state timed out (10 s) on the mounted folder"
+  },
+  "frozen_utc": "2026-10-12T09:06:42+00:00",
+  "argine2_note": "dirty is expected: the protocol and harness of this freeze are uncommitted, pending independent review"
+}

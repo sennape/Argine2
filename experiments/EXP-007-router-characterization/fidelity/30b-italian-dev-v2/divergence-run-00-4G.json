@@ -1,0 +1,157 @@
+{
+  "divergences_seed0": [],
+  "first_divergence_seed0": null,
+  "node_completeness": {
+    "details": [
+      {
+        "excluded_segment": true,
+        "graph": 395,
+        "layer": 27,
+        "missing": [
+          [
+            27,
+            2,
+            1
+          ],
+          [
+            27,
+            5,
+            1
+          ],
+          [
+            27,
+            8,
+            1
+          ],
+          [
+            27,
+            41,
+            1
+          ],
+          [
+            27,
+            49,
+            1
+          ],
+          [
+            27,
+            52,
+            1
+          ],
+          [
+            27,
+            75,
+            1
+          ]
+        ],
+        "node_kind": 0,
+        "unexpected": []
+      }
+    ],
+    "incomplete": 1,
+    "incomplete_in_workload": 0,
+    "nodes": 56962
+  },
+  "pin_model": "per-thread",
+  "reconstruct": {
+    "first": null,
+    "inconsistencies": {
+      "evict_not_resident": 0,
+      "hit_not_resident": 0,
+      "miss_already_resident": 0
+    },
+    "order": "per-shard seq (exact)",
+    "records": 1594715,
+    "shards_with_seq_gaps": 2,
+    "total": 0
+  },
+  "seq_gaps": {
+    "applicable": true,
+    "duplicates": 0,
+    "gaps": [
+      {
+        "class": "after the last workload record of the shard (warm-up / flush sentinel tail): replay-irrelevant",
+        "inside_excluded_segment": true,
+        "next": {
+          "key": [
+            27,
+            41,
+            2
+          ],
+          "seq": 104529,
+          "t_ns": 284891204667000,
+          "tid": 12,
+          "type": "A"
+        },
+        "prev": {
+          "key": [
+            26,
+            100,
+            2
+          ],
+          "seq": 104527,
+          "t_ns": 284891203737100,
+          "tid": 10,
+          "type": "A"
+        },
+        "replay_relevant": false,
+        "seq": 104528,
+        "shard": 11
+      },
+      {
+        "class": "after the last workload record of the shard (warm-up / flush sentinel tail): replay-irrelevant",
+        "inside_excluded_segment": true,
+        "next": {
+          "key": [
+            27,
+            5,
+            2
+          ],
+          "seq": 98190,
+          "t_ns": 284891204664500,
+          "tid": 12,
+          "type": "A"
+        },
+        "prev": {
+          "key": [
+            26,
+            81,
+            2
+          ],
+          "seq": 98188,
+          "t_ns": 284891203737100,
+          "tid": 13,
+          "type": "A"
+        },
+        "replay_relevant": false,
+        "seq": 98189,
+        "shard": 12
+      }
+    ],
+    "missing": 2,
+    "shards_with_replay_relevant_seq_gaps": 0,
+    "shards_with_seq_gaps": 2
+  },
+  "thread_pools": {
+    "12": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "4": [
+      10,
+      12,
+      13,
+      14
+    ]
+  }
+}

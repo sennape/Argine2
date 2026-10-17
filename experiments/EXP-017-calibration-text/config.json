@@ -1,0 +1,12 @@
+{
+  "id": "EXP-017-calibration-text",
+  "title": "A too-easy test text produced the wrong quality verdict",
+  "status": "SUPERSEDED",
+  "period": "2026-09-30",
+  "origin": "Argine v1 (historical); data re-derived from raw logs by Argine2",
+  "rqs": [],
+  "commands": [
+    "argine ppl MODEL --text testo-riferimento.txt --ctx 512 --chunks 60"
+  ],
+  "supersedes": "its first measurement (+2.06%) is superseded by the real-prose measurement in the same experiment"
+}

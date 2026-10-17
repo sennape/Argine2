@@ -1,0 +1,14 @@
+{
+  "id": "EXP-013-quality-per-bit",
+  "title": "Perplexity vs expert bits per weight",
+  "status": "SUPPORTED",
+  "period": "2026-09-30 → 2026-10-01",
+  "origin": "Argine v1 (historical); data re-derived from raw logs by Argine2",
+  "rqs": [],
+  "commands": [
+    "argine imatrix MODEL --chunks 128",
+    "argine quantize MODEL --experts IQ2_S",
+    "argine ppl OUT.gguf --text testo-riferimento.txt --ctx 512 --chunks 60"
+  ],
+  "supersedes": "—"
+}

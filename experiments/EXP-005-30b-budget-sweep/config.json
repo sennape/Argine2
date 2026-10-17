@@ -1,0 +1,16 @@
+{
+  "id": "EXP-005-30b-budget-sweep",
+  "title": "Speed vs expert budget on Qwen3-30B-A3B",
+  "status": "SUPPORTED",
+  "period": "2026-10-02 → 2026-10-03",
+  "origin": "Argine v1 (historical); data re-derived from raw logs by Argine2",
+  "rqs": [
+    "RQ-002",
+    "RQ-008",
+    "RQ-009"
+  ],
+  "commands": [
+    "argine benchmark Qwen_Qwen3-30B-A3B-Q4_K_M.gguf --expert-store --sweep-expert-budget 4G,3G,2G,1.5G"
+  ],
+  "supersedes": "—"
+}
